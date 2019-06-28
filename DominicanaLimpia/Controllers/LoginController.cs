@@ -11,7 +11,7 @@ namespace DominicanaLimpia.Controllers
         // GET: Login
         public ActionResult Index()
         {
-            return View();
+            return View();  
         }
     }
 }
