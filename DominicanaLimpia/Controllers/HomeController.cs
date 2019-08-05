@@ -21,7 +21,8 @@ namespace DominicanaLimpia.Controllers
             Session["NombreUsuario"] = null;
             Session["RodId"] = null;
 
-            return Redirect("Login/Index");
+            return RedirectToAction("Index", "Login");
+            
         }
 
         

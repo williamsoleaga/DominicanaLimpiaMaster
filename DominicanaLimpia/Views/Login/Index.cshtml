@@ -42,7 +42,7 @@
                     </span>
 
                     <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-                        <input class="input100" type="text" name="email" placeholder="Usuario" id="Usuarioid">
+                        <input class="input100" type="text"  autocomplete="off" name="email" placeholder="Usuario" id="Usuarioid">
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-envelope" aria-hidden="true"></i>
@@ -94,8 +94,6 @@
 			scale: 1.1
         })
 
-
-
         $("#Entrar").click(function (e) {
             e.preventDefault();
 
@@ -107,8 +105,6 @@
                     data: { 'Usuario': $("#Usuarioid").val(), 'Clave': $("#Clave").val() },
                     dataType: "json",
                     success: function (data) {
-
-                        alert("Enrte");
 
                         window.location = "/Home/Index"; 
                     },
