@@ -46,6 +46,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -53,6 +59,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -144,10 +152,34 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="DominicanaLimpia.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DominicanaLimpia.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DominicanaLimpia.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DominicanaLimpia.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DominicanaLimpia.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DominicanaLimpia.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Municipios.cs">
+      <DependentUpon>DominicanaLimpia.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Roles.cs">
+      <DependentUpon>DominicanaLimpia.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Usuarios.cs">
+      <DependentUpon>DominicanaLimpia.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -193,6 +225,16 @@
     <Content Include="Content\Login\vendor\select2\select2.min.css" />
     <Content Include="Content\Login\vendor\select2\select2.min.js" />
     <Content Include="Content\Login\vendor\tilt\tilt.jquery.min.js" />
+    <Content Include="DominicanaLimpia.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DominicanaLimpia.edmx</DependentUpon>
+      <LastGenOutput>DominicanaLimpia.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DominicanaLimpia.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DominicanaLimpia.edmx</DependentUpon>
+      <LastGenOutput>DominicanaLimpia.cs</LastGenOutput>
+    </Content>
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -277,6 +319,13 @@
     <Content Include="Content\Login\vendor\bootstrap\css\bootstrap-reboot.min.css.map" />
     <Content Include="Content\Login\vendor\bootstrap\css\bootstrap.css.map" />
     <Content Include="Content\Login\vendor\bootstrap\css\bootstrap.min.css.map" />
+    <EntityDeploy Include="DominicanaLimpia.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DominicanaLimpia.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="DominicanaLimpia.edmx.diagram">
+      <DependentUpon>DominicanaLimpia.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -320,6 +369,9 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

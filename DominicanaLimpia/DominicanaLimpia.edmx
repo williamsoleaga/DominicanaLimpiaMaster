@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DominicanalimpiaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Dominicanalimpia.dbo.Municipios' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="Municipios">
+          <Key>
+            <PropertyRef Name="MunicipioId" />
+          </Key>
+          <Property Name="MunicipioId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Provincia_Nombre" Type="nchar" MaxLength="50" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Dominicanalimpia.dbo.Roles' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="RolId" />
+          </Key>
+          <Property Name="RolId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre_Rol" Type="nchar" MaxLength="20" />
+          <Property Name="Estatus" Type="nchar" MaxLength="3" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Dominicanalimpia.dbo.Usuarios' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="UsuarioId" />
+          </Key>
+          <Property Name="UsuarioId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Usuario" Type="nchar" MaxLength="50" />
+          <Property Name="Clave" Type="nchar" MaxLength="100" />
+          <Property Name="Nombre_Completo" Type="nchar" MaxLength="60" />
+          <Property Name="Correo" Type="nchar" MaxLength="35" />
+          <Property Name="RolId" Type="int" />
+          <Property Name="Estatus" Type="nchar" MaxLength="2" />
+          <Property Name="MunicipioId" Type="int" />
+        </EntityType>
+        <EntityContainer Name="DominicanalimpiaModelStoreContainer">
+          <EntitySet Name="Municipios" EntityType="Self.Municipios" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Municipios].[MunicipioId] AS [MunicipioId], 
+    [Municipios].[Provincia_Nombre] AS [Provincia_Nombre]
+    FROM [dbo].[Municipios] AS [Municipios]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Roles" EntityType="Self.Roles" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Roles].[RolId] AS [RolId], 
+    [Roles].[Nombre_Rol] AS [Nombre_Rol], 
+    [Roles].[Estatus] AS [Estatus]
+    FROM [dbo].[Roles] AS [Roles]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Usuarios].[UsuarioId] AS [UsuarioId], 
+    [Usuarios].[Usuario] AS [Usuario], 
+    [Usuarios].[Clave] AS [Clave], 
+    [Usuarios].[Nombre_Completo] AS [Nombre_Completo], 
+    [Usuarios].[Correo] AS [Correo], 
+    [Usuarios].[RolId] AS [RolId], 
+    [Usuarios].[Estatus] AS [Estatus], 
+    [Usuarios].[MunicipioId] AS [MunicipioId]
+    FROM [dbo].[Usuarios] AS [Usuarios]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DominicanalimpiaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Municipios">
+          <Key>
+            <PropertyRef Name="MunicipioId" />
+          </Key>
+          <Property Name="MunicipioId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Provincia_Nombre" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="RolId" />
+          </Key>
+          <Property Name="RolId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre_Rol" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="Estatus" Type="String" MaxLength="3" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="UsuarioId" />
+          </Key>
+          <Property Name="UsuarioId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Usuario" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Clave" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="Nombre_Completo" Type="String" MaxLength="60" FixedLength="true" Unicode="true" />
+          <Property Name="Correo" Type="String" MaxLength="35" FixedLength="true" Unicode="true" />
+          <Property Name="RolId" Type="Int32" />
+          <Property Name="Estatus" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+          <Property Name="MunicipioId" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="DominicanalimpiaEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Municipios" EntityType="Self.Municipios" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DominicanalimpiaModelStoreContainer" CdmEntityContainer="DominicanalimpiaEntities1">
+          <EntitySetMapping Name="Municipios">
+            <EntityTypeMapping TypeName="DominicanalimpiaModel.Municipios">
+              <MappingFragment StoreEntitySet="Municipios">
+                <ScalarProperty Name="MunicipioId" ColumnName="MunicipioId" />
+                <ScalarProperty Name="Provincia_Nombre" ColumnName="Provincia_Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="DominicanalimpiaModel.Roles">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="RolId" ColumnName="RolId" />
+                <ScalarProperty Name="Nombre_Rol" ColumnName="Nombre_Rol" />
+                <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="DominicanalimpiaModel.Usuarios">
+              <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+                <ScalarProperty Name="Nombre_Completo" ColumnName="Nombre_Completo" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="RolId" ColumnName="RolId" />
+                <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+                <ScalarProperty Name="MunicipioId" ColumnName="MunicipioId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

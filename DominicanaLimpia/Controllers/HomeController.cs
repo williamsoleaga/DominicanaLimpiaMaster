@@ -13,6 +13,20 @@ namespace DominicanaLimpia.Controllers
             return View();
         }
 
+
+
+        public ActionResult LogOut()
+        {
+            Session["UsuarioId"] = null;
+            Session["NombreUsuario"] = null;
+            Session["RodId"] = null;
+
+            return Redirect("Login/Index");
+        }
+
+        
+
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
