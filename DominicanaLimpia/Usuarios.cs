@@ -22,7 +22,5 @@ namespace DominicanaLimpia
         public Nullable<int> RolId { get; set; }
         public string Estatus { get; set; }
         public Nullable<int> MunicipioId { get; set; }
-
-        public List<Roles> Roles { get; set; }
     }
 }

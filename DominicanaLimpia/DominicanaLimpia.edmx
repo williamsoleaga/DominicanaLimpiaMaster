@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DominicanalimpiaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DominicanalimpiaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'Dominicanalimpia.dbo.Municipios' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="Municipios">
@@ -24,8 +24,6 @@ advertencia 6002: La tabla o vista 'Dominicanalimpia.dbo.Roles' no tiene definid
           <Property Name="Nombre_Rol" Type="nchar" MaxLength="20" />
           <Property Name="Estatus" Type="nchar" MaxLength="3" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'Dominicanalimpia.dbo.Usuarios' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="Usuarios">
           <Key>
             <PropertyRef Name="UsuarioId" />
@@ -40,6 +38,7 @@ advertencia 6002: La tabla o vista 'Dominicanalimpia.dbo.Usuarios' no tiene defi
           <Property Name="MunicipioId" Type="int" />
         </EntityType>
         <EntityContainer Name="DominicanalimpiaModelStoreContainer">
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Municipios" EntityType="Self.Municipios" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [Municipios].[MunicipioId] AS [MunicipioId], 
@@ -53,21 +52,8 @@ advertencia 6002: La tabla o vista 'Dominicanalimpia.dbo.Usuarios' no tiene defi
     [Roles].[Estatus] AS [Estatus]
     FROM [dbo].[Roles] AS [Roles]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Usuarios].[UsuarioId] AS [UsuarioId], 
-    [Usuarios].[Usuario] AS [Usuario], 
-    [Usuarios].[Clave] AS [Clave], 
-    [Usuarios].[Nombre_Completo] AS [Nombre_Completo], 
-    [Usuarios].[Correo] AS [Correo], 
-    [Usuarios].[RolId] AS [RolId], 
-    [Usuarios].[Estatus] AS [Estatus], 
-    [Usuarios].[MunicipioId] AS [MunicipioId]
-    FROM [dbo].[Usuarios] AS [Usuarios]</DefiningQuery>
-          </EntitySet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DominicanalimpiaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">

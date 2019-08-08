@@ -22,10 +22,6 @@ namespace DominicanaLimpia.Controllers
                 return RedirectToAction("Index", "Login");
             }
 
-
-        
-
-
             return View(db.Usuarios.ToList());
         }
 
@@ -49,8 +45,8 @@ namespace DominicanaLimpia.Controllers
         {
 
             ViewBag.Accounts = new SelectList(db.Roles, "RolId", "Nombre_Rol");
+            ViewBag.Municipios = new SelectList(db.Municipios, "MunicipioId", "Provincia_Nombre");
 
-        
             return View();
         }
 
@@ -59,10 +55,12 @@ namespace DominicanaLimpia.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "UsuarioId,Usuario,Clave,Nombre_Completo,Correo,RolId,Estatus,MunicipioId")] Usuarios usuarios)
+        public ActionResult Create(Usuarios usuarios)
         {
+
             if (ModelState.IsValid)
             {
+                usuarios.Estatus = "A";
                 db.Usuarios.Add(usuarios);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -117,9 +115,7 @@ namespace DominicanaLimpia.Controllers
             return View(usuarios);
         }
 
-        // POST: Usuarios/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
+        [ActionName("DeleteConfirmed")]
         public ActionResult DeleteConfirmed(int id)
         {
             Usuarios usuarios = db.Usuarios.Find(id);
