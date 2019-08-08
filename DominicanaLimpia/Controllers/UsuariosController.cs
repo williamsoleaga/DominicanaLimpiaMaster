@@ -50,9 +50,6 @@ namespace DominicanaLimpia.Controllers
             return View();
         }
 
-        // POST: Usuarios/Create
-        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
-        // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Usuarios usuarios)
@@ -60,6 +57,14 @@ namespace DominicanaLimpia.Controllers
 
             if (ModelState.IsValid)
             {
+                if(usuarios.RolId == 2)
+                {
+                    for (int i = 0; i < usuarios.Municipios.Count(); i++)
+                    {
+                        usuarios.MunicipiosId = usuarios.MunicipiosId + usuarios.Municipios[i].ToString() + ",";
+                    }
+                }
+
                 usuarios.Estatus = "A";
                 db.Usuarios.Add(usuarios);
                 db.SaveChanges();
@@ -84,12 +89,10 @@ namespace DominicanaLimpia.Controllers
             return View(usuarios);
         }
 
-        // POST: Usuarios/Edit/5
-        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
-        // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
+  
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "UsuarioId,Usuario,Clave,Nombre_Completo,Correo,RolId,Estatus,MunicipioId")] Usuarios usuarios)
+        public ActionResult Edit(Usuarios usuarios)
         {
             if (ModelState.IsValid)
             {

@@ -36,6 +36,7 @@ advertencia 6002: La tabla o vista 'Dominicanalimpia.dbo.Roles' no tiene definid
           <Property Name="RolId" Type="int" />
           <Property Name="Estatus" Type="nchar" MaxLength="2" />
           <Property Name="MunicipioId" Type="int" />
+          <Property Name="MunicipiosId" Type="nchar" MaxLength="70" />
         </EntityType>
         <EntityContainer Name="DominicanalimpiaModelStoreContainer">
           <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
@@ -84,6 +85,7 @@ advertencia 6002: La tabla o vista 'Dominicanalimpia.dbo.Roles' no tiene definid
           <Property Name="RolId" Type="Int32" />
           <Property Name="Estatus" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
           <Property Name="MunicipioId" Type="Int32" />
+          <Property Name="MunicipiosId" Type="String" MaxLength="70" FixedLength="true" Unicode="true" />
         </EntityType>
         <EntityContainer Name="DominicanalimpiaEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Municipios" EntityType="Self.Municipios" />
@@ -116,6 +118,7 @@ advertencia 6002: La tabla o vista 'Dominicanalimpia.dbo.Roles' no tiene definid
           <EntitySetMapping Name="Usuarios">
             <EntityTypeMapping TypeName="DominicanalimpiaModel.Usuarios">
               <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="MunicipiosId" ColumnName="MunicipiosId" />
                 <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
                 <ScalarProperty Name="Usuario" ColumnName="Usuario" />
                 <ScalarProperty Name="Clave" ColumnName="Clave" />

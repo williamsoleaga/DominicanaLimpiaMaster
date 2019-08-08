@@ -3,77 +3,85 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 
-     DominicanalimpiaEntities1 db = new DominicanalimpiaEntities1();
+    DominicanalimpiaEntities1 db = new DominicanalimpiaEntities1();
 }
-    <br />
-    <br />
-    <h4>Listado usuarios</h4>
-    <hr />
-    <p>
-        <div class="text-right">
-            <input value="Crear usuario" class="btn btn-primary" onclick="location.href='@Url.Action("Create", "Usuarios")'" />
+<br />
+<br />
+<div class="col-md-14 mb-4">
+    <div class="card">
+        <div class="card-body">
+
+            <h4>Listado usuarios</h4>
+            <hr />
+            <p>
+                <div class="text-right">
+                    <input value="Crear usuario" class="btn btn-primary" onclick="location.href='@Url.Action("Create", "Usuarios")'" />
+                </div>
+            </p>
+            <br />
+            <br />
+
+            <table id="dtBasicExample" class="table table-bordered" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>
+                            Usuario
+                        </th>
+                        <th>
+                            Clave
+                        </th>
+                        <th>
+                            Nombre completo
+                        </th>
+                        <th>
+                            Correo
+                        </th>
+                        <th>
+                            Rol
+                        </th>
+                        <th>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Usuario)
+                            </td>
+                            <td>
+                                ***********
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Nombre_Completo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Correo)
+                            </td>
+                            <td>
+                                @{
+                                    var texto = db.Roles.Where(x => x.RolId == item.RolId).Select(x => x.Nombre_Rol).FirstOrDefault();
+                                }
+                                @texto
+                            </td>
+                            <td>
+                                @Html.ActionLink("Editar", "Edit", new { id = item.UsuarioId }, new { @class = "btn btn-info btn-sm" })
+                                @if (Model.Count() != 1)
+                                {
+                                    @Html.ActionLink("Eliminar", "DeleteConfirmed", new { id = item.UsuarioId }, new { @class = "btn btn-danger btn-sm" })
+
+                                }
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
         </div>
-    </p>
-    <br />
-    <br />
+    </div>
+</div>
 
-    <table id="dtBasicExample" class="table table-bordered" cellspacing="0">
-        <thead>
-            <tr>
-                <th>
-                    Usuario
-                </th>
-                <th>
-                    Clave
-                </th>
-                <th>
-                    Nombre completo
-                </th>
-                <th>
-                    Correo
-                </th>
-                <th>
-                    Rol
-                </th>
-                <th>
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Usuario)
-                    </td>
-                    <td>
-                     ***********
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Nombre_Completo)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Correo)
-                    </td>
-                    <td>
-                        @{
-                            var texto = db.Roles.Where(x => x.RolId == item.RolId).Select(x => x.Nombre_Rol).FirstOrDefault();
-                        }
-                        @texto
-                    </td>
-                    <td>
-                        @Html.ActionLink("Editar", "Edit", new { id = item.UsuarioId }, new { @class = "btn btn-info btn-sm" })
-                        @if (Model.Count() != 1)
-    {
-                    @Html.ActionLink("Eliminar", "DeleteConfirmed", new { id = item.UsuarioId }, new { @class = "btn btn-danger btn-sm" })
-
-}
-                    </td>
-                </tr>
-            }
-
-        </tbody>
-    </table>
 
 <br /><br />
