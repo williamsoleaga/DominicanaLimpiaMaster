@@ -10,9 +10,12 @@ namespace DominicanaLimpia.Controllers
     {
         public ActionResult Index()
         {
+            if (Session["UsuarioId"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             return View();
         }
-
 
 
         public ActionResult LogOut()
@@ -20,12 +23,8 @@ namespace DominicanaLimpia.Controllers
             Session["UsuarioId"] = null;
             Session["NombreUsuario"] = null;
             Session["RodId"] = null;
-
             return RedirectToAction("Index", "Login");
-            
         }
-
-        
 
 
         public ActionResult About()
