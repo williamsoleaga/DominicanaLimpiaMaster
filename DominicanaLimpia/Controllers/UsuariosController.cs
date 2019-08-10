@@ -7,9 +7,11 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using DominicanaLimpia;
+using DominicanaLimpia.Models;
 
 namespace DominicanaLimpia.Controllers
 {
+    [SessionExpire]
     public class UsuariosController : Controller
     {
         private DominicanalimpiaEntities1 db = new DominicanalimpiaEntities1();
@@ -17,12 +19,7 @@ namespace DominicanaLimpia.Controllers
         // GET: Usuarios
         public ActionResult Index()
         {
-            if (Session["UsuarioId"] == null)
-            {
-                return RedirectToAction("Index", "Login");
-            }
-
-            return View(db.Usuarios.ToList());
+            return View(db.Usuarios.Where(x=>x.Estatus.Contains("A")).ToList());
         }
 
         // GET: Usuarios/Details/5
@@ -61,11 +58,14 @@ namespace DominicanaLimpia.Controllers
                 {
                     for (int i = 0; i < usuarios.Municipios.Count(); i++)
                     {
-                        usuarios.MunicipiosId = usuarios.MunicipiosId + usuarios.Municipios[i].ToString() + ",";
+                        usuarios.MunicipiosId = usuarios.MunicipiosId + usuarios.Municipios[i].ToString() + ", 0";
                     }
                 }
+                char[] charsToTrim = {' '};
 
                 usuarios.Estatus = "A";
+                usuarios.Usuario = usuarios.Usuario.ToLower();
+
                 db.Usuarios.Add(usuarios);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -86,6 +86,20 @@ namespace DominicanaLimpia.Controllers
             {
                 return HttpNotFound();
             }
+
+            if (usuarios.RolId == 2)
+            {
+                int[] CountryIDs = usuarios.MunicipiosId.Split(',').Select(n => Convert.ToInt32(n)).ToArray();
+                ViewBag.Municipios = new MultiSelectList(db.Municipios.ToList(), "MunicipioId", "Provincia_Nombre", CountryIDs);
+            }
+            else
+            {
+                ViewBag.Municipios = new SelectList(db.Municipios, "MunicipioId", "Provincia_Nombre");
+            }
+
+
+            ViewBag.Accounts = new SelectList(db.Roles, "RolId", "Nombre_Rol",usuarios.RolId);
+
             return View(usuarios);
         }
 
@@ -96,6 +110,13 @@ namespace DominicanaLimpia.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (usuarios.RolId == 2)
+                {
+                    for (int i = 0; i < usuarios.Municipios.Count(); i++)
+                    {
+                        usuarios.MunicipiosId = usuarios.MunicipiosId + usuarios.Municipios[i].ToString() + ", 0";
+                    }
+                }
                 db.Entry(usuarios).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -122,7 +143,10 @@ namespace DominicanaLimpia.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Usuarios usuarios = db.Usuarios.Find(id);
-            db.Usuarios.Remove(usuarios);
+            usuarios.Estatus = "I";
+
+            //db.Usuarios.Remove(usuarios);
+            db.Entry(usuarios).State = EntityState.Modified;
             db.SaveChanges();
             return RedirectToAction("Index");
         }

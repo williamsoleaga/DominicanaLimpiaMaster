@@ -12,6 +12,11 @@
     <!--===============================================================================================-->
     <link rel="icon" type="image/png" href="~/Content/Login/images/icons/favicon.ico" />
     <!--===============================================================================================-->
+    <!-- JavaScript -->
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.11.4/build/alertify.min.js"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.4/build/css/alertify.min.css" />
 
     <link rel="stylesheet" type="text/css" href="~/Content/Login/vendor/bootstrap/css/bootstrap.min.css">
     <!--===============================================================================================-->
@@ -35,12 +40,10 @@
                 <div class="login100-pic js-tilt" data-tilt>
                     <img src="/Content/Login/images/img-01.png" alt="IMG">
                 </div>
-
                 <form class="login100-form validate-form">
                     <span class="login100-form-title">
-                        Inicio de sesión
+                        Iniciar sesion
                     </span>
-
                     <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
                         <input class="input100" type="text"  autocomplete="off" name="email" placeholder="Usuario" id="Usuarioid">
                         <span class="focus-input100"></span>
@@ -48,7 +51,6 @@
                             <i class="fa fa-envelope" aria-hidden="true"></i>
                         </span>
                     </div>
-
                     <div class="wrap-input100 validate-input" data-validate="Password is required">
                         <input class="input100" type="password" name="pass" placeholder="Clave" id="Clave">
                         <span class="focus-input100"></span>
@@ -56,7 +58,6 @@
                             <i class="fa fa-lock" aria-hidden="true"></i>
                         </span>
                     </div>
-
                     <div class="container-login100-form-btn">
                         <button class="login100-form-btn" id="Entrar"> Entrar </button>
                     </div>
@@ -106,15 +107,18 @@
                     dataType: "json",
                     success: function (data) {
 
-                        window.location = "/Home/Index"; 
+                        if (data.EsExitoso) {
+                            window.location = "/Home/Index"; 
+                        } else {
+                            alertify.error('Usuario o clave incorrectas');
+                        }
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
-                       // swal({ title: 'Error', html: '<center>' + jqXHR.responseJSON.Error + '</center>', type: 'error', confirmButtonText: 'Aceptar', showLoaderOnConfirm: false });
+                        alertify.error(jqXHR.responseJSON.Error);
                     }
                 });
-            } else {
-                //swal({ title: 'Aviso', html: '<center>Debe de especificar el usuario.</center>', type: 'warning', confirmButtonText: 'Aceptar', showLoaderOnConfirm: false });
-              //  $("#Usu_nombre_usuario").focus();
+             } else {
+                 alertify.warning('Usuario y clave son necesarios!');
             }
         });
 

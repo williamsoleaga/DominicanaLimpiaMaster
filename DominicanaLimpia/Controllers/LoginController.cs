@@ -26,7 +26,7 @@ namespace DominicanaLimpia.Controllers
         {
             try
             {
-                var resultado = db.Usuarios.Where(x => x.Usuario == Usuario.Trim() && x.Clave == Clave.Trim()).ToList();
+                var resultado = db.Usuarios.Where(x => x.Usuario == Usuario.Trim().ToLower() && x.Clave == Clave.Trim()).ToList();
 
                 if (resultado.Count > 0)
                 {

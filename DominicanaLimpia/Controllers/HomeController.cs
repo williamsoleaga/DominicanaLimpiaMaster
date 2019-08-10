@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DominicanaLimpia.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,17 +7,17 @@ using System.Web.Mvc;
 
 namespace DominicanaLimpia.Controllers
 {
+    [SessionExpire]
     public class HomeController : Controller
     {
         public ActionResult Index()
         {
-            if (Session["UsuarioId"] == null)
-            {
-                return RedirectToAction("Index", "Login");
-            }
+            //if (Session["UsuarioId"] == null)
+            //{
+            //    return RedirectToAction("Index", "Login");
+            //}
             return View();
         }
-
 
         public ActionResult LogOut()
         {

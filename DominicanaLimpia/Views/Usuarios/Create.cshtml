@@ -54,18 +54,41 @@
                         </div>
                     </div>
                     <div class="form-group" id="MunicipioDiv">
-                        Municipio
-                        @Html.DropDownList("Municipios[]", (IEnumerable<SelectListItem>)ViewBag.Municipios, null, new { @name = "Municipios[]", @multiple = "multiple", @class = "form-control" })
+                        Municipios
+                        @Html.DropDownList("Municipios[]", (IEnumerable<SelectListItem>)ViewBag.Municipios, null, new { @name = "Municipios[]", @multiple = "multiple", @class = "form-control", @required="true" })
                     </div>
 
                     <div class="text-right">
                         <button class="btn btn-success" type="submit">Agregar</button>
                     </div>
 
-                    </div>
                 </div>
             </div>
-            
-                    }
-    </body>
+        </div>
+
+    }
+</body>
 </html>
+
+
+<script type="text/javascript">
+
+    function AvoidSpace(event) {
+        var k = event ? event.which : window.event.keyCode;
+        if (k == 32) return false;
+    }
+
+    document.getElementById("Municipios__").disabled = true;
+    $("#Municipios__").select2();
+
+
+    $("#RolId").change(function () {
+        if ($("#RolId").val() == 2) {
+            document.getElementById("Municipios__").disabled = false;
+
+        } else {
+            document.getElementById("Municipios__").disabled = true;
+        }
+    });
+
+</script>

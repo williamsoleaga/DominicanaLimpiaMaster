@@ -6,7 +6,6 @@
 }
 
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,9 +22,16 @@
     <link href="~/Content/LayOut/css/mdb.min.css" rel="stylesheet">
     <!-- Your custom styles (optional) -->
     <link href="~/Content/LayOut/css/style.min.css" rel="stylesheet">
-
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/css/select2.min.css" rel="stylesheet" />
 
+
+    <script src="~/Content/Login/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script src="~/Content/Login/vendor/bootstrap/js/popper.js"></script>
+    <script type="text/javascript" src="~/Scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/Content/LayOut/js/mdb.min.js"></script>
+    <link href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+    <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js"></script>
 
 
     <style>
@@ -55,7 +61,10 @@
                 <!-- Brand -->
                 <a class="navbar-brand waves-effect">
                     <strong class="blue-text">Dominicana Limpia</strong>
+
                     / @Session["NombreUsuario"].ToString()
+
+
                 </a>
                 <!-- Collapse -->
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -79,11 +88,11 @@
                                     Usuarios
                                 </a>
                             </li>
-                        <li class="nav-item ">
-                            <a class="nav-link waves-effect" href="#">
-                                Reportes
-                            </a>
-                        </li>
+                            <li class="nav-item ">
+                                <a class="nav-link waves-effect" href="#">
+                                    Reportes
+                                </a>
+                            </li>
                         }
 
                         <li class="nav-item">
@@ -126,18 +135,18 @@
                     </a>
 
 
-                <a href="#" class="list-group-item list-group-item-action waves-effect">
-                    <i class="fas fa-table mr-3"></i>Reportes
-                </a>
+                    <a href="#" class="list-group-item list-group-item-action waves-effect">
+                        <i class="fas fa-table mr-3"></i>Reportes
+                    </a>
 
                 }
 
                 @*<a href="#" class="list-group-item list-group-item-action waves-effect">
-                    <i class="fas fa-map mr-3"></i>Maps
-                </a>
-                <a href="#" class="list-group-item list-group-item-action waves-effect">
-                    <i class="fas fa-money-bill-alt mr-3"></i>Orders
-                </a>*@
+                        <i class="fas fa-map mr-3"></i>Maps
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action waves-effect">
+                        <i class="fas fa-money-bill-alt mr-3"></i>Orders
+                    </a>*@
             </div>
         </div>
         <!-- Sidebar -->
@@ -200,52 +209,39 @@
         <!--/.Copyright-->
     </footer>
 
-    <!--/.Footer-->
-    <!-- SCRIPTS -->
-    <!-- JQuery -->
-    <!-- Bootstrap core JavaScript -->
 
-    <script src="~/Content/Login/vendor/jquery/jquery-3.2.1.min.js"></script>
 
-    <script src="~/Content/Login/vendor/bootstrap/js/popper.js"></script>
-
-    <script type="text/javascript" src="~/Scripts/bootstrap.min.js"></script>
-    <script type="text/javascript" src="~/Content/LayOut/js/mdb.min.js"></script>
-
-    <link href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
-    <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js"></script>
 
     <!-- Initializations -->
     <script type="text/javascript">
 
-        $('#dtBasicExample').DataTable();
+        //  $('#dtBasicExample').DataTable();
 
-        function AvoidSpace(event) {
-            var k = event ? event.which : window.event.keyCode;
-            if (k == 32) return false;
-        }
+        //function AvoidSpace(event) {
+        //    var k = event ? event.which : window.event.keyCode;
+        //    if (k == 32) return false;
+        //}
 
-        document.getElementById("Municipios__").disabled = true;
-        $("#Municipios__").select2();
+        //document.getElementById("Municipios__").disabled = true;
+        //$("#Municipios__").select2();
 
 
-        $("#RolId").change(function () {
-            if ($("#RolId").val() == 2) {
-                document.getElementById("Municipios__").disabled = false;
+        //$("#RolId").change(function () {
+        //    if ($("#RolId").val() == 2) {
+        //        document.getElementById("Municipios__").disabled = false;
 
-            } else {
-                document.getElementById("Municipios__").disabled = true;
-            }
-        });
+        //    } else {
+        //        document.getElementById("Municipios__").disabled = true;
+        //    }
+        //});
 
-        $('#dtBasicExample').DataTable({
-            "language": {
-                "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
-            }
-        });
+        //$('#dtBasicExample').DataTable({
+        //    "language": {
+        //        "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+        //    }
+        //});
 
-       
+
         // Animations initialization
         new WOW().init();
     </script>
