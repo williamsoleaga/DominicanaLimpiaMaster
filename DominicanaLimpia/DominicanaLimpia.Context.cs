@@ -28,5 +28,7 @@ namespace DominicanaLimpia
         public virtual DbSet<Municipios> Municipios { get; set; }
         public virtual DbSet<Roles> Roles { get; set; }
         public virtual DbSet<Usuarios> Usuarios { get; set; }
+        public virtual DbSet<Formulario> Formulario { get; set; }
+        public virtual DbSet<Preguntas> Preguntas { get; set; }
     }
 }

@@ -1,0 +1,182 @@
+﻿@model DominicanaLimpia.Formulario
+
+@{
+    ViewBag.Title = "Create";
+    int Contador = 0;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/JquerySteep/jquerysteep.css" rel="stylesheet" />
+<script src="~/Content/JquerySteep/jquery.steps.js"></script>
+<script src="~/Content/JquerySteep/jquery.steps.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <br />
+        <div class="col-md-14 mb-4">
+            <div class="card">
+                <div class="well">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th> <strong>Desde:</strong> <input type="date" class="form-control" name="Desde" id="Desde"></th>
+
+                                <th> <strong>Hasta:</strong> <input type="date" class="form-control"  name="Hasta" id="Hasta"></th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+
+                <br /><br /><br />
+                <div class="card-body" id="example-basic">
+
+                    <h3>Pagina</h3>
+                    <section>
+                        @foreach (var item in Model.Preguntas)
+                        {
+                            if (Contador < 9)
+                            {
+                                <div class="form-group">
+                                    <div class="block">
+                                        <strong>@item.Descripcion</strong>
+                                        <input type="number"  name="Valores[]" id="Valores[]" />
+                                        <hr>
+                                    </div>
+                                </div>
+                                if (Contador == 8)
+                                {
+                                    Contador = 0;
+                                    break;
+
+                                }
+                            }
+                            Contador = Contador + 1;
+                        }
+                    </section>
+
+
+                    <h3>Pagina</h3>
+                    <section>
+                        @foreach (var item in Model.Preguntas)
+                        {
+                            if (Contador >= 9 && Contador < 18)
+                            {
+                                <div class="form-group">
+                                    <div class="block">
+                                        <strong>@item.Descripcion</strong>
+                                        <input type="number"  name="Valores[]" id="Valores[]" />
+                                        <hr>
+                                    </div>
+                                </div>
+                                if (Contador == 17)
+                                {
+                                    Contador = 0;
+                                    break;
+
+                                }
+                            }
+                            Contador = Contador + 1;
+                        }
+                    </section>
+
+
+                    <h3>Pagina</h3>
+                    <section>
+                        @foreach (var item in Model.Preguntas)
+                        {
+                            if (Contador >= 18 && Contador < 27)
+                            {
+                                <div class="form-group">
+                                    <div class="block">
+                                        <strong>@item.Descripcion</strong>
+                                        <input type="number" name="Valores[]" id="Valores[]" />
+                                        <hr>
+                                    </div>
+                                </div>
+                                if (Contador == 26)
+                                {
+                                    Contador = 0;
+                                    break;
+
+                                }
+                            }
+                            Contador = Contador + 1;
+                        }
+                    </section>
+
+
+                    <h3>Pagina</h3>
+                    <section>
+                        @foreach (var item in Model.Preguntas)
+                        {
+                            if (Contador >= 27 && Contador <= 33)
+                            {
+                                <div class="form-group">
+                                    <div class="block">
+                                        <strong>@item.Descripcion</strong>
+                                        <input type="number" name="Valores[]"  id="Valores[]" />
+                                        <hr>
+                                    </div>
+                                </div>
+                                if (Contador == 33)
+                                {
+                                    Contador = 0;
+                                    break;
+
+                                }
+                            }
+                            Contador = Contador + 1;
+                        }
+                    </section>
+
+                    <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Create" class="btn btn-default" />
+                            </div>
+                        </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+
+
+<script type="text/javascript">
+
+
+    $("#Desde").datepicker({
+        autoclose: true,
+        todayHighlight: true
+    }).datepicker('update', new Date());
+
+
+    $("#Hasta").datepicker({
+        autoclose: true,
+        todayHighlight: true
+    }).datepicker('update', new Date());
+
+
+
+    $("#example-basic").steps({
+        headerTag: "h3",
+        bodyTag: "section",
+        transitionEffect: "slideLeft",
+        autoFocus: true
+    });
+
+
+
+</script>
+
+

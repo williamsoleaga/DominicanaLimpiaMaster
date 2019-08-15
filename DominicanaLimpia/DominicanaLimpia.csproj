@@ -150,6 +150,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\FormularioController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
@@ -168,11 +169,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DominicanaLimpia.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Formulario.cs">
+      <DependentUpon>DominicanaLimpia.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\SessionExpireAttribute.cs" />
     <Compile Include="Municipios.cs">
+      <DependentUpon>DominicanaLimpia.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Preguntas.cs">
       <DependentUpon>DominicanaLimpia.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -186,6 +193,9 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\JquerySteep\jquery.steps.js" />
+    <Content Include="Content\JquerySteep\jquery.steps.min.js" />
+    <Content Include="Content\JquerySteep\jquerysteep.css" />
     <Content Include="Content\LayOut\css\bootstrap.min.css" />
     <Content Include="Content\LayOut\css\mdb.min.css" />
     <Content Include="Content\LayOut\css\style.min.css" />
@@ -359,10 +369,14 @@
     <Content Include="Views\Usuarios\Details.cshtml" />
     <Content Include="Views\Usuarios\Edit.cshtml" />
     <Content Include="Views\Usuarios\Index.cshtml" />
+    <Content Include="Views\Formulario\Create.cshtml" />
+    <Content Include="Views\Formulario\Delete.cshtml" />
+    <Content Include="Views\Formulario\Details.cshtml" />
+    <Content Include="Views\Formulario\Edit.cshtml" />
+    <Content Include="Views\Formulario\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Formulario\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
