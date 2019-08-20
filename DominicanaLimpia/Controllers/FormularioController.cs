@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -19,7 +20,16 @@ namespace DominicanaLimpia.Controllers
         // GET: Formulario
         public ActionResult Index()
         {
-            return View(db.Formulario.ToList());
+
+            //var qry = from m in db.Formulario
+            //          group m by new { m.Idusuario, m.Desde } into grp
+            //          where grp.Count() > 1
+            //          select grp.Key;
+
+            var distinctClientsPerEvent = db.Formulario.GroupBy(m => m.Desde)
+                                               .Select(x => x.FirstOrDefault());
+
+            return View(distinctClientsPerEvent);
         }
 
         // GET: Formulario/Details/5
@@ -48,19 +58,40 @@ namespace DominicanaLimpia.Controllers
         // POST: Formulario/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Formulario formulario)
         {
+
             if (ModelState.IsValid)
             {
-                db.Formulario.Add(formulario);
-                db.SaveChanges();
+                int contador = 1;
+
+                for (int i = 0; i < formulario.Valores.Count(); i++)
+                {
+
+                    Formulario nuevof = new Formulario();
+                    nuevof.PreguntaId = contador;
+                    nuevof.Hasta = Convert.ToDateTime(formulario.HastaFecha);
+                    nuevof.Desde = Convert.ToDateTime(formulario.DesdeFecha);
+                    nuevof.Idusuario = Convert.ToInt16(Session["UsuarioId"].ToString());
+                    nuevof.Estatus = "A";
+                    nuevof.Valor = formulario.Valores[i];
+
+
+                    db.Formulario.Add(nuevof);
+                    db.SaveChanges();
+                    contador = contador + 1;
+                }
+
                 return RedirectToAction("Index");
             }
 
             return View(formulario);
         }
+
+
 
         // GET: Formulario/Edit/5
         public ActionResult Edit(int? id)

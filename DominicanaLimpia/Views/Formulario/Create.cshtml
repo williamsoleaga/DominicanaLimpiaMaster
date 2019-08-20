@@ -1,23 +1,21 @@
 ﻿@model DominicanaLimpia.Formulario
 
 @{
-    ViewBag.Title = "Create";
     int Contador = 0;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css" />
 <link href="~/Content/JquerySteep/jquerysteep.css" rel="stylesheet" />
 <script src="~/Content/JquerySteep/jquery.steps.js"></script>
 <script src="~/Content/JquerySteep/jquery.steps.min.js"></script>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
 
-@using (Html.BeginForm())
+
+@using (Html.BeginForm("Create", "Formulario", FormMethod.Post , new { id = "Formulario" }))
 {
-    @Html.AntiForgeryToken()
+
+@Html.AntiForgeryToken()
 
 <div class="form-horizontal">
     <br /> <br />
@@ -27,9 +25,9 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th> <strong>Desde:</strong> <input type="text" class="form-control" name="Desde" id="Desde"></th>
+                            <th> <strong>Desde:</strong> <input type="text" class="form-control" name="DesdeFecha" id="DesdeFecha"></th>
 
-                            <th> <strong>Hasta:</strong> <input type="text" class="form-control" name="Hasta" id="Hasta"></th>
+                            <th> <strong>Hasta:</strong> <input type="text" class="form-control" name="HastaFecha" id="HastaFecha"></th>
                         </tr>
                     </thead>
                 </table>
@@ -134,12 +132,6 @@
                         Contador = Contador + 1;
                     }
                 </section>
-
-                @*<div class="form-group">
-                        <div class="col-md-offset-2 col-md-10">
-                            <input type="submit" value="Create" class="btn btn-default" />
-                        </div>
-                    </div>*@
             </div>
             <div class="form-group">
                 <strong>Comentario</strong>
@@ -153,21 +145,19 @@
 
 
 
-
 <script type="text/javascript">
 
-
-
-
-    $("#Desde").datepicker({
+    $("#DesdeFecha").datepicker({
         autoclose: true,
-        todayHighlight: true
+        todayHighlight: true,
+        format: 'dd/mm/yyyy'
     }).datepicker('update', new Date());
 
 
-    $("#Hasta").datepicker({
+    $("#HastaFecha").datepicker({
         autoclose: true,
-        todayHighlight: true
+        todayHighlight: true,
+        format: 'dd/mm/yyyy'
     }).datepicker('update', new Date());
 
 
@@ -177,7 +167,31 @@
         transitionEffect: "slideLeft",
         autoFocus: true,
         onFinishing: function (event, currentIndex) {
-            alert("Termine");
+
+            document.getElementById('Formulario').submit();
+
+            @*$.ajax({
+                type: 'POST',
+                url: '@Url.Action("Create", "Formulario")',
+                data: JSON.stringify({
+                    modelo: entidad
+                }),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    if (data.data == true) {
+                        swal({ title: 'Aviso', text: 'exito', type: 'success', confirmButtonText: 'Aceptar', showLoaderOnConfirm: false });
+
+                    } else {
+                        swal({ title: 'Aviso', text: 'exito', type: 'success', confirmButtonText: 'Aceptar', showLoaderOnConfirm: false });
+                    }
+
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    swal({ title: 'Error', html: XMLHttpRequest.responseText, type: 'error', confirmButtonText: 'Aceptar', showLoaderOnConfirm: false });
+                }
+            });*@
+
         }
     }).validate({
         errorPlacement: function errorPlacement(error, element) { element.before(error); },
@@ -186,7 +200,6 @@
                 equalTo: "#password-2"
             }
         }
-
     });
 
 

@@ -26,5 +26,8 @@ namespace DominicanaLimpia
         public string Comentario { get; set; }
         public int[] Valores { get; set; }
 
+        public string DesdeFecha { get; set; }
+        public string HastaFecha { get; set; }
+
     }
 }
