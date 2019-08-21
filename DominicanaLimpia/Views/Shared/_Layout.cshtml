@@ -90,11 +90,21 @@
 
 }
 
-                        <li class="nav-item ">
-                            <a class="nav-link waves-effect" href="#" onclick="location.href='@Url.Action("Create", "Formulario")'">
-                                Formulario
-                            </a>
-                        </li>
+                    <li class="nav-item ">
+                        @if (Session["RodId"].ToString() == "1")
+                        {
+                    <a class="nav-link waves-effect" href="#" onclick="location.href='@Url.Action("Index", "Formulario")'">
+                        Formulario
+                    </a>
+                        }
+                        else
+                        {
+                    <a class="nav-link waves-effect" href="#" onclick="location.href='@Url.Action("Create", "Formulario")'">
+                        Formulario
+                    </a>
+                        }
+
+                    </li>
 
                         <li class="nav-item">
                         </li>
@@ -139,12 +149,20 @@
                 <i class="fas fa-paste mr-3"></i>Reportes
             </a>
 
-    }
+}
 
-                <a href="#" class="list-group-item list-group-item-action waves-effect" onclick="location.href='@Url.Action("Create", "Formulario")'">
-                    <i class="fas fa-table mr-3"></i>Formulario
-                </a>
-
+                @if (Session["RodId"].ToString() == "1")
+                {
+            <a href="#" class="list-group-item list-group-item-action waves-effect" onclick="location.href='@Url.Action("Index", "Formulario")'">
+                <i class="fas fa-table mr-3"></i>Formulario
+            </a>
+                }
+                else
+                {
+            <a href="#" class="list-group-item list-group-item-action waves-effect" onclick="location.href='@Url.Action("Create", "Formulario")'">
+                <i class="fas fa-table mr-3"></i>Formulario
+            </a>
+                }
             </div>
         </div>
         <!-- Sidebar -->
