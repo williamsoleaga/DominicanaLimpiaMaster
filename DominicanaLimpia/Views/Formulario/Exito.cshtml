@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "Exito";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">*@
+@*<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>*@
+@*<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>*@
+
+<div class="form-horizontal">
+    <br /> <br />
+    <div class="col-md-14 mb-4">
+        <div class="card">
+            <div class="container">
+                <div class="row text-center">
+                    <div class="col-sm-6 col-sm-offset-3" style="    margin-left: 23%;">
+                        <br><br> <h2 style="color:#0fad00">Formulario guardado !</h2>
+                        <img src="https://cdn3.iconfinder.com/data/icons/flat-actions-icons-9/792/Tick_Mark_Dark-128.png">
+                        <h3>Señ@r, @Session["NombreUsuario"].ToString()</h3>
+                        <p style="font-size:20px;color:#5C5C5C;">
+                            Thank you for verifying your Mobile No.We have sent you an email "faisalkhan.chat@gmail.com" with your details
+                            Please go to your above email now and login.
+                        </p>
+                        <br><br>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

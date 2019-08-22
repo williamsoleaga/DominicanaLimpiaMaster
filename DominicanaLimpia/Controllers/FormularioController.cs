@@ -21,15 +21,12 @@ namespace DominicanaLimpia.Controllers
         public ActionResult Index()
         {
 
-            //var qry = from m in db.Formulario
-            //          group m by new { m.Idusuario, m.Desde } into grp
-            //          where grp.Count() > 1
-            //          select grp.Key;
+            //var distinctClientsPerEvent = db.Formulario.GroupBy(m => m.Desde)
+            //                                   .Select(x => x.FirstOrDefault());
+            //return View(distinctClientsPerEvent);
 
-            var distinctClientsPerEvent = db.Formulario.GroupBy(m => m.Desde)
-                                               .Select(x => x.FirstOrDefault());
+            return View("~/Views/Formulario/Exito.cshtml");
 
-            return View(distinctClientsPerEvent);
         }
 
         // GET: Formulario/Details/5

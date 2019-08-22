@@ -374,6 +374,7 @@
     <Content Include="Views\Formulario\Details.cshtml" />
     <Content Include="Views\Formulario\Edit.cshtml" />
     <Content Include="Views\Formulario\Index.cshtml" />
+    <Content Include="Views\Formulario\Exito.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
