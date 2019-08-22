@@ -29,7 +29,6 @@
                         <th>
                             Fecha Hasta
                         </th>
-
                         <th></th>
                     </tr>
                 </thead>
@@ -37,26 +36,26 @@
                 <tbody>
                     @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @{
+                    <tr>
+                        <td>
+                            @{
             var Nombreusuario = db.Usuarios.Where(x => x.UsuarioId == item.Idusuario).Select(x => x.Nombre_Completo).FirstOrDefault();
-                    }
-                    @Nombreusuario
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Desde)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Hasta)
-                </td>
+                            }
+                            @Nombreusuario
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Desde)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Hasta)
+                        </td>
+                        <td>
 
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.FormularioId }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.FormularioId })
-                    @*@Html.ActionLink("Delete", "Delete", new { id = item.FormularioId })*@
-                </td>
-            </tr>
+                            @Html.ActionLink("Editar", "Edit", new { id = item.FormularioId }, new { @class = "btn btn-primary btn-sm" })
+                            @Html.ActionLink("Editar", "Edit", new { id = item.FormularioId }, new { @class = "btn btn-primary btn-sm" })
+
+                        </td>
+                    </tr>
 }
                 </tbody>
             </table>

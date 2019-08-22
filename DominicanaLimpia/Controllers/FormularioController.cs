@@ -21,11 +21,9 @@ namespace DominicanaLimpia.Controllers
         public ActionResult Index()
         {
 
-            //var distinctClientsPerEvent = db.Formulario.GroupBy(m => m.Desde)
-            //                                   .Select(x => x.FirstOrDefault());
-            //return View(distinctClientsPerEvent);
-
-            return View("~/Views/Formulario/Exito.cshtml");
+            var distinctClientsPerEvent = db.Formulario.GroupBy(m => m.Desde)
+                                               .Select(x => x.FirstOrDefault());
+            return View(distinctClientsPerEvent);
 
         }
 
@@ -75,14 +73,15 @@ namespace DominicanaLimpia.Controllers
                     nuevof.Idusuario = Convert.ToInt16(Session["UsuarioId"].ToString());
                     nuevof.Estatus = "A";
                     nuevof.Valor = formulario.Valores[i];
-
+                    nuevof.Comentario = formulario.Comentario;
 
                     db.Formulario.Add(nuevof);
                     db.SaveChanges();
                     contador = contador + 1;
                 }
 
-                return RedirectToAction("Index");
+                return View("~/Views/Formulario/Exito.cshtml");
+                //return RedirectToAction("Index");
             }
 
             return View(formulario);

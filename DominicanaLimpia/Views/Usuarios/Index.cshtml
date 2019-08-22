@@ -2,7 +2,6 @@
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
-
     DominicanalimpiaEntities1 db = new DominicanalimpiaEntities1();
 }
 <br />
@@ -18,67 +17,51 @@
                     <input value="Crear usuario" class="btn btn-primary" onclick="location.href='@Url.Action("Create", "Usuarios")'" />
                 </div>
             </p>
-            <br />
-            <br />
-            <table id="dtBasicExample" class="table table-hover">
+            <table class="table table-hover" id="dtBasicExample">
                 <thead class="blue lighten-4">
                     <tr>
                         <th>
                             Usuario
                         </th>
                         <th>
-                            Clave
-                        </th>
-                        <th>
                             Nombre completo
-                        </th>
-                        <th>
-                            Correo
                         </th>
                         <th>
                             Rol
                         </th>
-                        <th>
-                        </th>
+                        <th></th>
                     </tr>
                 </thead>
+
                 <tbody>
-
                     @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Usuario)
-                            </td>
-                            <td>
-                                ***********
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Nombre_Completo)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Correo)
-                            </td>
-                            <td>
-                                @{
-                                    var texto = db.Roles.Where(x => x.RolId == item.RolId).Select(x => x.Nombre_Rol).FirstOrDefault();
-                                }
-                                @texto
-                            </td>
-                            <td align="center">
-                                @Html.ActionLink("Editar", "Edit", new { id = item.UsuarioId }, new { @class = "btn btn-primary btn-sm" })
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Usuario)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nombre_Completo)
+                    </td>
+                    <td>
+                        @{
+                    var texto = db.Roles.Where(x => x.RolId == item.RolId).Select(x => x.Nombre_Rol).FirstOrDefault();
+                        }
+                        @texto
+                    </td>
 
-                                @if (Model.Count() != 1)
-                                {
-                                    @Html.ActionLink("Eliminar", "DeleteConfirmed", new { id = item.UsuarioId }, new { @class = "btn btn-danger btn-sm" })
-                                }
-                            </td>
-                        </tr>
-                    }
+                    <td style="text-align:center">
+                        @Html.ActionLink("Editar", "Edit", new { id = item.UsuarioId }, new { @class = "btn btn-primary btn-sm" })
+                        @if (Model.Count() != 1)
+                {
+                    @Html.ActionLink("Eliminar", "DeleteConfirmed", new { id = item.UsuarioId }, new { @class = "btn btn-danger btn-sm" })
+        }
 
+                    </td>
+                </tr>
+    }
                 </tbody>
             </table>
         </div>
     </div>
 </div>
-
