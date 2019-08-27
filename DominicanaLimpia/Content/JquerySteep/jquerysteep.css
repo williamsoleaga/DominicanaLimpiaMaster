@@ -46,11 +46,11 @@
     }*/
 
     #example-basic {
-        height: 1179px;
+        height: 1350px;
     }
    
     .wizard > .content {
-        height: 980px !important;
+        height: 1150px !important;
     }
 
 }
