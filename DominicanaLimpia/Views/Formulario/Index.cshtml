@@ -2,7 +2,7 @@
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    DominicanalimpiaEntities1 db = new DominicanalimpiaEntities1();
+    DominicanalimpiaEntities2 db = new DominicanalimpiaEntities2();
 }
 <br />
 <br />
@@ -10,18 +10,25 @@
     <div class="card">
         <div class="card-body">
 
-            <h4>Listado de formularios</h4>
+            <h4> <strong>  Listado de formularios creados   </strong></h4>
             <hr />
             <p>
-                <div class="text-right">
-                    <input value="Crear formulario" class="btn btn-primary" onclick="location.href='@Url.Action("Create", "Formulario")'" />
-                </div>
+                @if (Session["RodId"].ToString() != "1")
+                {
+            <div class="text-right">
+                <input value="Crear formulario" class="btn btn-primary" onclick="location.href='@Url.Action("Create", "Formulario")'" />
+            </div>
+                }
+
             </p>
             <table class="table table-hover" id="dtBasicExample">
                 <thead  class="blue lighten-4">
                     <tr>
                         <th>
                             Usuario
+                        </th>
+                        <th>
+                            Municipio
                         </th>
                         <th>
                             Fecha desde
@@ -43,6 +50,14 @@
                             }
                             @Nombreusuario
                         </td>
+
+                        <td>
+                            @{
+                   var Minucipio = db.Municipios.Where(x => x.MunicipioId == item.ProvinciaId).Select(x => x.Provincia_Nombre).FirstOrDefault();
+                            }
+                            @Minucipio
+                        </td>
+
                         <td>
                             @Html.DisplayFor(modelItem => item.Desde)
                         </td>
@@ -51,8 +66,8 @@
                         </td>
                         <td>
 
-                            @Html.ActionLink("Editar", "Edit", new { id = item.FormularioId }, new { @class = "btn btn-primary btn-sm" })
-                            @Html.ActionLink("Editar", "Edit", new { id = item.FormularioId }, new { @class = "btn btn-primary btn-sm" })
+                            @Html.ActionLink("Editar", "", new { id = item.FormularioId }, new { @class = "btn btn-primary btn-sm" })
+                            @*@Html.ActionLink("Eliminar", "", new { id = item.FormularioId }, new { @class = "btn btn-primary btn-sm" })*@
 
                         </td>
                     </tr>

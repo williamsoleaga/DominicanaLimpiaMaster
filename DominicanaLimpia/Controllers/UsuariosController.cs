@@ -14,7 +14,7 @@ namespace DominicanaLimpia.Controllers
     [SessionExpire]
     public class UsuariosController : Controller
     {
-        private DominicanalimpiaEntities1 db = new DominicanalimpiaEntities1();
+        private DominicanalimpiaEntities2 db = new DominicanalimpiaEntities2();
 
         // GET: Usuarios
         public ActionResult Index()

@@ -15,7 +15,7 @@ namespace DominicanaLimpia.Controllers
     [SessionExpire]
     public class FormularioController : Controller
     {
-        private DominicanalimpiaEntities1 db = new DominicanalimpiaEntities1();
+        private DominicanalimpiaEntities2 db = new DominicanalimpiaEntities2();
 
         // GET: Formulario
         public ActionResult Index()
@@ -45,6 +45,13 @@ namespace DominicanaLimpia.Controllers
         // GET: Formulario/Create
         public ActionResult Create()
         {
+
+            int idusuario = Convert.ToInt32(Session["UsuarioId"].ToString());
+            var usuario = db.Usuarios.Where(x => x.UsuarioId ==  idusuario).ToList().FirstOrDefault();                   
+            var results = db.Municipios.Where(r => usuario.MunicipiosId.Contains(r.MunicipioId.ToString()));
+
+            ViewBag.Municipios = new SelectList(results, "MunicipioId", "Provincia_Nombre");
+
             Formulario formulario = new Formulario();
             formulario.Preguntas = db.Preguntas.ToList();
             return View(formulario);
@@ -65,7 +72,6 @@ namespace DominicanaLimpia.Controllers
 
                 for (int i = 0; i < formulario.Valores.Count(); i++)
                 {
-
                     Formulario nuevof = new Formulario();
                     nuevof.PreguntaId = contador;
                     nuevof.Hasta = Convert.ToDateTime(formulario.HastaFecha);
@@ -74,7 +80,7 @@ namespace DominicanaLimpia.Controllers
                     nuevof.Estatus = "A";
                     nuevof.Valor = formulario.Valores[i];
                     nuevof.Comentario = formulario.Comentario;
-
+                    nuevof.ProvinciaId = formulario.ProvinciaId;
                     db.Formulario.Add(nuevof);
                     db.SaveChanges();
                     contador = contador + 1;

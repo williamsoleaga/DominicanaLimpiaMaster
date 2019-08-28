@@ -4,12 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="66384f019296440f8546e304858cd980" Name="Diagram1">
-        <EntityTypeShape EntityType="DominicanalimpiaModel.Municipios" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DominicanalimpiaModel.Roles" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DominicanalimpiaModel.Usuarios" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DominicanalimpiaModel.Formulario" Width="1.5" PointX="3.375" PointY="3.75" />
-        <EntityTypeShape EntityType="DominicanalimpiaModel.Preguntas" Width="1.5" PointX="5.375" PointY="0.75" />
+      <Diagram DiagramId="7d9dc19f22f84bf7adb67f509ac5ff1c" Name="Diagram1">
+        <EntityTypeShape EntityType="DominicanalimpiaModel.Formulario" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DominicanalimpiaModel.Preguntas" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DominicanalimpiaModel.Usuarios" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DominicanalimpiaModel.Municipios" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DominicanalimpiaModel.Roles" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

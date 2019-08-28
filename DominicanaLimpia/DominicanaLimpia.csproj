@@ -154,40 +154,40 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
-    <Compile Include="DominicanaLimpia.Context.cs">
+    <Compile Include="Dominicanalimpia.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DominicanaLimpia.Context.tt</DependentUpon>
+      <DependentUpon>Dominicanalimpia.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="DominicanaLimpia.cs">
+    <Compile Include="Dominicanalimpia.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DominicanaLimpia.tt</DependentUpon>
+      <DependentUpon>Dominicanalimpia.tt</DependentUpon>
     </Compile>
-    <Compile Include="DominicanaLimpia.Designer.cs">
+    <Compile Include="Dominicanalimpia.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DominicanaLimpia.edmx</DependentUpon>
+      <DependentUpon>Dominicanalimpia.edmx</DependentUpon>
     </Compile>
     <Compile Include="Formulario.cs">
-      <DependentUpon>DominicanaLimpia.tt</DependentUpon>
+      <DependentUpon>Dominicanalimpia.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\SessionExpireAttribute.cs" />
     <Compile Include="Municipios.cs">
-      <DependentUpon>DominicanaLimpia.tt</DependentUpon>
+      <DependentUpon>Dominicanalimpia.tt</DependentUpon>
     </Compile>
     <Compile Include="Preguntas.cs">
-      <DependentUpon>DominicanaLimpia.tt</DependentUpon>
+      <DependentUpon>Dominicanalimpia.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Roles.cs">
-      <DependentUpon>DominicanaLimpia.tt</DependentUpon>
+      <DependentUpon>Dominicanalimpia.tt</DependentUpon>
     </Compile>
     <Compile Include="Usuarios.cs">
-      <DependentUpon>DominicanaLimpia.tt</DependentUpon>
+      <DependentUpon>Dominicanalimpia.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -237,15 +237,15 @@
     <Content Include="Content\Login\vendor\select2\select2.min.css" />
     <Content Include="Content\Login\vendor\select2\select2.min.js" />
     <Content Include="Content\Login\vendor\tilt\tilt.jquery.min.js" />
-    <Content Include="DominicanaLimpia.Context.tt">
+    <Content Include="Dominicanalimpia.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DominicanaLimpia.edmx</DependentUpon>
-      <LastGenOutput>DominicanaLimpia.Context.cs</LastGenOutput>
+      <DependentUpon>Dominicanalimpia.edmx</DependentUpon>
+      <LastGenOutput>Dominicanalimpia.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="DominicanaLimpia.tt">
+    <Content Include="Dominicanalimpia.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DominicanaLimpia.edmx</DependentUpon>
-      <LastGenOutput>DominicanaLimpia.cs</LastGenOutput>
+      <DependentUpon>Dominicanalimpia.edmx</DependentUpon>
+      <LastGenOutput>Dominicanalimpia.cs</LastGenOutput>
     </Content>
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -331,12 +331,12 @@
     <Content Include="Content\Login\vendor\bootstrap\css\bootstrap-reboot.min.css.map" />
     <Content Include="Content\Login\vendor\bootstrap\css\bootstrap.css.map" />
     <Content Include="Content\Login\vendor\bootstrap\css\bootstrap.min.css.map" />
-    <EntityDeploy Include="DominicanaLimpia.edmx">
+    <EntityDeploy Include="Dominicanalimpia.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DominicanaLimpia.Designer.cs</LastGenOutput>
+      <LastGenOutput>Dominicanalimpia.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="DominicanaLimpia.edmx.diagram">
-      <DependentUpon>DominicanaLimpia.edmx</DependentUpon>
+    <Content Include="Dominicanalimpia.edmx.diagram">
+      <DependentUpon>Dominicanalimpia.edmx</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />

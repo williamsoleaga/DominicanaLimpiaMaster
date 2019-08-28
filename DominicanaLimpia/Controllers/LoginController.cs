@@ -10,7 +10,7 @@ namespace DominicanaLimpia.Controllers
     public class LoginController : Controller
     {
 
-        DominicanalimpiaEntities1 db = new DominicanalimpiaEntities1();
+        DominicanalimpiaEntities2 db = new DominicanalimpiaEntities2();
 
        
         // GET: Login
@@ -26,7 +26,7 @@ namespace DominicanaLimpia.Controllers
         {
             try
             {
-                var resultado = db.Usuarios.Where(x => x.Usuario == Usuario.Trim().ToLower() && x.Clave == Clave.Trim()).ToList();
+                var resultado = db.Usuarios.Where(x => x.Usuario == Usuario.Trim().ToLower() && x.Clave == Clave.Trim() && x.Estatus.Trim() == "A").ToList();
 
                 if (resultado.Count > 0)
                 {

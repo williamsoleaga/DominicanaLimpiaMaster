@@ -14,7 +14,6 @@ namespace DominicanaLimpia
     
     public partial class Formulario
     {
-
         public int FormularioId { get; set; }
         public Nullable<int> PreguntaId { get; set; }
         public Nullable<int> Valor { get; set; }
@@ -25,9 +24,9 @@ namespace DominicanaLimpia
         public List<Preguntas> Preguntas { get; set; }
         public string Comentario { get; set; }
         public int[] Valores { get; set; }
+        public Nullable<int> ProvinciaId { get; set; }
 
         public string DesdeFecha { get; set; }
         public string HastaFecha { get; set; }
-
     }
 }

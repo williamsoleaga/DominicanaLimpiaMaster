@@ -13,10 +13,10 @@ namespace DominicanaLimpia
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DominicanalimpiaEntities1 : DbContext
+    public partial class DominicanalimpiaEntities2 : DbContext
     {
-        public DominicanalimpiaEntities1()
-            : base("name=DominicanalimpiaEntities1")
+        public DominicanalimpiaEntities2()
+            : base("name=DominicanalimpiaEntities2")
         {
         }
     
@@ -25,10 +25,10 @@ namespace DominicanaLimpia
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Municipios> Municipios { get; set; }
-        public virtual DbSet<Roles> Roles { get; set; }
-        public virtual DbSet<Usuarios> Usuarios { get; set; }
         public virtual DbSet<Formulario> Formulario { get; set; }
         public virtual DbSet<Preguntas> Preguntas { get; set; }
+        public virtual DbSet<Usuarios> Usuarios { get; set; }
+        public virtual DbSet<Municipios> Municipios { get; set; }
+        public virtual DbSet<Roles> Roles { get; set; }
     }
 }

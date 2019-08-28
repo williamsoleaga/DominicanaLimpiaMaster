@@ -2,7 +2,7 @@
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    DominicanalimpiaEntities1 db = new DominicanalimpiaEntities1();
+    DominicanalimpiaEntities2 db = new DominicanalimpiaEntities2();
 }
 <br />
 <br />
@@ -10,11 +10,11 @@
     <div class="card">
         <div class="card-body">
 
-            <h4>Listado usuarios</h4>
+            <h4> <strong>  Listado usuarios </strong> </h4>
             <hr />
             <p>
                 <div class="text-right">
-                    <input value="Crear usuario" class="btn btn-primary" onclick="location.href='@Url.Action("Create", "Usuarios")'" />
+                    <input value="Crear usuario" class="btn btn-success" onclick="location.href='@Url.Action("Create", "Usuarios")'" />
                 </div>
             </p>
             <table class="table table-hover" id="dtBasicExample">
@@ -53,13 +53,13 @@
                     <td style="text-align:center">
                         @Html.ActionLink("Editar", "Edit", new { id = item.UsuarioId }, new { @class = "btn btn-primary btn-sm" })
                         @if (Model.Count() != 1)
-                {
+                 {
                     @Html.ActionLink("Eliminar", "DeleteConfirmed", new { id = item.UsuarioId }, new { @class = "btn btn-danger btn-sm" })
-        }
+                  }
 
                     </td>
                 </tr>
-    }
+      }
                 </tbody>
             </table>
         </div>

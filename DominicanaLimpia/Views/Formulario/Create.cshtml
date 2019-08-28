@@ -6,8 +6,6 @@
 }
 
 
-
-
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css" />
 <link href="~/Content/JquerySteep/jquerysteep.css" rel="stylesheet" />
 <script src="~/Content/JquerySteep/jquery.steps.js"></script>
@@ -31,6 +29,8 @@
                             <th> <strong>Desde:</strong> <input type="text" class="form-control" name="DesdeFecha" id="DesdeFecha"></th>
 
                             <th> <strong>Hasta:</strong> <input type="text" class="form-control" name="HastaFecha" id="HastaFecha"></th>
+                        
+                            <th><strong>Provincia:</strong>  @Html.DropDownList("ProvinciaId", (IEnumerable<SelectListItem>)ViewBag.Municipios, null, new { @class = "form-control" })   </th>
                         </tr>
                     </thead>
                 </table>

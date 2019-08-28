@@ -69,9 +69,8 @@
                     <!-- Left -->
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                            <a class="nav-link waves-effect" href="#">
+                            <a class="nav-link waves-effect" href="#" onclick="location.href='@Url.Action("Index", "Home")'">
                                 Inicio
-                                <span class="sr-only">(current)</span>
                             </a>
                         </li>
                         @if (Session["RodId"].ToString() == "1")
