@@ -68,6 +68,9 @@ namespace DominicanaLimpia.Controllers
 
             if (ModelState.IsValid)
             {
+                var numeroformulario = db.Formulario.ToList().LastOrDefault();
+                var idnumero  = numeroformulario.NumeroFormulario + 1;
+
                 int contador = 1;
 
                 for (int i = 0; i < formulario.Valores.Count(); i++)
@@ -78,6 +81,7 @@ namespace DominicanaLimpia.Controllers
                     nuevof.Desde = Convert.ToDateTime(formulario.DesdeFecha);
                     nuevof.Idusuario = Convert.ToInt16(Session["UsuarioId"].ToString());
                     nuevof.Estatus = "A";
+                    nuevof.NumeroFormulario = idnumero;
                     nuevof.Valor = formulario.Valores[i];
                     nuevof.Comentario = formulario.Comentario;
                     nuevof.ProvinciaId = formulario.ProvinciaId;
