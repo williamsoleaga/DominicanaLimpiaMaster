@@ -68,35 +68,51 @@ namespace DominicanaLimpia.Controllers
 
             if (ModelState.IsValid)
             {
-                var numeroformulario = db.Formulario.ToList().LastOrDefault();
-                var idnumero  = numeroformulario.NumeroFormulario + 1;
 
-                int contador = 1;
-
-                for (int i = 0; i < formulario.Valores.Count(); i++)
+                try
                 {
-                    Formulario nuevof = new Formulario();
-                    nuevof.PreguntaId = contador;
-                    nuevof.Hasta = Convert.ToDateTime(formulario.HastaFecha);
-                    nuevof.Desde = Convert.ToDateTime(formulario.DesdeFecha);
-                    nuevof.Idusuario = Convert.ToInt16(Session["UsuarioId"].ToString());
-                    nuevof.Estatus = "A";
-                    nuevof.NumeroFormulario = idnumero;
-                    nuevof.Valor = formulario.Valores[i];
-                    nuevof.Comentario = formulario.Comentario;
-                    nuevof.ProvinciaId = formulario.ProvinciaId;
-                    db.Formulario.Add(nuevof);
-                    db.SaveChanges();
-                    contador = contador + 1;
-                }
 
-                return View("~/Views/Formulario/Exito.cshtml");
-                //return RedirectToAction("Index");
+                    var idnumero = 0;
+                    var numeroformulario = db.Formulario.ToList().LastOrDefault();
+
+                    if (numeroformulario == null)
+                    {
+                        idnumero = 1;
+                    }
+                    else
+                    {
+                        idnumero = Convert.ToInt32(numeroformulario.NumeroFormulario + 1);
+                    }
+
+
+                    int contador = 1;
+
+                    for (int i = 0; i < formulario.Valores.Count(); i++)
+                    {
+                        Formulario nuevof = new Formulario();
+                        nuevof.PreguntaId = contador;
+                        nuevof.Hasta = Convert.ToDateTime(formulario.HastaFecha);
+                        nuevof.Desde = Convert.ToDateTime(formulario.DesdeFecha);
+                        nuevof.Idusuario = Convert.ToInt16(Session["UsuarioId"].ToString());
+                        nuevof.Estatus = "A";
+                        nuevof.NumeroFormulario = idnumero;
+                        nuevof.Valor = formulario.Valores[i];
+                        nuevof.Comentario = formulario.Comentario;
+                        nuevof.ProvinciaId = formulario.ProvinciaId;
+                        db.Formulario.Add(nuevof);
+                        db.SaveChanges();
+                        contador = contador + 1;
+                    }
+
+                    return View("~/Views/Formulario/Exito.cshtml");
+                }catch(Exception ex)
+                {
+                    throw ex.InnerException;
+                }
             }
 
             return View(formulario);
         }
-
 
 
         // GET: Formulario/Edit/5
