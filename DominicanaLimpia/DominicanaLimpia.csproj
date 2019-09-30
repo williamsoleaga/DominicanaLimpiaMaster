@@ -169,6 +169,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Dominicanalimpia.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Escuelas.cs">
+      <DependentUpon>Dominicanalimpia.tt</DependentUpon>
+    </Compile>
     <Compile Include="Formulario.cs">
       <DependentUpon>Dominicanalimpia.tt</DependentUpon>
     </Compile>

@@ -5,6 +5,16 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="DominicanalimpiaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Dominicanalimpia.dbo.Escuelas' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="Escuelas">
+          <Key>
+            <PropertyRef Name="EscuelaId" />
+          </Key>
+          <Property Name="EscuelaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MunicipioId" Type="int" />
+          <Property Name="Descripcion" Type="nchar" MaxLength="150" />
+        </EntityType>
         <EntityType Name="Formulario">
           <Key>
             <PropertyRef Name="FormularioId" />
@@ -20,8 +30,8 @@
           <Property Name="ProvinciaId" Type="int" />
           <Property Name="NumeroFormulario" Type="int" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'Dominicanalimpia.dbo.Municipios' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Dominicanalimpia.dbo.Municipios' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="Municipios">
           <Key>
             <PropertyRef Name="MunicipioId" />
@@ -37,8 +47,8 @@ warning 6002: The table/view 'Dominicanalimpia.dbo.Municipios' does not have a p
           <Property Name="Descripcion" Type="nchar" MaxLength="160" />
           <Property Name="Estatus" Type="nchar" MaxLength="10" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'Dominicanalimpia.dbo.Roles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Dominicanalimpia.dbo.Roles' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="Roles">
           <Key>
             <PropertyRef Name="RolId" />
@@ -66,6 +76,13 @@ warning 6002: The table/view 'Dominicanalimpia.dbo.Roles' does not have a primar
           <EntitySet Name="Formulario" EntityType="Self.Formulario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Preguntas" EntityType="Self.Preguntas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Escuelas" EntityType="Self.Escuelas" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Escuelas].[EscuelaId] AS [EscuelaId], 
+    [Escuelas].[MunicipioId] AS [MunicipioId], 
+    [Escuelas].[Descripcion] AS [Descripcion]
+    FROM [dbo].[Escuelas] AS [Escuelas]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="Municipios" EntityType="Self.Municipios" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [Municipios].[MunicipioId] AS [MunicipioId], 
@@ -143,7 +160,16 @@ warning 6002: The table/view 'Dominicanalimpia.dbo.Roles' does not have a primar
           <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
           <EntitySet Name="Municipios" EntityType="Self.Municipios" />
           <EntitySet Name="Roles" EntityType="Self.Roles" />
+          <EntitySet Name="Escuelas" EntityType="DominicanalimpiaModel.Escuelas" />
         </EntityContainer>
+        <EntityType Name="Escuelas">
+          <Key>
+            <PropertyRef Name="EscuelaId" />
+          </Key>
+          <Property Name="EscuelaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MunicipioId" Type="Int32" />
+          <Property Name="Descripcion" Type="String" MaxLength="150" FixedLength="true" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -205,6 +231,15 @@ warning 6002: The table/view 'Dominicanalimpia.dbo.Roles' does not have a primar
                 <ScalarProperty Name="RolId" ColumnName="RolId" />
                 <ScalarProperty Name="Nombre_Rol" ColumnName="Nombre_Rol" />
                 <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Escuelas">
+            <EntityTypeMapping TypeName="DominicanalimpiaModel.Escuelas">
+              <MappingFragment StoreEntitySet="Escuelas">
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="MunicipioId" ColumnName="MunicipioId" />
+                <ScalarProperty Name="EscuelaId" ColumnName="EscuelaId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

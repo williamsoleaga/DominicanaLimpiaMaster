@@ -11,6 +11,7 @@ namespace DominicanaLimpia.ModelViews
         public string HastaFecha { get; set; }
         public int[] Valores { get; set; }
         public List<Preguntas> Preguntas { get; set; }
+        public int[] Escuelas13 { get; set; }
 
     }
 }

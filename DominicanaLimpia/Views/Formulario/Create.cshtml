@@ -58,7 +58,10 @@
                                 <div class="block">
                                     <strong> @enumeracion - @item.Descripcion</strong>
                                     <input class="Text-@enumeracion" type="number" name="Valores[]" id="Valores[]" />
-                                    <input   id="user_last_name" name="user[last_name]" size="30" type="text" />
+                                    
+
+
+                                    
                                     <hr>
                                 </div>
                             </div>
@@ -75,13 +78,11 @@
                     }
                 </section>
 
-
                 <h3>Objetivo 2</h3>
                 <section>
                     @{
                         enumeracion = enumeracion + 1;
                     }
-
 
                     @foreach (var item in Model.Preguntas)
                     {
@@ -92,13 +93,21 @@
                                 <div class="block">
                                     <strong> @enumeracion -  @item.Descripcion</strong>
                                     <input type="number" name="Valores[]" id="Valores[]" />
+
+                              @if (enumeracion == 13)
+                               {
+                                <br />
+                             
+                                    @Html.DropDownList("Escuelas13[]", (IEnumerable<SelectListItem>)ViewBag.Escuelas13, null, new { @name = "Escuelas13[]", @multiple = "multiple",  @style= "width: 811px;", @class = "form-control", @required = "true" })
+                               
+                               }
                                     <hr>
                                 </div>
-                            </div>
+                                </div>
                             if (Contador == 22)
                             {
                                 Contador = 0;
-                                break;
+                                break;  
 
                             }
                             enumeracion = enumeracion + 1;
@@ -150,12 +159,15 @@
                                 <div class="block">
                                     <strong> @enumeracion - @item.Descripcion</strong>
                                     <input type="number" name="Valores[]" id="Valores[]" />
+                                    <br />
+                                    <label for="validationDefault01">Dirección</label>
+                                    <input type="text" name="Nombre_Completo" autocomplete="off" class="form-control" id="validationDefault01" required>
+
                                     <hr>
                                 </div>
                             </div>
                             if (Contador == 31)
                             {
-
                                 Contador = 0;
                                 break;
                             }
@@ -186,12 +198,13 @@
         format: 'dd/mm/yyyy'
     }).datepicker('update', new Date());
 
-
     $("#HastaFecha").datepicker({
         autoclose: true,
         todayHighlight: true,
         format: 'dd/mm/yyyy'
     }).datepicker('update', new Date());
+
+
 
 
     $("#example-basic").steps({
@@ -200,31 +213,7 @@
         transitionEffect: "slideLeft",
         autoFocus: true,
         onFinishing: function (event, currentIndex) {
-
            document.getElementById('Formulario').submit();
-
-            @*$.ajax({
-                type: 'POST',
-                url: '@Url.Action("Create", "Formulario")',
-                data: JSON.stringify({
-                    modelo: entidad
-                }),
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function (data) {
-                    if (data.data == true) {
-                        swal({ title: 'Aviso', text: 'exito', type: 'success', confirmButtonText: 'Aceptar', showLoaderOnConfirm: false });
-
-                    } else {
-                        swal({ title: 'Aviso', text: 'exito', type: 'success', confirmButtonText: 'Aceptar', showLoaderOnConfirm: false });
-                    }
-
-                },
-                error: function (XMLHttpRequest, textStatus, errorThrown) {
-                    swal({ title: 'Error', html: XMLHttpRequest.responseText, type: 'error', confirmButtonText: 'Aceptar', showLoaderOnConfirm: false });
-                }
-            });*@
-
         }
     }).validate({
         errorPlacement: function errorPlacement(error, element) { element.before(error); },

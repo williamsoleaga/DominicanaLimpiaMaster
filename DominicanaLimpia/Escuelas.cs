@@ -11,32 +11,18 @@
 
 namespace DominicanaLimpia
 {
-    using DominicanaLimpia.ModelViews;
-    using System;
+
+using System;
     using System.Collections.Generic;
     
-public partial class Usuarios : UsuariosModelView
-    {
+public partial class Escuelas
+{
 
-    public int UsuarioId { get; set; }
-
-    public string Usuario { get; set; }
-
-    public string Clave { get; set; }
-
-    public string Nombre_Completo { get; set; }
-
-    public string Correo { get; set; }
-
-    public Nullable<int> RolId { get; set; }
-
-    public string Estatus { get; set; }
+    public int EscuelaId { get; set; }
 
     public Nullable<int> MunicipioId { get; set; }
 
-    public string MunicipiosId { get; set; }
-
-    public Nullable<int> ResponsableId { get; set; }
+    public string Descripcion { get; set; }
 
 }
 
