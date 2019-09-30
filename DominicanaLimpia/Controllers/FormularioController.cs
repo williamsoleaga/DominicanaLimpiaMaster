@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using DominicanaLimpia;
 using DominicanaLimpia.Models;
+using DominicanaLimpia.ModelViews;
 
 namespace DominicanaLimpia.Controllers
 {
@@ -46,13 +47,12 @@ namespace DominicanaLimpia.Controllers
         public ActionResult Create()
         {
 
+            Formulario formulario = new Formulario();
+
             int idusuario = Convert.ToInt32(Session["UsuarioId"].ToString());
             var usuario = db.Usuarios.Where(x => x.UsuarioId ==  idusuario).ToList().FirstOrDefault();                   
             var results = db.Municipios.Where(r => usuario.MunicipiosId.Contains(r.MunicipioId.ToString()));
-
             ViewBag.Municipios = new SelectList(results, "MunicipioId", "Provincia_Nombre");
-
-            Formulario formulario = new Formulario();
             formulario.Preguntas = db.Preguntas.ToList();
             return View(formulario);
         }

@@ -129,9 +129,26 @@
 .wizard > .steps .current a:hover,
 .wizard > .steps .current a:active
 {
-    background: #2184be;
+    /*background: #2184be;*/
     color: #fff;
     cursor: default;
+}
+
+#example-basic-t-0 {
+    background: #713286;
+}
+
+#example-basic-t-1 {
+    background: #0f94e4;
+}
+
+#example-basic-t-2 {
+    background: #da7d08;
+}
+
+
+#example-basic-t-3 {
+    background: #08770c;
 }
 
 .wizard > .steps .done a,
@@ -151,7 +168,7 @@
 }
 
 .wizard > .content {
-    height: 811px;
+    height: 1201px;
     background: #eee;
     display: block;
     margin: 0.5em;

@@ -20,8 +20,8 @@
           <Property Name="ProvinciaId" Type="int" />
           <Property Name="NumeroFormulario" Type="int" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'Dominicanalimpia.dbo.Municipios' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Dominicanalimpia.dbo.Municipios' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Municipios">
           <Key>
             <PropertyRef Name="MunicipioId" />
@@ -37,14 +37,14 @@ advertencia 6002: La tabla o vista 'Dominicanalimpia.dbo.Municipios' no tiene de
           <Property Name="Descripcion" Type="nchar" MaxLength="160" />
           <Property Name="Estatus" Type="nchar" MaxLength="10" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'Dominicanalimpia.dbo.Roles' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Dominicanalimpia.dbo.Roles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Roles">
           <Key>
             <PropertyRef Name="RolId" />
           </Key>
           <Property Name="RolId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Nombre_Rol" Type="nchar" MaxLength="20" />
+          <Property Name="Nombre_Rol" Type="nchar" MaxLength="50" />
           <Property Name="Estatus" Type="nchar" MaxLength="3" />
         </EntityType>
         <EntityType Name="Usuarios">
@@ -60,6 +60,7 @@ advertencia 6002: La tabla o vista 'Dominicanalimpia.dbo.Roles' no tiene definid
           <Property Name="Estatus" Type="nchar" MaxLength="2" />
           <Property Name="MunicipioId" Type="int" />
           <Property Name="MunicipiosId" Type="nchar" MaxLength="70" />
+          <Property Name="ResponsableId" Type="int" />
         </EntityType>
         <EntityContainer Name="DominicanalimpiaModelStoreContainer">
           <EntitySet Name="Formulario" EntityType="Self.Formulario" Schema="dbo" store:Type="Tables" />
@@ -119,6 +120,7 @@ advertencia 6002: La tabla o vista 'Dominicanalimpia.dbo.Roles' no tiene definid
           <Property Name="Estatus" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
           <Property Name="MunicipioId" Type="Int32" />
           <Property Name="MunicipiosId" Type="String" MaxLength="70" FixedLength="true" Unicode="true" />
+          <Property Name="ResponsableId" Type="Int32" />
         </EntityType>
         <EntityType Name="Municipios">
           <Key>
@@ -132,7 +134,7 @@ advertencia 6002: La tabla o vista 'Dominicanalimpia.dbo.Roles' no tiene definid
             <PropertyRef Name="RolId" />
           </Key>
           <Property Name="RolId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Nombre_Rol" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="Nombre_Rol" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
           <Property Name="Estatus" Type="String" MaxLength="3" FixedLength="true" Unicode="true" />
         </EntityType>
         <EntityContainer Name="DominicanalimpiaEntities2" annotation:LazyLoadingEnabled="true">
@@ -176,6 +178,7 @@ advertencia 6002: La tabla o vista 'Dominicanalimpia.dbo.Roles' no tiene definid
           <EntitySetMapping Name="Usuarios">
             <EntityTypeMapping TypeName="DominicanalimpiaModel.Usuarios">
               <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="ResponsableId" ColumnName="ResponsableId" />
                 <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
                 <ScalarProperty Name="Usuario" ColumnName="Usuario" />
                 <ScalarProperty Name="Clave" ColumnName="Clave" />

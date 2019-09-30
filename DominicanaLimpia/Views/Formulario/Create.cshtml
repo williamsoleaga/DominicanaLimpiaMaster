@@ -3,6 +3,10 @@
 @{
     int Contador = 0;
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var nombreR = Session["NombreResponsable"].ToString();
+
+    int enumeracion = 1;
+
 }
 
 
@@ -27,11 +31,16 @@
                     <thead>
                         <tr>
                             <th> <strong>Desde:</strong> <input type="text" class="form-control" name="DesdeFecha" id="DesdeFecha"></th>
-
                             <th> <strong>Hasta:</strong> <input type="text" class="form-control" name="HastaFecha" id="HastaFecha"></th>
-                        
+
                             <th><strong>Provincia:</strong>  @Html.DropDownList("ProvinciaId", (IEnumerable<SelectListItem>)ViewBag.Municipios, null, new { @class = "form-control" })   </th>
                         </tr>
+
+                        @if ( Convert.ToInt16(Session["RodId"]) == 2) {
+                        <tr>
+                            <th> <h3> <strong>Responsable de territorio:</strong>  </h3> <h4> @Session["NombreResponsable"].ToString() </h4></th>
+                        </tr>
+                        }
                     </thead>
                 </table>
             </div>
@@ -39,98 +48,118 @@
             <br /><br /><br />
             <div class="card-body" id="example-basic">
 
-                <h3>Pagina</h3>
+                <h3>Objetivo 1</h3>
                 <section>
                     @foreach (var item in Model.Preguntas)
                     {
-                        if (Contador < 9)
+                        if (Contador < 12)
                         {
                             <div class="form-group">
                                 <div class="block">
-                                    <strong>@item.Descripcion</strong>
-                                    <input type="number" name="Valores[]" id="Valores[]" />
+                                    <strong> @enumeracion - @item.Descripcion</strong>
+                                    <input class="Text-@enumeracion" type="number" name="Valores[]" id="Valores[]" />
+                                    <input   id="user_last_name" name="user[last_name]" size="30" type="text" />
                                     <hr>
                                 </div>
                             </div>
-                            if (Contador == 8)
+                            if (Contador == 11)
                             {
                                 Contador = 0;
                                 break;
 
                             }
+                            enumeracion = enumeracion + 1;
                         }
                         Contador = Contador + 1;
+
                     }
                 </section>
 
 
-                <h3>Pagina</h3>
+                <h3>Objetivo 2</h3>
                 <section>
+                    @{
+                        enumeracion = enumeracion + 1;
+                    }
+
+
                     @foreach (var item in Model.Preguntas)
                     {
-                        if (Contador >= 9 && Contador < 18)
+
+                        if (Contador >= 12 && Contador < 23)
                         {
                             <div class="form-group">
                                 <div class="block">
-                                    <strong>@item.Descripcion</strong>
+                                    <strong> @enumeracion -  @item.Descripcion</strong>
                                     <input type="number" name="Valores[]" id="Valores[]" />
                                     <hr>
                                 </div>
                             </div>
-                            if (Contador == 17)
+                            if (Contador == 22)
                             {
                                 Contador = 0;
                                 break;
 
                             }
+                            enumeracion = enumeracion + 1;
                         }
                         Contador = Contador + 1;
+
                     }
                 </section>
 
 
-                <h3>Pagina</h3>
+                <h3>Objetivo 3</h3>
                 <section>
+                    @{
+                        enumeracion = enumeracion + 1;
+                    }
+
                     @foreach (var item in Model.Preguntas)
                     {
-                        if (Contador >= 18 && Contador < 27)
+                        if (Contador >= 23 && Contador < 26)
                         {
                             <div class="form-group">
                                 <div class="block">
-                                    <strong>@item.Descripcion</strong>
+                                    <strong>  @enumeracion - @item.Descripcion</strong>
                                     <input type="number" name="Valores[]" id="Valores[]" />
                                     <hr>
                                 </div>
                             </div>
-                            if (Contador == 26)
+                            if (Contador == 25)
                             {
                                 Contador = 0;
                                 break;
 
                             }
+                            enumeracion = enumeracion + 1;
                         }
                         Contador = Contador + 1;
                     }
                 </section>
-                <h3>Pagina</h3>
+                <h3>Objetivo 4</h3>
                 <section>
+                    @{
+                        enumeracion = enumeracion + 1;
+                    }
                     @foreach (var item in Model.Preguntas)
                     {
-                        if (Contador >= 27 && Contador < 34)
+                        if (Contador >= 26 && Contador < 32)
                         {
                             <div class="form-group">
                                 <div class="block">
-                                    <strong>@item.Descripcion</strong>
+                                    <strong> @enumeracion - @item.Descripcion</strong>
                                     <input type="number" name="Valores[]" id="Valores[]" />
                                     <hr>
                                 </div>
                             </div>
-                            if (Contador == 33)
+                            if (Contador == 31)
                             {
 
                                 Contador = 0;
                                 break;
                             }
+                            enumeracion = enumeracion + 1;
                         }
                         Contador = Contador + 1;
                     }

@@ -176,6 +176,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\SessionExpireAttribute.cs" />
+    <Compile Include="ModelViews\FormularioModelView.cs" />
+    <Compile Include="ModelViews\UsuariosModelView.cs" />
     <Compile Include="Municipios.cs">
       <DependentUpon>Dominicanalimpia.tt</DependentUpon>
     </Compile>

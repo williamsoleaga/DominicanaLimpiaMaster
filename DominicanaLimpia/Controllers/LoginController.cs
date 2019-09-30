@@ -27,13 +27,21 @@ namespace DominicanaLimpia.Controllers
             try
             {
                 var resultado = db.Usuarios.Where(x => x.Usuario == Usuario.Trim().ToLower() && x.Clave == Clave.Trim() && x.Estatus.Trim() == "A").ToList();
-
+                
                 if (resultado.Count > 0)
                 {
                     Session["UsuarioId"] = resultado.Select(x => x.UsuarioId).FirstOrDefault();
                     Session["NombreUsuario"] = resultado.Select(x => x.Nombre_Completo).FirstOrDefault();
                     Session["RodId"] = resultado.Select(x => x.RolId).FirstOrDefault();
-                
+                    
+
+                    if (Convert.ToInt16(Session["RodId"]) == 2)
+                    {
+                        var IdResponsable = resultado.Select(x => x.ResponsableId).FirstOrDefault();
+                        var responsable = db.Usuarios.Where(x => x.UsuarioId == IdResponsable).FirstOrDefault();
+                        Session["NombreResponsable"]  = responsable.Nombre_Completo;
+                    }
+
                     return Json(new { EsExitoso = true }, JsonRequestBehavior.AllowGet);
                 }
 
