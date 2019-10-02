@@ -53,7 +53,7 @@ namespace DominicanaLimpia.Controllers
             var usuario = db.Usuarios.Where(x => x.UsuarioId ==  idusuario).ToList().FirstOrDefault();                   
             var results = db.Municipios.Where(r => usuario.MunicipiosId.Contains(r.MunicipioId.ToString()));
             ViewBag.Municipios = new SelectList(results, "MunicipioId", "Provincia_Nombre");
-
+            ViewBag.EscuelaGrid = new SelectList(db.Escuelas.Where(r => usuario.MunicipiosId.Contains(r.MunicipioId.ToString())).ToList(), "EscuelaId", "Descripcion");
 
             ViewBag.Escuelas13 = new SelectList(db.Escuelas.Where(r=> usuario.MunicipiosId.Contains(r.MunicipioId.ToString())).ToList(), "EscuelaId", "Descripcion");
 

@@ -43,134 +43,176 @@
                 </table>
             </div>
             <br /><br /><br />
-            <div class="card-body" id="example-basic">
-                <h3>Objetivo 1</h3>
-                <section>
-                    @foreach (var item in Model.Preguntas)
-                    {
-                        if (Contador < 12)
-                        {
+                        <div class="card-body" id="example-basic">
+                            <h3>Objetivo 1</h3>
+                            <section>
+                                @foreach (var item in Model.Preguntas)
+    {
+        if (Contador < 12)
+        {
                             <div class="form-group">
-                                <div class="block">
+                                <div class="block" style="display: inline-block">
                                     <strong> @enumeracion - @item.Descripcion</strong>
                                     <input class="Text-@enumeracion" type="number" name="Valores[]" id="Valores[]" />
-                                    <hr>
+
                                 </div>
+                                @if (enumeracion == 1)
+    {
+                            <div class="block" style="display: inline-block">
+                                <br />
+                                <strong>Escuela :</strong> @Html.DropDownList("EscuelaGrid", (IEnumerable<SelectListItem>)ViewBag.EscuelaGrid, null, new { @class = "js-example-placeholder-single js-states form-contro" })
+                                <br />
                             </div>
-                            if (Contador == 11)
-                            {
-                                Contador = 0;
-                                break;
+}
+                                <hr>
 
-                            }
-                            enumeracion = enumeracion + 1;
-                        }
-                        Contador = Contador + 1;
 
-                    }
-                </section>
-                <h3>Objetivo 2</h3>
-                <section>
-                    @{
-                        enumeracion = enumeracion + 1;
-                    }
-
-                    @foreach (var item in Model.Preguntas)
-                    {
-
-                        if (Contador >= 12 && Contador < 15)
-                        {
-                            <div class="form-group">
-                                <div class="block">
-                                    <strong> @enumeracion -  @item.Descripcion</strong>
-                                    <input type="number" name="Valores[]" id="Valores[]" />
-
-                                    @if (enumeracion == 12)
-                                    {
-                                        <br />
-
-                                        @Html.DropDownList("Escuelas13[]", (IEnumerable<SelectListItem>)ViewBag.Escuelas13, null, new { @name = "Escuelas13[]", @multiple = "multiple", @style = "width: 811px;", @class = "form-control", @required = "true" })
-
-                                    }
-                                    <hr>
-                                </div>
                             </div>
-                            if (Contador == 14)
-                            {
-                                Contador = 0;
-                                break;
+if (Contador == 11)
+{
+    Contador = 0;
+    break;
 
-                            }
-                            enumeracion = enumeracion + 1;
-                        }
-                        Contador = Contador + 1;
+}
+enumeracion = enumeracion + 1;
+}
+Contador = Contador + 1;
 
-                    }
-                </section>
+}
 
-                <h3>Objetivo 3</h3>
-                <section>
-                    @{
-                        enumeracion = enumeracion + 1;
-                    }
+                                @*Aqui va la tabla de las escuelas y contenido*@
+                <div class="row">
+                    <div class="col-md-6">
+                        <br />
+                        <button id="btnAgregarBeneficiario" type="button" class="btn btn-file pull-right">Agregar</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="box-body">
+                        <table id="grvBeneficiarios" name="Beneficiarios" class="table table-bordered table-striped table-condensed" style="width:100%; height:100%">
+                            <thead>
+                                <tr style="background-color: #f59034; color:#fff">
+                                    <th data-override="IdBeneficiarios" class="hidden">IdBeneficiarios</th>
+                                    <th data-override="id_correos_notificaciones">Nombre</th>
+                                    <th data-override="id_tipo_notificacion">Cédula/Pasaporte</th>
+                                    <th data-override="tp_notificacion" class="text-center">Fecha nacimiento</th>
+                                    <th data-override="cuenta_correo_electronico" class="text-center">Parentesco</th>
+                                    <th data-override="idparentesco" class="hidden">Existe</th>
+                                    <th style="width: 10px;"></th>
+                                    <th style="width: 10px;"></th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
 
-                    @foreach (var item in Model.Preguntas)
-                    {
-                        if (Contador >= 15 && Contador < 26)
-                        {
-                            <div class="form-group">
-                                <div class="block">
-                                    <strong>  @enumeracion - @item.Descripcion</strong>
-                                    <input type="number" name="Valores[]" id="Valores[]" />
-                                    <hr>
-                                </div>
+
+
+
+                            </section>
+                            <h3>Objetivo 2</h3>
+                            <section>
+                                @{
+            enumeracion = enumeracion + 1;
+                                }
+
+                                @foreach (var item in Model.Preguntas)
+        {
+
+            if (Contador >= 12 && Contador < 15)
+            {
+                        <div class="form-group">
+                            <div class="block">
+                                <strong> @enumeracion -  @item.Descripcion</strong>
+                                <input type="number" name="Valores[]" id="Valores[]" />
+
+                                @if (enumeracion == 12)
+        {
+                        <br />
+
+                        @Html.DropDownList("Escuelas13[]", (IEnumerable<SelectListItem>)ViewBag.Escuelas13, null, new { @name = "Escuelas13[]", @multiple = "multiple", @style = "width: 811px;", @class = "form-control", @required = "true" })
+
+}
+                                <hr>
                             </div>
-                            if (Contador == 25)
-                            {
-                                Contador = 0;
-                                break;
+                        </div>
+if (Contador == 14)
+{
+    Contador = 0;
+    break;
 
-                            }
-                            enumeracion = enumeracion + 1;
-                        }
-                        Contador = Contador + 1;
-                    }
-                </section>
-                <h3>Objetivo 4</h3>
-                <section>
-                    @{
-                        enumeracion = enumeracion + 1;
-                    }
-                    @foreach (var item in Model.Preguntas)
-                    {
-                        if (Contador >= 26 && Contador < 32)
-                        {
-                            <div class="form-group">
-                                <div class="block">
-                                    <strong> @enumeracion - @item.Descripcion</strong>
-                                    <input type="number" name="Valores[]" id="Valores[]" />
-                                    <br />
-                                    <label for="validationDefault01">Dirección</label>
-                                    <textarea type="text" name="Nombre_Completo" autocomplete="off" class="form-control" id="">
+}
+enumeracion = enumeracion + 1;
+}
+Contador = Contador + 1;
+
+}
+                            </section>
+
+                            <h3>Objetivo 3</h3>
+                            <section>
+                                @{
+            enumeracion = enumeracion + 1;
+                                }
+
+                                @foreach (var item in Model.Preguntas)
+        {
+            if (Contador >= 15 && Contador < 26)
+            {
+                        <div class="form-group">
+                            <div class="block">
+                                <strong>  @enumeracion - @item.Descripcion</strong>
+                                <input type="number" name="Valores[]" id="Valores[]" />
+                                <hr>
+                            </div>
+                        </div>
+if (Contador == 25)
+{
+    Contador = 0;
+    break;
+
+}
+enumeracion = enumeracion + 1;
+}
+Contador = Contador + 1;
+}
+                            </section>
+                            <h3>Objetivo 4</h3>
+                            <section>
+                                @{
+            enumeracion = enumeracion + 1;
+                                }
+                                @foreach (var item in Model.Preguntas)
+        {
+            if (Contador >= 26 && Contador < 32)
+            {
+                        <div class="form-group">
+                            <div class="block">
+                                <strong> @enumeracion - @item.Descripcion</strong>
+                                <input type="number" name="Valores[]" id="Valores[]" />
+                                <br />
+                                <label for="validationDefault01">Dirección</label>
+                                <textarea type="text" name="Nombre_Completo" autocomplete="off" class="form-control" id="">
                                     </textarea>
 
-                                    <hr>
-                                </div>
+                                <hr>
                             </div>
-                            if (Contador == 31)
-                            {
-                                Contador = 0;
-                                break;
-                            }
-                            enumeracion = enumeracion + 1;
-                        }
-                        Contador = Contador + 1;
-                    }
-                </section>
-            </div>
-            <div class="file-loading">
+                        </div>
+if (Contador == 31)
+{
+    Contador = 0;
+    break;  
+}
+enumeracion = enumeracion + 1;
+}
+Contador = Contador + 1;
+}
+                            </section>
+                        </div>
+            @*<div class="file-loading">
                 <input id="input-23" name="input23[]" type="file" multiple>
-            </div>
+            </div>*@
             <div class="form-group">
                 <strong>Comentario</strong>
                 <textarea class="form-control" name="Comentario" id="Comentario" rows="7"></textarea>
@@ -202,6 +244,7 @@
 
 
 
+
     $("#DesdeFecha").datepicker({
         autoclose: true,
         todayHighlight: true,
@@ -213,6 +256,7 @@
         todayHighlight: true,
         format: 'dd/mm/yyyy'
     }).datepicker('update', new Date());
+
 
 
 

@@ -15,6 +15,9 @@ namespace DominicanaLimpia.Controllers
     [SessionExpire]
     public class UsuariosController : Controller
     {
+
+        
+
         private DominicanalimpiaEntities2 db = new DominicanalimpiaEntities2();
 
         // GET: Usuarios
@@ -75,7 +78,9 @@ namespace DominicanaLimpia.Controllers
                 usuarios.Estatus = "A";
                 usuarios.Usuario = usuarios.Usuario.ToLower();
 
-       
+
+                //var config = new MapperConfiguration(cfg => { cfg.CreateMap<EmployeesViewModel, Employee>(); });
+                //var employee = config.CreateMapper().Map<EmployeesViewModel, Employee>(entity);
 
 
                 db.Usuarios.Add(usuarios);

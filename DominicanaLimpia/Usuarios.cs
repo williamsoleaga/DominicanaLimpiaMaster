@@ -15,7 +15,7 @@ namespace DominicanaLimpia
     using System;
     using System.Collections.Generic;
     
-public partial class Usuarios : UsuariosModelView
+public partial class Usuarios  : UsuariosModelView
     {
 
     public int UsuarioId { get; set; }
