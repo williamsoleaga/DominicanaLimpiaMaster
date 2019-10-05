@@ -44,6 +44,10 @@ public partial class DominicanalimpiaEntities2 : DbContext
 
     public virtual DbSet<Escuelas> Escuelas { get; set; }
 
+    public virtual DbSet<FormularioM> FormularioM { get; set; }
+
+    public virtual DbSet<Objetivo1> Objetivo1 { get; set; }
+
 }
 
 }

@@ -16,7 +16,7 @@ namespace DominicanaLimpia
     using System.Collections.Generic;
     
 public partial class Formulario : FormularioModelView
-    {
+{
 
     public int FormularioId { get; set; }
 

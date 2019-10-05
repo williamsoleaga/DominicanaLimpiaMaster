@@ -175,6 +175,9 @@
     <Compile Include="Formulario.cs">
       <DependentUpon>Dominicanalimpia.tt</DependentUpon>
     </Compile>
+    <Compile Include="FormularioM.cs">
+      <DependentUpon>Dominicanalimpia.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -182,6 +185,9 @@
     <Compile Include="ModelViews\FormularioModelView.cs" />
     <Compile Include="ModelViews\UsuariosModelView.cs" />
     <Compile Include="Municipios.cs">
+      <DependentUpon>Dominicanalimpia.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Objetivo1.cs">
       <DependentUpon>Dominicanalimpia.tt</DependentUpon>
     </Compile>
     <Compile Include="Preguntas.cs">

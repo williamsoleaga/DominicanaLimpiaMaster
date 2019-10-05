@@ -77,7 +77,7 @@ namespace DominicanaLimpia.Controllers
                 {
 
                     var idnumero = 0;
-                    var numeroformulario = db.Formulario.ToList().LastOrDefault();
+                    var numeroformulario = db.FormularioM.ToList().LastOrDefault();
 
                     if (numeroformulario == null)
                     {
@@ -88,27 +88,43 @@ namespace DominicanaLimpia.Controllers
                         idnumero = Convert.ToInt32(numeroformulario.NumeroFormulario + 1);
                     }
 
+                    
+                    FormularioM nuevoform = new FormularioM();
+                    nuevoform.Desde = Convert.ToDateTime(formulario.DesdeFecha);
+                    nuevoform.Hasta = Convert.ToDateTime(formulario.HastaFecha);
+                    nuevoform.UsuarioId = Convert.ToInt16(Session["UsuarioId"].ToString());
+                    nuevoform.ProvinciaId = formulario.ProvinciaId;
+                    nuevoform.Comentario = formulario.Comentario;
+                    nuevoform.Estatus = "A";
+                    nuevoform.NumeroFormulario = idnumero;
+                    nuevoform.P13 = formulario.Valores[12];
+                    nuevoform.P14 = formulario.Valores[13];
+                    nuevoform.P15 = formulario.Valores[14];
+                    nuevoform.P16 = formulario.Valores[15];
+                    nuevoform.P17 = formulario.Valores[16];
+                    nuevoform.P18 = formulario.Valores[17];
+                    nuevoform.P19 = formulario.Valores[18];
+                    nuevoform.P20 = formulario.Valores[19];
+                    nuevoform.P21 = formulario.Valores[20];
+                    nuevoform.P22 = formulario.Valores[21];
+                    nuevoform.P23 = formulario.Valores[22];
+                    nuevoform.P24 = formulario.Valores[23];
+                    nuevoform.P25 = formulario.Valores[24];
+                    nuevoform.P26 = formulario.Valores[25];
+                    nuevoform.P27 = formulario.Valores[26];
+                    nuevoform.P28 = formulario.Valores[27];
+                    nuevoform.P29 = formulario.Valores[28];
+                    nuevoform.P30 = formulario.Valores[29];
+                    nuevoform.P31 = formulario.Valores[30];
+                    nuevoform.P32 = formulario.Valores[31];
+                    db.FormularioM.Add(nuevoform);
+                    db.SaveChanges();
 
-                    int contador = 1;
 
-                    for (int i = 0; i < formulario.Valores.Count(); i++)
-                    {
-                        Formulario nuevof = new Formulario();
-                        nuevof.PreguntaId = contador;
-                        nuevof.Hasta = Convert.ToDateTime(formulario.HastaFecha);
-                        nuevof.Desde = Convert.ToDateTime(formulario.DesdeFecha);
-                        nuevof.Idusuario = Convert.ToInt16(Session["UsuarioId"].ToString());
-                        nuevof.Estatus = "A";
-                        nuevof.NumeroFormulario = idnumero;
-                        nuevof.Valor = formulario.Valores[i];
-                        nuevof.Comentario = formulario.Comentario;
-                        nuevof.ProvinciaId = formulario.ProvinciaId;
-                        db.Formulario.Add(nuevof);
-                        db.SaveChanges();
-                        contador = contador + 1;
-                    }
+                    //}
 
                     return View("~/Views/Formulario/Exito.cshtml");
+
                 }catch(Exception ex)
                 {
                     throw ex.InnerException;

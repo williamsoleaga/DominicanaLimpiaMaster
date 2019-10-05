@@ -31,6 +31,41 @@ advertencia 6002: La tabla o vista 'Dominicanalimpia.dbo.Escuelas' no tiene defi
           <Property Name="NumeroFormulario" Type="int" />
         </EntityType>
         <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Dominicanalimpia.dbo.FormularioM' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="FormularioM">
+          <Key>
+            <PropertyRef Name="FormularioId" />
+          </Key>
+          <Property Name="FormularioId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Desde" Type="date" />
+          <Property Name="Hasta" Type="date" />
+          <Property Name="UsuarioId" Type="int" />
+          <Property Name="ProvinciaId" Type="int" />
+          <Property Name="NumeroFormulario" Type="int" />
+          <Property Name="Estatus" Type="nchar" MaxLength="5" />
+          <Property Name="Comentario" Type="nchar" MaxLength="250" />
+          <Property Name="P13" Type="int" />
+          <Property Name="P14" Type="int" />
+          <Property Name="P15" Type="int" />
+          <Property Name="P16" Type="int" />
+          <Property Name="P17" Type="int" />
+          <Property Name="P18" Type="int" />
+          <Property Name="P19" Type="int" />
+          <Property Name="P20" Type="int" />
+          <Property Name="P21" Type="int" />
+          <Property Name="P22" Type="int" />
+          <Property Name="P23" Type="int" />
+          <Property Name="P24" Type="int" />
+          <Property Name="P25" Type="int" />
+          <Property Name="P26" Type="int" />
+          <Property Name="P27" Type="int" />
+          <Property Name="P28" Type="int" />
+          <Property Name="P29" Type="int" />
+          <Property Name="P30" Type="int" />
+          <Property Name="P31" Type="int" />
+          <Property Name="P32" Type="int" />
+        </EntityType>
+        <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'Dominicanalimpia.dbo.Municipios' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="Municipios">
           <Key>
@@ -38,6 +73,29 @@ advertencia 6002: La tabla o vista 'Dominicanalimpia.dbo.Municipios' no tiene de
           </Key>
           <Property Name="MunicipioId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Provincia_Nombre" Type="nchar" MaxLength="50" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Dominicanalimpia.dbo.Objetivo1' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="Objetivo1">
+          <Key>
+            <PropertyRef Name="ObjetivoId" />
+          </Key>
+          <Property Name="ObjetivoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FormularioId" Type="int" />
+          <Property Name="EscuelaId" Type="int" />
+          <Property Name="UsuarioId" Type="int" />
+          <Property Name="p1" Type="int" />
+          <Property Name="p2" Type="int" />
+          <Property Name="p3" Type="int" />
+          <Property Name="p4" Type="int" />
+          <Property Name="p5" Type="int" />
+          <Property Name="p6" Type="int" />
+          <Property Name="p7" Type="int" />
+          <Property Name="p8" Type="int" />
+          <Property Name="p9" Type="int" />
+          <Property Name="p10" Type="int" />
+          <Property Name="p11" Type="int" />
+          <Property Name="p12" Type="int" />
         </EntityType>
         <EntityType Name="Preguntas">
           <Key>
@@ -83,11 +141,63 @@ advertencia 6002: La tabla o vista 'Dominicanalimpia.dbo.Roles' no tiene definid
     [Escuelas].[Descripcion] AS [Descripcion]
     FROM [dbo].[Escuelas] AS [Escuelas]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="FormularioM" EntityType="Self.FormularioM" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [FormularioM].[FormularioId] AS [FormularioId], 
+    [FormularioM].[Desde] AS [Desde], 
+    [FormularioM].[Hasta] AS [Hasta], 
+    [FormularioM].[UsuarioId] AS [UsuarioId], 
+    [FormularioM].[ProvinciaId] AS [ProvinciaId], 
+    [FormularioM].[NumeroFormulario] AS [NumeroFormulario], 
+    [FormularioM].[Estatus] AS [Estatus], 
+    [FormularioM].[Comentario] AS [Comentario], 
+    [FormularioM].[P13] AS [P13], 
+    [FormularioM].[P14] AS [P14], 
+    [FormularioM].[P15] AS [P15], 
+    [FormularioM].[P16] AS [P16], 
+    [FormularioM].[P17] AS [P17], 
+    [FormularioM].[P18] AS [P18], 
+    [FormularioM].[P19] AS [P19], 
+    [FormularioM].[P20] AS [P20], 
+    [FormularioM].[P21] AS [P21], 
+    [FormularioM].[P22] AS [P22], 
+    [FormularioM].[P23] AS [P23], 
+    [FormularioM].[P24] AS [P24], 
+    [FormularioM].[P25] AS [P25], 
+    [FormularioM].[P26] AS [P26], 
+    [FormularioM].[P27] AS [P27], 
+    [FormularioM].[P28] AS [P28], 
+    [FormularioM].[P29] AS [P29], 
+    [FormularioM].[P30] AS [P30], 
+    [FormularioM].[P31] AS [P31], 
+    [FormularioM].[P32] AS [P32]
+    FROM [dbo].[FormularioM] AS [FormularioM]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="Municipios" EntityType="Self.Municipios" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [Municipios].[MunicipioId] AS [MunicipioId], 
     [Municipios].[Provincia_Nombre] AS [Provincia_Nombre]
     FROM [dbo].[Municipios] AS [Municipios]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Objetivo1" EntityType="Self.Objetivo1" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Objetivo1].[ObjetivoId] AS [ObjetivoId], 
+    [Objetivo1].[FormularioId] AS [FormularioId], 
+    [Objetivo1].[EscuelaId] AS [EscuelaId], 
+    [Objetivo1].[UsuarioId] AS [UsuarioId], 
+    [Objetivo1].[p1] AS [p1], 
+    [Objetivo1].[p2] AS [p2], 
+    [Objetivo1].[p3] AS [p3], 
+    [Objetivo1].[p4] AS [p4], 
+    [Objetivo1].[p5] AS [p5], 
+    [Objetivo1].[p6] AS [p6], 
+    [Objetivo1].[p7] AS [p7], 
+    [Objetivo1].[p8] AS [p8], 
+    [Objetivo1].[p9] AS [p9], 
+    [Objetivo1].[p10] AS [p10], 
+    [Objetivo1].[p11] AS [p11], 
+    [Objetivo1].[p12] AS [p12]
+    FROM [dbo].[Objetivo1] AS [Objetivo1]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="Roles" EntityType="Self.Roles" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -161,6 +271,8 @@ advertencia 6002: La tabla o vista 'Dominicanalimpia.dbo.Roles' no tiene definid
           <EntitySet Name="Municipios" EntityType="Self.Municipios" />
           <EntitySet Name="Roles" EntityType="Self.Roles" />
           <EntitySet Name="Escuelas" EntityType="DominicanalimpiaModel.Escuelas" />
+          <EntitySet Name="FormularioM" EntityType="DominicanalimpiaModel.FormularioM" />
+          <EntitySet Name="Objetivo1" EntityType="DominicanalimpiaModel.Objetivo1" />
         </EntityContainer>
         <EntityType Name="Escuelas">
           <Key>
@@ -169,6 +281,60 @@ advertencia 6002: La tabla o vista 'Dominicanalimpia.dbo.Roles' no tiene definid
           <Property Name="EscuelaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="MunicipioId" Type="Int32" />
           <Property Name="Descripcion" Type="String" MaxLength="150" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="FormularioM">
+          <Key>
+            <PropertyRef Name="FormularioId" />
+          </Key>
+          <Property Name="FormularioId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Desde" Type="DateTime" Precision="0" />
+          <Property Name="Hasta" Type="DateTime" Precision="0" />
+          <Property Name="UsuarioId" Type="Int32" />
+          <Property Name="ProvinciaId" Type="Int32" />
+          <Property Name="NumeroFormulario" Type="Int32" />
+          <Property Name="Estatus" Type="String" MaxLength="5" FixedLength="true" Unicode="true" />
+          <Property Name="Comentario" Type="String" MaxLength="250" FixedLength="true" Unicode="true" />
+          <Property Name="P13" Type="Int32" />
+          <Property Name="P14" Type="Int32" />
+          <Property Name="P15" Type="Int32" />
+          <Property Name="P16" Type="Int32" />
+          <Property Name="P17" Type="Int32" />
+          <Property Name="P18" Type="Int32" />
+          <Property Name="P19" Type="Int32" />
+          <Property Name="P20" Type="Int32" />
+          <Property Name="P21" Type="Int32" />
+          <Property Name="P22" Type="Int32" />
+          <Property Name="P23" Type="Int32" />
+          <Property Name="P24" Type="Int32" />
+          <Property Name="P25" Type="Int32" />
+          <Property Name="P26" Type="Int32" />
+          <Property Name="P27" Type="Int32" />
+          <Property Name="P28" Type="Int32" />
+          <Property Name="P29" Type="Int32" />
+          <Property Name="P30" Type="Int32" />
+          <Property Name="P31" Type="Int32" />
+          <Property Name="P32" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Objetivo1">
+          <Key>
+            <PropertyRef Name="ObjetivoId" />
+          </Key>
+          <Property Name="ObjetivoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FormularioId" Type="Int32" />
+          <Property Name="EscuelaId" Type="Int32" />
+          <Property Name="UsuarioId" Type="Int32" />
+          <Property Name="p1" Type="Int32" />
+          <Property Name="p2" Type="Int32" />
+          <Property Name="p3" Type="Int32" />
+          <Property Name="p4" Type="Int32" />
+          <Property Name="p5" Type="Int32" />
+          <Property Name="p6" Type="Int32" />
+          <Property Name="p7" Type="Int32" />
+          <Property Name="p8" Type="Int32" />
+          <Property Name="p9" Type="Int32" />
+          <Property Name="p10" Type="Int32" />
+          <Property Name="p11" Type="Int32" />
+          <Property Name="p12" Type="Int32" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -240,6 +406,62 @@ advertencia 6002: La tabla o vista 'Dominicanalimpia.dbo.Roles' no tiene definid
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
                 <ScalarProperty Name="MunicipioId" ColumnName="MunicipioId" />
                 <ScalarProperty Name="EscuelaId" ColumnName="EscuelaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FormularioM">
+            <EntityTypeMapping TypeName="DominicanalimpiaModel.FormularioM">
+              <MappingFragment StoreEntitySet="FormularioM">
+                <ScalarProperty Name="P32" ColumnName="P32" />
+                <ScalarProperty Name="P31" ColumnName="P31" />
+                <ScalarProperty Name="P30" ColumnName="P30" />
+                <ScalarProperty Name="P29" ColumnName="P29" />
+                <ScalarProperty Name="P28" ColumnName="P28" />
+                <ScalarProperty Name="P27" ColumnName="P27" />
+                <ScalarProperty Name="P26" ColumnName="P26" />
+                <ScalarProperty Name="P25" ColumnName="P25" />
+                <ScalarProperty Name="P24" ColumnName="P24" />
+                <ScalarProperty Name="P23" ColumnName="P23" />
+                <ScalarProperty Name="P22" ColumnName="P22" />
+                <ScalarProperty Name="P21" ColumnName="P21" />
+                <ScalarProperty Name="P20" ColumnName="P20" />
+                <ScalarProperty Name="P19" ColumnName="P19" />
+                <ScalarProperty Name="P18" ColumnName="P18" />
+                <ScalarProperty Name="P17" ColumnName="P17" />
+                <ScalarProperty Name="P16" ColumnName="P16" />
+                <ScalarProperty Name="P15" ColumnName="P15" />
+                <ScalarProperty Name="P14" ColumnName="P14" />
+                <ScalarProperty Name="P13" ColumnName="P13" />
+                <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+                <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+                <ScalarProperty Name="NumeroFormulario" ColumnName="NumeroFormulario" />
+                <ScalarProperty Name="ProvinciaId" ColumnName="ProvinciaId" />
+                <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+                <ScalarProperty Name="Hasta" ColumnName="Hasta" />
+                <ScalarProperty Name="Desde" ColumnName="Desde" />
+                <ScalarProperty Name="FormularioId" ColumnName="FormularioId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Objetivo1">
+            <EntityTypeMapping TypeName="DominicanalimpiaModel.Objetivo1">
+              <MappingFragment StoreEntitySet="Objetivo1">
+                <ScalarProperty Name="p12" ColumnName="p12" />
+                <ScalarProperty Name="p11" ColumnName="p11" />
+                <ScalarProperty Name="p10" ColumnName="p10" />
+                <ScalarProperty Name="p9" ColumnName="p9" />
+                <ScalarProperty Name="p8" ColumnName="p8" />
+                <ScalarProperty Name="p7" ColumnName="p7" />
+                <ScalarProperty Name="p6" ColumnName="p6" />
+                <ScalarProperty Name="p5" ColumnName="p5" />
+                <ScalarProperty Name="p4" ColumnName="p4" />
+                <ScalarProperty Name="p3" ColumnName="p3" />
+                <ScalarProperty Name="p2" ColumnName="p2" />
+                <ScalarProperty Name="p1" ColumnName="p1" />
+                <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+                <ScalarProperty Name="EscuelaId" ColumnName="EscuelaId" />
+                <ScalarProperty Name="FormularioId" ColumnName="FormularioId" />
+                <ScalarProperty Name="ObjetivoId" ColumnName="ObjetivoId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
