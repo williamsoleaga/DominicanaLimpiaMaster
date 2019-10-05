@@ -117,9 +117,9 @@ namespace DominicanaLimpia.Controllers
                     nuevoform.P30 = formulario.Valores[29];
                     nuevoform.P31 = formulario.Valores[30];
                     nuevoform.P32 = formulario.Valores[31];
+
                     db.FormularioM.Add(nuevoform);
                     db.SaveChanges();
-
 
                     //}
 

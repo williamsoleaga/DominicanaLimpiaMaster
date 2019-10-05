@@ -92,12 +92,21 @@ Contador = Contador + 1;
                         <table id="grvBeneficiarios" name="Beneficiarios" class="table table-bordered table-striped table-condensed" style="width:100%; height:100%">
                             <thead>
                                 <tr style="background-color: #f59034; color:#fff">
-                                    <th data-override="IdBeneficiarios" class="hidden">IdBeneficiarios</th>
-                                    <th data-override="id_correos_notificaciones">Nombre</th>
-                                    <th data-override="id_tipo_notificacion">Cédula/Pasaporte</th>
-                                    <th data-override="tp_notificacion" class="text-center">Fecha nacimiento</th>
-                                    <th data-override="cuenta_correo_electronico" class="text-center">Parentesco</th>
-                                    <th data-override="idparentesco" class="hidden">Existe</th>
+                                    <th data-override="IdBeneficiarios" hidden>EscuelaId</th>
+                                    <th data-override="id_correos_notificaciones">Escuela</th>
+                                    <th data-override="id_correos_notificaciones">Pregunta 1</th>
+                                    <th data-override="id_correos_notificaciones">Pregunta 2</th>
+                                    <th data-override="id_correos_notificaciones">Pregunta 3</th>
+                                    <th data-override="id_correos_notificaciones">Pregunta 4</th>
+                                    <th data-override="id_correos_notificaciones">Pregunta 5</th>
+                                    <th data-override="id_correos_notificaciones">Pregunta 6</th>
+                                    <th data-override="id_correos_notificaciones">Pregunta 7</th>
+                                    <th data-override="id_correos_notificaciones" hidden>Pregunta 4</th>
+                                    <th data-override="id_correos_notificaciones" hidden>Pregunta 4</th>
+                                    <th data-override="id_correos_notificaciones" hidden>Pregunta 4</th>
+                                    <th data-override="id_correos_notificaciones" hidden>Pregunta 4</th>
+                                    <th data-override="id_correos_notificaciones" hidden>Pregunta 4</th>
+
                                     <th style="width: 10px;"></th>
                                     <th style="width: 10px;"></th>
                                 </tr>
@@ -226,20 +235,20 @@ Contador = Contador + 1;
 
 <script type="text/javascript">
             $(document).ready(function() {
-                $("#input-23").fileinput({
-                    showUpload: false,
-                    layoutTemplates: {
-                        main1: "{preview}\n" +
-                            "<div class=\'input-group {class}\'>\n" +
-                            "   <div class=\'input-group-btn\ input-group-prepend'>\n" +
-                            "       {browse}\n" +
-                            "       {upload}\n" +
-                            "       {remove}\n" +
-                            "   </div>\n" +
-                            "   {caption}\n" +
-                            "</div>"
-                    }
-                });
+                //$("#input-23").fileinput({
+                //    showUpload: false,
+                //    layoutTemplates: {
+                //        main1: "{preview}\n" +
+                //            "<div class=\'input-group {class}\'>\n" +
+                //            "   <div class=\'input-group-btn\ input-group-prepend'>\n" +
+                //            "       {browse}\n" +
+                //            "       {upload}\n" +
+                //            "       {remove}\n" +
+                //            "   </div>\n" +
+                //            "   {caption}\n" +
+                //            "</div>"
+                //    }
+                //});
             });
 
 
@@ -259,8 +268,6 @@ Contador = Contador + 1;
 
 
 
-
-
     $("#example-basic").steps({
         headerTag: "h3",
         bodyTag: "section",
@@ -276,7 +283,116 @@ Contador = Contador + 1;
                 equalTo: "#password-2"
             }
         }
+        });
+
+
+
+
+
+       //Agregar botonnes
+    //$("body").on("click", "#btnAgregarBeneficiario", function (e) {
+
+    $("#btnAgregarBeneficiario").click(function () {
+    
+        alert("fsdf");
+        e.preventDefault();
+        e.stopPropagation();
+        e.stopImmediatePropagation();
+
+        var P1 = $('.Text-1').val(), P2 = $('.Text-2').val(), P3 = $('.Text-3').val(), P4 = $('.Text-4').val(), P5 = $('.Text-5').val(), 
+            P6 = $('.Text-6').val(), P7 = $('.Text-7').val(), P8 = $('.Text-8').val(), P9 = $('.Text-9').val(), P10= $('.Text-10').val(), 
+            P11 = $('.Text-11').val(), P12 = $('.Text-12').val(), 
+            EscuelaText = $('#EscuelaGrid :selected').text(), idescuela = $('#EscuelaGrid :selected').val();
+
+        if (P1 == "") {
+            swal({ title: 'Error', text: "El Nombre es necesario", type: 'warning', confirmButtonText: 'Aceptar', showLoaderOnConfirm: false });
+            return;
+        }
+
+     
+
+        var secuenciaNueva = $('#grvBeneficiarios TBODY tr').length;
+
+
+        var secuenciaNueva = $('#grvBeneficiarios TBODY tr').length + 1;
+        var tBody = $("#grvBeneficiarios > TBODY")[0], row = tBody.insertRow(-1), cell = $(row.insertCell(-1));
+
+        cell.html(idescuela).addClass("hidden");
+        cell = $(row.insertCell(-1));
+
+
+        cell.html(EscuelaText);
+        cell = $(row.insertCell(-1));
+
+
+        cell.html(P1);
+        cell = $(row.insertCell(-1));
+
+        cell.html(P2);
+        cell = $(row.insertCell(-1));
+
+
+        cell.html(P3);
+        cell = $(row.insertCell(-1)); 
+
+
+        cell.html(P4);
+        cell = $(row.insertCell(-1));
+
+
+        cell.html(P5);
+        cell = $(row.insertCell(-1));
+
+        cell.html(P6);
+        cell = $(row.insertCell(-1));
+
+
+        cell.html(P7);
+        cell = $(row.insertCell(-1));
+
+        cell.html(P8).addClass("hidden");
+        cell = $(row.insertCell(-1));
+
+        cell.html(P9).addClass("hidden");
+        cell = $(row.insertCell(-1));
+
+        cell.html(P10).addClass("hidden");
+        cell = $(row.insertCell(-1));
+
+        cell.html(P11).addClass("hidden");
+        cell = $(row.insertCell(-1));
+
+        cell.html(P12).addClass("hidden");
+        cell = $(row.insertCell(-1));
+
+
+
+        var btn = $("<button />");
+        btn.attr("type", "button");
+        btn.attr("class", "btn btn-default btn-xs")
+        btn.attr("onclick", "EditarNotificacion(this);");
+        btn.attr("data-original-title", "Editar");
+        btn.attr("data-toggle", "tooltip");
+        btn.attr("data-widget", "edit");
+        btn.attr("title", "");
+        btn.append("<i class='fa fa-pencil'></i>");
+        cell.append(btn);
+        cell = $(row.insertCell(-1));
+
+        var btn2 = $("<button />");
+        btn2.attr("type", "button");
+        btn2.attr("class", "btn btn-default btn-xs")
+        btn2.attr("onclick", "RemoverLinea(this);");
+        btn2.attr("data-original-title", "Eliminar");
+        btn2.attr("data-toggle", "tooltip");
+        btn2.attr("data-widget", "remove");
+        btn2.attr("title", "");
+        btn2.append("<i class='fa fa-times'></i>");
+        cell.append(btn2);
+        LimpiarNotificacion();
     });
+
+
 
 </script>
 

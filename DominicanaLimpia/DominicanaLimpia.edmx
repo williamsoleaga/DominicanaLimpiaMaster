@@ -30,8 +30,6 @@ advertencia 6002: La tabla o vista 'Dominicanalimpia.dbo.Escuelas' no tiene defi
           <Property Name="ProvinciaId" Type="int" />
           <Property Name="NumeroFormulario" Type="int" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'Dominicanalimpia.dbo.FormularioM' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="FormularioM">
           <Key>
             <PropertyRef Name="FormularioId" />
@@ -132,6 +130,7 @@ advertencia 6002: La tabla o vista 'Dominicanalimpia.dbo.Roles' no tiene definid
         </EntityType>
         <EntityContainer Name="DominicanalimpiaModelStoreContainer">
           <EntitySet Name="Formulario" EntityType="Self.Formulario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FormularioM" EntityType="Self.FormularioM" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Preguntas" EntityType="Self.Preguntas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Escuelas" EntityType="Self.Escuelas" store:Type="Tables" store:Schema="dbo">
@@ -140,38 +139,6 @@ advertencia 6002: La tabla o vista 'Dominicanalimpia.dbo.Roles' no tiene definid
     [Escuelas].[MunicipioId] AS [MunicipioId], 
     [Escuelas].[Descripcion] AS [Descripcion]
     FROM [dbo].[Escuelas] AS [Escuelas]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="FormularioM" EntityType="Self.FormularioM" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [FormularioM].[FormularioId] AS [FormularioId], 
-    [FormularioM].[Desde] AS [Desde], 
-    [FormularioM].[Hasta] AS [Hasta], 
-    [FormularioM].[UsuarioId] AS [UsuarioId], 
-    [FormularioM].[ProvinciaId] AS [ProvinciaId], 
-    [FormularioM].[NumeroFormulario] AS [NumeroFormulario], 
-    [FormularioM].[Estatus] AS [Estatus], 
-    [FormularioM].[Comentario] AS [Comentario], 
-    [FormularioM].[P13] AS [P13], 
-    [FormularioM].[P14] AS [P14], 
-    [FormularioM].[P15] AS [P15], 
-    [FormularioM].[P16] AS [P16], 
-    [FormularioM].[P17] AS [P17], 
-    [FormularioM].[P18] AS [P18], 
-    [FormularioM].[P19] AS [P19], 
-    [FormularioM].[P20] AS [P20], 
-    [FormularioM].[P21] AS [P21], 
-    [FormularioM].[P22] AS [P22], 
-    [FormularioM].[P23] AS [P23], 
-    [FormularioM].[P24] AS [P24], 
-    [FormularioM].[P25] AS [P25], 
-    [FormularioM].[P26] AS [P26], 
-    [FormularioM].[P27] AS [P27], 
-    [FormularioM].[P28] AS [P28], 
-    [FormularioM].[P29] AS [P29], 
-    [FormularioM].[P30] AS [P30], 
-    [FormularioM].[P31] AS [P31], 
-    [FormularioM].[P32] AS [P32]
-    FROM [dbo].[FormularioM] AS [FormularioM]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="Municipios" EntityType="Self.Municipios" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
