@@ -64,7 +64,7 @@
                                     {
                                         <div class="block" style="display: inline-block">
                                             <br />
-                                            <strong>Escuela :</strong> @Html.DropDownList("EscuelaGrid", (IEnumerable<SelectListItem>)ViewBag.EscuelaGrid, null, new { @class = "js-example-placeholder-single js-states form-contro" })
+                                             @Html.DropDownList("EscuelaGrid", (IEnumerable<SelectListItem>)ViewBag.EscuelaGrid, null, new { @class = "js-example-placeholder-single js-states form-control" })
                                             <br />
                                         </div>
                                     }
@@ -164,20 +164,51 @@
                     <h3>Objetivo 3</h3>
                     <section>
                         @{
-                            enumeracion = enumeracion + 1;
+        enumeracion = enumeracion + 1;
                         }
 
                         @foreach (var item in Model.Preguntas)
                         {
                             if (Contador >= 15 && Contador < 26)
                             {
-                                <div class="form-group">
-                                    <div class="block">
-                                        <strong>  @enumeracion - @item.Descripcion</strong>
-                                        <input type="number" name="Valores[]" id="Valores[]" />
-                                        <hr>
-                                    </div>
-                                </div>
+
+
+                                if (enumeracion == 16)
+                                {
+
+
+                        <div class="form-group">
+                        <div class="block">
+                        <strong>  @enumeracion - @item.Descripcion</strong>
+                           <br />
+                            @Html.DropDownList("Pregunta16", (IEnumerable<SelectListItem>)ViewBag.Pregunta16, null, new { @class = "js-example-placeholder-single js-states form-control" })
+                        <hr>
+                        </div>
+                        </div>
+                                }
+                                else
+                                {
+
+                    <div class="form-group">
+                        <div class="block">
+                            <strong>  @enumeracion - @item.Descripcion</strong>
+                            <input type="number" name="Valores[]" id="Valores[]" />
+
+
+                            @if (enumeracion == 18 || enumeracion == 19 || enumeracion == 20 )
+                            {
+                        <br />
+                        <label for="validationDefault01">Dirección/Descripción</label>
+                        <textarea type="text" name="Descripcion[]" autocomplete="off" class="form-control" id="Descripcion[]">
+                                        </textarea>
+}
+
+
+                            <hr>
+                        </div>
+                    </div>
+                                }
+
                                 if (Contador == 25)
                                 {
                                     Contador = 0;
@@ -203,9 +234,9 @@
                                         <strong> @enumeracion - @item.Descripcion</strong>
                                         <input type="number" name="Valores[]" id="Valores[]" />
                                         <br />
-                                        <label for="validationDefault01">Dirección</label>
-                                        <textarea type="text" name="Nombre_Completo" autocomplete="off" class="form-control" id="">
-                                    </textarea>
+                                        <label for="validationDefault01">Dirección/Descripción</label>
+                                        <textarea type="text" name="Descripcion[]" autocomplete="off" class="form-control" id="Descripcion[]">
+                                        </textarea>
 
                                         <hr>
                                     </div>
@@ -423,6 +454,7 @@
 
             var ObjetivoLista = new Array()
             var Valores = new Array();
+            var Descripcion = new Array();
 
             if ($("#grvBeneficiarios")[0].rows.length > 1) {
               
@@ -458,6 +490,13 @@
             }).get();
             entidad.Valores = Valores;
 
+
+            $("textarea[name='Descripcion[]']").map(function () {
+                Descripcion.push($(this).val());
+            }).get();
+            entidad.DescripcionP = Descripcion;
+
+            
            // console.log(entidad);
 
 
@@ -470,20 +509,18 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (data) {
-                    //MostrarMensaje();
-                    //if (!data.error) {
-                    //    $("#Ase_codigo_aseg").val(data.codigo).change();
-                    //    DeshabilitarAlGuardar('Entidadform');
-                    //}
+                    console.log(data);
+                    if (data) {
+                        window.location.href = '/Formulario/Exito/';
+                    } else {
+                        alertify.warning('Error al insertar los valores, contacte a su corrdinador ! ');
+                        return;
+                    }
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
-                   // swal({ title: 'Error', text: 'Se ha producido un error al intentar guardar la entidad', type: 'error', confirmButtonText: 'Aceptar', showLoaderOnConfirm: false });
-                    alert("efwef");
+                    alertify.warning('Error al soliictar la peticion de guardado! ');
                 }
             });
-
-
-
            // document.getElementById('Formulario').submit();
         }
     }).validate({
@@ -522,7 +559,7 @@
 
 
 
-       //Agregar botonnes
+    //Agregar botonnes
     //$("body").on("click", "#btnAgregarBeneficiario", function (e) {
 
 

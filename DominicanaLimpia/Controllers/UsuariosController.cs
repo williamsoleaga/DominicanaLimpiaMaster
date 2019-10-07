@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using DominicanaLimpia;
 using DominicanaLimpia.Models;
 using DominicanaLimpia.ModelViews;
+using DominicanaLimpia.Utilidades;
 
 namespace DominicanaLimpia.Controllers
 {
@@ -49,8 +50,14 @@ namespace DominicanaLimpia.Controllers
             ViewBag.Municipios = new SelectList(db.Municipios, "MunicipioId", "Provincia_Nombre");
             ViewBag.Responsables = new SelectList(db.Usuarios.Where(x =>x.RolId == 5), "UsuarioId", "Nombre_Completo");
 
+
+
             return View();
         }
+
+
+
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]

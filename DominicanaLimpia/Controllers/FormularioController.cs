@@ -10,6 +10,7 @@ using System.Web.Mvc;
 using DominicanaLimpia;
 using DominicanaLimpia.Models;
 using DominicanaLimpia.ModelViews;
+using DominicanaLimpia.Utilidades;
 
 namespace DominicanaLimpia.Controllers
 {
@@ -54,6 +55,7 @@ namespace DominicanaLimpia.Controllers
             var results = db.Municipios.Where(r => usuario.MunicipiosId.Contains(r.MunicipioId.ToString()));
             ViewBag.Municipios = new SelectList(results, "MunicipioId", "Provincia_Nombre");
             ViewBag.EscuelaGrid = new SelectList(db.Escuelas.Where(r => usuario.MunicipiosId.Contains(r.MunicipioId.ToString())).ToList(), "EscuelaId", "Descripcion");
+            ViewBag.Pregunta16 = new SelectList(LlenarComboSiNo(), "Indice", "Value");
 
             ViewBag.Escuelas13 = new SelectList(db.Escuelas.Where(r=> usuario.MunicipiosId.Contains(r.MunicipioId.ToString())).ToList(), "EscuelaId", "Descripcion");
 
@@ -69,13 +71,11 @@ namespace DominicanaLimpia.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Formulario formulario)
         {
-
             if (ModelState.IsValid)
             {
 
                 try
                 {
-
                     var idnumero = 0;
                     var numeroformulario = db.FormularioM.ToList().LastOrDefault();
 
@@ -87,7 +87,6 @@ namespace DominicanaLimpia.Controllers
                     {
                         idnumero = Convert.ToInt32(numeroformulario.NumeroFormulario + 1);
                     }
-
                     
                     FormularioM nuevoform = new FormularioM();
                     nuevoform.Desde = Convert.ToDateTime(formulario.DesdeFecha);
@@ -121,8 +120,6 @@ namespace DominicanaLimpia.Controllers
                     db.FormularioM.Add(nuevoform);
                     db.SaveChanges();
 
-                    //}
-
                     return View("~/Views/Formulario/Exito.cshtml");
 
                 }catch(Exception ex)
@@ -135,12 +132,19 @@ namespace DominicanaLimpia.Controllers
         }
 
 
+        public List<Combo> LlenarComboSiNo()
+        {
+            List<Combo> Combo = new List<Combo>();
+
+            Combo.Add(new Combo { Indice = 1, Value = "Si" });
+            Combo.Add(new Combo { Indice = 2, Value = "No" });
+            return Combo;
+        }
+
 
         public JsonResult GuardarFormulario(Formulario formulario)
         {
             var error = false;
-
-
 
             try
             {
@@ -156,8 +160,6 @@ namespace DominicanaLimpia.Controllers
                 {
                     idnumero = Convert.ToInt32(numeroformulario.NumeroFormulario + 1);
                 }
-
-
 
                 Objetivo1 Objetivos = new Objetivo1();
 
@@ -181,12 +183,7 @@ namespace DominicanaLimpia.Controllers
 
                     db.Objetivo1.Add(Objetivos);
                     db.SaveChanges();
-
-
                 }
-
-
-
 
                 FormularioM nuevoform = new FormularioM();
                 nuevoform.Desde = Convert.ToDateTime(formulario.DesdeFecha);
@@ -199,7 +196,7 @@ namespace DominicanaLimpia.Controllers
                 nuevoform.P13 = formulario.Valores[12];
                 nuevoform.P14 = formulario.Valores[13];
                 nuevoform.P15 = formulario.Valores[14];
-                nuevoform.P16 = formulario.Valores[15];
+                nuevoform.P16 = formulario.Pregunta16;
                 nuevoform.P17 = formulario.Valores[16];
                 nuevoform.P18 = formulario.Valores[17];
                 nuevoform.P19 = formulario.Valores[18];
@@ -219,12 +216,14 @@ namespace DominicanaLimpia.Controllers
                 db.FormularioM.Add(nuevoform);
                 db.SaveChanges();
 
-               
+                //Agregamos los comentarios de las preguntas
+
+
+
+
+
+
                 error = false;
-
-                // return View("~/Views/Formulario/Exito.cshtml");
-
-
             }
             catch (Exception ex)
             {
@@ -232,11 +231,13 @@ namespace DominicanaLimpia.Controllers
             }
 
             return Json(new { error });
-
-            //return View(formulario);
         }
 
 
+        public ActionResult Exito()
+        {
+             return View("~/Views/Formulario/Exito.cshtml");
+        }
 
 
 

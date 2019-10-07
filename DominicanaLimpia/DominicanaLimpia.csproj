@@ -201,6 +201,7 @@
     <Compile Include="Usuarios.cs">
       <DependentUpon>Dominicanalimpia.tt</DependentUpon>
     </Compile>
+    <Compile Include="Utilidades\Combo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
