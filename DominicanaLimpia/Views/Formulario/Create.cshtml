@@ -279,10 +279,55 @@
             EscuelaText = $('#EscuelaGrid :selected').text(), idescuela = $('#EscuelaGrid :selected').val();
 
         if (P1 == "") {
-            alertify.warning('El numero de  escuelas es necesario! (Pregunta 1 ');
+            alertify.warning('El numero de  escuelas es necesario! Pregunta 1 ');
             return;
         }
 
+        if (P2 == "") {
+            alertify.warning('El numero de Pregunta 2  es necesario! ');
+            return;
+        }
+        if (P3 == "") {
+            alertify.warning('El numero de Pregunta 3  es necesario! ');
+            return;
+        }
+        if (P4 == "") {
+            alertify.warning('El numero de Pregunta 4  es necesario! ');
+            return;
+        }
+        if (P5 == "") {
+            alertify.warning('El numero de Pregunta 5  es necesario! ');
+            return;
+        }
+        if (P6 == "") {
+            alertify.warning('El numero de Pregunta 6  es necesario! ');
+            return;
+        }
+        if (P7 == "") {
+            alertify.warning('El numero de Pregunta 7  es necesario! ');
+            return;
+        }
+        if (P8 == "") {
+            alertify.warning('El numero de Pregunta 8  es necesario! ');
+            return;
+        }
+        if (P9 == "") {
+            alertify.warning('El numero de Pregunta 9 es necesario! ');
+            return;
+        }
+
+        if (P10 == "") {
+            alertify.warning('El numero de Pregunta 10  es necesario! ');
+            return;
+        }
+        if (P11 == "") {
+            alertify.warning('El numero de Pregunta 11  es necesario! ');
+            return;
+        }
+        if (P12 == "") {
+            alertify.warning('El numero de Pregunta 12  es necesario!');
+            return;
+        }
 
 
         var secuenciaNueva = $('#grvBeneficiarios TBODY tr').length;
@@ -350,7 +395,7 @@
         btn2.attr("title", "");
         btn2.append("<i class='fa fa-times'></i>");
         cell.append(btn2);
-        //LimpiarNotificacion();
+        Limpiar();
 
     }
 
@@ -451,6 +496,22 @@
     });
     
 
+
+    function Limpiar() {
+    //$("#cboParentescoCombo").val('0').change();
+        $('.Text-1').val('');
+        $('.Text-2').val('');
+        $('.Text-3').val('');
+        $('.Text-4').val('');
+        $('.Text-5').val('');
+        $('.Text-6').val('');
+        $('.Text-7').val('');
+        $('.Text-8').val('');
+        $('.Text-9').val('');
+        $('.Text-10').val('');
+        $('.Text-11').val('');
+        $('.Text-12').val('');
+    }
 
 
     function RemoverLinea(button) {
