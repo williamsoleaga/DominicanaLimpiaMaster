@@ -16,6 +16,8 @@
     outline: 0;
 }
 
+
+
 .wizard ul,
 .tabcontrol ul
 {
@@ -50,7 +52,7 @@
     }
    
     .wizard > .content {
-        height: 1150px !important;
+        height: 1550px !important;
     }
 
 }
@@ -167,8 +169,10 @@
     color: #fff;
 }
 
+
+
 .wizard > .content {
-    height: 1254px;
+    height: 1570px;
     background: #eee;
     display: block;
     margin: 0.5em;

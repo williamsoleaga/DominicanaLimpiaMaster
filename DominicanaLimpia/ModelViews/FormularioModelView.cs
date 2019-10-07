@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DominicanaLimpia.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,6 +13,7 @@ namespace DominicanaLimpia.ModelViews
         public int[] Valores { get; set; }
         public List<Preguntas> Preguntas { get; set; }
         public int[] Escuelas13 { get; set; }
+        public List<ObjetivoLista1> ObjetivoLista { get; set; }
 
     }
 }

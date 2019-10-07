@@ -181,6 +181,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ObjetivoLista1.cs" />
     <Compile Include="Models\SessionExpireAttribute.cs" />
     <Compile Include="ModelViews\FormularioModelView.cs" />
     <Compile Include="ModelViews\UsuariosModelView.cs" />

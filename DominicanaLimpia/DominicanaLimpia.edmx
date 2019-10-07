@@ -72,8 +72,6 @@ advertencia 6002: La tabla o vista 'Dominicanalimpia.dbo.Municipios' no tiene de
           <Property Name="MunicipioId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Provincia_Nombre" Type="nchar" MaxLength="50" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'Dominicanalimpia.dbo.Objetivo1' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="Objetivo1">
           <Key>
             <PropertyRef Name="ObjetivoId" />
@@ -131,6 +129,7 @@ advertencia 6002: La tabla o vista 'Dominicanalimpia.dbo.Roles' no tiene definid
         <EntityContainer Name="DominicanalimpiaModelStoreContainer">
           <EntitySet Name="Formulario" EntityType="Self.Formulario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FormularioM" EntityType="Self.FormularioM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Objetivo1" EntityType="Self.Objetivo1" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Preguntas" EntityType="Self.Preguntas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Escuelas" EntityType="Self.Escuelas" store:Type="Tables" store:Schema="dbo">
@@ -145,26 +144,6 @@ advertencia 6002: La tabla o vista 'Dominicanalimpia.dbo.Roles' no tiene definid
     [Municipios].[MunicipioId] AS [MunicipioId], 
     [Municipios].[Provincia_Nombre] AS [Provincia_Nombre]
     FROM [dbo].[Municipios] AS [Municipios]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="Objetivo1" EntityType="Self.Objetivo1" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Objetivo1].[ObjetivoId] AS [ObjetivoId], 
-    [Objetivo1].[FormularioId] AS [FormularioId], 
-    [Objetivo1].[EscuelaId] AS [EscuelaId], 
-    [Objetivo1].[UsuarioId] AS [UsuarioId], 
-    [Objetivo1].[p1] AS [p1], 
-    [Objetivo1].[p2] AS [p2], 
-    [Objetivo1].[p3] AS [p3], 
-    [Objetivo1].[p4] AS [p4], 
-    [Objetivo1].[p5] AS [p5], 
-    [Objetivo1].[p6] AS [p6], 
-    [Objetivo1].[p7] AS [p7], 
-    [Objetivo1].[p8] AS [p8], 
-    [Objetivo1].[p9] AS [p9], 
-    [Objetivo1].[p10] AS [p10], 
-    [Objetivo1].[p11] AS [p11], 
-    [Objetivo1].[p12] AS [p12]
-    FROM [dbo].[Objetivo1] AS [Objetivo1]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="Roles" EntityType="Self.Roles" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
