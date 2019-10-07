@@ -50,12 +50,8 @@ namespace DominicanaLimpia.Controllers
             ViewBag.Municipios = new SelectList(db.Municipios, "MunicipioId", "Provincia_Nombre");
             ViewBag.Responsables = new SelectList(db.Usuarios.Where(x =>x.RolId == 5), "UsuarioId", "Nombre_Completo");
 
-
-
             return View();
         }
-
-
 
 
 

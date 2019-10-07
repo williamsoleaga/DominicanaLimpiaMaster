@@ -1,4 +1,4 @@
-﻿@model IQueryable<DominicanaLimpia.Formulario>
+﻿@model IQueryable<DominicanaLimpia.FormularioM>
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -46,7 +46,7 @@
                     <tr>
                         <td>
                             @{
-            var Nombreusuario = db.Usuarios.Where(x => x.UsuarioId == item.Idusuario).Select(x => x.Nombre_Completo).FirstOrDefault();
+                   var Nombreusuario = db.Usuarios.Where(x => x.UsuarioId == item.UsuarioId).Select(x => x.Nombre_Completo).FirstOrDefault();
                             }
                             @Nombreusuario
                         </td>
@@ -67,7 +67,6 @@
                         <td>
 
                             @Html.ActionLink("Editar", "", new { id = item.FormularioId }, new { @class = "btn btn-primary btn-sm" })
-                            @*@Html.ActionLink("Eliminar", "", new { id = item.FormularioId }, new { @class = "btn btn-primary btn-sm" })*@
 
                         </td>
                     </tr>

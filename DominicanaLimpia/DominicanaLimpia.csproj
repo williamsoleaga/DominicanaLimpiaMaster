@@ -154,6 +154,9 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
+    <Compile Include="DescripcionP.cs">
+      <DependentUpon>Dominicanalimpia.tt</DependentUpon>
+    </Compile>
     <Compile Include="Dominicanalimpia.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

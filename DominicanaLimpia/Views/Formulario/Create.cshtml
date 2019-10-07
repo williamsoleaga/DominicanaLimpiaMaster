@@ -452,76 +452,78 @@
         autoFocus: true,
         onFinishing: function (event, currentIndex) {
 
-            var ObjetivoLista = new Array()
-            var Valores = new Array();
-            var Descripcion = new Array();
-
-            if ($("#grvBeneficiarios")[0].rows.length > 1) {
-              
-
-                $("#grvBeneficiarios TBODY TR").each(function () {
-                   
-                    var row = $(this);
-                    var Contat = {};
-                    Contat.IdEscuela = row.find("TD").eq(0).html();
-                    Contat.escuelanombre = row.find("TD").eq(1).html();
-                    Contat.P1 = row.find("TD").eq(2).html();
-                    Contat.P2 = row.find("TD").eq(3).html();
-                    Contat.P3 = row.find("TD").eq(4).html();
-                    Contat.P4 = row.find("TD").eq(5).html();
-                    Contat.P5 = row.find("TD").eq(6).html();
-                    Contat.P6 = row.find("TD").eq(7).html();
-                    Contat.P7 = row.find("TD").eq(8).html();
-                    Contat.P8 = row.find("TD").eq(9).html();
-                    Contat.P9 = row.find("TD").eq(10).html();
-                    Contat.P10 = row.find("TD").eq(11).html();
-                    Contat.P11 = row.find("TD").eq(12).html();
-                    Contat.P12 = row.find("TD").eq(13).html();
-
-                    ObjetivoLista.push(Contat);
-                });
-            };
-
-            var entidad = $("#Formulario").serializeObject();
-            entidad.ObjetivoLista = ObjetivoLista;
-
-            $("input[name='Valores[]']").map(function () {
-                Valores.push( $(this).val());
-            }).get();
-            entidad.Valores = Valores;
 
 
-            $("textarea[name='Descripcion[]']").map(function () {
-                Descripcion.push($(this).val());
-            }).get();
-            entidad.DescripcionP = Descripcion;
+            if ($('#grvBeneficiarios TBODY tr').length == 0) {
+                alertify.error('NECESITA AGREGAR EN LA TABLA EL OBJETIVO 1 ! ');
+            } else {
 
-            
-           // console.log(entidad);
+                var ObjetivoLista = new Array()
+                var Valores = new Array();
+                var Descripcion = new Array();
+
+                if ($("#grvBeneficiarios")[0].rows.length > 1) {
+                    $("#grvBeneficiarios TBODY TR").each(function () {
+                        var row = $(this);
+                        var Contat = {};
+                        Contat.IdEscuela = row.find("TD").eq(0).html();
+                        Contat.escuelanombre = row.find("TD").eq(1).html();
+                        Contat.P1 = row.find("TD").eq(2).html();
+                        Contat.P2 = row.find("TD").eq(3).html();
+                        Contat.P3 = row.find("TD").eq(4).html();
+                        Contat.P4 = row.find("TD").eq(5).html();
+                        Contat.P5 = row.find("TD").eq(6).html();
+                        Contat.P6 = row.find("TD").eq(7).html();
+                        Contat.P7 = row.find("TD").eq(8).html();
+                        Contat.P8 = row.find("TD").eq(9).html();
+                        Contat.P9 = row.find("TD").eq(10).html();
+                        Contat.P10 = row.find("TD").eq(11).html();
+                        Contat.P11 = row.find("TD").eq(12).html();
+                        Contat.P12 = row.find("TD").eq(13).html();
+
+                        ObjetivoLista.push(Contat);
+                    });
+                };
+
+                var entidad = $("#Formulario").serializeObject();
+                entidad.ObjetivoLista = ObjetivoLista;
+
+                $("input[name='Valores[]']").map(function () {
+                    Valores.push($(this).val());
+                }).get();
+                entidad.Valores = Valores;
 
 
-      var _url = '@Url.Action("GuardarFormulario", "Formulario")';
-
-            $.ajax({
-                type: 'POST',
-                url: _url,
-                data: JSON.stringify({ formulario: entidad }),
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function (data) {
-                    console.log(data);
-                    if (data) {
-                        window.location.href = '/Formulario/Exito/';
-                    } else {
-                        alertify.warning('Error al insertar los valores, contacte a su corrdinador ! ');
-                        return;
+                $("textarea[name='Descripcion[]']").map(function () {
+                    Descripcion.push($(this).val());
+                }).get();
+                entidad.DescripcionP = Descripcion;
+                var _url = '@Url.Action("GuardarFormulario", "Formulario")';
+                $.ajax({
+                    type: 'POST',
+                    url: _url,
+                    data: JSON.stringify({ formulario: entidad }),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        console.log(data);
+                        if (data.error == false) {
+                            window.location.href = '/Formulario/Exito/';
+                        } else {
+                            alertify.warning('Error al insertar los valores, contacte a su corrdinador ! ');
+                            return;
+                        }
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        alertify.warning('Error al soliictar la peticion de guardado! ');
                     }
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-                    alertify.warning('Error al soliictar la peticion de guardado! ');
-                }
-            });
-           // document.getElementById('Formulario').submit();
+                });
+                // document.getElementById('Formulario').submit();
+            }
+
+
+
+
         }
     }).validate({
         errorPlacement: function errorPlacement(error, element) { element.before(error); },

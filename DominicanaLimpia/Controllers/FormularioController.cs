@@ -23,10 +23,10 @@ namespace DominicanaLimpia.Controllers
         public ActionResult Index()
         {
 
-            var distinctClientsPerEvent = db.Formulario.GroupBy(m => m.Desde)
-                                               .Select(x => x.FirstOrDefault());
-            return View(distinctClientsPerEvent);
+            var  distinctClientsPerEvent = db.FormularioM.GroupBy(m => m.Desde)
+                                                               .Select(x => x.FirstOrDefault());
 
+            return View(distinctClientsPerEvent);
         }
 
         // GET: Formulario/Details/5
@@ -149,81 +149,93 @@ namespace DominicanaLimpia.Controllers
             try
             {
 
-                var idnumero = 0;
-                var numeroformulario = db.FormularioM.ToList().LastOrDefault();
+              
 
-                if (numeroformulario == null)
-                {
-                    idnumero = 1;
-                }
-                else
-                {
-                    idnumero = Convert.ToInt32(numeroformulario.NumeroFormulario + 1);
-                }
+                    var idnumero = 0;
+                    var numeroformulario = db.FormularioM.ToList().LastOrDefault();
 
-                Objetivo1 Objetivos = new Objetivo1();
+                    if (numeroformulario == null)
+                    {
+                        idnumero = 1;
+                    }
+                    else
+                    {
+                        idnumero = Convert.ToInt32(numeroformulario.NumeroFormulario + 1);
+                    }
 
-                foreach (var item in formulario.ObjetivoLista)
-                {
-                    Objetivos.FormularioId = idnumero;
-                    Objetivos.EscuelaId = item.IdEscuela;
-                    Objetivos.UsuarioId  = Convert.ToInt16(Session["UsuarioId"].ToString());
-                    Objetivos.p1 = item.P1;
-                    Objetivos.p2 = item.P2;
-                    Objetivos.p3 = item.P3;
-                    Objetivos.p4 = item.P4;
-                    Objetivos.p5 = item.P5;
-                    Objetivos.p6 = item.P6;
-                    Objetivos.p7 = item.P7;
-                    Objetivos.p8 = item.P8;
-                    Objetivos.p9 = item.P9;
-                    Objetivos.p10 = item.P10;
-                    Objetivos.p11 = item.P11;
-                    Objetivos.p12 = item.P12;
+                    Objetivo1 Objetivos = new Objetivo1();
 
-                    db.Objetivo1.Add(Objetivos);
+                    foreach (var item in formulario.ObjetivoLista)
+                    {
+                        Objetivos.FormularioId = idnumero;
+                        Objetivos.EscuelaId = item.IdEscuela;
+                        Objetivos.UsuarioId = Convert.ToInt16(Session["UsuarioId"].ToString());
+                        Objetivos.p1 = item.P1;
+                        Objetivos.p2 = item.P2;
+                        Objetivos.p3 = item.P3;
+                        Objetivos.p4 = item.P4;
+                        Objetivos.p5 = item.P5;
+                        Objetivos.p6 = item.P6;
+                        Objetivos.p7 = item.P7;
+                        Objetivos.p8 = item.P8;
+                        Objetivos.p9 = item.P9;
+                        Objetivos.p10 = item.P10;
+                        Objetivos.p11 = item.P11;
+                        Objetivos.p12 = item.P12;
+
+                        db.Objetivo1.Add(Objetivos);
+                        db.SaveChanges();
+                    }
+
+                    FormularioM nuevoform = new FormularioM();
+                    nuevoform.Desde = Convert.ToDateTime(formulario.DesdeFecha);
+                    nuevoform.Hasta = Convert.ToDateTime(formulario.HastaFecha);
+                    nuevoform.UsuarioId = Convert.ToInt16(Session["UsuarioId"].ToString());
+                    nuevoform.ProvinciaId = formulario.ProvinciaId;
+                    nuevoform.Comentario = formulario.Comentario;
+                    nuevoform.Estatus = "A";
+                    nuevoform.NumeroFormulario = idnumero;
+                    nuevoform.P13 = formulario.Valores[12];
+                    nuevoform.P14 = formulario.Valores[13];
+                    nuevoform.P15 = formulario.Valores[14];
+                    nuevoform.P16 = formulario.Pregunta16;
+                    nuevoform.P17 = formulario.Valores[15];
+                    nuevoform.P18 = formulario.Valores[16];
+                    nuevoform.P19 = formulario.Valores[17];
+                    nuevoform.P20 = formulario.Valores[18];
+                    nuevoform.P21 = formulario.Valores[19];
+                    nuevoform.P22 = formulario.Valores[20];
+                    nuevoform.P23 = formulario.Valores[21];
+                    nuevoform.P24 = formulario.Valores[22];
+                    nuevoform.P25 = formulario.Valores[23];
+                    nuevoform.P26 = formulario.Valores[24];
+                    nuevoform.P27 = formulario.Valores[25];
+                    nuevoform.P28 = formulario.Valores[26];
+                    nuevoform.P29 = formulario.Valores[27];
+                    nuevoform.P30 = formulario.Valores[28];
+                    nuevoform.P31 = formulario.Valores[29];
+                    nuevoform.P32 = formulario.Valores[30];
+                    db.FormularioM.Add(nuevoform);
                     db.SaveChanges();
-                }
 
-                FormularioM nuevoform = new FormularioM();
-                nuevoform.Desde = Convert.ToDateTime(formulario.DesdeFecha);
-                nuevoform.Hasta = Convert.ToDateTime(formulario.HastaFecha);
-                nuevoform.UsuarioId = Convert.ToInt16(Session["UsuarioId"].ToString());
-                nuevoform.ProvinciaId = formulario.ProvinciaId;
-                nuevoform.Comentario = formulario.Comentario;
-                nuevoform.Estatus = "A";
-                nuevoform.NumeroFormulario = idnumero;
-                nuevoform.P13 = formulario.Valores[12];
-                nuevoform.P14 = formulario.Valores[13];
-                nuevoform.P15 = formulario.Valores[14];
-                nuevoform.P16 = formulario.Pregunta16;
-                nuevoform.P17 = formulario.Valores[16];
-                nuevoform.P18 = formulario.Valores[17];
-                nuevoform.P19 = formulario.Valores[18];
-                nuevoform.P20 = formulario.Valores[19];
-                nuevoform.P21 = formulario.Valores[20];
-                nuevoform.P22 = formulario.Valores[21];
-                nuevoform.P23 = formulario.Valores[22];
-                nuevoform.P24 = formulario.Valores[23];
-                nuevoform.P25 = formulario.Valores[24];
-                nuevoform.P26 = formulario.Valores[25];
-                nuevoform.P27 = formulario.Valores[26];
-                nuevoform.P28 = formulario.Valores[27];
-                nuevoform.P29 = formulario.Valores[28];
-                nuevoform.P30 = formulario.Valores[29];
-                nuevoform.P31 = formulario.Valores[30];
-                nuevoform.P32 = formulario.Valores[31];
-                db.FormularioM.Add(nuevoform);
-                db.SaveChanges();
+                    //Agregamos los comentarios de las preguntas
+                    DescripcionP descripciones = new DescripcionP();
+                    descripciones.UsuarioId = Convert.ToInt16(Session["UsuarioId"].ToString());
+                    descripciones.FormularioId = idnumero;
+                    descripciones.Dp18 = formulario.DescripcionP[0].TrimEnd();
+                    descripciones.Dp19 = formulario.DescripcionP[1].TrimEnd();
+                    descripciones.Dp20 = formulario.DescripcionP[2].TrimEnd();
+                    descripciones.Dp27 = formulario.DescripcionP[3].TrimEnd();
+                    descripciones.Dp28 = formulario.DescripcionP[4].TrimEnd();
+                    descripciones.Dp29 = formulario.DescripcionP[5].TrimEnd();
+                    descripciones.Dp30 = formulario.DescripcionP[6].TrimEnd();
+                    descripciones.Dp31 = formulario.DescripcionP[7].TrimEnd();
+                    descripciones.Dp32 = formulario.DescripcionP[8].TrimEnd();
+                    db.DescripcionP.Add(descripciones);
+                    db.SaveChanges();
 
-                //Agregamos los comentarios de las preguntas
-
-
-
-
-
-
-                error = false;
+                    error = false;
+               
             }
             catch (Exception ex)
             {

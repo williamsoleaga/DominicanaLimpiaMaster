@@ -5,6 +5,23 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="DominicanalimpiaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DescripcionP">
+          <Key>
+            <PropertyRef Name="DescripcionId" />
+          </Key>
+          <Property Name="DescripcionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FormularioId" Type="int" />
+          <Property Name="UsuarioId" Type="int" />
+          <Property Name="Dp18" Type="nvarchar(max)" />
+          <Property Name="Dp19" Type="nvarchar(max)" />
+          <Property Name="Dp20" Type="nvarchar(max)" />
+          <Property Name="Dp27" Type="nvarchar(max)" />
+          <Property Name="Dp28" Type="nvarchar(max)" />
+          <Property Name="Dp29" Type="nvarchar(max)" />
+          <Property Name="Dp30" Type="nvarchar(max)" />
+          <Property Name="Dp31" Type="nvarchar(max)" />
+          <Property Name="Dp32" Type="nvarchar(max)" />
+        </EntityType>
         <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'Dominicanalimpia.dbo.Escuelas' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="Escuelas">
@@ -127,6 +144,7 @@ advertencia 6002: La tabla o vista 'Dominicanalimpia.dbo.Roles' no tiene definid
           <Property Name="ResponsableId" Type="int" />
         </EntityType>
         <EntityContainer Name="DominicanalimpiaModelStoreContainer">
+          <EntitySet Name="DescripcionP" EntityType="Self.DescripcionP" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Formulario" EntityType="Self.Formulario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FormularioM" EntityType="Self.FormularioM" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Objetivo1" EntityType="Self.Objetivo1" Schema="dbo" store:Type="Tables" />
@@ -219,6 +237,7 @@ advertencia 6002: La tabla o vista 'Dominicanalimpia.dbo.Roles' no tiene definid
           <EntitySet Name="Escuelas" EntityType="DominicanalimpiaModel.Escuelas" />
           <EntitySet Name="FormularioM" EntityType="DominicanalimpiaModel.FormularioM" />
           <EntitySet Name="Objetivo1" EntityType="DominicanalimpiaModel.Objetivo1" />
+          <EntitySet Name="DescripcionP" EntityType="DominicanalimpiaModel.DescripcionP" />
         </EntityContainer>
         <EntityType Name="Escuelas">
           <Key>
@@ -281,6 +300,23 @@ advertencia 6002: La tabla o vista 'Dominicanalimpia.dbo.Roles' no tiene definid
           <Property Name="p10" Type="Int32" />
           <Property Name="p11" Type="Int32" />
           <Property Name="p12" Type="Int32" />
+        </EntityType>
+        <EntityType Name="DescripcionP">
+          <Key>
+            <PropertyRef Name="DescripcionId" />
+          </Key>
+          <Property Name="DescripcionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FormularioId" Type="Int32" />
+          <Property Name="UsuarioId" Type="Int32" />
+          <Property Name="Dp18" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Dp19" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Dp20" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Dp27" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Dp28" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Dp29" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Dp30" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Dp31" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Dp32" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -408,6 +444,24 @@ advertencia 6002: La tabla o vista 'Dominicanalimpia.dbo.Roles' no tiene definid
                 <ScalarProperty Name="EscuelaId" ColumnName="EscuelaId" />
                 <ScalarProperty Name="FormularioId" ColumnName="FormularioId" />
                 <ScalarProperty Name="ObjetivoId" ColumnName="ObjetivoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DescripcionP">
+            <EntityTypeMapping TypeName="DominicanalimpiaModel.DescripcionP">
+              <MappingFragment StoreEntitySet="DescripcionP">
+                <ScalarProperty Name="Dp32" ColumnName="Dp32" />
+                <ScalarProperty Name="Dp31" ColumnName="Dp31" />
+                <ScalarProperty Name="Dp30" ColumnName="Dp30" />
+                <ScalarProperty Name="Dp29" ColumnName="Dp29" />
+                <ScalarProperty Name="Dp28" ColumnName="Dp28" />
+                <ScalarProperty Name="Dp27" ColumnName="Dp27" />
+                <ScalarProperty Name="Dp20" ColumnName="Dp20" />
+                <ScalarProperty Name="Dp19" ColumnName="Dp19" />
+                <ScalarProperty Name="Dp18" ColumnName="Dp18" />
+                <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+                <ScalarProperty Name="FormularioId" ColumnName="FormularioId" />
+                <ScalarProperty Name="DescripcionId" ColumnName="DescripcionId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
