@@ -30,11 +30,10 @@
 
     <style>
 
-        .map-container {
-            overflow: hidden;
-            padding-bottom: 56.25%;
-            position: relative;
-            height: 0;
+      
+
+        .hidden {
+            display: none !important;
         }
 
             .map-container iframe {
@@ -74,36 +73,41 @@
                             </a>
                         </li>
                         @if (Session["RodId"].ToString() == "1")
-    {
-                    <li class="nav-item ">
-                        <a class="nav-link waves-effect" href="#" onclick="location.href='@Url.Action("Index", "Usuarios")'">
-                            Usuarios
-                        </a>
-                    </li>
-
-                    <li class="nav-item ">
-                        <a class="nav-link waves-effect" href="#">
-                            Reportes
-                        </a>
-                    </li>
-
-}
-
-                    <li class="nav-item ">
-                        @if (Session["RodId"].ToString() == "1")
                         {
-                    <a class="nav-link waves-effect" href="#" onclick="location.href='@Url.Action("Index", "Formulario")'">
-                        Formulario
-                    </a>
+                            <li class="nav-item ">
+                                <a class="nav-link waves-effect" href="#" onclick="location.href='@Url.Action("Index", "Usuarios")'">
+                                    Usuarios
+                                </a>
+                            </li>
                         }
-                        else
+                        <li class="nav-item ">
+                            @if (Session["RodId"].ToString() == "1"  || Session["RodId"].ToString() == "5")
+                            {
+                                <a class="nav-link waves-effect" href="#" onclick="location.href='@Url.Action("Index", "Formulario")'">
+                                    Formulario
+                                </a>
+                            }
+                            else
+                            {
+                                <a class="nav-link waves-effect" href="#" onclick="location.href='@Url.Action("Create", "Formulario")'">
+                                    Formulario
+                                </a>
+                            }
+                        </li>
+                        @if (Session["RodId"].ToString() == "1" || Session["RodId"].ToString() == "5")
                         {
-                    <a class="nav-link waves-effect" href="#" onclick="location.href='@Url.Action("Create", "Formulario")'">
-                        Formulario
-                    </a>
-                        }
+                            <li class="nav-item ">
+                                <a class="nav-link waves-effect" href="#">
+                                    Validación
+                                </a>
+                            </li>
 
-                    </li>
+                            <li class="nav-item ">
+                                <a class="nav-link waves-effect" href="#">
+                                    Reportes
+                                </a>
+                            </li>
+                        }
 
                         <li class="nav-item">
                         </li>
@@ -137,31 +141,37 @@
                 <a href="#" onclick="location.href='@Url.Action("Index", "Home")'" class="list-group-item active waves-effect">
                     <i class="fas fa-chart-pie mr-3"></i>inicio
                 </a>
-
-                @if (Session["RodId"].ToString() == "1")
-    {
-            <a href="#" onclick="location.href='@Url.Action("Index", "Usuarios")'" class="list-group-item list-group-item-action waves-effect">
-                <i class="fas fa-user mr-3"></i>Usuarios
-            </a>
-
-            <a href="#" class="list-group-item list-group-item-action waves-effect">
-                <i class="fas fa-paste mr-3"></i>Reportes
-            </a>
-
-}
-
                 @if (Session["RodId"].ToString() == "1")
                 {
-            <a href="#" class="list-group-item list-group-item-action waves-effect" onclick="location.href='@Url.Action("Index", "Formulario")'">
-                <i class="fas fa-table mr-3"></i>Formulario
-            </a>
+                    <a href="#" onclick="location.href='@Url.Action("Index", "Usuarios")'" class="list-group-item list-group-item-action waves-effect">
+                        <i class="fas fa-user mr-3"></i>Usuarios
+                    </a>
+                }
+                @if (Session["RodId"].ToString() == "1" || Session["RodId"].ToString() == "5")
+                {
+                    <a href="#" class="list-group-item list-group-item-action waves-effect" onclick="location.href='@Url.Action("Index", "Formulario")'">
+                        <i class="fas fa-table mr-3"></i>Formulario
+                    </a>
                 }
                 else
                 {
-            <a href="#" class="list-group-item list-group-item-action waves-effect" onclick="location.href='@Url.Action("Create", "Formulario")'">
-                <i class="fas fa-table mr-3"></i>Formulario
-            </a>
+                    <a href="#" class="list-group-item list-group-item-action waves-effect" onclick="location.href='@Url.Action("Create", "Formulario")'">
+                        <i class="fas fa-table mr-3"></i>Formulario
+                    </a>
                 }
+
+                @if (Session["RodId"].ToString() == "1" || Session["RodId"].ToString() == "5")
+                {
+
+                    <a href="#" class="list-group-item list-group-item-action waves-effect">
+                        <i class="fas fa-check mr-3"></i>Validación
+                    </a>
+
+                    <a href="#" class="list-group-item list-group-item-action waves-effect">
+                        <i class="fas fa-paste mr-3"></i>Reportes
+                    </a>
+                }
+
             </div>
         </div>
         <!-- Sidebar -->
@@ -238,9 +248,9 @@
         //}
 
         //document.getElementById("Municipios__").disabled = true;
-        //$("#Municipios__").select2();
+        $("#Escuelas13__").select2();
 
-
+        //$("#Escuelas13").select2();
         //$("#RolId").change(function () {
         //    if ($("#RolId").val() == 2) {
         //        document.getElementById("Municipios__").disabled = false;

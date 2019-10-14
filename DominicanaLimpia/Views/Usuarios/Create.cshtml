@@ -20,7 +20,6 @@
         <div class="col-md-14 mb-4">
             <div class="card">
                 <div class="card-body">
-
                     <br /><br />
                     <h4>Creación de usuarios</h4>
                     <hr />
@@ -30,7 +29,6 @@
                             <label for="validationDefault01">Nombre completo</label>
                             <input type="text" name="Nombre_Completo" autocomplete="off" class="form-control" id="validationDefault01" required>
                         </div>
-
                         <div class="col-md-4 mb-3">
                             <label for="validationDefaultUsername">Usuario</label>
                             <div class="input-group">
@@ -47,21 +45,23 @@
                             <label for="validationDefault02">Correo</label>
                             <input type="text" name="Correo" autocomplete="off" class="form-control" id="validationDefault02" required>
                         </div>
-
                         <div class="col-md-3 mb-3">
                             <label for="validationDefault04">Rol</label>
                             @Html.DropDownList("RolId", (IEnumerable<SelectListItem>)ViewBag.Accounts, null, new { @class = "form-control" })
                         </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="validationDefault04">Responsable</label>
+                            @Html.DropDownList("ResponsableId", (IEnumerable<SelectListItem>)ViewBag.Responsables, null, new { @class = "form-control" })
+                        </div>
                     </div>
                     <div class="form-group" id="MunicipioDiv">
                         Municipios
-                        @Html.DropDownList("Municipios[]", (IEnumerable<SelectListItem>)ViewBag.Municipios, null, new { @name = "Municipios[]", @multiple = "multiple", @class = "form-control", @required="true" })
+                        @Html.DropDownList("Municipios[]", (IEnumerable<SelectListItem>)ViewBag.Municipios, null, new { @name = "Municipios[]", @multiple = "multiple", @class = "form-control", @required = "true" })
                     </div>
 
                     <div class="text-right">
                         <button class="btn btn-success" type="submit">Agregar</button>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -80,14 +80,17 @@
 
     document.getElementById("Municipios__").disabled = true;
     $("#Municipios__").select2();
+    document.getElementById("ResponsableId").disabled = true;
 
 
     $("#RolId").change(function () {
         if ($("#RolId").val() == 2) {
             document.getElementById("Municipios__").disabled = false;
+            document.getElementById("ResponsableId").disabled = false;
 
         } else {
             document.getElementById("Municipios__").disabled = true;
+            document.getElementById("ResponsableId").disabled = true;
         }
     });
 

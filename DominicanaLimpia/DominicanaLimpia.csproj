@@ -154,6 +154,9 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
+    <Compile Include="DescripcionP.cs">
+      <DependentUpon>Dominicanalimpia.tt</DependentUpon>
+    </Compile>
     <Compile Include="Dominicanalimpia.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -169,14 +172,26 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Dominicanalimpia.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Escuelas.cs">
+      <DependentUpon>Dominicanalimpia.tt</DependentUpon>
+    </Compile>
     <Compile Include="Formulario.cs">
+      <DependentUpon>Dominicanalimpia.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FormularioM.cs">
       <DependentUpon>Dominicanalimpia.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ObjetivoLista1.cs" />
     <Compile Include="Models\SessionExpireAttribute.cs" />
+    <Compile Include="ModelViews\FormularioModelView.cs" />
+    <Compile Include="ModelViews\UsuariosModelView.cs" />
     <Compile Include="Municipios.cs">
+      <DependentUpon>Dominicanalimpia.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Objetivo1.cs">
       <DependentUpon>Dominicanalimpia.tt</DependentUpon>
     </Compile>
     <Compile Include="Preguntas.cs">
@@ -189,6 +204,7 @@
     <Compile Include="Usuarios.cs">
       <DependentUpon>Dominicanalimpia.tt</DependentUpon>
     </Compile>
+    <Compile Include="Utilidades\Combo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />

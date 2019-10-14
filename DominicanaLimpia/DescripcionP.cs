@@ -15,12 +15,32 @@ namespace DominicanaLimpia
 using System;
     using System.Collections.Generic;
     
-public partial class Municipios
+public partial class DescripcionP
 {
 
-    public int MunicipioId { get; set; }
+    public int DescripcionId { get; set; }
 
-    public string Provincia_Nombre { get; set; }
+    public Nullable<int> FormularioId { get; set; }
+
+    public Nullable<int> UsuarioId { get; set; }
+
+    public string Dp18 { get; set; }
+
+    public string Dp19 { get; set; }
+
+    public string Dp20 { get; set; }
+
+    public string Dp27 { get; set; }
+
+    public string Dp28 { get; set; }
+
+    public string Dp29 { get; set; }
+
+    public string Dp30 { get; set; }
+
+    public string Dp31 { get; set; }
+
+    public string Dp32 { get; set; }
 
 }
 

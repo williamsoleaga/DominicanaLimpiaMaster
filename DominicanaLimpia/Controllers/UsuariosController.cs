@@ -8,12 +8,17 @@ using System.Web;
 using System.Web.Mvc;
 using DominicanaLimpia;
 using DominicanaLimpia.Models;
+using DominicanaLimpia.ModelViews;
+using DominicanaLimpia.Utilidades;
 
 namespace DominicanaLimpia.Controllers
 {
     [SessionExpire]
     public class UsuariosController : Controller
     {
+
+        
+
         private DominicanalimpiaEntities2 db = new DominicanalimpiaEntities2();
 
         // GET: Usuarios
@@ -43,15 +48,19 @@ namespace DominicanaLimpia.Controllers
 
             ViewBag.Accounts = new SelectList(db.Roles, "RolId", "Nombre_Rol");
             ViewBag.Municipios = new SelectList(db.Municipios, "MunicipioId", "Provincia_Nombre");
+            ViewBag.Responsables = new SelectList(db.Usuarios.Where(x =>x.RolId == 5), "UsuarioId", "Nombre_Completo");
 
             return View();
         }
+
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Usuarios usuarios)
         {
 
+  
             if (ModelState.IsValid)
             {
                 if(usuarios.RolId == 2)
@@ -61,10 +70,21 @@ namespace DominicanaLimpia.Controllers
                         usuarios.MunicipiosId = usuarios.MunicipiosId + usuarios.Municipios[i].ToString() + ", 0";
                     }
                 }
-                char[] charsToTrim = {' '};
 
+                //si no es corrdinador quitale a los responsables
+                if(usuarios.RolId != 2  )
+                {
+                    usuarios.ResponsableId = 0;
+                }
+
+                char[] charsToTrim = {' '};
                 usuarios.Estatus = "A";
                 usuarios.Usuario = usuarios.Usuario.ToLower();
+
+
+                //var config = new MapperConfiguration(cfg => { cfg.CreateMap<EmployeesViewModel, Employee>(); });
+                //var employee = config.CreateMapper().Map<EmployeesViewModel, Employee>(entity);
+
 
                 db.Usuarios.Add(usuarios);
                 db.SaveChanges();

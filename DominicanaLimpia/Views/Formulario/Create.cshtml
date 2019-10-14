@@ -3,152 +3,432 @@
 @{
     int Contador = 0;
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var nombreR = Session["NombreResponsable"].ToString();
+    int enumeracion = 1;
 }
 
+<!-- JavaScript -->
+<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.11.4/build/alertify.min.js"></script>
+<!-- CSS -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.4/build/css/alertify.min.css" />
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.1/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
 <link href="~/Content/JquerySteep/jquerysteep.css" rel="stylesheet" />
 <script src="~/Content/JquerySteep/jquery.steps.js"></script>
 <script src="~/Content/JquerySteep/jquery.steps.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.1/js/fileinput.min.js"></script>
 
-
-@using (Html.BeginForm("Create", "Formulario", FormMethod.Post , new { id = "Formulario" }))
+@using (Html.BeginForm("Create", "Formulario", FormMethod.Post, new { id = "Formulario" }))
 {
 
-@Html.AntiForgeryToken()
+    @Html.AntiForgeryToken()
 
-<div class="form-horizontal">
-    <br /> <br />
-    <div class="col-md-14 mb-4">
-        <div class="card">
-            <div class="well">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th> <strong>Desde:</strong> <input type="text" class="form-control" name="DesdeFecha" id="DesdeFecha"></th>
+    <div class="form-horizontal">
+        <br /> <br />
+        <div class="col-md-14 mb-4">
+            <div class="card">
+                <div class="well">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th> <strong>Desde:</strong> <input type="text" class="form-control" name="DesdeFecha" id="DesdeFecha"></th>
+                                <th> <strong>Hasta:</strong> <input type="text" class="form-control" name="HastaFecha" id="HastaFecha"></th>
+                                <th><strong>Provincia:</strong>  @Html.DropDownList("ProvinciaId", (IEnumerable<SelectListItem>)ViewBag.Municipios, null, new { @class = "form-control" })   </th>
+                            </tr>
+                            @if (Convert.ToInt16(Session["RodId"]) == 2)
+                            {
+                                <tr>
+                                    <th> <h3> <strong>Responsable de territorio:</strong>  </h3> <h4> @Session["NombreResponsable"].ToString() </h4></th>
+                                </tr>
+                            }
+                        </thead>
+                    </table>
+                </div>
+                <br /><br /><br />
+                <div class="card-body" id="example-basic">
+                    <h3>Objetivo 1</h3>
+                    <section>
+                        @foreach (var item in Model.Preguntas)
+                        {
+                            if (Contador < 12)
+                            {
+                                <div class="form-group">
+                                    <div class="block" style="display: inline-block">
+                                        <strong> @enumeracion - @item.Descripcion</strong>
+                                        <input class="Text-@enumeracion" type="number" name="Valores[]" id="Valores[]" />
 
-                            <th> <strong>Hasta:</strong> <input type="text" class="form-control" name="HastaFecha" id="HastaFecha"></th>
-                        
-                            <th><strong>Provincia:</strong>  @Html.DropDownList("ProvinciaId", (IEnumerable<SelectListItem>)ViewBag.Municipios, null, new { @class = "form-control" })   </th>
-                        </tr>
-                    </thead>
-                </table>
+                                    </div>
+                                    @if (enumeracion == 1)
+                                    {
+                                        <div class="block" style="display: inline-block">
+                                            <br />
+                                             @Html.DropDownList("EscuelaGrid", (IEnumerable<SelectListItem>)ViewBag.EscuelaGrid, null, new { @class = "js-example-placeholder-single js-states form-control" })
+                                            <br />
+                                        </div>
+                                    }
+                                    <hr>
+
+
+                                </div>
+                                if (Contador == 11)
+                                {
+                                    Contador = 0;
+                                    break;
+
+                                }
+                                enumeracion = enumeracion + 1;
+                            }
+                            Contador = Contador + 1;
+
+                        }
+
+                        @*Aqui va la tabla de las escuelas y contenido*@
+
+                        <div class="row">
+                            <div class="col-md-6" style="margin-left: 720px;">
+                                <br />
+                                <button id="btnAgregarBeneficiario" onclick="llamame()" class="btn btn-primary" type="button">Agregar</button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="box-body">
+                                <table id="grvBeneficiarios" name="Beneficiarios" class="table table-bordered table-striped table-condensed" style="width:106%; height:100%">
+                                    <thead>
+                                        <tr style="background-color: #f59034; color:#fff">
+                                            <th data-override="IdBeneficiarios" hidden>EscuelaId</th>
+                                            <th data-override="id_correos_notificaciones">Escuela</th>
+                                            <th data-override="id_correos_notificaciones">P1</th>
+                                            <th data-override="id_correos_notificaciones">P2</th>
+                                            <th data-override="id_correos_notificaciones">P3</th>
+                                            <th data-override="id_correos_notificaciones">P4</th>
+                                            <th data-override="id_correos_notificaciones">P5</th>
+                                            <th data-override="id_correos_notificaciones">P6</th>
+                                            <th data-override="id_correos_notificaciones">P7</th>
+                                            <th data-override="id_correos_notificaciones" hidden>Pregunta 4</th>
+                                            <th data-override="id_correos_notificaciones" hidden>Pregunta 4</th>
+                                            <th data-override="id_correos_notificaciones" hidden>Pregunta 4</th>
+                                            <th data-override="id_correos_notificaciones" hidden>Pregunta 4</th>
+                                            <th data-override="id_correos_notificaciones" hidden>Pregunta 4</th>
+                                            <th style="width: 5px;"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+
+
+
+                    </section>
+                    <h3>Objetivo 2</h3>
+                    <section>
+                        @{
+                            enumeracion = enumeracion + 1;
+                        }
+
+                        @foreach (var item in Model.Preguntas)
+                        {
+
+                            if (Contador >= 12 && Contador < 15)
+                            {
+                                <div class="form-group">
+                                    <div class="block">
+                                        <strong> @enumeracion -  @item.Descripcion</strong>
+                                        <input type="number" name="Valores[]" id="Valores[]" />
+
+                                        @if (enumeracion == 12)
+                                        {
+                                            <br />
+
+                                            @Html.DropDownList("Escuelas13[]", (IEnumerable<SelectListItem>)ViewBag.Escuelas13, null, new { @name = "Escuelas13[]", @multiple = "multiple", @style = "width: 811px;", @class = "form-control", @required = "true" })
+
+                                        }
+                                        <hr>
+                                    </div>
+                                </div>
+                                if (Contador == 14)
+                                {
+                                    Contador = 0;
+                                    break;
+
+                                }
+                                enumeracion = enumeracion + 1;
+                            }
+                            Contador = Contador + 1;
+
+                        }
+                    </section>
+
+                    <h3>Objetivo 3</h3>
+                    <section>
+                        @{
+        enumeracion = enumeracion + 1;
+                        }
+
+                        @foreach (var item in Model.Preguntas)
+                        {
+                            if (Contador >= 15 && Contador < 26)
+                            {
+
+
+                                if (enumeracion == 16)
+                                {
+
+
+                        <div class="form-group">
+                        <div class="block">
+                        <strong>  @enumeracion - @item.Descripcion</strong>
+                           <br />
+                            @Html.DropDownList("Pregunta16", (IEnumerable<SelectListItem>)ViewBag.Pregunta16, null, new { @class = "js-example-placeholder-single js-states form-control" })
+                        <hr>
+                        </div>
+                        </div>
+                                }
+                                else
+                                {
+
+                    <div class="form-group">
+                        <div class="block">
+                            <strong>  @enumeracion - @item.Descripcion</strong>
+                            <input type="number" name="Valores[]" id="Valores[]" />
+
+
+                            @if (enumeracion == 18 || enumeracion == 19 || enumeracion == 20 )
+                            {
+                        <br />
+                        <label for="validationDefault01">Dirección/Descripción</label>
+                        <textarea type="text" name="Descripcion[]" autocomplete="off" class="form-control" id="Descripcion[]">
+                                        </textarea>
+}
+
+
+                            <hr>
+                        </div>
+                    </div>
+                                }
+
+                                if (Contador == 25)
+                                {
+                                    Contador = 0;
+                                    break;
+
+                                }
+                                enumeracion = enumeracion + 1;
+                            }
+                            Contador = Contador + 1;
+                        }
+                    </section>
+                    <h3>Objetivo 4</h3>
+                    <section>
+                        @{
+                            enumeracion = enumeracion + 1;
+                        }
+                        @foreach (var item in Model.Preguntas)
+                        {
+                            if (Contador >= 26 && Contador < 32)
+                            {
+                                <div class="form-group">
+                                    <div class="block">
+                                        <strong> @enumeracion - @item.Descripcion</strong>
+                                        <input type="number" name="Valores[]" id="Valores[]" />
+                                        <br />
+                                        <label for="validationDefault01">Dirección/Descripción</label>
+                                        <textarea type="text" name="Descripcion[]" autocomplete="off" class="form-control" id="Descripcion[]">
+                                        </textarea>
+
+                                        <hr>
+                                    </div>
+                                </div>
+                                if (Contador == 31)
+                                {
+                                    Contador = 0;
+                                    break;
+                                }
+                                enumeracion = enumeracion + 1;
+                            }
+                            Contador = Contador + 1;
+                        }
+                    </section>
+                </div>
+                @*<div class="file-loading">
+                        <input id="input-23" name="input23[]" type="file" multiple>
+                    </div>*@
+
+
+
+
+
+                <div class="form-group">
+                    <strong>Comentario</strong>
+                    <textarea class="form-control" name="Comentario" id="Comentario" rows="7"></textarea>
+                </div>
             </div>
-
-            <br /><br /><br />
-            <div class="card-body" id="example-basic">
-
-                <h3>Pagina</h3>
-                <section>
-                    @foreach (var item in Model.Preguntas)
-                    {
-                        if (Contador < 9)
-                        {
-                            <div class="form-group">
-                                <div class="block">
-                                    <strong>@item.Descripcion</strong>
-                                    <input type="number" name="Valores[]" id="Valores[]" />
-                                    <hr>
-                                </div>
-                            </div>
-                            if (Contador == 8)
-                            {
-                                Contador = 0;
-                                break;
-
-                            }
-                        }
-                        Contador = Contador + 1;
-                    }
-                </section>
-
-
-                <h3>Pagina</h3>
-                <section>
-                    @foreach (var item in Model.Preguntas)
-                    {
-                        if (Contador >= 9 && Contador < 18)
-                        {
-                            <div class="form-group">
-                                <div class="block">
-                                    <strong>@item.Descripcion</strong>
-                                    <input type="number" name="Valores[]" id="Valores[]" />
-                                    <hr>
-                                </div>
-                            </div>
-                            if (Contador == 17)
-                            {
-                                Contador = 0;
-                                break;
-
-                            }
-                        }
-                        Contador = Contador + 1;
-                    }
-                </section>
-
-
-                <h3>Pagina</h3>
-                <section>
-                    @foreach (var item in Model.Preguntas)
-                    {
-                        if (Contador >= 18 && Contador < 27)
-                        {
-                            <div class="form-group">
-                                <div class="block">
-                                    <strong>@item.Descripcion</strong>
-                                    <input type="number" name="Valores[]" id="Valores[]" />
-                                    <hr>
-                                </div>
-                            </div>
-                            if (Contador == 26)
-                            {
-                                Contador = 0;
-                                break;
-
-                            }
-                        }
-                        Contador = Contador + 1;
-                    }
-                </section>
-                <h3>Pagina</h3>
-                <section>
-                    @foreach (var item in Model.Preguntas)
-                    {
-                        if (Contador >= 27 && Contador < 34)
-                        {
-                            <div class="form-group">
-                                <div class="block">
-                                    <strong>@item.Descripcion</strong>
-                                    <input type="number" name="Valores[]" id="Valores[]" />
-                                    <hr>
-                                </div>
-                            </div>
-                            if (Contador == 33)
-                            {
-
-                                Contador = 0;
-                                break;
-                            }
-                        }
-                        Contador = Contador + 1;
-                    }
-                </section>
-            </div>
-            <div class="form-group">
-                <strong>Comentario</strong>
-                <textarea class="form-control" name="Comentario"  id="Comentario" rows="7"></textarea>
-            </div>
-
         </div>
     </div>
-</div>
 
 }
 
 
 <script type="text/javascript">
+    $(document).ready(function () {
+        //$("#input-23").fileinput({
+        //    showUpload: false,
+        //    layoutTemplates: {
+        //        main1: "{preview}\n" +
+        //            "<div class=\'input-group {class}\'>\n" +
+        //            "   <div class=\'input-group-btn\ input-group-prepend'>\n" +
+        //            "       {browse}\n" +
+        //            "       {upload}\n" +
+        //            "       {remove}\n" +
+        //            "   </div>\n" +
+        //            "   {caption}\n" +
+        //            "</div>"
+        //    }
+        //});
+    });
+
+    $.fn.serializeObject = function () {
+        var o = {};
+        this.find("[name]").each(function () {
+            o[this.name] = this.value;
+        });
+        return o;
+    };
+
+
+
+    function llamame() {
+
+
+
+
+        var P1 = $('.Text-1').val(), P2 = $('.Text-2').val(), P3 = $('.Text-3').val(), P4 = $('.Text-4').val(), P5 = $('.Text-5').val(),
+            P6 = $('.Text-6').val(), P7 = $('.Text-7').val(), P8 = $('.Text-8').val(), P9 = $('.Text-9').val(), P10 = $('.Text-10').val(),
+            P11 = $('.Text-11').val(), P12 = $('.Text-12').val(),
+            EscuelaText = $('#EscuelaGrid :selected').text(), idescuela = $('#EscuelaGrid :selected').val();
+
+        if (P1 == "") {
+            alertify.warning('El numero de  escuelas es necesario! Pregunta 1 ');
+            return;
+        }
+
+        if (P2 == "") {
+            alertify.warning('El numero de Pregunta 2  es necesario! ');
+            return;
+        }
+        if (P3 == "") {
+            alertify.warning('El numero de Pregunta 3  es necesario! ');
+            return;
+        }
+        if (P4 == "") {
+            alertify.warning('El numero de Pregunta 4  es necesario! ');
+            return;
+        }
+        if (P5 == "") {
+            alertify.warning('El numero de Pregunta 5  es necesario! ');
+            return;
+        }
+        if (P6 == "") {
+            alertify.warning('El numero de Pregunta 6  es necesario! ');
+            return;
+        }
+        if (P7 == "") {
+            alertify.warning('El numero de Pregunta 7  es necesario! ');
+            return;
+        }
+        if (P8 == "") {
+            alertify.warning('El numero de Pregunta 8  es necesario! ');
+            return;
+        }
+        if (P9 == "") {
+            alertify.warning('El numero de Pregunta 9 es necesario! ');
+            return;
+        }
+
+        if (P10 == "") {
+            alertify.warning('El numero de Pregunta 10  es necesario! ');
+            return;
+        }
+        if (P11 == "") {
+            alertify.warning('El numero de Pregunta 11  es necesario! ');
+            return;
+        }
+        if (P12 == "") {
+            alertify.warning('El numero de Pregunta 12  es necesario!');
+            return;
+        }
+
+
+        var secuenciaNueva = $('#grvBeneficiarios TBODY tr').length;
+
+
+        var secuenciaNueva = $('#grvBeneficiarios TBODY tr').length + 1;
+        var tBody = $("#grvBeneficiarios > TBODY")[0], row = tBody.insertRow(-1), cell = $(row.insertCell(-1));
+
+        cell.html(idescuela).addClass("hidden");
+        cell = $(row.insertCell(-1));
+
+
+        cell.html(EscuelaText);
+        cell = $(row.insertCell(-1));
+
+
+        cell.html(P1);
+        cell = $(row.insertCell(-1));
+
+        cell.html(P2);
+        cell = $(row.insertCell(-1));
+
+
+        cell.html(P3);
+        cell = $(row.insertCell(-1));
+
+
+        cell.html(P4);
+        cell = $(row.insertCell(-1));
+
+
+        cell.html(P5);
+        cell = $(row.insertCell(-1));
+
+        cell.html(P6);
+        cell = $(row.insertCell(-1));
+
+
+        cell.html(P7);
+        cell = $(row.insertCell(-1));
+
+        cell.html(P8).addClass("hidden");
+        cell = $(row.insertCell(-1));
+
+        cell.html(P9).addClass("hidden");
+        cell = $(row.insertCell(-1));
+
+        cell.html(P10).addClass("hidden");
+        cell = $(row.insertCell(-1));
+
+        cell.html(P11).addClass("hidden");
+        cell = $(row.insertCell(-1));
+
+        cell.html(P12).addClass("hidden");
+        cell = $(row.insertCell(-1));
+
+
+
+        var btn2 = $("<button />");
+        btn2.attr("type", "button");
+        btn2.attr("onclick", "RemoverLinea(this);");
+        btn2.attr("data-original-title", "Eliminar");
+        btn2.attr("data-toggle", "tooltip");
+        btn2.attr("data-widget", "remove");
+        btn2.attr("title", "");
+        btn2.append("<i class='fa fa-times'></i>");
+        cell.append(btn2);
+        Limpiar();
+
+    }
 
 
     $("#DesdeFecha").datepicker({
@@ -157,12 +437,12 @@
         format: 'dd/mm/yyyy'
     }).datepicker('update', new Date());
 
-
     $("#HastaFecha").datepicker({
         autoclose: true,
         todayHighlight: true,
         format: 'dd/mm/yyyy'
     }).datepicker('update', new Date());
+
 
 
     $("#example-basic").steps({
@@ -172,29 +452,77 @@
         autoFocus: true,
         onFinishing: function (event, currentIndex) {
 
-           document.getElementById('Formulario').submit();
 
-            @*$.ajax({
-                type: 'POST',
-                url: '@Url.Action("Create", "Formulario")',
-                data: JSON.stringify({
-                    modelo: entidad
-                }),
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function (data) {
-                    if (data.data == true) {
-                        swal({ title: 'Aviso', text: 'exito', type: 'success', confirmButtonText: 'Aceptar', showLoaderOnConfirm: false });
 
-                    } else {
-                        swal({ title: 'Aviso', text: 'exito', type: 'success', confirmButtonText: 'Aceptar', showLoaderOnConfirm: false });
+            if ($('#grvBeneficiarios TBODY tr').length == 0) {
+                alertify.error('NECESITA AGREGAR EN LA TABLA EL OBJETIVO 1 ! ');
+            } else {
+
+                var ObjetivoLista = new Array()
+                var Valores = new Array();
+                var Descripcion = new Array();
+
+                if ($("#grvBeneficiarios")[0].rows.length > 1) {
+                    $("#grvBeneficiarios TBODY TR").each(function () {
+                        var row = $(this);
+                        var Contat = {};
+                        Contat.IdEscuela = row.find("TD").eq(0).html();
+                        Contat.escuelanombre = row.find("TD").eq(1).html();
+                        Contat.P1 = row.find("TD").eq(2).html();
+                        Contat.P2 = row.find("TD").eq(3).html();
+                        Contat.P3 = row.find("TD").eq(4).html();
+                        Contat.P4 = row.find("TD").eq(5).html();
+                        Contat.P5 = row.find("TD").eq(6).html();
+                        Contat.P6 = row.find("TD").eq(7).html();
+                        Contat.P7 = row.find("TD").eq(8).html();
+                        Contat.P8 = row.find("TD").eq(9).html();
+                        Contat.P9 = row.find("TD").eq(10).html();
+                        Contat.P10 = row.find("TD").eq(11).html();
+                        Contat.P11 = row.find("TD").eq(12).html();
+                        Contat.P12 = row.find("TD").eq(13).html();
+
+                        ObjetivoLista.push(Contat);
+                    });
+                };
+
+                var entidad = $("#Formulario").serializeObject();
+                entidad.ObjetivoLista = ObjetivoLista;
+
+                $("input[name='Valores[]']").map(function () {
+                    Valores.push($(this).val());
+                }).get();
+                entidad.Valores = Valores;
+
+
+                $("textarea[name='Descripcion[]']").map(function () {
+                    Descripcion.push($(this).val());
+                }).get();
+                entidad.DescripcionP = Descripcion;
+                var _url = '@Url.Action("GuardarFormulario", "Formulario")';
+                $.ajax({
+                    type: 'POST',
+                    url: _url,
+                    data: JSON.stringify({ formulario: entidad }),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        console.log(data);
+                        if (data.error == false) {
+                            window.location.href = '/Formulario/Exito/';
+                        } else {
+                            alertify.warning('Error al insertar los valores, contacte a su corrdinador ! ');
+                            return;
+                        }
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        alertify.warning('Error al soliictar la peticion de guardado! ');
                     }
+                });
+                // document.getElementById('Formulario').submit();
+            }
 
-                },
-                error: function (XMLHttpRequest, textStatus, errorThrown) {
-                    swal({ title: 'Error', html: XMLHttpRequest.responseText, type: 'error', confirmButtonText: 'Aceptar', showLoaderOnConfirm: false });
-                }
-            });*@
+
+
 
         }
     }).validate({
@@ -205,6 +533,39 @@
             }
         }
     });
+    
+
+
+    function Limpiar() {
+    //$("#cboParentescoCombo").val('0').change();
+        $('.Text-1').val('');
+        $('.Text-2').val('');
+        $('.Text-3').val('');
+        $('.Text-4').val('');
+        $('.Text-5').val('');
+        $('.Text-6').val('');
+        $('.Text-7').val('');
+        $('.Text-8').val('');
+        $('.Text-9').val('');
+        $('.Text-10').val('');
+        $('.Text-11').val('');
+        $('.Text-12').val('');
+    }
+
+
+    function RemoverLinea(button) {
+        var table = $(button).closest("table");
+        var row = $(button).closest("TR");
+        table[0].deleteRow(row[0].rowIndex);
+    }
+
+
+
+    //Agregar botonnes
+    //$("body").on("click", "#btnAgregarBeneficiario", function (e) {
+
+
+
 
 </script>
 
