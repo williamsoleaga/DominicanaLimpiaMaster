@@ -1,0 +1,79 @@
+﻿@model IQueryable<DominicanaLimpia.FormularioM>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    DominicanalimpiaEntities2 db = new DominicanalimpiaEntities2();
+}
+<br />
+<br />
+<div class="col-md-14 mb-4">
+    <div class="card">
+        <div class="card-body">
+
+            <h4> <strong>  Listado de formularios creados   </strong></h4>
+            <hr />
+            <p>
+                @if (Session["RodId"].ToString() != "1")
+                {
+            <div class="text-right">
+                <input value="Crear formulario" class="btn btn-primary" onclick="location.href='@Url.Action("Create", "Formulario")'" />
+            </div>
+                }
+
+            </p>
+            <table class="table table-hover" id="dtBasicExample">
+                <thead  class="blue lighten-4">
+                    <tr>
+                        <th>
+                            Usuario
+                        </th>
+                        <th>
+                            Municipio
+                        </th>
+                        <th>
+                            Fecha desde
+                        </th>
+                        <th>
+                            Fecha Hasta
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+        {
+                    <tr>
+                        <td>
+                            @{
+                   var Nombreusuario = db.Usuarios.Where(x => x.UsuarioId == item.UsuarioId).Select(x => x.Nombre_Completo).FirstOrDefault();
+                            }
+                            @Nombreusuario
+                        </td>
+
+                        <td>
+                            @{
+                   var Minucipio = db.Municipios.Where(x => x.MunicipioId == item.ProvinciaId).Select(x => x.Provincia_Nombre).FirstOrDefault();
+                            }
+                            @Minucipio
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Desde)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Hasta)
+                        </td>
+                        <td>
+
+                            @Html.ActionLink("Editar", "", new { id = item.FormularioId }, new { @class = "btn btn-primary btn-sm" })
+
+                        </td>
+                    </tr>
+}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

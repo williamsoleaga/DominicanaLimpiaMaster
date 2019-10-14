@@ -1,0 +1,491 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DominicanalimpiaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DescripcionP">
+          <Key>
+            <PropertyRef Name="DescripcionId" />
+          </Key>
+          <Property Name="DescripcionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FormularioId" Type="int" />
+          <Property Name="UsuarioId" Type="int" />
+          <Property Name="Dp18" Type="nvarchar(max)" />
+          <Property Name="Dp19" Type="nvarchar(max)" />
+          <Property Name="Dp20" Type="nvarchar(max)" />
+          <Property Name="Dp27" Type="nvarchar(max)" />
+          <Property Name="Dp28" Type="nvarchar(max)" />
+          <Property Name="Dp29" Type="nvarchar(max)" />
+          <Property Name="Dp30" Type="nvarchar(max)" />
+          <Property Name="Dp31" Type="nvarchar(max)" />
+          <Property Name="Dp32" Type="nvarchar(max)" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Dominicanalimpia.dbo.Escuelas' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="Escuelas">
+          <Key>
+            <PropertyRef Name="EscuelaId" />
+          </Key>
+          <Property Name="EscuelaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MunicipioId" Type="int" />
+          <Property Name="Descripcion" Type="nchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="Formulario">
+          <Key>
+            <PropertyRef Name="FormularioId" />
+          </Key>
+          <Property Name="FormularioId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PreguntaId" Type="int" />
+          <Property Name="Valor" Type="int" />
+          <Property Name="Desde" Type="date" />
+          <Property Name="Hasta" Type="date" />
+          <Property Name="Comentario" Type="nchar" MaxLength="150" />
+          <Property Name="Idusuario" Type="int" />
+          <Property Name="Estatus" Type="nchar" MaxLength="1" />
+          <Property Name="ProvinciaId" Type="int" />
+          <Property Name="NumeroFormulario" Type="int" />
+        </EntityType>
+        <EntityType Name="FormularioM">
+          <Key>
+            <PropertyRef Name="FormularioId" />
+          </Key>
+          <Property Name="FormularioId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Desde" Type="date" />
+          <Property Name="Hasta" Type="date" />
+          <Property Name="UsuarioId" Type="int" />
+          <Property Name="ProvinciaId" Type="int" />
+          <Property Name="NumeroFormulario" Type="int" />
+          <Property Name="Estatus" Type="nchar" MaxLength="5" />
+          <Property Name="Comentario" Type="nchar" MaxLength="250" />
+          <Property Name="P13" Type="int" />
+          <Property Name="P14" Type="int" />
+          <Property Name="P15" Type="int" />
+          <Property Name="P16" Type="int" />
+          <Property Name="P17" Type="int" />
+          <Property Name="P18" Type="int" />
+          <Property Name="P19" Type="int" />
+          <Property Name="P20" Type="int" />
+          <Property Name="P21" Type="int" />
+          <Property Name="P22" Type="int" />
+          <Property Name="P23" Type="int" />
+          <Property Name="P24" Type="int" />
+          <Property Name="P25" Type="int" />
+          <Property Name="P26" Type="int" />
+          <Property Name="P27" Type="int" />
+          <Property Name="P28" Type="int" />
+          <Property Name="P29" Type="int" />
+          <Property Name="P30" Type="int" />
+          <Property Name="P31" Type="int" />
+          <Property Name="P32" Type="int" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Dominicanalimpia.dbo.Municipios' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="Municipios">
+          <Key>
+            <PropertyRef Name="MunicipioId" />
+          </Key>
+          <Property Name="MunicipioId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Provincia_Nombre" Type="nchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Objetivo1">
+          <Key>
+            <PropertyRef Name="ObjetivoId" />
+          </Key>
+          <Property Name="ObjetivoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FormularioId" Type="int" />
+          <Property Name="EscuelaId" Type="int" />
+          <Property Name="UsuarioId" Type="int" />
+          <Property Name="p1" Type="int" />
+          <Property Name="p2" Type="int" />
+          <Property Name="p3" Type="int" />
+          <Property Name="p4" Type="int" />
+          <Property Name="p5" Type="int" />
+          <Property Name="p6" Type="int" />
+          <Property Name="p7" Type="int" />
+          <Property Name="p8" Type="int" />
+          <Property Name="p9" Type="int" />
+          <Property Name="p10" Type="int" />
+          <Property Name="p11" Type="int" />
+          <Property Name="p12" Type="int" />
+        </EntityType>
+        <EntityType Name="Preguntas">
+          <Key>
+            <PropertyRef Name="PreguntaId" />
+          </Key>
+          <Property Name="PreguntaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="nchar" MaxLength="160" />
+          <Property Name="Estatus" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Dominicanalimpia.dbo.Roles' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="RolId" />
+          </Key>
+          <Property Name="RolId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre_Rol" Type="nchar" MaxLength="50" />
+          <Property Name="Estatus" Type="nchar" MaxLength="3" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="UsuarioId" />
+          </Key>
+          <Property Name="UsuarioId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Usuario" Type="nchar" MaxLength="50" />
+          <Property Name="Clave" Type="nchar" MaxLength="100" />
+          <Property Name="Nombre_Completo" Type="nchar" MaxLength="60" />
+          <Property Name="Correo" Type="nchar" MaxLength="35" />
+          <Property Name="RolId" Type="int" />
+          <Property Name="Estatus" Type="nchar" MaxLength="2" />
+          <Property Name="MunicipioId" Type="int" />
+          <Property Name="MunicipiosId" Type="nchar" MaxLength="70" />
+          <Property Name="ResponsableId" Type="int" />
+        </EntityType>
+        <EntityContainer Name="DominicanalimpiaModelStoreContainer">
+          <EntitySet Name="DescripcionP" EntityType="Self.DescripcionP" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Formulario" EntityType="Self.Formulario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FormularioM" EntityType="Self.FormularioM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Objetivo1" EntityType="Self.Objetivo1" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Preguntas" EntityType="Self.Preguntas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Escuelas" EntityType="Self.Escuelas" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Escuelas].[EscuelaId] AS [EscuelaId], 
+    [Escuelas].[MunicipioId] AS [MunicipioId], 
+    [Escuelas].[Descripcion] AS [Descripcion]
+    FROM [dbo].[Escuelas] AS [Escuelas]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Municipios" EntityType="Self.Municipios" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Municipios].[MunicipioId] AS [MunicipioId], 
+    [Municipios].[Provincia_Nombre] AS [Provincia_Nombre]
+    FROM [dbo].[Municipios] AS [Municipios]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Roles" EntityType="Self.Roles" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Roles].[RolId] AS [RolId], 
+    [Roles].[Nombre_Rol] AS [Nombre_Rol], 
+    [Roles].[Estatus] AS [Estatus]
+    FROM [dbo].[Roles] AS [Roles]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DominicanalimpiaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Formulario">
+          <Key>
+            <PropertyRef Name="FormularioId" />
+          </Key>
+          <Property Name="FormularioId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PreguntaId" Type="Int32" />
+          <Property Name="Valor" Type="Int32" />
+          <Property Name="Desde" Type="DateTime" Precision="0" />
+          <Property Name="Hasta" Type="DateTime" Precision="0" />
+          <Property Name="Comentario" Type="String" MaxLength="150" FixedLength="true" Unicode="true" />
+          <Property Name="Idusuario" Type="Int32" />
+          <Property Name="Estatus" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="ProvinciaId" Type="Int32" />
+          <Property Name="NumeroFormulario" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Preguntas">
+          <Key>
+            <PropertyRef Name="PreguntaId" />
+          </Key>
+          <Property Name="PreguntaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="160" FixedLength="true" Unicode="true" />
+          <Property Name="Estatus" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="UsuarioId" />
+          </Key>
+          <Property Name="UsuarioId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Usuario" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Clave" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="Nombre_Completo" Type="String" MaxLength="60" FixedLength="true" Unicode="true" />
+          <Property Name="Correo" Type="String" MaxLength="35" FixedLength="true" Unicode="true" />
+          <Property Name="RolId" Type="Int32" />
+          <Property Name="Estatus" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+          <Property Name="MunicipioId" Type="Int32" />
+          <Property Name="MunicipiosId" Type="String" MaxLength="70" FixedLength="true" Unicode="true" />
+          <Property Name="ResponsableId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Municipios">
+          <Key>
+            <PropertyRef Name="MunicipioId" />
+          </Key>
+          <Property Name="MunicipioId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Provincia_Nombre" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="RolId" />
+          </Key>
+          <Property Name="RolId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre_Rol" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Estatus" Type="String" MaxLength="3" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="DominicanalimpiaEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Formulario" EntityType="Self.Formulario" />
+          <EntitySet Name="Preguntas" EntityType="Self.Preguntas" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
+          <EntitySet Name="Municipios" EntityType="Self.Municipios" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" />
+          <EntitySet Name="Escuelas" EntityType="DominicanalimpiaModel.Escuelas" />
+          <EntitySet Name="FormularioM" EntityType="DominicanalimpiaModel.FormularioM" />
+          <EntitySet Name="Objetivo1" EntityType="DominicanalimpiaModel.Objetivo1" />
+          <EntitySet Name="DescripcionP" EntityType="DominicanalimpiaModel.DescripcionP" />
+        </EntityContainer>
+        <EntityType Name="Escuelas">
+          <Key>
+            <PropertyRef Name="EscuelaId" />
+          </Key>
+          <Property Name="EscuelaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MunicipioId" Type="Int32" />
+          <Property Name="Descripcion" Type="String" MaxLength="150" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="FormularioM">
+          <Key>
+            <PropertyRef Name="FormularioId" />
+          </Key>
+          <Property Name="FormularioId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Desde" Type="DateTime" Precision="0" />
+          <Property Name="Hasta" Type="DateTime" Precision="0" />
+          <Property Name="UsuarioId" Type="Int32" />
+          <Property Name="ProvinciaId" Type="Int32" />
+          <Property Name="NumeroFormulario" Type="Int32" />
+          <Property Name="Estatus" Type="String" MaxLength="5" FixedLength="true" Unicode="true" />
+          <Property Name="Comentario" Type="String" MaxLength="250" FixedLength="true" Unicode="true" />
+          <Property Name="P13" Type="Int32" />
+          <Property Name="P14" Type="Int32" />
+          <Property Name="P15" Type="Int32" />
+          <Property Name="P16" Type="Int32" />
+          <Property Name="P17" Type="Int32" />
+          <Property Name="P18" Type="Int32" />
+          <Property Name="P19" Type="Int32" />
+          <Property Name="P20" Type="Int32" />
+          <Property Name="P21" Type="Int32" />
+          <Property Name="P22" Type="Int32" />
+          <Property Name="P23" Type="Int32" />
+          <Property Name="P24" Type="Int32" />
+          <Property Name="P25" Type="Int32" />
+          <Property Name="P26" Type="Int32" />
+          <Property Name="P27" Type="Int32" />
+          <Property Name="P28" Type="Int32" />
+          <Property Name="P29" Type="Int32" />
+          <Property Name="P30" Type="Int32" />
+          <Property Name="P31" Type="Int32" />
+          <Property Name="P32" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Objetivo1">
+          <Key>
+            <PropertyRef Name="ObjetivoId" />
+          </Key>
+          <Property Name="ObjetivoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FormularioId" Type="Int32" />
+          <Property Name="EscuelaId" Type="Int32" />
+          <Property Name="UsuarioId" Type="Int32" />
+          <Property Name="p1" Type="Int32" />
+          <Property Name="p2" Type="Int32" />
+          <Property Name="p3" Type="Int32" />
+          <Property Name="p4" Type="Int32" />
+          <Property Name="p5" Type="Int32" />
+          <Property Name="p6" Type="Int32" />
+          <Property Name="p7" Type="Int32" />
+          <Property Name="p8" Type="Int32" />
+          <Property Name="p9" Type="Int32" />
+          <Property Name="p10" Type="Int32" />
+          <Property Name="p11" Type="Int32" />
+          <Property Name="p12" Type="Int32" />
+        </EntityType>
+        <EntityType Name="DescripcionP">
+          <Key>
+            <PropertyRef Name="DescripcionId" />
+          </Key>
+          <Property Name="DescripcionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FormularioId" Type="Int32" />
+          <Property Name="UsuarioId" Type="Int32" />
+          <Property Name="Dp18" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Dp19" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Dp20" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Dp27" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Dp28" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Dp29" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Dp30" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Dp31" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Dp32" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DominicanalimpiaModelStoreContainer" CdmEntityContainer="DominicanalimpiaEntities2">
+          <EntitySetMapping Name="Formulario">
+            <EntityTypeMapping TypeName="DominicanalimpiaModel.Formulario">
+              <MappingFragment StoreEntitySet="Formulario">
+                <ScalarProperty Name="NumeroFormulario" ColumnName="NumeroFormulario" />
+                <ScalarProperty Name="FormularioId" ColumnName="FormularioId" />
+                <ScalarProperty Name="PreguntaId" ColumnName="PreguntaId" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="Desde" ColumnName="Desde" />
+                <ScalarProperty Name="Hasta" ColumnName="Hasta" />
+                <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+                <ScalarProperty Name="Idusuario" ColumnName="Idusuario" />
+                <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+                <ScalarProperty Name="ProvinciaId" ColumnName="ProvinciaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Preguntas">
+            <EntityTypeMapping TypeName="DominicanalimpiaModel.Preguntas">
+              <MappingFragment StoreEntitySet="Preguntas">
+                <ScalarProperty Name="PreguntaId" ColumnName="PreguntaId" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="DominicanalimpiaModel.Usuarios">
+              <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="ResponsableId" ColumnName="ResponsableId" />
+                <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+                <ScalarProperty Name="Nombre_Completo" ColumnName="Nombre_Completo" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="RolId" ColumnName="RolId" />
+                <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+                <ScalarProperty Name="MunicipioId" ColumnName="MunicipioId" />
+                <ScalarProperty Name="MunicipiosId" ColumnName="MunicipiosId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Municipios">
+            <EntityTypeMapping TypeName="DominicanalimpiaModel.Municipios">
+              <MappingFragment StoreEntitySet="Municipios">
+                <ScalarProperty Name="MunicipioId" ColumnName="MunicipioId" />
+                <ScalarProperty Name="Provincia_Nombre" ColumnName="Provincia_Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="DominicanalimpiaModel.Roles">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="RolId" ColumnName="RolId" />
+                <ScalarProperty Name="Nombre_Rol" ColumnName="Nombre_Rol" />
+                <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Escuelas">
+            <EntityTypeMapping TypeName="DominicanalimpiaModel.Escuelas">
+              <MappingFragment StoreEntitySet="Escuelas">
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="MunicipioId" ColumnName="MunicipioId" />
+                <ScalarProperty Name="EscuelaId" ColumnName="EscuelaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FormularioM">
+            <EntityTypeMapping TypeName="DominicanalimpiaModel.FormularioM">
+              <MappingFragment StoreEntitySet="FormularioM">
+                <ScalarProperty Name="P32" ColumnName="P32" />
+                <ScalarProperty Name="P31" ColumnName="P31" />
+                <ScalarProperty Name="P30" ColumnName="P30" />
+                <ScalarProperty Name="P29" ColumnName="P29" />
+                <ScalarProperty Name="P28" ColumnName="P28" />
+                <ScalarProperty Name="P27" ColumnName="P27" />
+                <ScalarProperty Name="P26" ColumnName="P26" />
+                <ScalarProperty Name="P25" ColumnName="P25" />
+                <ScalarProperty Name="P24" ColumnName="P24" />
+                <ScalarProperty Name="P23" ColumnName="P23" />
+                <ScalarProperty Name="P22" ColumnName="P22" />
+                <ScalarProperty Name="P21" ColumnName="P21" />
+                <ScalarProperty Name="P20" ColumnName="P20" />
+                <ScalarProperty Name="P19" ColumnName="P19" />
+                <ScalarProperty Name="P18" ColumnName="P18" />
+                <ScalarProperty Name="P17" ColumnName="P17" />
+                <ScalarProperty Name="P16" ColumnName="P16" />
+                <ScalarProperty Name="P15" ColumnName="P15" />
+                <ScalarProperty Name="P14" ColumnName="P14" />
+                <ScalarProperty Name="P13" ColumnName="P13" />
+                <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+                <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+                <ScalarProperty Name="NumeroFormulario" ColumnName="NumeroFormulario" />
+                <ScalarProperty Name="ProvinciaId" ColumnName="ProvinciaId" />
+                <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+                <ScalarProperty Name="Hasta" ColumnName="Hasta" />
+                <ScalarProperty Name="Desde" ColumnName="Desde" />
+                <ScalarProperty Name="FormularioId" ColumnName="FormularioId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Objetivo1">
+            <EntityTypeMapping TypeName="DominicanalimpiaModel.Objetivo1">
+              <MappingFragment StoreEntitySet="Objetivo1">
+                <ScalarProperty Name="p12" ColumnName="p12" />
+                <ScalarProperty Name="p11" ColumnName="p11" />
+                <ScalarProperty Name="p10" ColumnName="p10" />
+                <ScalarProperty Name="p9" ColumnName="p9" />
+                <ScalarProperty Name="p8" ColumnName="p8" />
+                <ScalarProperty Name="p7" ColumnName="p7" />
+                <ScalarProperty Name="p6" ColumnName="p6" />
+                <ScalarProperty Name="p5" ColumnName="p5" />
+                <ScalarProperty Name="p4" ColumnName="p4" />
+                <ScalarProperty Name="p3" ColumnName="p3" />
+                <ScalarProperty Name="p2" ColumnName="p2" />
+                <ScalarProperty Name="p1" ColumnName="p1" />
+                <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+                <ScalarProperty Name="EscuelaId" ColumnName="EscuelaId" />
+                <ScalarProperty Name="FormularioId" ColumnName="FormularioId" />
+                <ScalarProperty Name="ObjetivoId" ColumnName="ObjetivoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DescripcionP">
+            <EntityTypeMapping TypeName="DominicanalimpiaModel.DescripcionP">
+              <MappingFragment StoreEntitySet="DescripcionP">
+                <ScalarProperty Name="Dp32" ColumnName="Dp32" />
+                <ScalarProperty Name="Dp31" ColumnName="Dp31" />
+                <ScalarProperty Name="Dp30" ColumnName="Dp30" />
+                <ScalarProperty Name="Dp29" ColumnName="Dp29" />
+                <ScalarProperty Name="Dp28" ColumnName="Dp28" />
+                <ScalarProperty Name="Dp27" ColumnName="Dp27" />
+                <ScalarProperty Name="Dp20" ColumnName="Dp20" />
+                <ScalarProperty Name="Dp19" ColumnName="Dp19" />
+                <ScalarProperty Name="Dp18" ColumnName="Dp18" />
+                <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+                <ScalarProperty Name="FormularioId" ColumnName="FormularioId" />
+                <ScalarProperty Name="DescripcionId" ColumnName="DescripcionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

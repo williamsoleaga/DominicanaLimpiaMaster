@@ -1,0 +1,75 @@
+﻿@model DominicanaLimpia.Formulario
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Formulario</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PreguntaId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PreguntaId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Valor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Valor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Desde)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Desde)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hasta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hasta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comentario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comentario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Idusuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Idusuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estatus)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.FormularioId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

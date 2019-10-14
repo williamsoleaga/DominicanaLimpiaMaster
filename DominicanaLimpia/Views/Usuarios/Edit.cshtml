@@ -1,0 +1,95 @@
+﻿@model DominicanaLimpia.Usuarios
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    DominicanalimpiaEntities2 db = new DominicanalimpiaEntities2();
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+
+        <br /><br />
+        <div class="col-md-14 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <br /><br />
+                    <h4>Editar usuario</h4>
+                    @Html.HiddenFor(model => model.UsuarioId)
+                    @Html.HiddenFor(model => model.Estatus)
+                    @Html.HiddenFor(model => model.RolId)
+                    @Html.HiddenFor(model => model.ResponsableId)
+                    <hr />
+                    <br /><br />
+                    <div class="form-row">
+                        <div class="col-md-4 mb-3">
+                            <label for="validationDefault01">Nombre completo</label>
+                            @Html.EditorFor(model => model.Nombre_Completo, new { htmlAttributes = new { @class = "form-control", @required = "true" } })
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="validationDefaultUsername">Usuario</label>
+                            <div class="input-group">
+                                @Html.EditorFor(model => model.Usuario, new { htmlAttributes = new { @class = "form-control", @required = "true", @onkeypress = "return AvoidSpace(event)" } })
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="validationDefault02">Clave</label>
+                            @Html.EditorFor(model => model.Clave, new { htmlAttributes = new { @class = "form-control", @required = "true" } })
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-4 mb-3">
+                            <label for="validationDefault02">Correo</label>
+                            @Html.EditorFor(model => model.Correo, new { htmlAttributes = new { @class = "form-control", @required = "true" } })
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="validationDefault04">Rol</label>
+                            @Html.DropDownList("RolId", (IEnumerable<SelectListItem>)ViewBag.Accounts, null, new { @class = "form-control", @disabled = "disabled" })
+                        </div>
+                    </div>
+                    <div class="form-group" id="MunicipioDiv">
+                        Municipios
+                        @if (Model.RolId == 1)
+        {
+                @Html.DropDownList("Municipios[]", (IEnumerable<SelectListItem>)ViewBag.Municipios, null, new { @name = "Municipios[]", @multiple = "multiple", @class = "form-control", @size = "5", @disabled = "disabled" })
+}
+else
+{
+                @Html.DropDownList("Municipios[]", (IEnumerable<SelectListItem>)ViewBag.Municipios, null, new { @name = "Municipios[]", @multiple = "multiple", @class = "form-control", @size = "5", @enabled = "true" })
+
+}
+                    </div>
+                    <div class="text-right">
+                        <button class="btn btn-success" type="submit">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</body>
+</html>
+
+<script type="text/javascript">
+    $("#Municipios__").select2();
+
+
+    function AvoidSpace(event) {
+        var k = event ? event.which : window.event.keyCode;
+        if (k == 32) return false;
+    }
+
+
+
+</script>
+
+
+

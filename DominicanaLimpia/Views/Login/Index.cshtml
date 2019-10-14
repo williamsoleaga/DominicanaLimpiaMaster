@@ -1,0 +1,136 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Dominicana Limpia</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="~/Content/Login/images/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <!-- JavaScript -->
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.11.4/build/alertify.min.js"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.4/build/css/alertify.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="~/Content/Login/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/Login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/Login/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/Login/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/Login/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/Login/css/util.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/Login/css/main.css">
+    <!--===============================================================================================-->
+</head>
+<body>
+
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <div class="login100-pic js-tilt" data-tilt>
+                    <img src="/Content/Login/images/img-01.png" alt="IMG">
+                </div>
+                <form class="login100-form validate-form">
+                    <span class="login100-form-title">
+                        Iniciar sesion
+                    </span>
+                    <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+                        <input class="input100" type="text"  autocomplete="off" name="email" placeholder="Usuario" id="Usuarioid">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <div class="wrap-input100 validate-input" data-validate="Password is required">
+                        <input class="input100" type="password" name="pass" placeholder="Clave" id="Clave">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-lock" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <div class="container-login100-form-btn">
+                        <button class="login100-form-btn" id="Entrar"> Entrar </button>
+                    </div>
+
+                    <div class="text-center p-t-12">
+                        <span class="txt1">
+                            Olvido :
+                        </span>
+                        <a class="txt2" href="#">
+                            Usuario / Contraseña?
+                        </a>
+                    </div>
+
+                    <div class="text-center p-t-136">
+                        <a class="txt2" href="#">
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <!--===============================================================================================-->
+    <script src="~/Content/Login/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Content/Login/vendor/bootstrap/js/popper.js"></script>
+    <script src="~/Content/Login/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Content/Login/vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/Content/Login/vendor/tilt/tilt.jquery.min.js"></script>
+    <script>
+		$('.js-tilt').tilt({
+			scale: 1.1
+        })
+
+        $("#Entrar").click(function (e) {
+            e.preventDefault();
+
+             if ($("#Usuarioid").val() != "" && $("#Clave").val() != "") {
+                $.ajax({
+                    type: 'GET',
+                url: '@Url.Action("Entrar", "Login")',
+                    contentType: "application/json; charset=utf-8",
+                    data: { 'Usuario': $("#Usuarioid").val(), 'Clave': $("#Clave").val() },
+                    dataType: "json",
+                    success: function (data) {
+
+                        if (data.EsExitoso) {
+                            window.location = "/Home/Index"; 
+                        } else {
+                            alertify.error('Usuario o clave incorrectas');
+                        }
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        alertify.error(jqXHR.responseJSON.Error);
+                    }
+                });
+             } else {
+                 alertify.warning('Usuario y clave son necesarios!');
+            }
+        });
+
+
+
+
+
+
+
+    </script>
+    <!--===============================================================================================-->
+    <script src="~/Content/Login/js/main.js"></script>
+
+</body>
+</html>

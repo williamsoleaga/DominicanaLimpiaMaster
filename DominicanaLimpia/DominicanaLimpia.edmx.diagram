@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7d9dc19f22f84bf7adb67f509ac5ff1c" Name="Diagram1" ZoomLevel="94">
+        <EntityTypeShape EntityType="DominicanalimpiaModel.Formulario" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DominicanalimpiaModel.Preguntas" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DominicanalimpiaModel.Usuarios" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DominicanalimpiaModel.Municipios" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DominicanalimpiaModel.Roles" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DominicanalimpiaModel.Escuelas" Width="1.5" PointX="5.375" PointY="6.75" />
+        <EntityTypeShape EntityType="DominicanalimpiaModel.FormularioM" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DominicanalimpiaModel.Objetivo1" Width="1.5" PointX="0.75" PointY="7.75" />
+        <EntityTypeShape EntityType="DominicanalimpiaModel.DescripcionP" Width="1.5" PointX="7.375" PointY="8.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
