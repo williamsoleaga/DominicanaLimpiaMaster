@@ -55,6 +55,34 @@ namespace DominicanaLimpia.Controllers
 
 
 
+
+
+
+        [HttpPost]
+        public ActionResult ObtenerMunicipiosporresponsables(string ResponsableId)
+        {
+            List<string> _a = null;
+            int resp = Convert.ToInt32(ResponsableId);
+
+            if (resp != 0)
+            {
+                var MunicipiosResponsables = db.Usuarios.Where(x => x.UsuarioId == resp).ToList();
+                var muni = MunicipiosResponsables.FirstOrDefault().MunicipiosId;
+                var test = db.Municipios.Where(r => muni.Contains(r.MunicipioId.ToString())).ToList();
+                _a = test.Select(a => "<option  value='" + a.MunicipioId + "'>" + a.Provincia_Nombre + "</option>'").ToList();
+            }
+            else
+            {
+                var test = db.Municipios.ToList();
+                _a = test.Select(a => "<option  value='" + a.MunicipioId + "'>" + a.Provincia_Nombre + "</option>'").ToList();
+            }
+
+            return Content(String.Join("", _a));
+        }
+
+
+
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Usuarios usuarios)
@@ -63,7 +91,7 @@ namespace DominicanaLimpia.Controllers
   
             if (ModelState.IsValid)
             {
-                if(usuarios.RolId == 2)
+                if(usuarios.RolId == 2 || usuarios.RolId == 5)
                 {
                     for (int i = 0; i < usuarios.Municipios.Count(); i++)
                     {
@@ -107,7 +135,7 @@ namespace DominicanaLimpia.Controllers
                 return HttpNotFound();
             }
 
-            if (usuarios.RolId == 2)
+            if (usuarios.RolId == 2 || usuarios.RolId == 5)
             {
                 int[] CountryIDs = usuarios.MunicipiosId.Split(',').Select(n => Convert.ToInt32(n)).ToArray();
                 ViewBag.Municipios = new MultiSelectList(db.Municipios.ToList(), "MunicipioId", "Provincia_Nombre", CountryIDs);
@@ -117,6 +145,10 @@ namespace DominicanaLimpia.Controllers
                 ViewBag.Municipios = new SelectList(db.Municipios, "MunicipioId", "Provincia_Nombre");
             }
 
+            if (usuarios.RolId == 2)
+            {
+                ViewBag.Responsables = new SelectList(db.Usuarios.Where(x=>x.RolId == 5).ToList(), "UsuarioId", "Nombre_Completo", usuarios.ResponsableId);
+            }
 
             ViewBag.Accounts = new SelectList(db.Roles, "RolId", "Nombre_Rol",usuarios.RolId);
 
@@ -130,7 +162,7 @@ namespace DominicanaLimpia.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (usuarios.RolId == 2)
+                if (usuarios.RolId == 2 || usuarios.RolId == 5)
                 {
                     for (int i = 0; i < usuarios.Municipios.Count(); i++)
                     {

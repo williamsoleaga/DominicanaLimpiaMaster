@@ -83,6 +83,22 @@
     document.getElementById("ResponsableId").disabled = true;
 
 
+
+     $("#ResponsableId").change(function () {
+       var ResponsableId = $("#ResponsableId option:selected").val();
+        $.ajax({
+            url: '@Url.Action("ObtenerMunicipiosporresponsables", "Usuarios")',
+            data: {
+                ResponsableId: ResponsableId
+            },
+            type: 'post',
+        }).done(function (_a) {
+
+            $("#Municipios__").html(_a);
+            });
+    });
+
+
     $("#RolId").change(function () {
         if ($("#RolId").val() == 2 ) {
             document.getElementById("Municipios__").disabled = false;
@@ -93,10 +109,21 @@
             document.getElementById("ResponsableId").disabled = true;
         }
 
-
               if ($("#RolId").val() == 5) {
-            document.getElementById("Municipios__").disabled = false;
-              }
+                  document.getElementById("Municipios__").disabled = false;
+
+                     $.ajax({
+            url: '@Url.Action("ObtenerMunicipiosporresponsables", "Usuarios")',
+            data: {
+                ResponsableId: "0"
+            },
+            type: 'post',
+        }).done(function (_a) {
+            $("#Municipios__").html(_a);
+        });
+
+
+            }
 
     });
 
