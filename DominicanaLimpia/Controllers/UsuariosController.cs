@@ -109,11 +109,6 @@ namespace DominicanaLimpia.Controllers
                 usuarios.Estatus = "A";
                 usuarios.Usuario = usuarios.Usuario.ToLower();
 
-
-                //var config = new MapperConfiguration(cfg => { cfg.CreateMap<EmployeesViewModel, Employee>(); });
-                //var employee = config.CreateMapper().Map<EmployeesViewModel, Employee>(entity);
-
-
                 db.Usuarios.Add(usuarios);
                 db.SaveChanges();
                 return RedirectToAction("Index");

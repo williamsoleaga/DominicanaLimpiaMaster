@@ -57,7 +57,18 @@
                                 <div class="form-group">
                                     <div class="block" style="display: inline-block">
                                         <strong> @enumeracion - @item.Descripcion</strong>
-                                        <input class="Text-@enumeracion" type="number" name="Valores[]" id="Valores[]" />
+
+
+                                        @if (enumeracion == 1)
+                                        {
+                                            <input class="Text-@enumeracion" type="number" name="Valores[]" id="Valores[]" disabled value="1"/>
+                                        }
+                                        else
+                                        {
+                                            <input class="Text-@enumeracion" type="number" name="Valores[]" id="Valores[]" />
+                                        }
+
+
 
                                     </div>
                                     @if (enumeracion == 1)
@@ -87,7 +98,7 @@
                         @*Aqui va la tabla de las escuelas y contenido*@
 
                         <div class="row">
-                            <div class="col-md-6" style="margin-left: 720px;">
+                            <div class="col-md-6" style="margin-left: 79%;">
                                 <br />
                                 <button id="btnAgregarBeneficiario" onclick="llamame()" class="btn btn-primary" type="button">Agregar</button>
                             </div>
@@ -434,13 +445,13 @@
     $("#DesdeFecha").datepicker({
         autoclose: true,
         todayHighlight: true,
-        format: 'dd/mm/yyyy'
+        format: 'mm/dd/yyyy'
     }).datepicker('update', new Date());
 
     $("#HastaFecha").datepicker({
         autoclose: true,
         todayHighlight: true,
-        format: 'dd/mm/yyyy'
+        format: 'mm/dd/yyyy'
     }).datepicker('update', new Date());
 
 
@@ -497,6 +508,7 @@
                 $("textarea[name='Descripcion[]']").map(function () {
                     Descripcion.push($(this).val());
                 }).get();
+
                 entidad.DescripcionP = Descripcion;
                 var _url = '@Url.Action("GuardarFormulario", "Formulario")';
                 $.ajax({
@@ -518,7 +530,6 @@
                         alertify.warning('Error al soliictar la peticion de guardado! ');
                     }
                 });
-                // document.getElementById('Formulario').submit();
             }
 
 
@@ -538,7 +549,6 @@
 
     function Limpiar() {
     //$("#cboParentescoCombo").val('0').change();
-        $('.Text-1').val('');
         $('.Text-2').val('');
         $('.Text-3').val('');
         $('.Text-4').val('');

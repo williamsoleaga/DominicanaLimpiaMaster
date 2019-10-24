@@ -22,8 +22,8 @@
           <Property Name="Dp31" Type="nvarchar(max)" />
           <Property Name="Dp32" Type="nvarchar(max)" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'Dominicanalimpia.dbo.Escuelas' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Dominicanalimpia.dbo.Escuelas' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Escuelas">
           <Key>
             <PropertyRef Name="EscuelaId" />
@@ -80,8 +80,8 @@ advertencia 6002: La tabla o vista 'Dominicanalimpia.dbo.Escuelas' no tiene defi
           <Property Name="P31" Type="int" />
           <Property Name="P32" Type="int" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'Dominicanalimpia.dbo.Municipios' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Dominicanalimpia.dbo.Municipios' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Municipios">
           <Key>
             <PropertyRef Name="MunicipioId" />
@@ -97,6 +97,9 @@ advertencia 6002: La tabla o vista 'Dominicanalimpia.dbo.Municipios' no tiene de
           <Property Name="FormularioId" Type="int" />
           <Property Name="EscuelaId" Type="int" />
           <Property Name="UsuarioId" Type="int" />
+          <Property Name="MunicipioId" Type="int" />
+          <Property Name="Desde" Type="datetime" />
+          <Property Name="Hasta" Type="datetime" />
           <Property Name="p1" Type="int" />
           <Property Name="p2" Type="int" />
           <Property Name="p3" Type="int" />
@@ -118,8 +121,8 @@ advertencia 6002: La tabla o vista 'Dominicanalimpia.dbo.Municipios' no tiene de
           <Property Name="Descripcion" Type="nchar" MaxLength="160" />
           <Property Name="Estatus" Type="nchar" MaxLength="10" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'Dominicanalimpia.dbo.Roles' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Dominicanalimpia.dbo.Roles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Roles">
           <Key>
             <PropertyRef Name="RolId" />
@@ -136,7 +139,7 @@ advertencia 6002: La tabla o vista 'Dominicanalimpia.dbo.Roles' no tiene definid
           <Property Name="Usuario" Type="nchar" MaxLength="50" />
           <Property Name="Clave" Type="nchar" MaxLength="100" />
           <Property Name="Nombre_Completo" Type="nchar" MaxLength="60" />
-          <Property Name="Correo" Type="nchar" MaxLength="35" />
+          <Property Name="Correo" Type="nchar" MaxLength="90" />
           <Property Name="RolId" Type="int" />
           <Property Name="Estatus" Type="nchar" MaxLength="2" />
           <Property Name="MunicipioId" Type="int" />
@@ -206,7 +209,7 @@ advertencia 6002: La tabla o vista 'Dominicanalimpia.dbo.Roles' no tiene definid
           <Property Name="Usuario" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
           <Property Name="Clave" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
           <Property Name="Nombre_Completo" Type="String" MaxLength="60" FixedLength="true" Unicode="true" />
-          <Property Name="Correo" Type="String" MaxLength="35" FixedLength="true" Unicode="true" />
+          <Property Name="Correo" Type="String" MaxLength="90" FixedLength="true" Unicode="true" />
           <Property Name="RolId" Type="Int32" />
           <Property Name="Estatus" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
           <Property Name="MunicipioId" Type="Int32" />
@@ -300,6 +303,9 @@ advertencia 6002: La tabla o vista 'Dominicanalimpia.dbo.Roles' no tiene definid
           <Property Name="p10" Type="Int32" />
           <Property Name="p11" Type="Int32" />
           <Property Name="p12" Type="Int32" />
+          <Property Name="MunicipioId" Type="Int32" />
+          <Property Name="Desde" Type="DateTime" Precision="3" />
+          <Property Name="Hasta" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="DescripcionP">
           <Key>
@@ -428,6 +434,9 @@ advertencia 6002: La tabla o vista 'Dominicanalimpia.dbo.Roles' no tiene definid
           <EntitySetMapping Name="Objetivo1">
             <EntityTypeMapping TypeName="DominicanalimpiaModel.Objetivo1">
               <MappingFragment StoreEntitySet="Objetivo1">
+                <ScalarProperty Name="Hasta" ColumnName="Hasta" />
+                <ScalarProperty Name="Desde" ColumnName="Desde" />
+                <ScalarProperty Name="MunicipioId" ColumnName="MunicipioId" />
                 <ScalarProperty Name="p12" ColumnName="p12" />
                 <ScalarProperty Name="p11" ColumnName="p11" />
                 <ScalarProperty Name="p10" ColumnName="p10" />

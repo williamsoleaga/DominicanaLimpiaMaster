@@ -1,0 +1,203 @@
+﻿
+@{
+    ViewBag.Title = "Reportes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
+
+
+<br />
+<br />
+<div class="col-md-14 mb-4">
+    <div class="card">
+        <div class="card-body">
+            <br /><br />
+            <h4>Reportes</h4>
+            <hr />
+
+            <div class="well">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th><strong>Tipo de reporte:</strong>  @Html.DropDownList("TipoReporteId", (IEnumerable<SelectListItem>)ViewBag.TipoReporte, null, new { @class = "form-control" })   </th>
+                            <th> <strong>Desde:</strong> <input type="text" class="form-control" name="DesdeFecha" id="DesdeFechaR"></th>
+                            <th> <strong>Hasta:</strong> <input type="text" class="form-control" name="HastaFecha" id="HastaFechaR"></th>
+                            <th><button type="button" class="btn btn-success" onclick="Aparece()">Buscar</button></th>
+                         
+</tr>
+
+                    </thead>
+                </table>
+            </div>
+
+            <br /><br />
+
+            <div class="col-md-9 mb-4" >
+                <!--Card-->
+                <div class="card">
+                    <!--Card content-->
+                    <div class="card-body hidden" id="chartContainer">
+                        <canvas id="myChart"></canvas>
+                    </div>
+                    
+                </div>
+                <!--/.Card-->
+            </div>
+
+
+        </div></div></div>
+
+
+<script type="text/javascript">
+
+    function Aparece() {
+
+        var TipoR = $('#TipoReporteId :selected').val();
+        var desde = $("#DesdeFechaR").val();
+        var hasta = $("#HastaFechaR").val();
+         var _url = '@Url.Action("BuscarReporte", "Reporte")';
+            $.ajax({
+                    type: 'POST',
+                    url: _url,
+                    data: JSON.stringify({ TipoReporte: TipoR , Desde: desde, Hasta : hasta }),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+
+                        document.getElementById("chartContainer").innerHTML = '&nbsp;';
+                       document.getElementById("chartContainer").innerHTML = ' <button type="button" onclick="Imprimir()" class="btn btn-warning">Imprimir</button><canvas id="myChart"></canvas>';
+
+                        var ctx = document.getElementById("myChart").getContext('2d');
+
+                        var myChart = new Chart(ctx, {
+                            type: 'bar',
+                            data: {
+                                labels: ["Azua", "Cotuí", "Jarabacoa", "Puerto Plata", "Sabana de la Mar", "Salcedo", "San Juan de la Maguana", "Villa Jaragua", "Villa Tapia",
+                                    "Verón Punta Cana (D.M.)",
+                                    "Baní",
+                                    "Dajabón ",
+                                    "Esperanza ",
+                                    "Hato Mayor",
+                                    "Mao",
+                                    "Moca ",
+                                    "San José de Ocoa",
+                                    "San Pedro de Macorís",
+                                    "Bánica",
+                                    "Constanza",
+                                    "Los Botados (D.M.)",
+                                    "San Francisco de Macorís",],
+
+                                datasets: [{
+                                    label: '# Cantidad',
+                                    data: [data[1], data[2], data[3], data[4], data[5], data[6], data[7], data[8], data[9], data[10],
+                                    data[11], data[12], data[13], data[14],
+                                    data[15], data[16], data[17], data[18], data[19], data[20], data[21], data[22]],
+                                    backgroundColor: [
+                                        'rgba(255, 99, 132, 0.2)',
+                                        'rgba(54, 162, 235, 0.2)',
+                                        'rgba(255, 206, 86, 0.2)',
+                                        'rgba(75, 192, 192, 0.2)',
+                                        'rgba(153, 102, 255, 0.2)',
+                                        'rgba(255, 159, 64, 0.2)',
+                                        'rgba(153, 102, 255, 0.2)',
+                                        'rgba(153, 102, 255, 0.2)',
+                                        'rgba(153, 102, 255, 0.2)',
+                                        'rgba(255, 99, 132, 0.2)',
+                                        'rgba(153, 102, 255, 0.2)',
+                                        'rgba(54, 162, 235, 0.2)',
+                                        'rgba(153, 102, 255, 0.2)',
+                                        'rgba(153, 102, 255, 0.2)',
+                                        'rgba(153, 102, 255, 0.2)',
+                                        'rgba(54, 162, 235, 0.2)',
+                                        'rgba(255, 99, 132, 0.2)',
+                                        'rgba(153, 102, 255, 0.2)',
+                                        'rgba(153, 102, 255, 0.2)',
+                                        'rgba(255, 99, 132, 0.2)',
+
+                                    ],
+                                    borderColor: [
+                                        'rgba(255,99,132,1)',
+                                        'rgba(54, 162, 235, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(75, 192, 192, 1)',
+                                        'rgba(153, 102, 255, 1)',
+                                        'rgba(255, 159, 64, 1)'
+                                    ],
+                                    borderWidth: 3
+                                }]
+                            },
+                            options: {
+                                scales: {
+                                    yAxes: [{
+                                        ticks: {
+                                            beginAtZero: false
+                                        }
+                                    }]
+                                }
+                            }
+                        });
+
+
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        alertify.warning('Error al soliictar la peticion! ');
+                    }
+                });
+
+        $(".card-body").removeClass("hidden");
+    }
+
+
+    function Imprimir() {
+
+        var TipoR = $('#TipoReporteId :selected').val();
+        var desde = $("#DesdeFechaR").val();
+        var hasta = $("#HastaFechaR").val();
+        var _url = '@Url.Action("ImprimirReporte", "Reporte")';
+
+
+       window.location = '/Reporte/ImprimirReporte?TipoReporte=' + TipoR + "&Desde="+ desde+ "&Hasta="+ hasta; 
+
+               //$.ajax({
+               //     type: 'POST',
+               //     url: _url,
+               //     data: JSON.stringify({ TipoReporte: TipoR , Desde: desde, Hasta : hasta }),
+               //     contentType: "application/json; charset=utf-8",
+               //     dataType: "json",
+               //    success: function (Data) {
+
+               //        alert(Data);
+
+               //  //var bytes = new Uint8Array(Rdata.FileContents); 
+               //  //   var blob = new Blob([bytes], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" });
+               //  //   var link = document.createElement('a');
+               //  //   link.href = window.URL.createObjectURL(blob);
+               //  //   link.download = "myFileName.xlsx";
+               //  //   link.click();
+
+
+
+
+               //         //console.log(data);
+               //         //if (data.error == false) {
+               //         //    window.location.href = '/Formulario/Exito/';
+               //         //} else {
+               //         //    alertify.warning('Error al insertar los valores, contacte a su corrdinador ! ');
+               //         //    return;
+               //         //}
+               //     },
+               //     error: function (jqXHR, textStatus, errorThrown) {
+               //         alertify.warning('Error al soliictar la peticion de guardado! ');
+               //     }
+               // });
+
+
+    }
+
+
+
+
+</script>
+

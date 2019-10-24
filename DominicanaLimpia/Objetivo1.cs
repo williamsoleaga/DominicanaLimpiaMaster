@@ -19,14 +19,21 @@ public partial class Objetivo1
 {
 
     public int ObjetivoId { get; set; }
-
+         
     public Nullable<int> FormularioId { get; set; }
 
     public Nullable<int> EscuelaId { get; set; }
 
     public Nullable<int> UsuarioId { get; set; }
 
-    public Nullable<int> p1 { get; set; }
+        public System.DateTime Desde { get; set; }
+
+        public System.DateTime Hasta { get; set; }
+
+        public Nullable<int> MunicipioId { get; set; }
+
+
+        public Nullable<int> p1 { get; set; }
 
     public Nullable<int> p2 { get; set; }
 
