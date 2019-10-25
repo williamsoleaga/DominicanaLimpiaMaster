@@ -33,7 +33,29 @@ namespace DominicanaLimpia.Controllers
                     Session["UsuarioId"] = resultado.Select(x => x.UsuarioId).FirstOrDefault();
                     Session["NombreUsuario"] = resultado.Select(x => x.Nombre_Completo).FirstOrDefault();
                     Session["RodId"] = resultado.Select(x => x.RolId).FirstOrDefault();
-                    
+                    var Munic = resultado.Select(x => x.MunicipiosId).FirstOrDefault();
+
+                    if (Session["RodId"].ToString() == "2")
+                    {
+                        Session["Municipios"] = db.Municipios.Where(r => Munic.Contains(r.MunicipioId.ToString())).ToList().Select(x => x.Provincia_Nombre).FirstOrDefault();
+                    }
+
+                    if (Session["RodId"].ToString() == "5" || Session["RodId"].ToString() == "4" )
+                    {
+                            
+                         var wepa   = db.Municipios.Where(r => Munic.Contains(r.MunicipioId.ToString())).ToList();
+
+                        foreach (var item in wepa)
+                        {
+                            Session["Municipios"] = Session["Municipios"] + " " + item.Provincia_Nombre;
+                        }
+                    }
+
+                    if (Session["RodId"].ToString() == "1")
+                    {
+                        Session["Municipios"] = "";
+                    }
+
 
                     if (Convert.ToInt16(Session["RodId"]) == 2)
                     {

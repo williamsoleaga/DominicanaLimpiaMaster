@@ -23,9 +23,26 @@ namespace DominicanaLimpia.Controllers
         public ActionResult Index()
         {
 
-            var  distinctClientsPerEvent = db.FormularioM.GroupBy(m => m.Desde)
-                                                               .Select(x => x.FirstOrDefault());
+            string responsables = "";
+            var distinctClientsPerEvent = db.FormularioM.GroupBy(m => m.Desde)
+                                                              .Select(x => x.FirstOrDefault());
 
+
+            //si es coordinador
+            if (Session["RodId"].ToString() == "2")
+            {
+                int idusuario = Convert.ToInt32(Session["UsuarioId"].ToString());
+                var MisCoordinadores = db.Usuarios.Where(x => x.ResponsableId == idusuario).ToList();
+                foreach (var item in MisCoordinadores)
+                {
+                    responsables = responsables + "," + item.UsuarioId;
+                }
+                distinctClientsPerEvent = distinctClientsPerEvent.Where(r => responsables.Contains(r.UsuarioId.ToString()));
+            }
+
+
+
+            // var   Modelo = distinctClientsPerEvent.Where(x=>x)
             return View(distinctClientsPerEvent);
         }
 

@@ -55,7 +55,7 @@
                 <a class="navbar-brand waves-effect">
                     <strong class="blue-text">Dominicana Limpia</strong>
 
-                    / @Session["NombreUsuario"].ToString()
+                    @*/ @Session["NombreUsuario"].ToString()*@
 
                 </a>
                 <!-- Collapse -->
@@ -172,7 +172,15 @@
                     </a>
                 }
 
-            </div>
+
+                @if (Session["RodId"].ToString() != "1")
+                {
+                    <a href="#" class="list-group-item list-group-item-action waves-effect" onclick="location.href='@Url.Action("EditarMiPerfin", "Usuarios", new { id = Convert.ToInt32(Session["UsuarioId"].ToString()) })'">
+                        <i class="fas fa-user mr-3"></i>Mi perfil
+                    </a>
+                }
+
+                </div>
         </div>
         <!-- Sidebar -->
     </header>

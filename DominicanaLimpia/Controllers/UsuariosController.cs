@@ -146,11 +146,62 @@ namespace DominicanaLimpia.Controllers
             }
 
             ViewBag.Accounts = new SelectList(db.Roles, "RolId", "Nombre_Rol",usuarios.RolId);
-
+            usuarios.Clave = usuarios.Clave.Trim();
             return View(usuarios);
         }
 
-  
+
+
+        public ActionResult EditarMiPerfin(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Usuarios usuarios = db.Usuarios.Find(id);
+            if (usuarios == null)
+            {
+                return HttpNotFound();
+            }
+
+            if (usuarios.RolId == 2 || usuarios.RolId == 5)
+            {
+                int[] CountryIDs = usuarios.MunicipiosId.Split(',').Select(n => Convert.ToInt32(n)).ToArray();
+                ViewBag.Municipios = new MultiSelectList(db.Municipios.ToList(), "MunicipioId", "Provincia_Nombre", CountryIDs);
+            }
+            else
+            {
+                ViewBag.Municipios = new SelectList(db.Municipios, "MunicipioId", "Provincia_Nombre");
+            }
+
+            if (usuarios.RolId == 2)
+            {
+                ViewBag.Responsables = new SelectList(db.Usuarios.Where(x => x.RolId == 5).ToList(), "UsuarioId", "Nombre_Completo", usuarios.ResponsableId);
+            }
+
+            ViewBag.Accounts = new SelectList(db.Roles, "RolId", "Nombre_Rol", usuarios.RolId);
+            usuarios.Clave = usuarios.Clave.Trim();
+            return View("~/Views/Usuarios/MiPerfil.cshtml", usuarios);
+           
+        }
+
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditarMiPerfin(Usuarios usuarios)
+        {
+
+            Usuarios  UsuariosMaster = db.Usuarios.Find(usuarios.UsuarioId);
+            UsuariosMaster.Clave = usuarios.Clave.Trim();
+            db.Entry(UsuariosMaster).State = EntityState.Modified;
+            db.SaveChanges();
+            return View("~/Views/Home/Index.cshtml");
+
+        }
+
+
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Usuarios usuarios)

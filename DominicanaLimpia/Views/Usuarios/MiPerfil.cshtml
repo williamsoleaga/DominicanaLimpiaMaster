@@ -1,0 +1,114 @@
+﻿@model DominicanaLimpia.Usuarios
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    DominicanalimpiaEntities2 db = new DominicanalimpiaEntities2();
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Editar</title>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+
+        <br /><br />
+        <div class="col-md-14 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <br /><br />
+                    <h4>Editar mi perfil</h4>
+                    @Html.HiddenFor(model => model.UsuarioId)
+                    @Html.HiddenFor(model => model.Estatus)
+                    @Html.HiddenFor(model => model.RolId)
+
+                    <hr />
+                    <br /><br />
+                    <div class="form-row">
+                        <div class="col-md-4 mb-3">
+                            <label for="validationDefault01">Nombre completo</label>
+                            @Html.EditorFor(model => model.Nombre_Completo, new { htmlAttributes = new { @class = "form-control", @required = "true" , @disabled = "disabled"  } })
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="validationDefaultUsername">Usuario</label>
+                            <div class="input-group">
+                                @Html.EditorFor(model => model.Usuario, new { htmlAttributes = new { @class = "form-control", @required = "true", @onkeypress = "return AvoidSpace(event)" , @disabled = "disabled"  } })
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="validationDefault02">Clave</label>
+                            @Html.EditorFor(model => model.Clave, new { htmlAttributes = new { @class = "form-control", @required = "true" } })
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-4 mb-3">
+                            <label for="validationDefault02">Correo</label>
+                            @Html.EditorFor(model => model.Correo, new { htmlAttributes = new { @class = "form-control", @required = "true" , @disabled = "disabled"  } })
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="validationDefault04">Rol</label>
+                            @Html.DropDownList("RolId", (IEnumerable<SelectListItem>)ViewBag.Accounts, null, new { @class = "form-control", @disabled = "disabled" })
+                        </div>
+                    </div>
+
+                    @if (Model.RolId == 2)
+                    {
+                        <div class="col-md-3 mb-3">
+                            <label for="validationDefault04">Responsable</label>
+                            @Html.DropDownList("ResponsableId", (IEnumerable<SelectListItem>)ViewBag.Responsables, null, new { @class = "form-control" , @disabled = "disabled" })
+                        </div>
+                    }
+                    else
+                    {
+                        @Html.HiddenFor(model => model.ResponsableId)
+                    }
+
+                    <div class="form-group" id="MunicipioDiv">
+                        Municipios
+                            @Html.DropDownList("Municipios[]", (IEnumerable<SelectListItem>)ViewBag.Municipios, null, new { @name = "Municipios[]", @multiple = "multiple", @class = "form-control", @size = "5", @disabled = "disabled" })
+               
+                    </div>
+                    <div class="text-right">
+                        <button class="btn btn-success" type="submit">Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</body>
+</html>
+
+<script type="text/javascript">
+    $("#Municipios__").select2();
+
+    function AvoidSpace(event) {
+        var k = event ? event.which : window.event.keyCode;
+        if (k == 32) return false;
+    }
+
+
+    $("#ResponsableId").change(function () {
+        alert("Keloke");
+       var ResponsableId = $("#ResponsableId option:selected").val();
+        $.ajax({
+            url: '@Url.Action("ObtenerMunicipiosporresponsables", "Usuarios")',
+            data: {
+                ResponsableId: ResponsableId
+            },
+            type: 'post',
+        }).done(function (_a) {
+
+            $("#Municipios__").html(_a);
+            });
+    });
+
+</script>
+
+
+
