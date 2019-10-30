@@ -81,7 +81,7 @@
                             </li>
                         }
                         <li class="nav-item ">
-                            @if (Session["RodId"].ToString() == "1"  || Session["RodId"].ToString() == "5")
+                            @if (Session["RodId"].ToString() == "1"  || Session["RodId"].ToString() == "5" || Session["RodId"].ToString() == "4")
                             {
                                 <a class="nav-link waves-effect" href="#" onclick="location.href='@Url.Action("Index", "Formulario")'">
                                     Formulario
@@ -96,11 +96,7 @@
                         </li>
                         @if (Session["RodId"].ToString() == "1" || Session["RodId"].ToString() == "5")
                         {
-                            <li class="nav-item ">
-                                <a class="nav-link waves-effect" href="#">
-                                    Validación
-                                </a>
-                            </li>
+                           
 
                             <li class="nav-item ">
                                 <a class="nav-link waves-effect" href="#" onclick="location.href='@Url.Action("ReporteIndex", "Home")'">
@@ -147,7 +143,7 @@
                         <i class="fas fa-user mr-3"></i>Usuarios
                     </a>
                 }
-                @if (Session["RodId"].ToString() == "1" || Session["RodId"].ToString() == "5")
+                @if (Session["RodId"].ToString() == "1" || Session["RodId"].ToString() == "5" || Session["RodId"].ToString() == "4")
                 {
                     <a href="#" class="list-group-item list-group-item-action waves-effect" onclick="location.href='@Url.Action("Index", "Formulario")'">
                         <i class="fas fa-table mr-3"></i>Formulario
@@ -163,10 +159,6 @@
                 @if (Session["RodId"].ToString() == "1" || Session["RodId"].ToString() == "5")
                 {
 
-                    <a href="#" class="list-group-item list-group-item-action waves-effect">
-                        <i class="fas fa-check mr-3"></i>Validación
-                    </a>
-
                     <a href="#" class="list-group-item list-group-item-action waves-effect" onclick="location.href='@Url.Action("ReporteIndex", "Home")'">
                         <i class="fas fa-paste mr-3"></i>Reportes
                     </a>
@@ -180,7 +172,16 @@
                     </a>
                 }
 
-                </div>
+                @if (Session["RodId"].ToString() == "2")
+                {
+                    <a href="#" class="list-group-item list-group-item-action waves-effect" onclick="location.href='@Url.Action("Index", "Formulario")'">
+                        <i class="fas fa-check mr-3"></i>Mis formularios
+                    </a>
+                }
+
+
+
+            </div>
         </div>
         <!-- Sidebar -->
     </header>

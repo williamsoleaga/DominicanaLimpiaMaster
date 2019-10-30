@@ -51,11 +51,12 @@
                     </td>
 
                     <td style="text-align:center">
-                        @Html.ActionLink("Editar", "Edit", new { id = item.UsuarioId }, new { @class = "btn btn-primary btn-sm" })
+                        <button type="button" class="btn btn-primary btn-sm" title="Editar" onclick="location.href='@Url.Action("Edit", "Usuarios", new { id = item.UsuarioId })'"><i class="far fa-edit"></i></button>
+
                         @if (Model.Count() != 1)
-                 {
-                    @Html.ActionLink("Eliminar", "DeleteConfirmed", new { id = item.UsuarioId }, new { @class = "btn btn-danger btn-sm" })
-                  }
+                        {
+                            <button type="button" class="btn btn-danger btn-sm" title="Eliminar" onclick="location.href='@Url.Action("DeleteConfirmed", "Usuarios", new { id = item.UsuarioId })'"><i class="far fa-trash-alt"></i></button>
+                        }
 
                     </td>
                 </tr>

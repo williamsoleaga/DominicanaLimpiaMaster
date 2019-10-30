@@ -30,20 +30,27 @@ namespace DominicanaLimpia.Controllers
                 
                 if (resultado.Count > 0)
                 {
+              
+
                     Session["UsuarioId"] = resultado.Select(x => x.UsuarioId).FirstOrDefault();
                     Session["NombreUsuario"] = resultado.Select(x => x.Nombre_Completo).FirstOrDefault();
                     Session["RodId"] = resultado.Select(x => x.RolId).FirstOrDefault();
-                    var Munic = resultado.Select(x => x.MunicipiosId).FirstOrDefault();
+
+                    var id = Convert.ToInt16(Session["UsuarioId"].ToString());
+                    var usuario = db.Usuarios.Where(x => x.UsuarioId == id).ToList().FirstOrDefault();
+
 
                     if (Session["RodId"].ToString() == "2")
                     {
+                        var Munic = usuario.MunicipiosId.Split(',');
                         Session["Municipios"] = db.Municipios.Where(r => Munic.Contains(r.MunicipioId.ToString())).ToList().Select(x => x.Provincia_Nombre).FirstOrDefault();
                     }
 
-                    if (Session["RodId"].ToString() == "5" || Session["RodId"].ToString() == "4" )
+                    if (Session["RodId"].ToString() == "5")
                     {
-                            
-                         var wepa   = db.Municipios.Where(r => Munic.Contains(r.MunicipioId.ToString())).ToList();
+                        var Munic = usuario.MunicipiosId.Split(',');
+
+                        var wepa   = db.Municipios.Where(r => Munic.Contains(r.MunicipioId.ToString())).ToList();
 
                         foreach (var item in wepa)
                         {
@@ -53,8 +60,32 @@ namespace DominicanaLimpia.Controllers
 
                     if (Session["RodId"].ToString() == "1")
                     {
-                        Session["Municipios"] = "";
+                        Session["Municipios"] = "Administrador";
                     }
+
+                    if (Session["RodId"].ToString() == "4")
+                    {
+                        Session["Municipios"] = "Observador";
+                    }
+
+                    
+
+
+                    if (Convert.ToInt16(Session["RodId"]) != 2)
+                    {
+                        Session["Keloke"] = "/MetasImg/0.jpg";
+                    }
+
+                    if (Convert.ToInt16(Session["RodId"]) == 2)
+                    {
+
+                        var myInClause = usuario.MunicipiosId.Split(',');
+                        
+                        Session["Keloke"] = "/MetasImg/"+myInClause[0]+".jpg";
+
+                    }
+
+
 
 
                     if (Convert.ToInt16(Session["RodId"]) == 2)

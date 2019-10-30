@@ -28,8 +28,8 @@ namespace DominicanaLimpia.Controllers
                                                               .Select(x => x.FirstOrDefault());
 
 
-            //si es coordinador
-            if (Session["RodId"].ToString() == "2")
+            //si es Responsable de territorio
+            if (Session["RodId"].ToString() == "5")
             {
                 int idusuario = Convert.ToInt32(Session["UsuarioId"].ToString());
                 var MisCoordinadores = db.Usuarios.Where(x => x.ResponsableId == idusuario).ToList();
@@ -40,6 +40,13 @@ namespace DominicanaLimpia.Controllers
                 distinctClientsPerEvent = distinctClientsPerEvent.Where(r => responsables.Contains(r.UsuarioId.ToString()));
             }
 
+            //si es coordinador
+            if (Session["RodId"].ToString() == "2")
+            {
+                int idusuario = Convert.ToInt32(Session["UsuarioId"].ToString());
+
+                distinctClientsPerEvent = distinctClientsPerEvent.Where(x => x.UsuarioId == idusuario);
+            }
 
 
             // var   Modelo = distinctClientsPerEvent.Where(x=>x)

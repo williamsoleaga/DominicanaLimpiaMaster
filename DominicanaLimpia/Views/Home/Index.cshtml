@@ -33,11 +33,14 @@
                 <div class="card-header">Estadisticas</div>
                 <!--Card content-->
                 <div class="card-body">
-                    <canvas id="doughnutChart"></canvas>
+                    @*<canvas id="doughnutChart"></canvas>*@
+                    @*<img src=@ViewBag.Path width="102%" height="100%" />*@
+                    <img src="@Session["Keloke"].ToString()" width="102%" height="100%" />
                 </div>
             </div>
             <!--/.Card-->
         </div>
+
 
         @*<div class="col-md-9 mb-4">
             <div class="card">
@@ -53,21 +56,22 @@
         <div class="col-md-3 mb-4">
             <!--Card-->
             <div class="card mb-4">
+
+
+
                 <!-- Card header -->
-                <div class="card-header text-center">
+                @*<div class="card-header text-center">
                     Pie chart
-                </div>
+                </div>*@
                 <!--Card content-->
-                <div class="card-body">
+                @*<div class="card-body">
                     <canvas id="pieChart"></canvas>
-                </div>
+                </div>*@
             </div>
             <!--/.Card-->
             <!--Card-->
-            <div class="card mb-4">
-                <!--Card content-->
+            @*<div class="card mb-4">
                 <div class="card-body">
-                    <!-- List group links -->
                     <div class="list-group list-group-flush">
                         <a class="list-group-item list-group-item-action waves-effect">
                             Sales
@@ -96,9 +100,8 @@
                             <span class="badge badge-primary badge-pill pull-right">8</span>
                         </a>
                     </div>
-                    <!-- List group links -->
                 </div>
-            </div>
+            </div>*@
             <!--/.Card-->
         </div>
         <!--Grid column-->
@@ -112,28 +115,14 @@
         <!--Grid column-->
         <div class="col-lg-6 col-md-6 mb-4">
             <!--Card-->
-            <div class="card">
-                <!-- Card header -->
-                <div class="card-header">Line chart</div>
-                <!--Card content-->
-                <div class="card-body">
-                    <canvas id="lineChart"></canvas>
-                </div>
-            </div>
+          
             <!--/.Card-->
         </div>
         <!--Grid column-->
         <!--Grid column-->
         <div class="col-lg-6 col-md-6 mb-4">
             <!--Card-->
-            <div class="card">
-                <!-- Card header -->
-                <div class="card-header">Radar Chart</div>
-                <!--Card content-->
-                <div class="card-body">
-                    <canvas id="radarChart"></canvas>
-                </div>
-            </div>
+         
             <!--/.Card-->
         </div>
         <!--Grid column-->
