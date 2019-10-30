@@ -31,15 +31,15 @@ namespace DominicanaLimpia.Controllers
                 if (resultado.Count > 0)
                 {
               
-
                     Session["UsuarioId"] = resultado.Select(x => x.UsuarioId).FirstOrDefault();
                     Session["NombreUsuario"] = resultado.Select(x => x.Nombre_Completo).FirstOrDefault();
                     Session["RodId"] = resultado.Select(x => x.RolId).FirstOrDefault();
 
-                    var id = Convert.ToInt16(Session["UsuarioId"].ToString());
+                    var id = Convert.ToInt16(Session["UsuarioId"].ToString());  
                     var usuario = db.Usuarios.Where(x => x.UsuarioId == id).ToList().FirstOrDefault();
 
 
+                    Session["Municipios"] = null;
                     if (Session["RodId"].ToString() == "2")
                     {
                         var Munic = usuario.MunicipiosId.Split(',');
@@ -49,9 +49,7 @@ namespace DominicanaLimpia.Controllers
                     if (Session["RodId"].ToString() == "5")
                     {
                         var Munic = usuario.MunicipiosId.Split(',');
-
                         var wepa   = db.Municipios.Where(r => Munic.Contains(r.MunicipioId.ToString())).ToList();
-
                         foreach (var item in wepa)
                         {
                             Session["Municipios"] = Session["Municipios"] + " " + item.Provincia_Nombre;
@@ -67,10 +65,7 @@ namespace DominicanaLimpia.Controllers
                     {
                         Session["Municipios"] = "Observador";
                     }
-
                     
-
-
                     if (Convert.ToInt16(Session["RodId"]) != 2)
                     {
                         Session["Keloke"] = "/MetasImg/0.jpg";
@@ -78,15 +73,9 @@ namespace DominicanaLimpia.Controllers
 
                     if (Convert.ToInt16(Session["RodId"]) == 2)
                     {
-
                         var myInClause = usuario.MunicipiosId.Split(',');
-                        
                         Session["Keloke"] = "/MetasImg/"+myInClause[0]+".jpg";
-
                     }
-
-
-
 
                     if (Convert.ToInt16(Session["RodId"]) == 2)
                     {
@@ -94,12 +83,9 @@ namespace DominicanaLimpia.Controllers
                         var responsable = db.Usuarios.Where(x => x.UsuarioId == IdResponsable).FirstOrDefault();
                         Session["NombreResponsable"]  = responsable.Nombre_Completo;
                     }
-
                     return Json(new { EsExitoso = true }, JsonRequestBehavior.AllowGet);
                 }
-
                 return Json(new { EsExitoso = false }, JsonRequestBehavior.AllowGet);
-
             }
             catch (Exception ex)
             {

@@ -80,21 +80,25 @@
                                 </a>
                             </li>
                         }
-                        <li class="nav-item ">
-                            @if (Session["RodId"].ToString() == "1"  || Session["RodId"].ToString() == "5" || Session["RodId"].ToString() == "4")
-                            {
-                                <a class="nav-link waves-effect" href="#" onclick="location.href='@Url.Action("Index", "Formulario")'">
-                                    Formulario
-                                </a>
-                            }
+                    <li class="nav-item ">
+                        @if (Session["RodId"].ToString() == "1" || Session["RodId"].ToString() == "5")
+                        {
+                            <a class="nav-link waves-effect" href="#" onclick="location.href='@Url.Action("Index", "Formulario")'">
+                                Formulario
+                            </a>
+                        }
+                        else
+                        {
+                            if (Session["RodId"].ToString() == "4") { }
                             else
                             {
-                                <a class="nav-link waves-effect" href="#" onclick="location.href='@Url.Action("Create", "Formulario")'">
-                                    Formulario
+                                <a href="#" class="list-group-item list-group-item-action waves-effect" onclick="location.href='@Url.Action("Create", "Formulario")'">
+                                    <i class="fas fa-table mr-3"></i>Formulario
                                 </a>
                             }
-                        </li>
-                        @if (Session["RodId"].ToString() == "1" || Session["RodId"].ToString() == "5")
+                        }
+                    </li>
+                        @if (Session["RodId"].ToString() == "1" || Session["RodId"].ToString() == "5" || Session["RodId"].ToString() == "4")
                         {
                            
 
@@ -143,7 +147,7 @@
                         <i class="fas fa-user mr-3"></i>Usuarios
                     </a>
                 }
-                @if (Session["RodId"].ToString() == "1" || Session["RodId"].ToString() == "5" || Session["RodId"].ToString() == "4")
+                @if (Session["RodId"].ToString() == "1" || Session["RodId"].ToString() == "5")
                 {
                     <a href="#" class="list-group-item list-group-item-action waves-effect" onclick="location.href='@Url.Action("Index", "Formulario")'">
                         <i class="fas fa-table mr-3"></i>Formulario
@@ -151,31 +155,33 @@
                 }
                 else
                 {
+                    if (Session["RodId"].ToString() == "4") { } else {
+
                     <a href="#" class="list-group-item list-group-item-action waves-effect" onclick="location.href='@Url.Action("Create", "Formulario")'">
                         <i class="fas fa-table mr-3"></i>Formulario
                     </a>
+                    }
                 }
 
-                @if (Session["RodId"].ToString() == "1" || Session["RodId"].ToString() == "5")
+                @if (Session["RodId"].ToString() == "1" || Session["RodId"].ToString() == "5" || Session["RodId"].ToString() == "4")
                 {
-
                     <a href="#" class="list-group-item list-group-item-action waves-effect" onclick="location.href='@Url.Action("ReporteIndex", "Home")'">
                         <i class="fas fa-paste mr-3"></i>Reportes
                     </a>
                 }
 
 
-                @if (Session["RodId"].ToString() != "1")
-                {
-                    <a href="#" class="list-group-item list-group-item-action waves-effect" onclick="location.href='@Url.Action("EditarMiPerfin", "Usuarios", new { id = Convert.ToInt32(Session["UsuarioId"].ToString()) })'">
-                        <i class="fas fa-user mr-3"></i>Mi perfil
-                    </a>
-                }
-
                 @if (Session["RodId"].ToString() == "2")
                 {
                     <a href="#" class="list-group-item list-group-item-action waves-effect" onclick="location.href='@Url.Action("Index", "Formulario")'">
                         <i class="fas fa-check mr-3"></i>Mis formularios
+                    </a>
+                }
+
+                @if (Session["RodId"].ToString() != "1")
+                {
+                    <a href="#" class="list-group-item list-group-item-action waves-effect" onclick="location.href='@Url.Action("EditarMiPerfin", "Usuarios", new { id = Convert.ToInt32(Session["UsuarioId"].ToString()) })'">
+                        <i class="fas fa-user mr-3"></i>Mi perfil
                     </a>
                 }
 
