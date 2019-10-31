@@ -65,7 +65,7 @@
                             @Html.DisplayFor(modelItem => item.Hasta)
                         </td>
                         <td>
-                            <button type="button" class="btn btn-primary btn-sm" title="Descargar"><i class="far fa-eye"></i></button>
+                            <button type="button" class="btn btn-primary btn-sm" title="Descargar" onclick="location.href='@Url.Action("VerFormulario", "Formulario", new { id = item.FormularioId })'"><i class="far fa-eye"></i></button>
                             @if (Session["RodId"].ToString() == "5")
                             {
                                 <button type="button" title="Aprobar" class="btn btn-success btn-sm"><i class="fas fa-edit"></i></button>

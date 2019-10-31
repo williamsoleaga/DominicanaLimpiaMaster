@@ -2,15 +2,13 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
-using System.Globalization;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using DominicanaLimpia;
 using DominicanaLimpia.Models;
 using DominicanaLimpia.ModelViews;
 using DominicanaLimpia.Utilidades;
+
 
 namespace DominicanaLimpia.Controllers
 {
@@ -73,7 +71,6 @@ namespace DominicanaLimpia.Controllers
         {
 
             Formulario formulario = new Formulario();
-      
 
             int idusuario = Convert.ToInt32(Session["UsuarioId"].ToString());
             var usuario = db.Usuarios.Where(x => x.UsuarioId ==  idusuario).ToList().FirstOrDefault();
@@ -292,8 +289,6 @@ namespace DominicanaLimpia.Controllers
              return View("~/Views/Formulario/Exito.cshtml");
         }
 
-
-
         // GET: Formulario/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -359,5 +354,21 @@ namespace DominicanaLimpia.Controllers
             }
             base.Dispose(disposing);
         }
+
+
+        public ActionResult VerFormulario(int? id)
+        {
+
+            FormularioModelView Fmv = new FormularioModelView();
+            Fmv.Preguntas = db.Preguntas.ToList();
+
+
+           // var report = new ActionAsPdf("Index");
+           // return report;
+
+           return View("VistaFormulario", Fmv);
+        }
+
+
     }
 }
