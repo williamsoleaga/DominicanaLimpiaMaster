@@ -359,5 +359,19 @@ namespace DominicanaLimpia.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public ActionResult VerFormulario(int? id)
+        {
+
+            FormularioModelView Fmv = new FormularioModelView();
+            Fmv.Preguntas = db.Preguntas.ToList();
+
+
+            // var report = new ActionAsPdf("Index");
+            // return report;
+
+            return View("VistaFormulario", Fmv);
+        }
+
     }
 }
