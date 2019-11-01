@@ -46,14 +46,14 @@
                     <tr>
                         <td>
                             @{
-                   var Nombreusuario = db.Usuarios.Where(x => x.UsuarioId == item.UsuarioId).Select(x => x.Nombre_Completo).FirstOrDefault();
+                                var Nombreusuario = db.Usuarios.Where(x => x.UsuarioId == item.UsuarioId).Select(x => x.Nombre_Completo).FirstOrDefault();
                             }
                             @Nombreusuario
                         </td>
 
                         <td>
                             @{
-                   var Minucipio = db.Municipios.Where(x => x.MunicipioId == item.ProvinciaId).Select(x => x.Provincia_Nombre).FirstOrDefault();
+                                var Minucipio = db.Municipios.Where(x => x.MunicipioId == item.ProvinciaId).Select(x => x.Provincia_Nombre).FirstOrDefault();
                             }
                             @Minucipio
                         </td>
@@ -65,13 +65,11 @@
                             @Html.DisplayFor(modelItem => item.Hasta)
                         </td>
                         <td>
-                            <button type="button" class="btn btn-primary btn-sm" title="Descargar"><i class="far fa-eye"></i></button>
+                            <button type="button" class="btn btn-primary btn-sm" title="Descargar" onclick="location.href='@Url.Action("VerFormulario", "Formulario", new { id = item.FormularioId })'"><i class="far fa-eye"></i></button>
                             @if (Session["RodId"].ToString() == "5")
                             {
                                 <button type="button" title="Aprobar" class="btn btn-success btn-sm"><i class="fas fa-edit"></i></button>
                             }
-
-
                         </td>
                     </tr>
 }
