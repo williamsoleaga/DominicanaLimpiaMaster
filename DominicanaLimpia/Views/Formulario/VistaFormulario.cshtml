@@ -1,0 +1,17 @@
+﻿@model DominicanaLimpia.ModelViews.FormularioModelView
+@{
+    ViewBag.Title = "VistaFormulario";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>VistaFormulario</h2>
+
+@foreach (var item in Model.Preguntas)
+{
+
+    <div class="form-group">
+        <div class="block" style="display: inline-block">
+            <strong>  @item.Descripcion</strong>
+        </div>
+    </div>
+
+}
