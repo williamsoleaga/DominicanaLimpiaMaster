@@ -370,7 +370,12 @@ namespace DominicanaLimpia.Controllers
             // var report = new ActionAsPdf("Index");
             // return report;
 
-            return View("VistaFormulario", Fmv);
+            //return new Rotativa.ViewAsPDF("fsfs", Fmv);
+
+            //return  new ViewAsPDF("fasd", Fmv);
+            // return View("VistaFormulario", Fmv);
+
+            return new Rotativa.PartialViewAsPdf("VistaFormulario", Fmv);
         }
 
     }
