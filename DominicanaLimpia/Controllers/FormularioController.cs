@@ -375,7 +375,7 @@ namespace DominicanaLimpia.Controllers
             //return  new ViewAsPDF("fasd", Fmv);
             // return View("VistaFormulario", Fmv);
 
-            return new Rotativa.PartialViewAsPdf("VistaFormulario", Fmv);
+            return new Rotativa.ViewAsPdf("VistaFormulario", Fmv);
         }
 
     }
