@@ -365,15 +365,58 @@ namespace DominicanaLimpia.Controllers
 
             FormularioModelView Fmv = new FormularioModelView();
             Fmv.Preguntas = db.Preguntas.ToList();
+            Fmv.objetivo1 = db.Objetivo1.Where(x => x.FormularioId == id).ToList();
+            Fmv.formularioM = db.FormularioM.Where(x => x.FormularioId == id).ToList();
+            Fmv.Valores = new int[33];
+            Fmv.Comentarios = new string[33];
+            ViewBag.FechaDesde = Fmv.formularioM[0].Desde.ToString();
+            ViewBag.FechaHasta = Fmv.formularioM[0].Hasta.ToString();
+
+            Fmv.formularioM[0].Comentario = (Fmv.formularioM[0].Comentario == null) ? "" : Fmv.formularioM[0].Comentario;
+            foreach (var item in Fmv.formularioM)
+            {
+                Fmv.Valores[13] = (int)item.P13;
+                Fmv.Valores[14] = (int)item.P14;
+                Fmv.Valores[15] = (int)item.P15;
+                Fmv.Valores[16] = (int)item.P16;
+                Fmv.Valores[17] = (int)item.P17;
+                Fmv.Valores[18] = (int)item.P18;
+                Fmv.Valores[19] = (int)item.P19;
+                Fmv.Valores[20] = (int)item.P20;
+                Fmv.Valores[21] = (int)item.P21;
+                Fmv.Valores[22] = (int)item.P22;
+                Fmv.Valores[23] = (int)item.P23;
+                Fmv.Valores[24] = (int)item.P24;
+                Fmv.Valores[25] = (int)item.P25;
+                Fmv.Valores[26] = (int)item.P26;
+                Fmv.Valores[27] = (int)item.P27;
+                Fmv.Valores[28] = (int)item.P28;
+                Fmv.Valores[29] = (int)item.P29;
+                Fmv.Valores[30] = (int)item.P30;
+                Fmv.Valores[31] = (int)item.P31;
+                Fmv.Valores[32] = (int)item.P32;
+
+            }
+            foreach (var item in db.DescripcionP.Where(x=>x.FormularioId == id).ToList())
+            {
+                Fmv.Comentarios[18] = item.Dp18;
+                Fmv.Comentarios[19] = item.Dp19;
+                Fmv.Comentarios[20] = item.Dp20;
+                Fmv.Comentarios[27] = item.Dp27;
+                Fmv.Comentarios[28] = item.Dp28;
+                Fmv.Comentarios[29] = item.Dp29;
+                Fmv.Comentarios[30] = item.Dp30;
+                Fmv.Comentarios[31] = item.Dp31;
+                Fmv.Comentarios[32] = item.Dp32;
+
+            }
 
 
-            // var report = new ActionAsPdf("Index");
-            // return report;
+            int idusuario = (int)Fmv.formularioM[0].UsuarioId;
+            var responsable1 = db.Usuarios.Where(x => x.UsuarioId == idusuario).FirstOrDefault();
+            var responsable = db.Usuarios.Where(x => x.UsuarioId == responsable1.ResponsableId).FirstOrDefault();
+            Session["NombreResponsableReporte"] = responsable.Nombre_Completo;
 
-            //return new Rotativa.ViewAsPDF("fsfs", Fmv);
-
-            //return  new ViewAsPDF("fasd", Fmv);
-            // return View("VistaFormulario", Fmv);
 
             return new Rotativa.ViewAsPdf("VistaFormulario", Fmv);
         }

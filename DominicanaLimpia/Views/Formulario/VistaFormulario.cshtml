@@ -1,13 +1,183 @@
 ﻿@model DominicanaLimpia.ModelViews.FormularioModelView
 
-<br /> <br />
+@{
+
+    int contador = 1;
+}
+
+<br />
+<br />
+
+<div class="well">
+    <table class="table">
+        <thead>
+            <tr>
+                <th><h5> <strong>Desde:</strong>@ViewBag.FechaDesde</h5></th>
+                <th><h5><strong>Hasta:</strong> @ViewBag.FechaHasta </h5></th>
+                @*<th> @Html.DropDownList("ProvinciaId", (IEnumerable<SelectListItem>)ViewBag.Municipios, null, new { @class = "form-control" })   </th>*@
+            </tr>
+            <br />
+                <tr>
+                    <th> <h3> <strong>Responsable de territorio:</strong>  </h3> <h4> @Session["NombreResponsableReporte"].ToString() </h4></th>
+                </tr>
+            
+        </thead>
+    </table>
+</div>
+<br />
+<br />
+
+<br />
+<br />
+<h3><strong>Objetivo 1</strong></h3>
+<br />
+<table class="table table-hover" id="dtBasicExample">
+    <thead class="blue lighten-4">
+        <tr>
+            <th>
+                Escuela
+            </th>
+            <th>
+                P1
+            </th>
+            <th>
+                P2
+            </th>
+            <th>
+                P3
+            </th>
+            <th>
+                P4
+            </th>
+            <th>
+                P5
+            </th>
+            <th>
+                P6
+            </th>
+            <th>
+                P7
+            </th>
+            <th>
+                P8
+            </th>
+            <th>
+                P9
+            </th>
+            <th>
+                P10
+            </th>
+            <th>
+                P11
+            </th>
+            <th>
+                P12
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model.objetivo1)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EscuelaId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.p1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.p2)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.p3)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.p4)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.p5)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.p6)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.p7)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.p8)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.p9)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.p10)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.p11)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.p12)
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+<br />
+<br />
+<br />
+<br />
 @foreach (var item in Model.Preguntas)
 {
 
     <div class="form-group">
-        <div class="block" style="display: inline-block">
-            <strong>  @item.Descripcion</strong>
-        </div>
-    </div>
 
+        @if (contador >= 13)
+        {
+            <div class="block" style="display: inline-block">
+
+                @if (contador == 13)
+                {
+                    <h3><strong>Objetivo 2</strong></h3>
+                    <br /><hr />
+                }
+                @if (contador == 16)
+                {
+                    <h3><strong>Objetivo 3</strong></h3>
+                    <br /><hr />
+                }
+                @if (contador == 27)
+                {
+                    <h3><strong>Objetivo 4</strong></h3>
+                    <br /><hr />
+                }
+
+                <strong> @contador - @item.Descripcion</strong>
+                <p>
+                    @Model.Valores[contador]
+                </p>
+
+                @if (contador == 18 || contador == 19 || contador == 20 || contador == 27 || contador == 28 || contador == 29
+                    || contador == 30 || contador == 31 || contador == 32)
+                {
+                    <br />
+                    <label for="validationDefault01">Dirección/Descripción</label>
+                    <textarea type="text" autocomplete="off" class="form-control">
+               @Model.Comentarios[contador]
+                </textarea>
+                }
+
+
+            </div>
+        }
+
+    </div>
+    contador = contador + 1;
 }
+
+<div class="form-group">
+    <strong>Comentario</strong>
+    <textarea class="form-control" rows="7"> @Model.formularioM[0].Comentario.Trim().ToString()</textarea>
+</div>
