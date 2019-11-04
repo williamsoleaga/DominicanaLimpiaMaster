@@ -47,6 +47,15 @@ namespace DominicanaLimpia.Controllers
             Combo.Add(new Combo { Indice = 7, Value = "METAS POBLACIÓN ESCUELAS" });
             Combo.Add(new Combo { Indice = 8, Value = "METAS PUNTOS LIMPIOS" });
 
+            Combo.Add(new Combo { Indice = 9, Value = "META DOCENTES" });
+            Combo.Add(new Combo { Indice = 10, Value = "META ESTUDIANTES INICIAL" });
+            Combo.Add(new Combo { Indice = 11, Value = "META ESTUDIANTES PRIMARIA" });
+            Combo.Add(new Combo { Indice = 12, Value = "META ESTUDIANTES SECUNDARIA" });
+            Combo.Add(new Combo { Indice = 13, Value = "PARTICIPANTES JUNTAS DE VECINOS" });
+            Combo.Add(new Combo { Indice = 14, Value = "PARTICIPANTES DE COMUNIDAD EN GENERAL" });
+            Combo.Add(new Combo { Indice = 15, Value = "PARTICIPANTES DIASESOL" });
+
+
             return Combo;
         }
 

@@ -1,8 +1,9 @@
 ﻿@model DominicanaLimpia.ModelViews.FormularioModelView
 
 @{
-
+     int cobjetivo1 = 1;
     int contador = 1;
+    DominicanalimpiaEntities2 db = new DominicanalimpiaEntities2();
 }
 
 <br />
@@ -14,13 +15,12 @@
             <tr>
                 <th><h5> <strong>Desde:</strong>@ViewBag.FechaDesde</h5></th>
                 <th><h5><strong>Hasta:</strong> @ViewBag.FechaHasta </h5></th>
-                @*<th> @Html.DropDownList("ProvinciaId", (IEnumerable<SelectListItem>)ViewBag.Municipios, null, new { @class = "form-control" })   </th>*@
             </tr>
             <br />
-                <tr>
-                    <th> <h3> <strong>Responsable de territorio:</strong>  </h3> <h4> @Session["NombreResponsableReporte"].ToString() </h4></th>
-                </tr>
-            
+            <tr>
+                <th> <h3> <strong>Responsable de territorio:</strong>  </h3> <h4> @Session["NombreResponsableReporte"].ToString() </h4></th>
+            </tr>
+
         </thead>
     </table>
 </div>
@@ -31,6 +31,24 @@
 <br />
 <h3><strong>Objetivo 1</strong></h3>
 <br />
+
+@foreach (var item in Model.Preguntas)
+{
+
+    <div class="form-group">
+
+        @if (cobjetivo1 <= 12)
+        {
+            <div class="block" style="display: inline-block">
+                <strong> @cobjetivo1 - @item.Descripcion</strong>
+            </div>
+        }
+
+    </div>
+    cobjetivo1 = cobjetivo1 + 1;
+}
+<br />
+
 <table class="table table-hover" id="dtBasicExample">
     <thead class="blue lighten-4">
         <tr>
@@ -81,7 +99,9 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.EscuelaId)
+
+                    @db.Escuelas.Where(x => x.EscuelaId == item.EscuelaId).FirstOrDefault().Descripcion
+
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.p1)
@@ -156,7 +176,7 @@
 
                 <strong> @contador - @item.Descripcion</strong>
                 <p>
-                    @Model.Valores[contador]
+                    <input value="@Model.Valores[contador]" />
                 </p>
 
                 @if (contador == 18 || contador == 19 || contador == 20 || contador == 27 || contador == 28 || contador == 29

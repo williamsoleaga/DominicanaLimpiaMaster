@@ -397,6 +397,13 @@
     <Content Include="Pantillas\8.PLANTILLA METAS PARA APLICACION-puntos limpios.xlsx" />
     <Content Include="Pantillas\1.PLANTILLA METAS PARA APLICACION-población.xlsx" />
     <Content Include="App_Browsers\qt.browser" />
+    <Content Include="Pantillas\10.xlsx" />
+    <Content Include="Pantillas\11.xlsx" />
+    <Content Include="Pantillas\12.xlsx" />
+    <Content Include="Pantillas\9.xlsx" />
+    <Content Include="Pantillas\13.xlsx" />
+    <Content Include="Pantillas\14.xlsx" />
+    <Content Include="Pantillas\15.xlsx" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />

@@ -187,6 +187,16 @@ namespace DominicanaLimpia.Controllers
                     Ruta = Server.MapPath("~/Pantillas/8.PLANTILLA METAS PARA APLICACION-puntos limpios.xlsx");
                     break;
 
+                case 9:
+                case 10:
+                case 11:
+                case 12:
+                case 13:
+                case 14:
+                case 15:
+                    Ruta = Server.MapPath("~/Pantillas/"+Convert.ToString(Tipo)+".xlsx");
+                    break;
+
                 default:
                     
                     break;

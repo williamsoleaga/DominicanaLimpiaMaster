@@ -61,13 +61,33 @@
 
                                         @if (enumeracion == 1)
                                         {
-                                            <input class="Text-@enumeracion" type="number" name="Valores[]" id="Valores[]" disabled value="1"/>
+                                            <input class="Text-@enumeracion" type="number" name="Valores[]" id="Valores[]" disabled value="1" />
                                         }
                                         else
                                         {
                                             <input class="Text-@enumeracion" type="number" name="Valores[]" id="Valores[]" />
                                         }
 
+                                        @if (enumeracion == 7)
+                                        {
+                                            <br />
+                                            <label>Familia/Detalles</label>
+                                            <textarea type="text" name="TextoPendiente[]" autocomplete="off" class="form-control" id="TextoPendiente[]">
+                                         </textarea>
+                                        }
+
+                                        @if (enumeracion == 11)
+                                        {
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <input type="checkbox" id="cbox1" value="first_checkbox"> Neumáticos &ensp;
+                                                        <input type="checkbox" id="cbox1" value="first_checkbox"> Plásticos
+
+                                                    </tr>
+                                                </thead>
+                                            </table>
+                                        }
 
 
                                     </div>
@@ -462,7 +482,6 @@
         transitionEffect: "slideLeft",
         autoFocus: true,
         onFinishing: function (event, currentIndex) {
-
 
 
             if ($('#grvBeneficiarios TBODY tr').length == 0) {

@@ -37,7 +37,8 @@ namespace DominicanaLimpia.Controllers
                 {
                     responsables = responsables + "," + item.UsuarioId;
                 }
-                distinctClientsPerEvent = distinctClientsPerEvent.Where(r => responsables.Contains(r.UsuarioId.ToString()));
+
+                distinctClientsPerEvent = db.FormularioM.Where(r => responsables.Contains(r.UsuarioId.ToString()));
             }
 
             //si es coordinador
@@ -45,7 +46,7 @@ namespace DominicanaLimpia.Controllers
             {
                 int idusuario = Convert.ToInt32(Session["UsuarioId"].ToString());
 
-                distinctClientsPerEvent = distinctClientsPerEvent.Where(x => x.UsuarioId == idusuario);
+                distinctClientsPerEvent = db.FormularioM.Where(x => x.UsuarioId == idusuario);
             }
 
 
@@ -184,17 +185,6 @@ namespace DominicanaLimpia.Controllers
 
               
 
-                    var idnumero = 0;
-                    var numeroformulario = db.FormularioM.ToList().LastOrDefault();
-
-                    if (numeroformulario == null)
-                    {
-                        idnumero = 1;
-                    }
-                    else
-                    {
-                        idnumero = Convert.ToInt32(numeroformulario.NumeroFormulario + 1);
-                    }
 
 
 
@@ -204,8 +194,8 @@ namespace DominicanaLimpia.Controllers
                 nuevoform.UsuarioId = Convert.ToInt16(Session["UsuarioId"].ToString());
                 nuevoform.ProvinciaId = formulario.ProvinciaId;
                 nuevoform.Comentario = formulario.Comentario;
-                nuevoform.Estatus = "A";
-                nuevoform.NumeroFormulario = idnumero;
+                nuevoform.Estatus = "I";
+                nuevoform.NumeroFormulario = 1;
                 nuevoform.P13 = formulario.Valores[12];
                 nuevoform.P14 = formulario.Valores[13];
                 nuevoform.P15 = formulario.Valores[14];
@@ -228,12 +218,14 @@ namespace DominicanaLimpia.Controllers
                 nuevoform.P32 = formulario.Valores[30];
                 db.FormularioM.Add(nuevoform);
                 db.SaveChanges();
+         
+                var numeroformulario = db.FormularioM.ToList().LastOrDefault();
 
                 Objetivo1 Objetivos = new Objetivo1();
 
                     foreach (var item in formulario.ObjetivoLista)
                     {
-                        Objetivos.FormularioId = idnumero;
+                        Objetivos.FormularioId = numeroformulario.FormularioId;
                         Objetivos.EscuelaId = item.IdEscuela;
                         Objetivos.UsuarioId = Convert.ToInt16(Session["UsuarioId"].ToString());
                         Objetivos.p1 = item.P1;
@@ -262,7 +254,7 @@ namespace DominicanaLimpia.Controllers
                     //Agregamos los comentarios de las preguntas
                     DescripcionP descripciones = new DescripcionP();
                     descripciones.UsuarioId = Convert.ToInt16(Session["UsuarioId"].ToString());
-                    descripciones.FormularioId = idnumero;
+                    descripciones.FormularioId = numeroformulario.FormularioId;
                     descripciones.Dp18 = formulario.DescripcionP[0].TrimEnd();
                     descripciones.Dp19 = formulario.DescripcionP[1].TrimEnd();
                     descripciones.Dp20 = formulario.DescripcionP[2].TrimEnd();
@@ -358,6 +350,18 @@ namespace DominicanaLimpia.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+
+        public ActionResult ValidarFormulario(int? id)
+        {
+
+            FormularioM UsuariosMaster = db.FormularioM.Find(id);
+            UsuariosMaster.Estatus = "A";
+            db.Entry(UsuariosMaster).State = EntityState.Modified;
+            db.SaveChanges();
+
+            return RedirectToAction("Index");
         }
 
         public ActionResult VerFormulario(int? id)
