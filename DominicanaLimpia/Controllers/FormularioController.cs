@@ -32,7 +32,7 @@ namespace DominicanaLimpia.Controllers
                 int idusuario = Convert.ToInt32(Session["UsuarioId"].ToString());
                 var MisCoordinadores = db.Usuarios.Where(x => x.ResponsableId == idusuario).ToList();
                 foreach (var item in MisCoordinadores)
-                {
+                {0
                     responsables = responsables + "," + item.UsuarioId;
                 }
                 distinctClientsPerEvent = distinctClientsPerEvent.Where(r => responsables.Contains(r.UsuarioId.ToString()));
