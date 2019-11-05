@@ -11,6 +11,7 @@ using DominicanaLimpia;
 using DominicanaLimpia.Models;
 using DominicanaLimpia.ModelViews;
 using DominicanaLimpia.Utilidades;
+using RotativaHQ.MVC5;
 
 namespace DominicanaLimpia.Controllers
 {
@@ -422,7 +423,8 @@ namespace DominicanaLimpia.Controllers
             Session["NombreResponsableReporte"] = responsable.Nombre_Completo;
 
 
-            return new Rotativa.ViewAsPdf("VistaFormulario", Fmv);
+            return new ViewAsPdf("VistaFormulario", Fmv);
+            //return new Rotativa.ViewAsPdf("VistaFormulario", Fmv);
         }
 
     }
