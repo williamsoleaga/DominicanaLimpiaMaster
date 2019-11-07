@@ -67,8 +67,8 @@
                     success: function (data) {
 
                         document.getElementById("chartContainer").innerHTML = '&nbsp;';
-                       document.getElementById("chartContainer").innerHTML = ' <button type="button" onclick="Imprimir()" class="btn btn-warning">Imprimir</button><canvas id="myChart"></canvas>';
-
+                       //document.getElementById("chartContainer").innerHTML = ' <button type="button" onclick="Imprimir()" class="btn btn-warning">Imprimir</button><canvas id="myChart"></canvas>';
+                        document.getElementById("chartContainer").innerHTML = '<canvas id="myChart"></canvas>';
                         var ctx = document.getElementById("myChart").getContext('2d');
 
                         var myChart = new Chart(ctx, {
