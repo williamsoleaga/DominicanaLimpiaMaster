@@ -69,11 +69,11 @@
                         @Html.HiddenFor(model => model.ResponsableId)
                     }
 
-                    <div class="form-group" id="MunicipioDiv">
-                        Municipios
-                            @Html.DropDownList("Municipios[]", (IEnumerable<SelectListItem>)ViewBag.Municipios, null, new { @name = "Municipios[]", @multiple = "multiple", @class = "form-control", @size = "5", @disabled = "disabled" })
-               
-                    </div>
+                <div class="form-group" id="MunicipioDiv">
+                    Territorios
+                    @Html.DropDownList("Municipios[]", (IEnumerable<SelectListItem>)ViewBag.Municipios, null, new { @name = "Municipios[]", @multiple = "multiple", @class = "form-control", @size = "5", @disabled = "disabled" })
+
+                </div>
                     <div class="text-right">
                         <button class="btn btn-success" type="submit">Guardar</button>
                     </div>

@@ -330,15 +330,15 @@ namespace DominicanaLimpia.Controllers
         }
 
         // POST: Formulario/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Formulario formulario = db.Formulario.Find(id);
-            db.Formulario.Remove(formulario);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult DeleteConfirmed(int id)
+        //{
+        //    Formulario formulario = db.Formulario.Find(id);
+        //    db.Formulario.Remove(formulario);
+        //    db.SaveChanges();
+        //    return RedirectToAction("Index");
+        //}
 
         protected override void Dispose(bool disposing)
         {
@@ -347,6 +347,29 @@ namespace DominicanaLimpia.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+
+
+        [ActionName("DeleteConfirmed")]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            FormularioM formulario = db.FormularioM.Find(id);
+            db.FormularioM.Remove(formulario);
+            db.SaveChanges();
+
+            //eliminando los objetivos
+            var objetivo = db.Objetivo1.Where(x => x.FormularioId == id).ToList();
+            foreach (var item in objetivo)
+            {
+                db.Objetivo1.Remove(item);
+                db.SaveChanges();
+            }
+            DescripcionP Descipcion = db.DescripcionP.Find(id);
+            db.DescripcionP.Remove(Descipcion);
+            db.SaveChanges();
+
+            return RedirectToAction("Index");
         }
 
 
