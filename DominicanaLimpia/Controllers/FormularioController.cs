@@ -349,8 +349,6 @@ namespace DominicanaLimpia.Controllers
             base.Dispose(disposing);
         }
 
-
-
         [ActionName("DeleteConfirmed")]
         public ActionResult DeleteConfirmed(int id)
         {
@@ -369,6 +367,34 @@ namespace DominicanaLimpia.Controllers
             db.DescripcionP.Remove(Descipcion);
             db.SaveChanges();
 
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult EditarFormularioM(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            FormularioM formularioM = db.FormularioM.Find(id);
+            if (formularioM == null)
+            {
+                return HttpNotFound();
+            }
+            return View("~/Views/Formulario/EditarFM.cshtml", formularioM);
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditarFormularioM(FormularioM formularioM)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(formularioM).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
             return RedirectToAction("Index");
         }
 

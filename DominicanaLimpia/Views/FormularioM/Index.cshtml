@@ -1,0 +1,190 @@
+﻿@model IEnumerable<DominicanaLimpia.FormularioM>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Desde)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hasta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UsuarioId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProvinciaId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumeroFormulario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Comentario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.P13)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.P14)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.P15)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.P16)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.P17)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.P18)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.P19)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.P20)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.P21)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.P22)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.P23)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.P24)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.P25)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.P26)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.P27)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.P28)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.P29)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.P30)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.P31)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.P32)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Desde)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Hasta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UsuarioId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProvinciaId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumeroFormulario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Estatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Comentario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.P13)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.P14)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.P15)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.P16)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.P17)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.P18)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.P19)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.P20)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.P21)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.P22)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.P23)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.P24)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.P25)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.P26)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.P27)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.P28)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.P29)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.P30)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.P31)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.P32)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.FormularioId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.FormularioId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.FormularioId })
+        </td>
+    </tr>
+}
+
+</table>
