@@ -184,10 +184,6 @@ namespace DominicanaLimpia.Controllers
             try
             {
 
-              
-
-
-
 
                 FormularioM nuevoform = new FormularioM();
                 nuevoform.Desde = Convert.ToDateTime(formulario.DesdeFecha);

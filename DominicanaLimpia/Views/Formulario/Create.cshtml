@@ -35,7 +35,7 @@
                             <tr>
                                 <th> <strong>Desde:</strong> <input type="text" class="form-control" name="DesdeFecha" id="DesdeFecha"></th>
                                 <th> <strong>Hasta:</strong> <input type="text" class="form-control" name="HastaFecha" id="HastaFecha"></th>
-                                <th><strong>Provincia:</strong>  @Html.DropDownList("ProvinciaId", (IEnumerable<SelectListItem>)ViewBag.Municipios, null, new { @class = "form-control" })   </th>
+                                <th><strong>Territorio:</strong>  @Html.DropDownList("ProvinciaId", (IEnumerable<SelectListItem>)ViewBag.Municipios, null, new { @class = "form-control" })   </th>
                             </tr>
                             @if (Convert.ToInt16(Session["RodId"]) == 2)
                             {
@@ -61,11 +61,11 @@
 
                                         @if (enumeracion == 1)
                                         {
-                                            <input class="Text-@enumeracion" type="number" name="Valores[]" id="Valores[]" disabled value="1" />
+                                            <input class="Text-@enumeracion" type="number" min="0" name="Valores[]" id="Valores[]" disabled value="1" />
                                         }
                                         else
                                         {
-                                            <input class="Text-@enumeracion" type="number" name="Valores[]" id="Valores[]" />
+                                            <input class="Text-@enumeracion" type="number" min="0" name="Valores[]" id="Valores[]" />
                                         }
 
                                         @if (enumeracion == 7)
@@ -78,12 +78,15 @@
 
                                         @if (enumeracion == 11)
                                         {
+                                            <br />
                                             <table class="table">
                                                 <thead>
                                                     <tr>
-                                                        <input type="checkbox" id="cbox1" value="first_checkbox"> Neumáticos &ensp;
+                                                        <input type="checkbox" id="cbox1" value="first_checkbox"> Neumáticos
+                                                        <input type="number" min="0" name="neumaticos[]" /> &ensp;
+                                                        <br />
                                                         <input type="checkbox" id="cbox1" value="first_checkbox"> Plásticos
-
+                                                        <input type="number" min="0" name="Plasticos[]" /> &ensp;
                                                     </tr>
                                                 </thead>
                                             </table>
@@ -167,7 +170,7 @@
                                 <div class="form-group">
                                     <div class="block">
                                         <strong> @enumeracion -  @item.Descripcion</strong>
-                                        <input type="number" name="Valores[]" id="Valores[]" />
+                                        <input type="number" min="0" name="Valores[]" id="Valores[]" />
 
                                         @if (enumeracion == 12)
                                         {
@@ -223,7 +226,7 @@
                     <div class="form-group">
                         <div class="block">
                             <strong>  @enumeracion - @item.Descripcion</strong>
-                            <input type="number" name="Valores[]" id="Valores[]" />
+                            <input type="number" min="0" name="Valores[]" id="Valores[]" />
 
 
                             @if (enumeracion == 18 || enumeracion == 19 || enumeracion == 20 )
@@ -263,7 +266,7 @@
                                 <div class="form-group">
                                     <div class="block">
                                         <strong> @enumeracion - @item.Descripcion</strong>
-                                        <input type="number" name="Valores[]" id="Valores[]" />
+                                        <input type="number" min="0" name="Valores[]" id="Valores[]" />
                                         <br />
                                         <label for="validationDefault01">Dirección/Descripción</label>
                                         <textarea type="text" name="Descripcion[]" autocomplete="off" class="form-control" id="Descripcion[]">
@@ -331,8 +334,6 @@
 
 
     function llamame() {
-
-
 
 
         var P1 = $('.Text-1').val(), P2 = $('.Text-2').val(), P3 = $('.Text-3').val(), P4 = $('.Text-4').val(), P5 = $('.Text-5').val(),
@@ -546,7 +547,7 @@
                         }
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
-                        alertify.warning('Error al soliictar la peticion de guardado! ');
+                        alertify.warning('Error al solicitar la peticion de guardado! ');
                     }
                 });
             }
@@ -587,13 +588,6 @@
         var row = $(button).closest("TR");
         table[0].deleteRow(row[0].rowIndex);
     }
-
-
-
-    //Agregar botonnes
-    //$("body").on("click", "#btnAgregarBeneficiario", function (e) {
-
-
 
 
 </script>
