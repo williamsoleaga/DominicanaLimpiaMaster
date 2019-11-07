@@ -79,7 +79,7 @@
                         @if (Session["RodId"].ToString() == "1" || Session["RodId"].ToString() == "5")
                         {
                             <a class="nav-link waves-effect" href="#" onclick="location.href='@Url.Action("Index", "Formulario")'">
-                                Formulario
+                                Formularios
                             </a>
                         }
                         else
@@ -88,7 +88,7 @@
                             else
                             {
                                 <a href="#" class="nav-link waves-effect" onclick="location.href='@Url.Action("Create", "Formulario")'">
-                                    Formulario
+                                    Formularios
                                 </a>
                             }
                         }
@@ -145,7 +145,7 @@
                 @if (Session["RodId"].ToString() == "1" || Session["RodId"].ToString() == "5")
                 {
                     <a href="#" class="list-group-item list-group-item-action waves-effect" onclick="location.href='@Url.Action("Index", "Formulario")'">
-                        <i class="fas fa-table mr-3"></i>Formulario
+                        <i class="fas fa-table mr-3"></i>Formularios
                     </a>
                 }
                 else
@@ -153,7 +153,7 @@
                     if (Session["RodId"].ToString() == "4") { } else {
 
                     <a href="#" class="list-group-item list-group-item-action waves-effect" onclick="location.href='@Url.Action("Create", "Formulario")'">
-                        <i class="fas fa-table mr-3"></i>Formulario
+                        <i class="fas fa-table mr-3"></i>Formularios
                     </a>
                     }
                 }
