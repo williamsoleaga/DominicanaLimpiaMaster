@@ -28,6 +28,7 @@ namespace DominicanaLimpia.Controllers
             var distinctClientsPerEvent = db.FormularioM.GroupBy(m => m.Desde)
                                                               .Select(x => x.FirstOrDefault());
 
+            distinctClientsPerEvent = db.FormularioM.Where(x => x.FormularioId != 0);
 
             //si es Responsable de territorio
             if (Session["RodId"].ToString() == "5")
