@@ -184,11 +184,16 @@ namespace DominicanaLimpia.Controllers
 
             try
             {
+              
+                var splitDesde = formulario.DesdeFecha.Split('/');
+                var splitHasta = formulario.HastaFecha.Split('/');
 
+                formulario.DesdeFecha = splitDesde[1]+"/"+splitDesde[0] +"/"+splitDesde[2];
+                formulario.HastaFecha = splitHasta[1] + "/" + splitHasta[0] + "/" + splitHasta[2];
 
                 FormularioM nuevoform = new FormularioM();
-                nuevoform.Desde = Convert.ToDateTime(formulario.DesdeFecha);
-                nuevoform.Hasta = Convert.ToDateTime(formulario.HastaFecha);
+                nuevoform.Desde = Convert.ToDateTime(String.Format("{0:MM/dd/yyyy}", formulario.DesdeFecha));
+                nuevoform.Hasta = Convert.ToDateTime(String.Format("{0:MM/dd/yyyy}", formulario.HastaFecha));
                 nuevoform.UsuarioId = Convert.ToInt16(Session["UsuarioId"].ToString());
                 nuevoform.ProvinciaId = formulario.ProvinciaId;
                 nuevoform.Comentario = formulario.Comentario;
@@ -390,6 +395,7 @@ namespace DominicanaLimpia.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult EditarFormularioM(FormularioM formularioM)
         {
+
             if (ModelState.IsValid)
             {
                 db.Entry(formularioM).State = EntityState.Modified;

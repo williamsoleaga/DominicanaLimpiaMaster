@@ -12,18 +12,18 @@
           <Property Name="DescripcionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FormularioId" Type="int" />
           <Property Name="UsuarioId" Type="int" />
-          <Property Name="Dp18" Type="nvarchar(max)" />
-          <Property Name="Dp19" Type="nvarchar(max)" />
-          <Property Name="Dp20" Type="nvarchar(max)" />
-          <Property Name="Dp27" Type="nvarchar(max)" />
-          <Property Name="Dp28" Type="nvarchar(max)" />
-          <Property Name="Dp29" Type="nvarchar(max)" />
-          <Property Name="Dp30" Type="nvarchar(max)" />
-          <Property Name="Dp31" Type="nvarchar(max)" />
-          <Property Name="Dp32" Type="nvarchar(max)" />
+          <Property Name="Dp18" Type="varchar(max)" />
+          <Property Name="Dp19" Type="varchar(max)" />
+          <Property Name="Dp20" Type="varchar(max)" />
+          <Property Name="Dp27" Type="varchar(max)" />
+          <Property Name="Dp28" Type="varchar(max)" />
+          <Property Name="Dp29" Type="varchar(max)" />
+          <Property Name="Dp30" Type="varchar(max)" />
+          <Property Name="Dp31" Type="varchar(max)" />
+          <Property Name="Dp32" Type="varchar(max)" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'Dominicanalimpia.dbo.Escuelas' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'DominicanaLimpia.dbo.Escuelas' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Escuelas">
           <Key>
             <PropertyRef Name="EscuelaId" />
@@ -58,7 +58,7 @@ warning 6002: The table/view 'Dominicanalimpia.dbo.Escuelas' does not have a pri
           <Property Name="ProvinciaId" Type="int" />
           <Property Name="NumeroFormulario" Type="int" />
           <Property Name="Estatus" Type="nchar" MaxLength="5" />
-          <Property Name="Comentario" Type="nchar" MaxLength="250" />
+          <Property Name="Comentario" Type="varchar(max)" />
           <Property Name="P13" Type="int" />
           <Property Name="P14" Type="int" />
           <Property Name="P15" Type="int" />
@@ -81,7 +81,7 @@ warning 6002: The table/view 'Dominicanalimpia.dbo.Escuelas' does not have a pri
           <Property Name="P32" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'Dominicanalimpia.dbo.Municipios' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'DominicanaLimpia.dbo.Municipios' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Municipios">
           <Key>
             <PropertyRef Name="MunicipioId" />
@@ -122,7 +122,7 @@ warning 6002: The table/view 'Dominicanalimpia.dbo.Municipios' does not have a p
           <Property Name="Estatus" Type="nchar" MaxLength="10" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'Dominicanalimpia.dbo.Roles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'DominicanaLimpia.dbo.Roles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Roles">
           <Key>
             <PropertyRef Name="RolId" />
@@ -261,7 +261,7 @@ warning 6002: The table/view 'Dominicanalimpia.dbo.Roles' does not have a primar
           <Property Name="ProvinciaId" Type="Int32" />
           <Property Name="NumeroFormulario" Type="Int32" />
           <Property Name="Estatus" Type="String" MaxLength="5" FixedLength="true" Unicode="true" />
-          <Property Name="Comentario" Type="String" MaxLength="250" FixedLength="true" Unicode="true" />
+          <Property Name="Comentario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="P13" Type="Int32" />
           <Property Name="P14" Type="Int32" />
           <Property Name="P15" Type="Int32" />
@@ -314,15 +314,15 @@ warning 6002: The table/view 'Dominicanalimpia.dbo.Roles' does not have a primar
           <Property Name="DescripcionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FormularioId" Type="Int32" />
           <Property Name="UsuarioId" Type="Int32" />
-          <Property Name="Dp18" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Dp19" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Dp20" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Dp27" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Dp28" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Dp29" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Dp30" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Dp31" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Dp32" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Dp18" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Dp19" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Dp20" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Dp27" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Dp28" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Dp29" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Dp30" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Dp31" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Dp32" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>

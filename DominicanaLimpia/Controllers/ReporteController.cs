@@ -23,10 +23,20 @@ namespace DominicanaLimpia.Controllers
 
 
 
-        public JsonResult BuscarReporte(int TipoReporte, DateTime Desde, DateTime Hasta)
+        public JsonResult BuscarReporte(int TipoReporte, string Desdef, string Hastaf)
         {
 
-          int[] ProvinciasSum = new int[23];
+
+
+            var splitDesde = Desdef.Split('/');
+            var splitHasta = Hastaf.Split('/');
+
+           DateTime Desde = Convert.ToDateTime(splitDesde[1] + "/" + splitDesde[0] + "/" + splitDesde[2]);
+          DateTime Hasta = Convert.ToDateTime(splitHasta[1] + "/" + splitHasta[0] + "/" + splitHasta[2]);
+
+
+
+            int[] ProvinciasSum = new int[23];
           var  requests =  db.Objetivo1.Where(x => x.Desde >= Desde && x.Desde <= Hasta).ToList();
 
 
