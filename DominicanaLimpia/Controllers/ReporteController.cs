@@ -831,7 +831,7 @@ namespace DominicanaLimpia.Controllers
             //Metas docentes sumatoria de la pretunta p1
             if (TipoReporte == 9)
             {
-                NombreReprte = "9";
+                NombreReprte = "META DOCENTES";
                 Hoja = (Microsoft.Office.Interop.Excel.Worksheet)xlWorkbook.Sheets["9"];
 
                 for (int i = 0; i < ProvinciasSum.Length; i++)
@@ -866,7 +866,7 @@ namespace DominicanaLimpia.Controllers
 
             if (TipoReporte == 10)
             {
-                NombreReprte = "10";
+                NombreReprte = "META ESTUDIANTES INICIAL";
                 Hoja = (Microsoft.Office.Interop.Excel.Worksheet)xlWorkbook.Sheets["10"];
 
                 for (int i = 0; i < ProvinciasSum.Length; i++)
@@ -901,7 +901,7 @@ namespace DominicanaLimpia.Controllers
             if (TipoReporte == 11)
             {
 
-                NombreReprte = "9";
+                NombreReprte = "META ESTUDIANTES PRIMARIA";
                 Hoja = (Microsoft.Office.Interop.Excel.Worksheet)xlWorkbook.Sheets["11"];
                 for (int i = 0; i < ProvinciasSum.Length; i++)
                 {
@@ -937,7 +937,7 @@ namespace DominicanaLimpia.Controllers
             if (TipoReporte == 12)
             {
 
-                NombreReprte = "9";
+                NombreReprte = "META ESTUDIANTES SECUNDARIA";
                 Hoja = (Microsoft.Office.Interop.Excel.Worksheet)xlWorkbook.Sheets["12"];
 
                 for (int i = 0; i < ProvinciasSum.Length; i++)
@@ -970,7 +970,7 @@ namespace DominicanaLimpia.Controllers
 
             if (TipoReporte == 13)
             {
-                NombreReprte = "9";
+                NombreReprte = "PARTICIPANTES JUNTAS DE VECINOS";
                 Hoja = (Microsoft.Office.Interop.Excel.Worksheet)xlWorkbook.Sheets["13"];
                 for (int i = 0; i < ProvinciasSum.Length; i++)
                 {
@@ -1003,7 +1003,7 @@ namespace DominicanaLimpia.Controllers
             if (TipoReporte == 14)
             {
 
-                NombreReprte = "9";
+                NombreReprte = "PARTICIPANTES DE COMUNIDAD EN GENERAL";
                 Hoja = (Microsoft.Office.Interop.Excel.Worksheet)xlWorkbook.Sheets["14"];
 
                 for (int i = 0; i < ProvinciasSum.Length; i++)
@@ -1036,7 +1036,7 @@ namespace DominicanaLimpia.Controllers
 
             if (TipoReporte == 15)
             {
-                NombreReprte = "9";
+                NombreReprte = "PARTICIPANTES DIASESOL";
                 Hoja = (Microsoft.Office.Interop.Excel.Worksheet)xlWorkbook.Sheets[Convert.ToString(TipoReporte)];
                 for (int i = 0; i < ProvinciasSum.Length; i++)
                 {
@@ -1068,7 +1068,7 @@ namespace DominicanaLimpia.Controllers
 
             if (TipoReporte == 16)
             {
-                NombreReprte = "9";
+                NombreReprte = "DIASESOL PLASTICOS";
                 Hoja = (Microsoft.Office.Interop.Excel.Worksheet)xlWorkbook.Sheets[Convert.ToString(TipoReporte)];
 
                 for (int i = 0; i < ProvinciasSum.Length; i++)
@@ -1102,7 +1102,7 @@ namespace DominicanaLimpia.Controllers
 
             if (TipoReporte == 17)
             {
-                NombreReprte = "9";
+                NombreReprte = "DIASESOL NEUMATICOS";
                 Hoja = (Microsoft.Office.Interop.Excel.Worksheet)xlWorkbook.Sheets[Convert.ToString(TipoReporte)];
                 for (int i = 0; i < ProvinciasSum.Length; i++)
                 {
@@ -1135,7 +1135,7 @@ namespace DominicanaLimpia.Controllers
 
             if (TipoReporte == 18)
             {
-                NombreReprte = "9";
+                NombreReprte = "TALLERES DE RECICLAJE";
                 Hoja = (Microsoft.Office.Interop.Excel.Worksheet)xlWorkbook.Sheets[Convert.ToString(TipoReporte)];
 
                 var FormularioM = db.FormularioM.Where(x => x.Desde >= Desde && x.Desde <= Hasta).ToList();
@@ -1169,7 +1169,7 @@ namespace DominicanaLimpia.Controllers
 
             if (TipoReporte == 19)
             {
-                NombreReprte = "9";
+                NombreReprte = "PUNTOS LIMPIOS COMUNITARIOS";
                 Hoja = (Microsoft.Office.Interop.Excel.Worksheet)xlWorkbook.Sheets[Convert.ToString(TipoReporte)];
                 var FormularioM = db.FormularioM.Where(x => x.Desde >= Desde && x.Desde <= Hasta).ToList();
                 for (int i = 0; i < ProvinciasSum.Length; i++)
@@ -1203,7 +1203,7 @@ namespace DominicanaLimpia.Controllers
 
             if (TipoReporte == 20)
             {
-                NombreReprte = "9";
+                NombreReprte = "RECICLADORES CAPACITADOS";
                 Hoja = (Microsoft.Office.Interop.Excel.Worksheet)xlWorkbook.Sheets[Convert.ToString(TipoReporte)];
 
                 var FormularioM = db.FormularioM.Where(x => x.Desde >= Desde && x.Desde <= Hasta).ToList();
@@ -1237,7 +1237,7 @@ namespace DominicanaLimpia.Controllers
 
             if (TipoReporte == 21)
             {
-                NombreReprte = "9";
+                NombreReprte = "ENTREGA DE MONTA CARGAS";
                 Hoja = (Microsoft.Office.Interop.Excel.Worksheet)xlWorkbook.Sheets[Convert.ToString(TipoReporte)];
 
                 var FormularioM = db.FormularioM.Where(x => x.Desde >= Desde && x.Desde <= Hasta).ToList();
@@ -1272,7 +1272,7 @@ namespace DominicanaLimpia.Controllers
 
             if (TipoReporte == 22)
             {
-                NombreReprte = "9";
+                NombreReprte = "RECICLADORES IDENTIFICADOS";
                 Hoja = (Microsoft.Office.Interop.Excel.Worksheet)xlWorkbook.Sheets[Convert.ToString(TipoReporte)];
 
                 var FormularioM = db.FormularioM.Where(x => x.Desde >= Desde && x.Desde <= Hasta).ToList();
@@ -1306,7 +1306,7 @@ namespace DominicanaLimpia.Controllers
 
             if (TipoReporte == 23)
             {
-                NombreReprte = "9";
+                NombreReprte = "EMPRESAS RECICLADORAS";
                 Hoja = (Microsoft.Office.Interop.Excel.Worksheet)xlWorkbook.Sheets[Convert.ToString(TipoReporte)];
 
                 var FormularioM = db.FormularioM.Where(x => x.Desde >= Desde && x.Desde <= Hasta).ToList();
@@ -1340,7 +1340,7 @@ namespace DominicanaLimpia.Controllers
 
             if (TipoReporte == 24)
             {
-                NombreReprte = "9";
+                NombreReprte = "CAPACITADOS BRIGADAS";
                 Hoja = (Microsoft.Office.Interop.Excel.Worksheet)xlWorkbook.Sheets[Convert.ToString(TipoReporte)];
 
                 var FormularioM = db.FormularioM.Where(x => x.Desde >= Desde && x.Desde <= Hasta).ToList();
@@ -1374,7 +1374,7 @@ namespace DominicanaLimpia.Controllers
 
             if (TipoReporte == 25)
             {
-                NombreReprte = "9";
+                NombreReprte = "CAPACITADOS ICAM";
                 Hoja = (Microsoft.Office.Interop.Excel.Worksheet)xlWorkbook.Sheets[Convert.ToString(TipoReporte)];
 
                 var FormularioM = db.FormularioM.Where(x => x.Desde >= Desde && x.Desde <= Hasta).ToList();
@@ -1408,7 +1408,7 @@ namespace DominicanaLimpia.Controllers
 
             if (TipoReporte == 26)
             {
-                NombreReprte = "9";
+                NombreReprte = "VERTEDEROS ACTUALES";
                 Hoja = (Microsoft.Office.Interop.Excel.Worksheet)xlWorkbook.Sheets[Convert.ToString(TipoReporte)];
 
                 var FormularioM = db.FormularioM.Where(x => x.Desde >= Desde && x.Desde <= Hasta).ToList();
@@ -1443,7 +1443,7 @@ namespace DominicanaLimpia.Controllers
 
             if (TipoReporte == 27)
             {
-                NombreReprte = "9";
+                NombreReprte = "CAMIONES DE RECOLECCION SEPARADAS";
                 Hoja = (Microsoft.Office.Interop.Excel.Worksheet)xlWorkbook.Sheets[Convert.ToString(TipoReporte)];
 
                 var FormularioM = db.FormularioM.Where(x => x.Desde >= Desde && x.Desde <= Hasta).ToList();
@@ -1477,7 +1477,7 @@ namespace DominicanaLimpia.Controllers
 
             if (TipoReporte == 28)
             {
-                NombreReprte = "9";
+                NombreReprte = "VERTEDEROS ELIMINADOS";
                 Hoja = (Microsoft.Office.Interop.Excel.Worksheet)xlWorkbook.Sheets[Convert.ToString(TipoReporte)];
 
                 var FormularioM = db.FormularioM.Where(x => x.Desde >= Desde && x.Desde <= Hasta).ToList();
@@ -1512,7 +1512,7 @@ namespace DominicanaLimpia.Controllers
             if (TipoReporte == 29)
             {
 
-                NombreReprte = "9";
+                NombreReprte = "VERTEDEROS NUEVOS";
                 Hoja = (Microsoft.Office.Interop.Excel.Worksheet)xlWorkbook.Sheets[Convert.ToString(TipoReporte)];
 
                 var FormularioM = db.FormularioM.Where(x => x.Desde >= Desde && x.Desde <= Hasta).ToList();
@@ -1547,6 +1547,9 @@ namespace DominicanaLimpia.Controllers
 
             if (TipoReporte == 30)
             {
+                NombreReprte = "CENTRO DE ACOPIOS FUNCIONANDO";
+                Hoja = (Microsoft.Office.Interop.Excel.Worksheet)xlWorkbook.Sheets[Convert.ToString(TipoReporte)];
+
                 var FormularioM = db.FormularioM.Where(x => x.Desde >= Desde && x.Desde <= Hasta).ToList();
                 for (int i = 0; i < ProvinciasSum.Length; i++)
                 {
@@ -1580,7 +1583,7 @@ namespace DominicanaLimpia.Controllers
             if (TipoReporte == 31)
             {
 
-                NombreReprte = "9";
+                NombreReprte = "CENTRO DE ACOPIOS CONSTRUIDO";
                 Hoja = (Microsoft.Office.Interop.Excel.Worksheet)xlWorkbook.Sheets[Convert.ToString(TipoReporte)];
 
                 var FormularioM = db.FormularioM.Where(x => x.Desde >= Desde && x.Desde <= Hasta).ToList();
@@ -1615,7 +1618,7 @@ namespace DominicanaLimpia.Controllers
 
             if (TipoReporte == 32)
             {
-                NombreReprte = "9";
+                NombreReprte = "CAPACITADOS CENTROS DE ACOPIOS";
                 Hoja = (Microsoft.Office.Interop.Excel.Worksheet)xlWorkbook.Sheets[Convert.ToString(TipoReporte)];
 
                 var FormularioM = db.FormularioM.Where(x => x.Desde >= Desde && x.Desde <= Hasta).ToList();
@@ -1650,7 +1653,7 @@ namespace DominicanaLimpia.Controllers
 
             if (TipoReporte == 33)
             {
-                NombreReprte = "9";
+                NombreReprte = "ABONERAS FUNCIONANDO";
                 Hoja = (Microsoft.Office.Interop.Excel.Worksheet)xlWorkbook.Sheets[Convert.ToString(TipoReporte)];
 
                 var FormularioM = db.FormularioM.Where(x => x.Desde >= Desde && x.Desde <= Hasta).ToList();
