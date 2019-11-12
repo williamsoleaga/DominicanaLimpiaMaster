@@ -54,6 +54,26 @@ namespace DominicanaLimpia.Controllers
             Combo.Add(new Combo { Indice = 13, Value = "PARTICIPANTES JUNTAS DE VECINOS" });
             Combo.Add(new Combo { Indice = 14, Value = "PARTICIPANTES DE COMUNIDAD EN GENERAL" });
             Combo.Add(new Combo { Indice = 15, Value = "PARTICIPANTES DIASESOL" });
+            Combo.Add(new Combo { Indice = 16, Value = "DIASESOL PLASTICOS" });
+            Combo.Add(new Combo { Indice = 17, Value = "DIASESOL NEUMATICOS" });
+            Combo.Add(new Combo { Indice = 18, Value = "TALLERES DE RECICLAJE" });
+            Combo.Add(new Combo { Indice = 19, Value = "PUNTOS LIMPIOS COMUNITARIOS" });
+            Combo.Add(new Combo { Indice = 20, Value = "RECICLADORES CAPACITADOS" });
+            Combo.Add(new Combo { Indice = 21, Value = "ENTREGA DE MONTA CARGAS" });
+            Combo.Add(new Combo { Indice = 22, Value = "RECICLADORES IDENTIFICADOS" });
+            Combo.Add(new Combo { Indice = 23, Value = "EMPRESAS RECICLADORAS" });
+            Combo.Add(new Combo { Indice = 24, Value = "CAPACITADOS BRIGADAS" });
+            Combo.Add(new Combo { Indice = 25, Value = "CAPACITADOS ICAM" });
+            Combo.Add(new Combo { Indice = 26, Value = "VERTEDEROS ACTUALES" });
+            Combo.Add(new Combo { Indice = 27, Value = "CAMIONES DE RECOLECCION SEPARADAS" });
+            Combo.Add(new Combo { Indice = 28, Value = "VERTEDEROS ELIMINADOS" });
+            Combo.Add(new Combo { Indice = 29, Value = "VERTEDEROS NUEVOS" });
+            Combo.Add(new Combo { Indice = 30, Value = "CENTRO DE ACOPIOS FUNCIONANDO" });
+            Combo.Add(new Combo { Indice = 31, Value = "CENTRO DE ACOPIOS CONSTRUIDO" });
+            Combo.Add(new Combo { Indice = 32, Value = "CAPACITADOS CENTROS DE ACOPIOS" });
+            Combo.Add(new Combo { Indice = 33, Value = "ABONERAS FUNCIONANDO" });
+            //Combo.Add(new Combo { Indice = 34, Value = "ABONERAS CONSTRUIDAS" });
+            //Combo.Add(new Combo { Indice = 35, Value = "CAPACITADOS ABONERAS" });
 
 
             return Combo;

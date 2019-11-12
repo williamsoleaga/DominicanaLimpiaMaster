@@ -403,22 +403,43 @@
     <Content Include="Dominicanalimpia.edmx.diagram">
       <DependentUpon>Dominicanalimpia.edmx</DependentUpon>
     </Content>
-    <Content Include="Pantillas\Prueba.xltx" />
+    <Content Include="Pantillas\1.PLANTILLA METAS PARA APLICACION-población.xlsx" />
+    <Content Include="Pantillas\10.xlsx" />
+    <Content Include="Pantillas\11.xlsx" />
+    <Content Include="Pantillas\12.xlsx" />
+    <Content Include="Pantillas\13.xlsx" />
+    <Content Include="Pantillas\14.xlsx" />
+    <Content Include="Pantillas\15.xlsx" />
     <Content Include="Pantillas\2.PLANTILLA METAS PARA APLICACION-hogares.xlsx" />
     <Content Include="Pantillas\3.PLANTILLA METAS PARA APLICACION-comercios.xlsx" />
     <Content Include="Pantillas\4.PLANTILLA METAS PARA APLICACION-escuelas.xlsx" />
     <Content Include="Pantillas\5.PLANTILLA METAS PARA APLICACION-estudiantes.xlsx" />
     <Content Include="Pantillas\6.PLANTILLA METAS PARA APLICACION-docentes y personal admon.xlsx" />
+    <Content Include="Pantillas\6.PLANTILLA METAS PARA APLICACION-docentes y personal admonBK.xlsx" />
     <Content Include="Pantillas\7.PLANTILLA METAS PARA APLICACION-población escuelas.xlsx" />
     <Content Include="Pantillas\8.PLANTILLA METAS PARA APLICACION-puntos limpios.xlsx" />
-    <Content Include="Pantillas\1.PLANTILLA METAS PARA APLICACION-población.xlsx" />
-    <Content Include="Pantillas\10.xlsx" />
-    <Content Include="Pantillas\11.xlsx" />
-    <Content Include="Pantillas\12.xlsx" />
     <Content Include="Pantillas\9.xlsx" />
-    <Content Include="Pantillas\13.xlsx" />
-    <Content Include="Pantillas\14.xlsx" />
-    <Content Include="Pantillas\15.xlsx" />
+    <Content Include="Pantillas\Prueba.xltx" />
+    <Content Include="Pantillas\16.xlsx" />
+    <Content Include="Pantillas\17.xlsx" />
+    <Content Include="Pantillas\18.xlsx" />
+    <Content Include="Pantillas\19.xlsx" />
+    <Content Include="Pantillas\20.xlsx" />
+    <Content Include="Pantillas\21.xlsx" />
+    <Content Include="Pantillas\22.xlsx" />
+    <Content Include="Pantillas\23.xlsx" />
+    <Content Include="Pantillas\24.xlsx" />
+    <Content Include="Pantillas\25.xlsx" />
+    <Content Include="Pantillas\26.xlsx" />
+    <Content Include="Pantillas\27.xlsx" />
+    <Content Include="Pantillas\28.xlsx" />
+    <Content Include="Pantillas\29.xlsx" />
+    <Content Include="Pantillas\30.xlsx" />
+    <Content Include="Pantillas\31.xlsx" />
+    <Content Include="Pantillas\32.xlsx" />
+    <Content Include="Pantillas\33.xlsx" />
+    <Content Include="Pantillas\34.xlsx" />
+    <Content Include="Pantillas\35.xlsx" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -469,7 +490,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Pantillas\Repositorio\" />
     <Folder Include="Views\Reporte\" />
   </ItemGroup>
   <ItemGroup>
