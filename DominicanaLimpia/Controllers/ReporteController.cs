@@ -482,8 +482,19 @@ namespace DominicanaLimpia.Controllers
         }
 
 
-        public ActionResult ImprimirReporte(int TipoReporte, DateTime Desde, DateTime Hasta)
+        public ActionResult ImprimirReporte(int TipoReporte, string Desdef, string Hastaf)
         {
+
+
+            var splitDesde = Desdef.Split('/');
+            var splitHasta = Hastaf.Split('/');
+
+            DateTime Desde = Convert.ToDateTime(splitDesde[1] + "/" + splitDesde[0] + "/" + splitDesde[2]);
+            DateTime Hasta = Convert.ToDateTime(splitHasta[1] + "/" + splitHasta[0] + "/" + splitHasta[2]);
+
+
+
+
 
             int[] ProvinciasSum = new int[23];
             string NombreReprte = "";
