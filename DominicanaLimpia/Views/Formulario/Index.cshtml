@@ -65,7 +65,7 @@
                             @Html.DisplayFor(modelItem => item.Hasta)
                         </td>
                         <td>
-                            <button type="button" class="btn btn-primary btn-sm" title="Descargar" onclick="location.href='@Url.Action("VerFormulario", "Formulario", new { id = item.FormularioId}  )'"><i class="far fa-eye"></i></button>
+                            <button type="button" class="btn btn-primary btn-sm" title="Descargar" onclick="AbrirReporte(@item.FormularioId)"  @*onclick="location.href='@Url.Action("VerFormulario", "Formulario", new { @id = item.FormularioId})'"*@  ><i class="far fa-eye"></i></button>
                             @if (Session["RodId"].ToString() == "5")
                             {
 
@@ -91,3 +91,9 @@
     </div>
 </div>
 
+<script type="text/javascript">
+    function AbrirReporte(id) {
+         window.open('/Formulario/VerFormulario?id='+id+'', '_blank', 'left=100,top=100,width=1000,height=1000,toolbar=1,resizable=0');
+    }
+
+</script>
