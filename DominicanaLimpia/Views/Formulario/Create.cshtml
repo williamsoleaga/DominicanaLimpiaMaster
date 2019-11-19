@@ -17,7 +17,10 @@
 <link href="~/Content/JquerySteep/jquerysteep.css" rel="stylesheet" />
 <script src="~/Content/JquerySteep/jquery.steps.js"></script>
 <script src="~/Content/JquerySteep/jquery.steps.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
+@*<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>*@
+
+<script src="~/Content/Datepicket.js"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.1/js/fileinput.min.js"></script>
 
 @using (Html.BeginForm("Create", "Formulario", FormMethod.Post, new { id = "Formulario" }))
@@ -65,7 +68,15 @@
                                         }
                                         else
                                         {
+
+                                            if (enumeracion == 11)
+                                            {
+                                      <input class="Text-@enumeracion" type="number" min="0" name="Valores[]" id="Valores[]" value="0" hidden/>
+                                            }
+                                            else
+                                            {
                                             <input class="Text-@enumeracion" type="number" min="0" name="Valores[]" id="Valores[]" />
+                                            }
                                         }
 
                                         @if (enumeracion == 7)
@@ -82,10 +93,10 @@
                                             <table class="table">
                                                 <thead>
                                                     <tr>
-                                                        <input type="checkbox" id="cbox1" value="first_checkbox"> Neumáticos
+                                                        <input type="checkbox" id="cbox1" value="first_checkbox"> Neumáticos(unidad)
                                                         <input type="number" min="0" name="neumaticos[]" /> &ensp;
                                                         <br />
-                                                        <input type="checkbox" id="cbox1" value="first_checkbox"> Plásticos
+                                                        <input type="checkbox" id="cbox1" value="first_checkbox"> Plásticos (libras)
                                                         <input type="number" min="0" name="Plasticos[]" /> &ensp;
                                                     </tr>
                                                 </thead>
@@ -304,7 +315,11 @@
 
 
 <script type="text/javascript">
+
+
+
     $(document).ready(function () {
+
 
     });
 
@@ -451,7 +466,7 @@
     $("#DesdeFecha").datepicker({
         autoclose: true,
         todayHighlight: true,
-        format: 'dd/mm/yyyy'
+        format: 'dd/mm/yyyy',
     }).datepicker('update', new Date());
 
     $("#HastaFecha").datepicker({

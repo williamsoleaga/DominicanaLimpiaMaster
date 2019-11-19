@@ -234,6 +234,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Datepicket.js" />
     <Content Include="Content\JquerySteep\jquery.steps.js" />
     <Content Include="Content\JquerySteep\jquery.steps.min.js" />
     <Content Include="Content\JquerySteep\jquerysteep.css" />

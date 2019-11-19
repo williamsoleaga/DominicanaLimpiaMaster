@@ -43,10 +43,9 @@ namespace DominicanaLimpia.Controllers
             Combo.Add(new Combo { Indice = 3, Value = "METAS DE COMERCIOS"});
             Combo.Add(new Combo { Indice = 4, Value = "METAS DE ESCUELAS"});
             Combo.Add(new Combo { Indice = 5, Value = "METAS DE ESTUDIANTES" });
-           // Combo.Add(new Combo { Indice = 6, Value = "METAS DOCENTES Y PERSONAL ADMINISTRATIVO"});
+            Combo.Add(new Combo { Indice = 6, Value = "METAS DOCENTES Y PERSONAL ADMINISTRATIVO"});
             Combo.Add(new Combo { Indice = 7, Value = "METAS POBLACIÓN ESCUELAS" });
             Combo.Add(new Combo { Indice = 8, Value = "METAS PUNTOS LIMPIOS" });
-
             Combo.Add(new Combo { Indice = 9, Value = "META DOCENTES" });
             Combo.Add(new Combo { Indice = 10, Value = "META ESTUDIANTES INICIAL" });
             Combo.Add(new Combo { Indice = 11, Value = "META ESTUDIANTES PRIMARIA" });
@@ -59,6 +58,7 @@ namespace DominicanaLimpia.Controllers
             Combo.Add(new Combo { Indice = 18, Value = "TALLERES DE RECICLAJE" });
             Combo.Add(new Combo { Indice = 19, Value = "PUNTOS LIMPIOS COMUNITARIOS" });
             Combo.Add(new Combo { Indice = 20, Value = "RECICLADORES CAPACITADOS" });
+
             Combo.Add(new Combo { Indice = 21, Value = "ENTREGA DE MONTA CARGAS" });
             Combo.Add(new Combo { Indice = 22, Value = "RECICLADORES IDENTIFICADOS" });
             Combo.Add(new Combo { Indice = 23, Value = "EMPRESAS RECICLADORAS" });
@@ -72,8 +72,10 @@ namespace DominicanaLimpia.Controllers
             Combo.Add(new Combo { Indice = 31, Value = "CENTRO DE ACOPIOS CONSTRUIDO" });
             Combo.Add(new Combo { Indice = 32, Value = "CAPACITADOS CENTROS DE ACOPIOS" });
             Combo.Add(new Combo { Indice = 33, Value = "ABONERAS FUNCIONANDO" });
-            //Combo.Add(new Combo { Indice = 34, Value = "ABONERAS CONSTRUIDAS" });
-            //Combo.Add(new Combo { Indice = 35, Value = "CAPACITADOS ABONERAS" });
+
+            //no se sabe con que es que se hace ese calculo
+            Combo.Add(new Combo { Indice = 34, Value = "ABONERAS CONSTRUIDAS" });
+            Combo.Add(new Combo { Indice = 35, Value = "CAPACITADOS ABONERAS" });
 
 
             return Combo;
