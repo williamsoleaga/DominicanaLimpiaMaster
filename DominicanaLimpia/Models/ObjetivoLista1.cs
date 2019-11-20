@@ -20,6 +20,10 @@ namespace DominicanaLimpia.Models
         public int P9 { get; set; }
         public int P10 { get; set; }
         public int P11 { get; set; }
+
+        public int P111 { get; set; }
+        public int P112 { get; set; }
+
         public int P12 { get; set; }
 
 

@@ -112,6 +112,8 @@ warning 6002: The table/view 'DominicanaLimpia.dbo.Municipios' does not have a p
           <Property Name="p10" Type="int" />
           <Property Name="p11" Type="int" />
           <Property Name="p12" Type="int" />
+          <Property Name="P111" Type="int" />
+          <Property Name="P112" Type="int" />
         </EntityType>
         <EntityType Name="Preguntas">
           <Key>
@@ -306,6 +308,8 @@ warning 6002: The table/view 'DominicanaLimpia.dbo.Roles' does not have a primar
           <Property Name="MunicipioId" Type="Int32" />
           <Property Name="Desde" Type="DateTime" Precision="3" />
           <Property Name="Hasta" Type="DateTime" Precision="3" />
+          <Property Name="P111" Type="Int32" />
+          <Property Name="P112" Type="Int32" />
         </EntityType>
         <EntityType Name="DescripcionP">
           <Key>
@@ -434,6 +438,8 @@ warning 6002: The table/view 'DominicanaLimpia.dbo.Roles' does not have a primar
           <EntitySetMapping Name="Objetivo1">
             <EntityTypeMapping TypeName="DominicanalimpiaModel.Objetivo1">
               <MappingFragment StoreEntitySet="Objetivo1">
+                <ScalarProperty Name="P112" ColumnName="P112" />
+                <ScalarProperty Name="P111" ColumnName="P111" />
                 <ScalarProperty Name="Hasta" ColumnName="Hasta" />
                 <ScalarProperty Name="Desde" ColumnName="Desde" />
                 <ScalarProperty Name="MunicipioId" ColumnName="MunicipioId" />

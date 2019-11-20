@@ -88,16 +88,17 @@
                                         }
 
                                         @if (enumeracion == 11)
+
                                         {
                                             <br />
                                             <table class="table">
                                                 <thead>
                                                     <tr>
                                                         <input type="checkbox" id="cbox1" value="first_checkbox"> Neumáticos(unidad)
-                                                        <input type="number" min="0" name="neumaticos[]" /> &ensp;
+                                                        <input type="number" min="0" value="0" class="p111" /> &ensp;
                                                         <br />
                                                         <input type="checkbox" id="cbox1" value="first_checkbox"> Plásticos (libras)
-                                                        <input type="number" min="0" name="Plasticos[]" /> &ensp;
+                                                        <input type="number" min="0"  value="0" class="p112" /> &ensp;
                                                     </tr>
                                                 </thead>
                                             </table>
@@ -151,6 +152,8 @@
                                             <th data-override="id_correos_notificaciones">P5</th>
                                             <th data-override="id_correos_notificaciones">P6</th>
                                             <th data-override="id_correos_notificaciones">P7</th>
+                                            <th data-override="id_correos_notificaciones" hidden>Pregunta 4</th>
+                                            <th data-override="id_correos_notificaciones" hidden>Pregunta 4</th>
                                             <th data-override="id_correos_notificaciones" hidden>Pregunta 4</th>
                                             <th data-override="id_correos_notificaciones" hidden>Pregunta 4</th>
                                             <th data-override="id_correos_notificaciones" hidden>Pregunta 4</th>
@@ -338,7 +341,7 @@
 
         var P1 = $('.Text-1').val(), P2 = $('.Text-2').val(), P3 = $('.Text-3').val(), P4 = $('.Text-4').val(), P5 = $('.Text-5').val(),
             P6 = $('.Text-6').val(), P7 = $('.Text-7').val(), P8 = $('.Text-8').val(), P9 = $('.Text-9').val(), P10 = $('.Text-10').val(),
-            P11 = $('.Text-11').val(), P12 = $('.Text-12').val(),
+            P11 = $('.Text-11').val(), P12 = $('.Text-12').val(), P111 = $('.p111').val(),  P112 = $('.p112').val()
             EscuelaText = $('#EscuelaGrid :selected').text(), idescuela = $('#EscuelaGrid :selected').val();
 
         if (P1 == "") {
@@ -387,14 +390,22 @@
             alertify.warning('El numero de Pregunta 11  es necesario! ');
             return;
         }
+
+        if (P111 == "") {
+            P111 = 0;
+        }
+
+           if (P112 == "") {
+               P112 = 0;
+        }
+
+
         if (P12 == "") {
             alertify.warning('El numero de Pregunta 12  es necesario!');
             return;
         }
 
-
         var secuenciaNueva = $('#grvBeneficiarios TBODY tr').length;
-
 
         var secuenciaNueva = $('#grvBeneficiarios TBODY tr').length + 1;
         var tBody = $("#grvBeneficiarios > TBODY")[0], row = tBody.insertRow(-1), cell = $(row.insertCell(-1));
@@ -443,6 +454,16 @@
 
         cell.html(P11).addClass("hidden");
         cell = $(row.insertCell(-1));
+
+
+        //pregunta 11.1 neumaticos
+        cell.html(P111).addClass("hidden");
+        cell = $(row.insertCell(-1));
+
+          //pregunta 11.2 plasticos
+        cell.html(P112).addClass("hidden");
+        cell = $(row.insertCell(-1));
+
 
         cell.html(P12).addClass("hidden");
         cell = $(row.insertCell(-1));
@@ -510,7 +531,11 @@
                         Contat.P9 = row.find("TD").eq(10).html();
                         Contat.P10 = row.find("TD").eq(11).html();
                         Contat.P11 = row.find("TD").eq(12).html();
-                        Contat.P12 = row.find("TD").eq(13).html();
+
+                        Contat.P111  = row.find("TD").eq(13).html();
+                        Contat.P112 = row.find("TD").eq(14).html();
+
+                        Contat.P12 = row.find("TD").eq(15).html();
 
                         ObjetivoLista.push(Contat);
                     });
@@ -580,6 +605,8 @@
         $('.Text-10').val('');
         $('.Text-11').val('');
         $('.Text-12').val('');
+        $('.p111').val('');
+        $('.p112').val('');
     }
 
 

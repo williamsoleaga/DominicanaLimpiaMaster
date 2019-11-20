@@ -59,10 +59,14 @@
                         </td>
 
                         <td>
-                            @Html.DisplayFor(modelItem => item.Desde)
+                            @{ 
+                                var dateOnlyString = item.Desde.Value.ToShortDateString();
+                                 var dateOnlyString1 = item.Hasta.Value.ToShortDateString();
+                            }
+                           @dateOnlyString
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Hasta)
+                             @dateOnlyString
                         </td>
                         <td>
                             <button type="button" class="btn btn-primary btn-sm" title="Descargar" onclick="AbrirReporte(@item.FormularioId)"  @*onclick="location.href='@Url.Action("VerFormulario", "Formulario", new { @id = item.FormularioId})'"*@  ><i class="far fa-eye"></i></button>

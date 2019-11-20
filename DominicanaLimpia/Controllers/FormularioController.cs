@@ -242,7 +242,14 @@ namespace DominicanaLimpia.Controllers
                         Objetivos.p9 = item.P9;
                         Objetivos.p10 = item.P10;
                         Objetivos.p11 = item.P11;
+
+                        Objetivos.P111 = item.P111;
+                        Objetivos.P112 = item.P112;
+
                         Objetivos.p12 = item.P12;
+
+
+
                     Objetivos.MunicipioId = formulario.ProvinciaId;
                     Objetivos.Desde = Convert.ToDateTime(formulario.DesdeFecha);
                     Objetivos.Hasta = Convert.ToDateTime(formulario.HastaFecha);

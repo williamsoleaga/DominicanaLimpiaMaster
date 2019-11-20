@@ -13,8 +13,15 @@
     <table class="table">
         <thead>
             <tr>
-                <th><h5> <strong>Desde:</strong>@ViewBag.FechaDesde</h5></th>
-                <th><h5><strong>Hasta:</strong> @ViewBag.FechaHasta </h5></th>
+                @{
+                    DateTime dateOnlyString =  Convert.ToDateTime(ViewBag.FechaDesde);
+                    var fecha1 = dateOnlyString.Date.ToShortDateString();
+
+                    DateTime dateOnlyString1 =  Convert.ToDateTime(ViewBag.FechaHasta);
+                    var fecha2 = dateOnlyString1.Date.ToShortDateString();
+                 }
+                <th><h5> <strong>Desde:</strong>@fecha1</h5></th>
+                <th><h5><strong>Hasta:</strong> @fecha2 </h5></th>
             </tr>
             <br />
             <tr>
@@ -89,6 +96,13 @@
                 P11
             </th>
             <th>
+                P11.1
+            </th>
+            <th>
+                P11.2
+            </th>
+
+            <th>
                 P12
             </th>
         </tr>
@@ -97,50 +111,56 @@
     <tbody>
         @foreach (var item in Model.objetivo1)
         {
-            <tr>
-                <td>
+        <tr>
+            <td>
 
-                    @db.Escuelas.Where(x => x.EscuelaId == item.EscuelaId).FirstOrDefault().Descripcion
+                @db.Escuelas.Where(x => x.EscuelaId == item.EscuelaId).FirstOrDefault().Descripcion
 
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.p1)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.p2)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.p3)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.p4)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.p5)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.p6)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.p7)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.p8)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.p9)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.p10)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.p11)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.p12)
-                </td>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.p1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.p2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.p3)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.p4)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.p5)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.p6)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.p7)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.p8)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.p9)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.p10)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.p11)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.P111)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.P112)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.p12)
+            </td>
 
-            </tr>
+        </tr>
         }
     </tbody>
 </table>

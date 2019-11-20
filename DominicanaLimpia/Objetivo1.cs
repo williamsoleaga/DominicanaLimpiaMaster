@@ -55,7 +55,12 @@ public partial class Objetivo1
 
     public Nullable<int> p11 { get; set; }
 
-    public Nullable<int> p12 { get; set; }
+        public Nullable<int> P111 { get; set; }
+
+        public Nullable<int> P112 { get; set; }
+
+
+        public Nullable<int> p12 { get; set; }
 
 }
 

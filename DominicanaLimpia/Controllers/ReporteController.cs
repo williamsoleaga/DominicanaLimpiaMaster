@@ -211,16 +211,15 @@ namespace DominicanaLimpia.Controllers
             {
                 for (int i = 0; i < ProvinciasSum.Length; i++)
                 {
-                    ProvinciasSum[i] = 0;//comentar hasta que resuelva el tema de los plasticos  (int)requests.Where(x => x.MunicipioId == i).Sum(z => z.p12);
+                    ProvinciasSum[i] = (int)requests.Where(x => x.MunicipioId == i).Sum(z => z.P112);    //comentar hasta que resuelva el tema de los plasticos  (int)requests.Where(x => x.MunicipioId == i).Sum(z => z.p12);
                 }
             }
-
 
             if (TipoReporte == 17)
             {
                 for (int i = 0; i < ProvinciasSum.Length; i++)
                 {
-                    ProvinciasSum[i] = 0;//comentar hasta que resuelva el tema de los plasticos  (int)requests.Where(x => x.MunicipioId == i).Sum(z => z.p12);
+                    ProvinciasSum[i] = (int)requests.Where(x => x.MunicipioId == i).Sum(z => z.P111); //comentar hasta que resuelva el tema de los plasticos  (int)requests.Where(x => x.MunicipioId == i).Sum(z => z.p12);
                 }
             }
 
@@ -1073,7 +1072,7 @@ namespace DominicanaLimpia.Controllers
 
                 for (int i = 0; i < ProvinciasSum.Length; i++)
                 {
-                    ProvinciasSum[i] = 0;//comentar hasta que resuelva el tema de los plasticos  (int)requests.Where(x => x.MunicipioId == i).Sum(z => z.p12);
+                    ProvinciasSum[i] = (int)requests.Where(x => x.MunicipioId == i).Sum(z => z.P112);//comentar hasta que resuelva el tema de los plasticos  (int)requests.Where(x => x.MunicipioId == i).Sum(z => z.p12);
                 }
                 Hoja.Range["E7"].Value2 = ProvinciasSum[1];
                 Hoja.Range["E8"].Value2 = ProvinciasSum[11];
@@ -1106,7 +1105,7 @@ namespace DominicanaLimpia.Controllers
                 Hoja = (Microsoft.Office.Interop.Excel.Worksheet)xlWorkbook.Sheets[Convert.ToString(TipoReporte)];
                 for (int i = 0; i < ProvinciasSum.Length; i++)
                 {
-                    ProvinciasSum[i] = 0;//comentar hasta que resuelva el tema de los plasticos  (int)requests.Where(x => x.MunicipioId == i).Sum(z => z.p12);
+                    ProvinciasSum[i] = (int)requests.Where(x => x.MunicipioId == i).Sum(z => z.P111);//comentar hasta que resuelva el tema de los plasticos  (int)requests.Where(x => x.MunicipioId == i).Sum(z => z.p12);
                 }
                 Hoja.Range["E7"].Value2 = ProvinciasSum[1];
                 Hoja.Range["E8"].Value2 = ProvinciasSum[11];
