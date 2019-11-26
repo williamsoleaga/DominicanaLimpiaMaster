@@ -27,23 +27,27 @@ namespace DominicanaLimpia.Controllers
         {
 
 
-
             var splitDesde = Desdef.Split('/');
             var splitHasta = Hastaf.Split('/');
 
-          DateTime Desde = Convert.ToDateTime(splitDesde[1] + "/" + splitDesde[0] + "/" + splitDesde[2]);
-          DateTime Hasta = Convert.ToDateTime(splitHasta[1] + "/" + splitHasta[0] + "/" + splitHasta[2]);
+            DateTime Desde = Convert.ToDateTime(splitDesde[1] + "/" + splitDesde[0] + "/" + splitDesde[2]);
+            DateTime Hasta = Convert.ToDateTime(splitHasta[1] + "/" + splitHasta[0] + "/" + splitHasta[2]);
 
 
 
           int[] ProvinciasSum = new int[23];
-          var  requests =  db.Objetivo1.Where(x => x.Desde >= Desde && x.Desde <= Hasta).ToList();
-            
 
-            //Metas de hogares sumatoria de la pretunta 8
+
+            //Consulta General
+            var requests = db.Objetivo1.Where(x => x.Desde >= Desde && x.Desde <= Hasta).ToList();
+            //formularioM para que sea generico en todos 
+            var FormularioM = db.FormularioM.Where(x => x.Desde >= Desde && x.Desde <= Hasta).ToList();
+
+
+
             if (TipoReporte == 1)
             {
-                var FormularioM = db.FormularioM.Where(x => x.Desde >= Desde && x.Desde <= Hasta).ToList();
+            
 
                 for (int i = 0; i < ProvinciasSum.Length; i++)
                 {
@@ -83,7 +87,6 @@ namespace DominicanaLimpia.Controllers
             //metas de comercios
             if (TipoReporte == 3)
             {
-                var FormularioM = db.FormularioM.Where(x => x.Desde >= Desde && x.Desde <= Hasta).ToList();
                 for (int i = 0; i < ProvinciasSum.Length; i++)
                 {
                     ProvinciasSum[i] = (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P16);
@@ -138,7 +141,6 @@ namespace DominicanaLimpia.Controllers
             //metas de comercios
             if (TipoReporte == 8)
             {
-                var FormularioM = db.FormularioM.Where(x => x.Desde >= Desde && x.Desde <= Hasta).ToList();
                 for (int i = 0; i < ProvinciasSum.Length; i++)
                 {
                     ProvinciasSum[i] = (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P13);
@@ -211,7 +213,7 @@ namespace DominicanaLimpia.Controllers
             {
                 for (int i = 0; i < ProvinciasSum.Length; i++)
                 {
-                    ProvinciasSum[i] = (int)requests.Where(x => x.MunicipioId == i).Sum(z => z.P112);    //comentar hasta que resuelva el tema de los plasticos  (int)requests.Where(x => x.MunicipioId == i).Sum(z => z.p12);
+                    ProvinciasSum[i] = (int)requests.Where(x => x.MunicipioId == i).Sum(z => z.P112);    
                 }
             }
 
@@ -219,14 +221,13 @@ namespace DominicanaLimpia.Controllers
             {
                 for (int i = 0; i < ProvinciasSum.Length; i++)
                 {
-                    ProvinciasSum[i] = (int)requests.Where(x => x.MunicipioId == i).Sum(z => z.P111); //comentar hasta que resuelva el tema de los plasticos  (int)requests.Where(x => x.MunicipioId == i).Sum(z => z.p12);
+                    ProvinciasSum[i] = (int)requests.Where(x => x.MunicipioId == i).Sum(z => z.P111); 
                 }
             }
 
 
             if (TipoReporte == 18)
             {
-                var FormularioM = db.FormularioM.Where(x => x.Desde >= Desde && x.Desde <= Hasta).ToList();
                 for (int i = 0; i < ProvinciasSum.Length; i++)
                 {
                     ProvinciasSum[i] = (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P14);
@@ -235,7 +236,6 @@ namespace DominicanaLimpia.Controllers
 
             if (TipoReporte == 19)
             {
-                var FormularioM = db.FormularioM.Where(x => x.Desde >= Desde && x.Desde <= Hasta).ToList();
                 for (int i = 0; i < ProvinciasSum.Length; i++)
                 {
                     ProvinciasSum[i] = (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P16);
@@ -245,7 +245,6 @@ namespace DominicanaLimpia.Controllers
 
             if (TipoReporte == 20)
             {
-                var FormularioM = db.FormularioM.Where(x => x.Desde >= Desde && x.Desde <= Hasta).ToList();
                 for (int i = 0; i < ProvinciasSum.Length; i++)
                 {
                     ProvinciasSum[i] = (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P20);
@@ -254,7 +253,6 @@ namespace DominicanaLimpia.Controllers
 
             if (TipoReporte == 21)
             {
-                var FormularioM = db.FormularioM.Where(x => x.Desde >= Desde && x.Desde <= Hasta).ToList();
                 for (int i = 0; i < ProvinciasSum.Length; i++)
                 {
                     ProvinciasSum[i] = (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P19);
@@ -264,7 +262,6 @@ namespace DominicanaLimpia.Controllers
 
             if (TipoReporte == 22)
             {
-                var FormularioM = db.FormularioM.Where(x => x.Desde >= Desde && x.Desde <= Hasta).ToList();
                 for (int i = 0; i < ProvinciasSum.Length; i++)
                 {
                     ProvinciasSum[i] = (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P21);
@@ -273,7 +270,6 @@ namespace DominicanaLimpia.Controllers
 
             if (TipoReporte == 23)
             {
-                var FormularioM = db.FormularioM.Where(x => x.Desde >= Desde && x.Desde <= Hasta).ToList();
                 for (int i = 0; i < ProvinciasSum.Length; i++)
                 {
                     ProvinciasSum[i] = (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P22);
@@ -282,7 +278,6 @@ namespace DominicanaLimpia.Controllers
 
             if (TipoReporte == 24)
             {
-                var FormularioM = db.FormularioM.Where(x => x.Desde >= Desde && x.Desde <= Hasta).ToList();
                 for (int i = 0; i < ProvinciasSum.Length; i++)
                 {
                     ProvinciasSum[i] = (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P24);
@@ -291,7 +286,6 @@ namespace DominicanaLimpia.Controllers
 
             if (TipoReporte == 25)
             {
-                var FormularioM = db.FormularioM.Where(x => x.Desde >= Desde && x.Desde <= Hasta).ToList();
                 for (int i = 0; i < ProvinciasSum.Length; i++)
                 {
                     ProvinciasSum[i] = (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P25);
@@ -300,7 +294,6 @@ namespace DominicanaLimpia.Controllers
 
             if (TipoReporte == 26)
             {
-                var FormularioM = db.FormularioM.Where(x => x.Desde >= Desde && x.Desde <= Hasta).ToList();
                 for (int i = 0; i < ProvinciasSum.Length; i++)
                 {
                     ProvinciasSum[i] = (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P26);
@@ -310,7 +303,6 @@ namespace DominicanaLimpia.Controllers
 
             if (TipoReporte == 27)
             {
-                var FormularioM = db.FormularioM.Where(x => x.Desde >= Desde && x.Desde <= Hasta).ToList();
                 for (int i = 0; i < ProvinciasSum.Length; i++)
                 {
                     ProvinciasSum[i] = (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P23);
@@ -319,7 +311,6 @@ namespace DominicanaLimpia.Controllers
 
             if (TipoReporte == 28)
             {
-                var FormularioM = db.FormularioM.Where(x => x.Desde >= Desde && x.Desde <= Hasta).ToList();
                 for (int i = 0; i < ProvinciasSum.Length; i++)
                 {
                     ProvinciasSum[i] = (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P27);
@@ -328,7 +319,6 @@ namespace DominicanaLimpia.Controllers
 
             if (TipoReporte == 29)
             {
-                var FormularioM = db.FormularioM.Where(x => x.Desde >= Desde && x.Desde <= Hasta).ToList();
                 for (int i = 0; i < ProvinciasSum.Length; i++)
                 {
                     ProvinciasSum[i] = (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P28);
@@ -338,7 +328,6 @@ namespace DominicanaLimpia.Controllers
 
             if (TipoReporte == 30)
             {
-                var FormularioM = db.FormularioM.Where(x => x.Desde >= Desde && x.Desde <= Hasta).ToList();
                 for (int i = 0; i < ProvinciasSum.Length; i++)
                 {
                     ProvinciasSum[i] = (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P30);
@@ -348,7 +337,6 @@ namespace DominicanaLimpia.Controllers
 
             if (TipoReporte == 31)
             {
-                var FormularioM = db.FormularioM.Where(x => x.Desde >= Desde && x.Desde <= Hasta).ToList();
                 for (int i = 0; i < ProvinciasSum.Length; i++)
                 {
                     ProvinciasSum[i] = (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P29);
@@ -358,7 +346,6 @@ namespace DominicanaLimpia.Controllers
 
             if (TipoReporte == 32)
             {
-                var FormularioM = db.FormularioM.Where(x => x.Desde >= Desde && x.Desde <= Hasta).ToList();
                 for (int i = 0; i < ProvinciasSum.Length; i++)
                 {
                     ProvinciasSum[i] = (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P31);
@@ -368,7 +355,6 @@ namespace DominicanaLimpia.Controllers
 
             if (TipoReporte == 33)
             {
-                var FormularioM = db.FormularioM.Where(x => x.Desde >= Desde && x.Desde <= Hasta).ToList();
                 for (int i = 0; i < ProvinciasSum.Length; i++)
                 {
                     ProvinciasSum[i] = (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P32);

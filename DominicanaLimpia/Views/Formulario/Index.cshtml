@@ -60,13 +60,19 @@
 
                         <td>
                             @{ 
-                                var dateOnlyString = item.Desde.Value.ToShortDateString();
-                                 var dateOnlyString1 = item.Hasta.Value.ToShortDateString();
+                                var dateOnlyString = item.Desde.ToString();
+                                dateOnlyString = dateOnlyString.Replace("12:00:00 AM", "");
+
+
+
+                                var dateOnlyString1 = item.Hasta.ToString();
+                                dateOnlyString1 = dateOnlyString1.Replace("12:00:00 AM", "");
+
                             }
                            @dateOnlyString
                         </td>
                         <td>
-                             @dateOnlyString
+                            @dateOnlyString1
                         </td>
                         <td>
                             <button type="button" class="btn btn-primary btn-sm" title="Descargar" onclick="AbrirReporte(@item.FormularioId)"  @*onclick="location.href='@Url.Action("VerFormulario", "Formulario", new { @id = item.FormularioId})'"*@  ><i class="far fa-eye"></i></button>
