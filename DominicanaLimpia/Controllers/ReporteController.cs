@@ -33,15 +33,27 @@ namespace DominicanaLimpia.Controllers
             DateTime Desde = Convert.ToDateTime(splitDesde[1] + "/" + splitDesde[0] + "/" + splitDesde[2]);
             DateTime Hasta = Convert.ToDateTime(splitHasta[1] + "/" + splitHasta[0] + "/" + splitHasta[2]);
 
-
-
           int[] ProvinciasSum = new int[23];
-
 
             //Consulta General
             var requests = db.Objetivo1.Where(x => x.Desde >= Desde && x.Desde <= Hasta).ToList();
             //formularioM para que sea generico en todos 
             var FormularioM = db.FormularioM.Where(x => x.Desde >= Desde && x.Desde <= Hasta).ToList();
+
+            if (Session["RodId"].ToString() == "2" || Session["RodId"].ToString() == "5")
+            {
+                var munn = Session["MunicipiosAsignados"].ToString().Split(',');
+                string responsables = "";
+                for (int i = 0; i < munn.Length; i++)
+                {
+                    if(munn[i] != "0") 
+                    {
+                        responsables = responsables + "," + munn[i];
+                    }
+                }
+                FormularioM = FormularioM.Where(r => responsables.Contains(r.ProvinciaId.ToString())).ToList();
+                requests = requests.Where(r => responsables.Contains(r.MunicipioId.ToString())).ToList();
+            }
 
 
 

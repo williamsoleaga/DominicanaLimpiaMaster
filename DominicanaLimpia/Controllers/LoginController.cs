@@ -34,6 +34,7 @@ namespace DominicanaLimpia.Controllers
                     Session["UsuarioId"] = resultado.Select(x => x.UsuarioId).FirstOrDefault();
                     Session["NombreUsuario"] = resultado.Select(x => x.Nombre_Completo).FirstOrDefault();
                     Session["RodId"] = resultado.Select(x => x.RolId).FirstOrDefault();
+                    Session["MunicipiosAsignados"] = resultado.Select(x => x.MunicipiosId).FirstOrDefault();
 
                     var id = Convert.ToInt16(Session["UsuarioId"].ToString());  
                     var usuario = db.Usuarios.Where(x => x.UsuarioId == id).ToList().FirstOrDefault();
@@ -49,11 +50,24 @@ namespace DominicanaLimpia.Controllers
                     if (Session["RodId"].ToString() == "5")
                     {
                         var Munic = usuario.MunicipiosId.Split(',');
-                        var wepa   = db.Municipios.Where(r => Munic.Contains(r.MunicipioId.ToString())).ToList();
-                        foreach (var item in wepa)
+                        // var wepa   = db.Municipios.Where(r => Munic.Contains(r.MunicipioId.ToString())).ToList();
+                        //foreach (var item in wepa)
+                        //{
+                        //    Session["Municipios"] = Session["Municipios"] + " " + item.Provincia_Nombre;
+                        //}
+                        var municipiosdes = "";
+                        for (int i = 0; i < Munic.Length; i++)
                         {
-                            Session["Municipios"] = Session["Municipios"] + " " + item.Provincia_Nombre;
+                            int idpro = Convert.ToInt32(Munic[i]);
+
+                            if (idpro != 0) {
+                              
+                                municipiosdes = municipiosdes + db.Municipios.Where(x => x.MunicipioId == idpro).Select(x => x.Provincia_Nombre).FirstOrDefault() + "/";
+                          
+                            }
                         }
+
+                        Session["Municipios"] = municipiosdes;
                     }
 
                     if (Session["RodId"].ToString() == "1")
