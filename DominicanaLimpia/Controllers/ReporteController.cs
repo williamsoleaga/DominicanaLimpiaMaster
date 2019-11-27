@@ -108,6 +108,8 @@ namespace DominicanaLimpia.Controllers
             //METAS DE ESCUELAS
             if (TipoReporte == 4)
             {
+                requests = requests.GroupBy(i => i.EscuelaId).Select(group => group.First()).ToList();
+
                 for (int i = 0; i < ProvinciasSum.Length; i++)
                 {
                     ProvinciasSum[i] = (int)requests.Where(x => x.MunicipioId == i).Sum(z => z.p1);
