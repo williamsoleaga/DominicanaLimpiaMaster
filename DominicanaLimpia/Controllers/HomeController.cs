@@ -52,10 +52,13 @@ namespace DominicanaLimpia.Controllers
             Combo.Add(new Combo { Indice = 15, Value = "12- PARTICIPANTES DIASESOL" });
             Combo.Add(new Combo { Indice = 17, Value = "13.1- DIADESOL NEUMATICOS" });
             Combo.Add(new Combo { Indice = 16, Value = "13.2- DIADESOL PLASTICOS" });
-            Combo.Add(new Combo { Indice = 18, Value = "15- TALLERES DE RECICLAJE" });
+            Combo.Add(new Combo { Indice = 18, Value = "14- TALLERES DE RECICLAJE" });
+
+            Combo.Add(new Combo { Indice = 36, Value = "15- METAS PUNTOS LIMPIOS ESCOLARES " });
+
             Combo.Add(new Combo { Indice = 19, Value = "16- PUNTOS LIMPIOS COMUNITARIOS" });
             Combo.Add(new Combo { Indice = 3, Value = "17- METAS DE COMERCIOS" });
-            Combo.Add(new Combo { Indice = 8, Value = "18- Creación de Rutas y frecuencias" });   //aqui va el 18 ojo revisar klk con este
+            Combo.Add(new Combo { Indice = 8, Value = "18- CREACION DE RUTAS Y FRECUENCIAS" });   //aqui va el 18 ojo revisar klk con este
             Combo.Add(new Combo { Indice = 21, Value = "19- ENTREGA DE MONTOCARGAS" });
             Combo.Add(new Combo { Indice = 20, Value = "20- RECICLADORES CAPACITADOS" });
             Combo.Add(new Combo { Indice = 22, Value = "21- RECICLADORES IDENTIFICADOS" });
@@ -69,7 +72,7 @@ namespace DominicanaLimpia.Controllers
             Combo.Add(new Combo { Indice = 31, Value = "29- CENTRO DE ACOPIOS CONSTRUIDO" });
             Combo.Add(new Combo { Indice = 30, Value = "30- CENTRO DE ACOPIOS FUNCIONANDO" });
             Combo.Add(new Combo { Indice = 32, Value = "31- CAPACITADOS CENTROS DE ACOPIOS" });
-            Combo.Add(new Combo { Indice = 33, Value = "33- ABONERAS FUNCIONANDO" });
+            Combo.Add(new Combo { Indice = 33, Value = "32- ABONERAS FUNCIONANDO" });
             //no se sabe con que es que se hace ese calculo
             Combo.Add(new Combo { Indice = 34, Value = "33- ABONERAS CONSTRUIDAS" });
             Combo.Add(new Combo { Indice = 35, Value = "34- CAPACITADOS ABONERAS" });
