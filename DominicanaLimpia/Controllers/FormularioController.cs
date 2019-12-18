@@ -85,13 +85,14 @@ namespace DominicanaLimpia.Controllers
             ViewBag.Municipios = new SelectList(results, "MunicipioId", "Provincia_Nombre");
 
 
-           var _Escuelas = usuario.MunicipiosId.Split(',');
-
+            var _Escuelas = usuario.MunicipiosId.Split(',');
             var resultadoEsc = db.Escuelas.Where(r => _Escuelas.Contains(r.MunicipioId.ToString())).ToList();
 
+            var escuelas = db.Escuelas.Where(x => x.EscuelaId == 202).FirstOrDefault();
+            resultadoEsc.Add(escuelas);
+
+
             ViewBag.EscuelaGrid = new SelectList(resultadoEsc, "EscuelaId", "Descripcion");
-            
-            
             ViewBag.Pregunta16 = new SelectList(LlenarComboSiNo(), "Indice", "Value");
             ViewBag.Escuelas13 = new SelectList(db.Escuelas.Where(r=> _Escuelas.Contains(r.MunicipioId.ToString())).ToList(), "EscuelaId", "Descripcion");
 
