@@ -11,356 +11,482 @@
     var keloke = 1;
 
 }
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
+    
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
 
-<br /><br />
+<br />
+<br />
 @*<h2>Edición de formulario</h2>*@
 
 @using (Html.BeginForm("EditarFormularioM", "Formulario", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-    
-<div class="form-horizontal">
-    <br /> <br />
-    <div class="col-md-14 mb-4">
-        <div class="card">
-            <br /><br />
-            <h2>Edición de formulario</h2>
-            <hr />
-            <br />  <br />
-            <div class="well">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th> <strong>Desde:</strong>    @Html.EditorFor(model => model.Desde, new { htmlAttributes = new { @class = "form-control", @id = "Desde" } }) </th>
-                            <th> <strong>Hasta:</strong>    @Html.EditorFor(model => model.Hasta, new { htmlAttributes = new { @class = "form-control", @id = "Hasta", @value = Model.Hasta } }) </th>
-                        </tr>
-                        @*@if (Convert.ToInt16(Session["RodId"]) == 2)
-                    {
-                        <tr>
-                            <th> <h3> <strong>Responsable de territorio:</strong>  </h3> <h4> @Session["NombreResponsable"].ToString() </h4></th>
-                        </tr>
-                    }*@
-                    </thead>
-                </table>
-            </div>
 
-            @Html.EditorFor(model => model.UsuarioId, new { htmlAttributes = new { @class = "hidden" } })
-            @Html.EditorFor(model => model.ProvinciaId, new { htmlAttributes = new { @class = "hidden" } })
-            @Html.EditorFor(model => model.NumeroFormulario, new { htmlAttributes = new { @class = "hidden" } })
-            @Html.EditorFor(model => model.Estatus, new { htmlAttributes = new { @class = "hidden" } })
-            @Html.EditorFor(model => model.FormularioId, new { htmlAttributes = new { @class = "hidden" } })
-            <br /><br />
-
-
-
-
-            <div class="box-body">
-                <table id="grvDirecciones" name="Direcciones" class="table table-bordered table-striped table-condensed" style="width:100%; height:100%">
-                    <thead>
-                        <tr style="background-color: #f59034; color:#fff">
-
-                            <th data-override="P1" class="text-center">P1</th>
-                            <th data-override="P2" class="text-center">P2</th>
-                            <th data-override="P3" class="text-center">P3</th>
-                            <th data-override="P4" class="text-center">P4</th>
-                            <th data-override="P5" class="text-center">P5</th>
-                            <th data-override="P6" class="text-center">P6</th>
-                            <th data-override="P7" class="text-center">P7</th>
-                            <th data-override="P8" class="text-center">P8</th>
-                            <th data-override="P9" class="text-center">P9</th>
-                            <th data-override="P10" class="text-center">P10</th>
-                            <th data-override="P11" class="text-center">P11</th>
-                            <th data-override="P11" class="text-center">P12</th>
-
-                            <th data-override="estatus" class="hidden">Estatus</th>
-                            <th style="width: 5px;"></th>
-
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Objetivo1)
-                        {
-                        <tr>
-
-                            <td>@item.p1</td>
-                            <td>@item.p2</td>
-                            <td>@item.p3</td>
-                            <td>@item.p4</td>
-                            <td>@item.p5</td>
-                            <td>@item.p6</td>
-                            <td>@item.p7</td>
-                            <td>@item.p8</td>
-                            <td>@item.p9</td>
-                            <td>@item.p10</td>
-                            <td>@item.p11</td>
-                            <td>@item.p12</td>
-                            <td class="hidden">1</td>
-                            <td>
-                                <center><button type="button" class="btn btn-default btn-xs" data-original-title="Editar" data-toggle="tooltip" data-widget="edit" onclick="EditarDireccion(this);"><i class='fa fa-pencil'></i></button></center>
-                            </td>
-                            @*<td>
-            <center><button type="button" class="btn btn-default btn-xs" data-original-title="Eliminar" data-toggle="tooltip" data-widget="remove" onclick="RemoverLinea(this);"><i class='fa fa-times'></i></button></center>
-        </td>*@
-                        </tr>
-                        }
-                    </tbody>
-                </table>
-            </div>
-
-
-
-
-
-
-            <h3><strong>Objetivo 2</strong></h3>
-            <br /><hr />
-
-
-            <div class="form-group">
-                <strong>
-                    13-Cuántos puntos limpios escolares se instalaron en su territorio en este período?
-                </strong>
-                <div>
-                    @Html.EditorFor(model => model.P13, new { htmlAttributes = new { @class = "Text-1" } })
-                </div>
-            </div>
-
-            <div class="form-group">
-                <strong>
-                    14-Cuántos puntos limpios comunitarios se instalaron en su territorio en
-                    este período?
-                </strong>
-                <div>
-                    @Html.EditorFor(model => model.P14, new { htmlAttributes = new { @class = "Text-1" } })
-                </div>
-            </div>
-
-            <div class="form-group">
-                <strong>
-                    15-Cuántos puntos limpios en comercios se instalaron en su territorio
-                    en este período?
-                </strong>
-                <div>
-                    @Html.EditorFor(model => model.P15, new { htmlAttributes = new { @class = "Text-1" } })
-                </div>
-            </div>
-            <br />
-
-            <h3><strong>Objetivo 3</strong></h3>
-            <br /><hr />
-
-            <div class="form-group">
-                <strong>
-                    16-El territorio tiene creadas las rutas y frecuencia de recolección de
-                    residuos separados?
-                </strong>
-                <div>
-                    @Html.EditorFor(model => model.P16, new { htmlAttributes = new { @class = "Text-1" } })
-                </div>
-            </div>
-
-            <div class="form-group">
-                <strong>
-                    17-Cuántas motocargas fueron entregadas en su territorio?
-                </strong>
-                <div>
-                    @Html.EditorFor(model => model.P17, new { htmlAttributes = new { @class = "Text-1" } })
-                </div>
-            </div>
-
-            <div class="form-group">
-                <strong>
-                    18-Cuántos recicladores fueron capacitados en este período?
-                </strong>
-                <div>
-                    @Html.EditorFor(model => model.P18, new { htmlAttributes = new { @class = "Text-1" } })
-                </div>
-            </div>
-
-            <div class="form-group">
-                <strong>
-                    19-Cuántos recicladores fueron identificados en el territorio?
-                </strong>
-                <div>
-                    @Html.EditorFor(model => model.P19, new { htmlAttributes = new { @class = "Text-1" } })
-                </div>
-            </div>
-
-            <div class="form-group">
-                <strong>
-                    20-Cuántas empresas recicladoras existen en el territorio?
-                </strong>
-                <div>
-                    @Html.EditorFor(model => model.P20, new { htmlAttributes = new { @class = "Text-1" } })
-                </div>
-            </div>
-
-            <div class="form-group">
-                <strong>
-                    21-Con que cantidad de camiones cuenta el territorio para la
-                    recolección de residuos sólidos de manera separada?
-                </strong>
-                <div>
-                    @Html.EditorFor(model => model.P21, new { htmlAttributes = new { @class = "Text-1" } })
-                </div>
-            </div>
-
-            <div class="form-group">
-                <strong>
-                    22-Cuántos servidores públicos de su territorio, vinculados al manejo
-                    integral de los residuos sólidos fueron capacitados y sensibilizados?
-                </strong>
-                <div>
-                    @Html.EditorFor(model => model.P22, new { htmlAttributes = new { @class = "Text-1" } })
-                </div>
-            </div>
-
-            <div class="form-group">
-                <strong>
-                    23-Cuántos servidores públicos de su territorio, vinculados al manejo
-                    integral de los residuos sólidos fueron capacitados y sensibilizados?
-                    (Capacitación ICAM)
-                </strong>
-                <div>
-                    @Html.EditorFor(model => model.P23, new { htmlAttributes = new { @class = "Text-1" } })
-                </div>
-            </div>
-
-            <div class="form-group">
-                <strong>
-                    24-Cuántos vertederos improvisados existen actualmente, en la zona de
-                    trabajo con DL? *Dato para línea base.
-                </strong>
-                <div>
-                    @Html.EditorFor(model => model.P24, new { htmlAttributes = new { @class = "Text-1" } })
-                </div>
-            </div>
-
-            <div class="form-group">
-                <strong>
-                    25-Cuántos vertederos improvisados se han eliminado en este período?
-                </strong>
-                <div>
-                    @Html.EditorFor(model => model.P25, new { htmlAttributes = new { @class = "Text-1" } })
-                </div>
-            </div>
-
-            <div class="form-group">
-                <strong>
-                    26-Cuántos vertederos improvisados nuevos observó en este período?
-                </strong>
-                <div>
-                    @Html.EditorFor(model => model.P26, new { htmlAttributes = new { @class = "Text-1" } })
-                </div>
-            </div>
-
-            <br />
-
-            <h3><strong>Objetivo 4</strong></h3>
-            <br /><hr />
-
-            <div class="form-group">
-                <strong>
-                    27-Cuántos Centros de Acopio deberían construirse o remodelar en el
-                    territorio?
-                </strong>
-                <div>
-                    @Html.EditorFor(model => model.P27, new { htmlAttributes = new { @class = "Text-1" } })
-                </div>
-            </div>
-
-            <div class="form-group">
-                <strong>
-                    28-Cuántos Centros de Acopio están funcionamiento actualmente?*
-                    Dato para línea base.
-                </strong>
-                <div>
-                    @Html.EditorFor(model => model.P28, new { htmlAttributes = new { @class = "Text-1" } })
-                </div>
-            </div>
-
-            <div class="form-group">
-                <strong>
-                    29-Cuántas personas de su territorio fueron capacitadas en manejo de
-                    Centros de Acopio?
-                </strong>
-                <div>
-                    @Html.EditorFor(model => model.P29, new { htmlAttributes = new { @class = "Text-1" } })
-                </div>
-            </div>
-
-            <div class="form-group">
-                <strong>
-                    30-Cuántas aboneras hay en funcionamiento? * Dato para línea base.
-                </strong>
-                <div>
-                    @Html.EditorFor(model => model.P30, new { htmlAttributes = new { @class = "Text-1" } })
-                </div>
-            </div>
-
-            <div class="form-group">
-                <strong>
-                    31-Cuántas aboneras se han construido en este período?
-                </strong>
-                <div>
-                    @Html.EditorFor(model => model.P31, new { htmlAttributes = new { @class = "Text-1" } })
-                </div>
-            </div>
-
-            <div class="form-group">
-                <strong>
-                    32-Cuántas personas participaron en el taller de tratamiento de
-                    aboneras?
-                </strong>
-                <div>
-                    @Html.EditorFor(model => model.P32, new { htmlAttributes = new { @class = "Text-1" } })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Comentario, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Comentario, new { htmlAttributes = new { @class = "form-control" } })
+    <div class="form-horizontal">
+        <br /> <br />
+        <div class="col-md-14 mb-4">
+            <div class="card">
+                <br /><br />
+                <h2>Edición de formulario</h2>
+                <hr />
+                <br />  <br />
+                <div class="well">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th> <strong>Desde:</strong>    @Html.EditorFor(model => model.Desde, new { htmlAttributes = new { @class = "form-control", @id = "Desde" } }) </th>
+                                <th> <strong>Hasta:</strong>    @Html.EditorFor(model => model.Hasta, new { htmlAttributes = new { @class = "form-control", @id = "Hasta", @value = Model.Hasta } }) </th>
+                            </tr>
+                            @*@if (Convert.ToInt16(Session["RodId"]) == 2)
+                                {
+                                    <tr>
+                                        <th> <h3> <strong>Responsable de territorio:</strong>  </h3> <h4> @Session["NombreResponsable"].ToString() </h4></th>
+                                    </tr>
+                                }*@
+                        </thead>
+                    </table>
                 </div>
 
-            </div>
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Guardar" class="btn btn-default" />
+                @Html.EditorFor(model => model.UsuarioId, new { htmlAttributes = new { @class = "hidden" } })
+                @Html.EditorFor(model => model.ProvinciaId, new { htmlAttributes = new { @class = "hidden" } })
+                @Html.EditorFor(model => model.NumeroFormulario, new { htmlAttributes = new { @class = "hidden" } })
+                @Html.EditorFor(model => model.Estatus, new { htmlAttributes = new { @class = "hidden" } })
+                @Html.EditorFor(model => model.FormularioId, new { htmlAttributes = new { @class = "hidden" } })
+                <h3><strong>Objetivo 1</strong></h3>
+                <br /><hr />
+
+                <div class="form-group">
+                    <strong>
+                        1- Cuántas escuelas sensibilizó en este periodo?
+                    </strong>
+                    <div>
+                        <input class="Text-1 text-box single-line" id="P1" type="number" value="">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <strong>
+                        2 - Cuántos docentes sensibilizó este periodo?
+                    </strong>
+                    <div>
+                        <input class="Text-1 text-box single-line" id="P2" type="number" value="">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <strong>
+                        3 - Cuántas personas del personal administrativo sensibilizó en este periodo?
+                    </strong>
+                    <div>
+                        <input class="Text-1 text-box single-line" id="P3" type="number" value="">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <strong>
+                        4 - Cuántos alumnos de Inicial sensibilizó en este periodo?
+                    </strong>
+                    <div>
+                        <input class="Text-1 text-box single-line" id="P4" type="number" value="">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <strong>
+                        5 - Cuántos alumnos de Primaria sensibilizó en este periodo?
+                    </strong>
+                    <div>
+                        <input class="Text-1 text-box single-line" id="P5" type="number" value="">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <strong>
+                        6 - Cuántos alumnos de Secundaria sensibilizó en este periodo?
+                    </strong>
+                    <div>
+                        <input class="Text-1 text-box single-line" id="P6" type="number" value="">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <strong>
+                        7 - De las familias visitadas este periodo, cuántas comprobó que estén separando los residuos en orgánicos e inorgánicos, en sus hogares?
+                    </strong>
+                    <div>
+                        <input class="Text-1 text-box single-line" id="P7" type="number" value="">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <strong>
+                        8 - Cuántas personas de juntas de vecinos sensibilizó en este período?
+                    </strong>
+                    <div>
+                        <input class="Text-1 text-box single-line" id="P8" type="number" value="">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <strong>
+                        9 - Cuántas personas en reuniones, charlas, talleres, encuentros, con miembros de la comunidad en general sensibilizó en este período?
+                    </strong>
+                    <div>
+                        <input class="Text-1 text-box single-line" id="P9" type="number" value="">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <strong>
+                        10 - Cuántas personas participaron en las actividades del DIASESOL?
+                    </strong>
+                    <div>
+                        <input class="Text-1 text-box single-line" id="P10" type="number" value="">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <strong>
+                        11 - En EL DIADESOL que cantidad de material fue recuperado?
+                    </strong>
+                    <br /><br />
+                    <div>
+                        Neumáticos(unidad)
+                        <input class="Text-1 text-box single-line" id="P111" type="number" value="">
+                    </div>
+                    <br />
+                    <div>
+                        Plásticos (libras
+                        <input class="Text-1 text-box single-line" id="P112" type="number" value="">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <strong>
+                        12 - Cuál fue la cantidad de Participantes en Talleres de reciclaje?
+                    </strong>
+                    <div>
+                        <input class="Text-1 text-box single-line" id="P12" type="number" value="">
+                    </div>
+                </div>
+
+
+                <br /><br />
+
+
+                <div class="box-body">
+                    <table id="grvDirecciones" name="Direcciones" class="table table-bordered table-striped table-condensed" style="width:78%; height:100%">
+                        <thead>
+                            <tr style="background-color: #f59034; color:#fff">
+
+                                <th data-override="P1" class="text-center">P1</th>
+                                <th data-override="P2" class="text-center">P2</th>
+                                <th data-override="P3" class="text-center">P3</th>
+                                <th data-override="P4" class="text-center">P4</th>
+                                <th data-override="P5" class="text-center">P5</th>
+                                <th data-override="P6" class="text-center">P6</th>
+                                <th data-override="P7" class="text-center">P7</th>
+                                <th data-override="P8" class="text-center">P8</th>
+                                <th data-override="P9" class="text-center">P9</th>
+                                <th data-override="P10" class="text-center">P10</th>
+                                <th data-override="P11" class="text-center">P11.1</th>
+                                <th data-override="P11" class="text-center">P11.2</th>
+                                <th data-override="P11" class="text-center">P12</th>
+
+                                <th data-override="estatus" class="hidden">Estatus</th>
+                                <th style="width: 5px;"></th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Objetivo1)
+                            {
+                                <tr>
+
+                                    <td>@item.p1</td>
+                                    <td>@item.p2</td>
+                                    <td>@item.p3</td>
+                                    <td>@item.p4</td>
+                                    <td>@item.p5</td>
+                                    <td>@item.p6</td>
+                                    <td>@item.p7</td>
+                                    <td>@item.p8</td>
+                                    <td>@item.p9</td>
+                                    <td>@item.p10</td>
+                                    <td>@item.P111</td>
+                                    <td>@item.P112</td>
+                                    <td>@item.p12</td>
+                                    <td class="hidden">1</td>
+                                    <td>
+                                        <center><button type="button" class="btn btn-default btn-xs" data-original-title="Editar" data-toggle="tooltip" data-widget="edit" onclick="EditarDireccion(this);"><i class='far fa-edit'></i></button></center>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3><strong>Objetivo 2</strong></h3>
+                <br /><hr />
+
+                <div class="form-group">
+                    <strong>
+                        13-Cuántos puntos limpios escolares se instalaron en su territorio en este período?
+                    </strong>
+                    <div>
+                        @Html.EditorFor(model => model.P13, new { htmlAttributes = new { @class = "Text-1" } })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <strong>
+                        14-Cuántos puntos limpios comunitarios se instalaron en su territorio en
+                        este período?
+                    </strong>
+                    <div>
+                        @Html.EditorFor(model => model.P14, new { htmlAttributes = new { @class = "Text-1" } })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <strong>
+                        15-Cuántos puntos limpios en comercios se instalaron en su territorio
+                        en este período?
+                    </strong>
+                    <div>
+                        @Html.EditorFor(model => model.P15, new { htmlAttributes = new { @class = "Text-1" } })
+                    </div>
+                </div>
+                <br />
+
+                <h3><strong>Objetivo 3</strong></h3>
+                <br /><hr />
+
+                <div class="form-group">
+                    <strong>
+                        16-El territorio tiene creadas las rutas y frecuencia de recolección de
+                        residuos separados?
+                    </strong>
+                    <div>
+                        @Html.EditorFor(model => model.P16, new { htmlAttributes = new { @class = "Text-1" } })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <strong>
+                        17-Cuántas motocargas fueron entregadas en su territorio?
+                    </strong>
+                    <div>
+                        @Html.EditorFor(model => model.P17, new { htmlAttributes = new { @class = "Text-1" } })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <strong>
+                        18-Cuántos recicladores fueron capacitados en este período?
+                    </strong>
+                    <div>
+                        @Html.EditorFor(model => model.P18, new { htmlAttributes = new { @class = "Text-1" } })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <strong>
+                        19-Cuántos recicladores fueron identificados en el territorio?
+                    </strong>
+                    <div>
+                        @Html.EditorFor(model => model.P19, new { htmlAttributes = new { @class = "Text-1" } })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <strong>
+                        20-Cuántas empresas recicladoras existen en el territorio?
+                    </strong>
+                    <div>
+                        @Html.EditorFor(model => model.P20, new { htmlAttributes = new { @class = "Text-1" } })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <strong>
+                        21-Con que cantidad de camiones cuenta el territorio para la
+                        recolección de residuos sólidos de manera separada?
+                    </strong>
+                    <div>
+                        @Html.EditorFor(model => model.P21, new { htmlAttributes = new { @class = "Text-1" } })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <strong>
+                        22-Cuántos servidores públicos de su territorio, vinculados al manejo
+                        integral de los residuos sólidos fueron capacitados y sensibilizados?
+                    </strong>
+                    <div>
+                        @Html.EditorFor(model => model.P22, new { htmlAttributes = new { @class = "Text-1" } })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <strong>
+                        23-Cuántos servidores públicos de su territorio, vinculados al manejo
+                        integral de los residuos sólidos fueron capacitados y sensibilizados?
+                        (Capacitación ICAM)
+                    </strong>
+                    <div>
+                        @Html.EditorFor(model => model.P23, new { htmlAttributes = new { @class = "Text-1" } })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <strong>
+                        24-Cuántos vertederos improvisados existen actualmente, en la zona de
+                        trabajo con DL? *Dato para línea base.
+                    </strong>
+                    <div>
+                        @Html.EditorFor(model => model.P24, new { htmlAttributes = new { @class = "Text-1" } })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <strong>
+                        25-Cuántos vertederos improvisados se han eliminado en este período?
+                    </strong>
+                    <div>
+                        @Html.EditorFor(model => model.P25, new { htmlAttributes = new { @class = "Text-1" } })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <strong>
+                        26-Cuántos vertederos improvisados nuevos observó en este período?
+                    </strong>
+                    <div>
+                        @Html.EditorFor(model => model.P26, new { htmlAttributes = new { @class = "Text-1" } })
+                    </div>
+                </div>
+
+                <br />
+
+                <h3><strong>Objetivo 4</strong></h3>
+                <br /><hr />
+
+                <div class="form-group">
+                    <strong>
+                        27-Cuántos Centros de Acopio deberían construirse o remodelar en el
+                        territorio?
+                    </strong>
+                    <div>
+                        @Html.EditorFor(model => model.P27, new { htmlAttributes = new { @class = "Text-1" } })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <strong>
+                        28-Cuántos Centros de Acopio están funcionamiento actualmente?*
+                        Dato para línea base.
+                    </strong>
+                    <div>
+                        @Html.EditorFor(model => model.P28, new { htmlAttributes = new { @class = "Text-1" } })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <strong>
+                        29-Cuántas personas de su territorio fueron capacitadas en manejo de
+                        Centros de Acopio?
+                    </strong>
+                    <div>
+                        @Html.EditorFor(model => model.P29, new { htmlAttributes = new { @class = "Text-1" } })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <strong>
+                        30-Cuántas aboneras hay en funcionamiento? * Dato para línea base.
+                    </strong>
+                    <div>
+                        @Html.EditorFor(model => model.P30, new { htmlAttributes = new { @class = "Text-1" } })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <strong>
+                        31-Cuántas aboneras se han construido en este período?
+                    </strong>
+                    <div>
+                        @Html.EditorFor(model => model.P31, new { htmlAttributes = new { @class = "Text-1" } })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <strong>
+                        32-Cuántas personas participaron en el taller de tratamiento de
+                        aboneras?
+                    </strong>
+                    <div>
+                        @Html.EditorFor(model => model.P32, new { htmlAttributes = new { @class = "Text-1" } })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Comentario, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Comentario, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Guardar" class="btn btn-default" />
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-</div>
+    </div>
 }
 
 @*<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>*@
+        @Html.ActionLink("Back to List", "Index")
+    </div>*@
 
 <script type="text/javascript">
+    $("#Desde").datepicker();
+    $("#Hasta").datepicker();
 
 
-    //    $("#Desde").datepicker({
-    //    autoclose: true,
-    //    todayHighlight: true,
-    //    format: 'mm/dd/yyyy'
-    //}).datepicker('update', new Date());
+                             function EditarDireccion(button) {
+                                 var rows = $(button).closest("tr"),
+                                 tds = rows.find("td");
+                                 $("#P1").val(tds[0].innerHTML).change();
+                                 $("#P2").val(tds[0].innerHTML).change();
+                                 $("#P3").val(tds[0].innerHTML).change();
+                                 $("#P4").val(tds[0].innerHTML).change();
+                                 $("#P5").val(tds[0].innerHTML).change();
+                                 $("#P6").val(tds[0].innerHTML).change();
+                                 $("#P7").val(tds[0].innerHTML).change();
+                                 $("#P8").val(tds[0].innerHTML).change();
+                                 $("#P9").val(tds[0].innerHTML).change();
+                                 $("#P10").val(tds[0].innerHTML).change();
+                                 $("#P111").val(tds[0].innerHTML).change();
+                                 $("#P112").val(tds[0].innerHTML).change();
+                                 $("#P12").val(tds[0].innerHTML).change();
 
-    //$("#Hasta").datepicker({
-    //    autoclose: true,
-    //    todayHighlight: true,
-    //    format: 'mm/dd/yyyy'
-    //}).datepicker('update', new Date());
+                                 $("#btnAgregarDireccion").html('Actualizar Dirección');
+                             };
 
-
-        $("#Desde").datepicker();
-        $("#Hasta").datepicker();
-
-
+                             function LimpiarDireccion() {
+                                 $("#cboTipo_direccion").val('1').change() $("#cboPais").val('0').change() $('#cboProvincias').empty().append('<option value="-1">Elija una provincia</option>').val('-1').change();
+                                 $('#cboMunicipio').empty().append('<option value="-1">Elija un municipio</option>').val('-1').change();
+                                 $("#sector").val('');
+                                 $("#linea1").val('');
+                                 $("#linea2").val('');
+                                 $("#referencia").val('');
+                                 $("#secuencia").val('');
+    };
 
 
 </script>
