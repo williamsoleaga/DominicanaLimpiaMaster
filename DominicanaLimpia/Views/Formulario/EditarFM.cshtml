@@ -188,7 +188,7 @@
                     <table id="grvDirecciones" name="Direcciones" class="table table-bordered table-striped table-condensed" style="width:100%; height:100%">
                         <thead>
                             <tr style="background-color: #f59034; color:#fff">
-
+                                <th data-override="P1" class="text-center">Escuela</th>
                                 <th data-override="P1" class="text-center">P1</th>
                                 <th data-override="P2" class="text-center">P2</th>
                                 <th data-override="P3" class="text-center">P3</th>
@@ -211,7 +211,12 @@
                             @foreach (var item in Objetivo1)
                             {
                             <tr>
-
+                                <td>
+                                    @{ 
+                                        var Escuela = db.Escuelas.Where(x => x.EscuelaId == item.EscuelaId).FirstOrDefault();
+                                    }
+                                    @Escuela.Descripcion
+                                </td>
                                 <td>@item.p1</td>
                                 <td>@item.p2</td>
                                 <td>@item.p3</td>
@@ -465,20 +470,20 @@
     function EditarDireccion(button) {
         var rows = $(button).closest("tr"),
             tds = rows.find("td");
-        $("#P1").val(tds[0].innerHTML).change();
-        $("#P2").val(tds[1].innerHTML).change();
-        $("#P3").val(tds[2].innerHTML).change();
-        $("#P4").val(tds[3].innerHTML).change();
-        $("#P5").val(tds[4].innerHTML).change();
-        $("#P6").val(tds[5].innerHTML).change();
-        $("#P7").val(tds[6].innerHTML).change();
-        $("#P8").val(tds[7].innerHTML).change();
-        $("#P9").val(tds[8].innerHTML).change();
-        $("#P10").val(tds[9].innerHTML).change();
-        $("#P111").val(tds[10].innerHTML).change();
-        $("#P112").val(tds[11].innerHTML).change();
-        $("#P12").val(tds[12].innerHTML).change();
-        $("#ObjetivoId").val(tds[14].innerHTML).change();
+        $("#P1").val(tds[1].innerHTML).change();
+        $("#P2").val(tds[2].innerHTML).change();
+        $("#P3").val(tds[3].innerHTML).change();
+        $("#P4").val(tds[4].innerHTML).change();
+        $("#P5").val(tds[5].innerHTML).change();
+        $("#P6").val(tds[6].innerHTML).change();
+        $("#P7").val(tds[7].innerHTML).change();
+        $("#P8").val(tds[8].innerHTML).change();
+        $("#P9").val(tds[9].innerHTML).change();
+        $("#P10").val(tds[10].innerHTML).change();
+        $("#P111").val(tds[11].innerHTML).change();
+        $("#P112").val(tds[12].innerHTML).change();
+        $("#P12").val(tds[13].innerHTML).change();
+        $("#ObjetivoId").val(tds[15].innerHTML).change();
     };
 
     function LimpiarDireccion() {
@@ -499,29 +504,34 @@
     };
 
     $("body").on("click", "#btnAgregarDireccion", function (e) {
-        e.preventDefault(); e.stopPropagation(); e.stopImmediatePropagation();
 
+        if ($("#ObjetivoId").val() == "") {
+          
+        } else {
+        e.preventDefault(); e.stopPropagation(); e.stopImmediatePropagation();
         $("#grvDirecciones TBODY tr").each(function (i) {
             var row = $(this).find('td');
 
-            if (row[14].innerHTML == $("#ObjetivoId").val()) {
-                row[0].innerHTML = $("#P1").val();
-                row[1].innerHTML = $("#P2").val();
-                row[2].innerHTML = $("#P3").val();
-                row[3].innerHTML = $("#P4").val();
-                row[4].innerHTML = $("#P5").val();
-                row[5].innerHTML = $("#P6").val();
-                row[6].innerHTML = $("#P7").val();
-                row[7].innerHTML = $("#P8").val();
-                row[8].innerHTML = $("#P9").val();
-                row[9].innerHTML = $("#P10").val();
-                row[10].innerHTML = $("#P111").val();
-                row[11].innerHTML = $("#P112").val();
-                row[12].innerHTML = $("#P12").val();
-                row[13].innerHTML = 2;
+            if (row[15].innerHTML == $("#ObjetivoId").val()) {
+                row[1].innerHTML = $("#P1").val();
+                row[2].innerHTML = $("#P2").val();
+                row[3].innerHTML = $("#P3").val();
+                row[4].innerHTML = $("#P4").val();
+                row[5].innerHTML = $("#P5").val();
+                row[6].innerHTML = $("#P6").val();
+                row[7].innerHTML = $("#P7").val();
+                row[8].innerHTML = $("#P8").val();
+                row[9].innerHTML = $("#P9").val();
+                row[10].innerHTML = $("#P10").val();
+                row[11].innerHTML = $("#P111").val();
+                row[12].innerHTML = $("#P112").val();
+                row[13].innerHTML = $("#P12").val();
+                row[14].innerHTML = 2;
             }
         });
-        LimpiarDireccion();
+            LimpiarDireccion();
+        }
+    
     });
 
 </script>
