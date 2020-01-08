@@ -41,11 +41,11 @@
                                 <th> <strong>Hasta:</strong>    @Html.EditorFor(model => model.Hasta, new { htmlAttributes = new { @class = "form-control", @id = "Hasta", @value = Model.Hasta } }) </th>
                             </tr>
                             @*@if (Convert.ToInt16(Session["RodId"]) == 2)
-                                {
-                                    <tr>
-                                        <th> <h3> <strong>Responsable de territorio:</strong>  </h3> <h4> @Session["NombreResponsable"].ToString() </h4></th>
-                                    </tr>
-                                }*@
+                    {
+                        <tr>
+                            <th> <h3> <strong>Responsable de territorio:</strong>  </h3> <h4> @Session["NombreResponsable"].ToString() </h4></th>
+                        </tr>
+                    }*@
                         </thead>
                     </table>
                 </div>
@@ -55,6 +55,8 @@
                 @Html.EditorFor(model => model.NumeroFormulario, new { htmlAttributes = new { @class = "hidden" } })
                 @Html.EditorFor(model => model.Estatus, new { htmlAttributes = new { @class = "hidden" } })
                 @Html.EditorFor(model => model.FormularioId, new { htmlAttributes = new { @class = "hidden" } })
+                <input class="Text-1 text-box single-line" id="ObjetivoId" type="number" hidden>
+
                 <h3><strong>Objetivo 1</strong></h3>
                 <br /><hr />
 
@@ -176,9 +178,14 @@
 
                 <br /><br />
 
-
                 <div class="box-body">
-                    <table id="grvDirecciones" name="Direcciones" class="table table-bordered table-striped table-condensed" style="width:78%; height:100%">
+
+                    <div class="col-flex-xs-2">
+                        <div class="text-right">
+                            <button id="btnAgregarDireccion" type="button" class="btn btn-default btn-xs">Actualizar</button>
+                        </div>
+                    </div>
+                    <table id="grvDirecciones" name="Direcciones" class="table table-bordered table-striped table-condensed" style="width:100%; height:100%">
                         <thead>
                             <tr style="background-color: #f59034; color:#fff">
 
@@ -195,35 +202,35 @@
                                 <th data-override="P11" class="text-center">P11.1</th>
                                 <th data-override="P11" class="text-center">P11.2</th>
                                 <th data-override="P11" class="text-center">P12</th>
-
                                 <th data-override="estatus" class="hidden">Estatus</th>
+                                <th data-override="estatus" class="hidden">Secuencia</th>
                                 <th style="width: 5px;"></th>
-
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (var item in Objetivo1)
                             {
-                                <tr>
+                            <tr>
 
-                                    <td>@item.p1</td>
-                                    <td>@item.p2</td>
-                                    <td>@item.p3</td>
-                                    <td>@item.p4</td>
-                                    <td>@item.p5</td>
-                                    <td>@item.p6</td>
-                                    <td>@item.p7</td>
-                                    <td>@item.p8</td>
-                                    <td>@item.p9</td>
-                                    <td>@item.p10</td>
-                                    <td>@item.P111</td>
-                                    <td>@item.P112</td>
-                                    <td>@item.p12</td>
-                                    <td class="hidden">1</td>
-                                    <td>
-                                        <center><button type="button" class="btn btn-default btn-xs" data-original-title="Editar" data-toggle="tooltip" data-widget="edit" onclick="EditarDireccion(this);"><i class='far fa-edit'></i></button></center>
-                                    </td>
-                                </tr>
+                                <td>@item.p1</td>
+                                <td>@item.p2</td>
+                                <td>@item.p3</td>
+                                <td>@item.p4</td>
+                                <td>@item.p5</td>
+                                <td>@item.p6</td>
+                                <td>@item.p7</td>
+                                <td>@item.p8</td>
+                                <td>@item.p9</td>
+                                <td>@item.p10</td>
+                                <td>@item.P111</td>
+                                <td>@item.P112</td>
+                                <td>@item.p12</td>
+                                <td class="hidden">1</td>
+                                <td class="hidden">@item.ObjetivoId</td>
+                                <td>
+                                    <center><button type="button" class="btn btn-default btn-xs" data-original-title="Editar" data-toggle="tooltip" data-widget="edit" onclick="EditarDireccion(this);"><i class='far fa-edit'></i></button></center>
+                                </td>
+                            </tr>
                             }
                         </tbody>
                     </table>
@@ -447,15 +454,8 @@
                 </div>
             </div>
         </div>
-
     </div>
 }
-
-
-
-@*<div>
-        @Html.ActionLink("Back to List", "Index")
-    </div>*@
 
 <script type="text/javascript">
     $("#Desde").datepicker();
@@ -478,19 +478,50 @@
         $("#P111").val(tds[10].innerHTML).change();
         $("#P112").val(tds[11].innerHTML).change();
         $("#P12").val(tds[12].innerHTML).change();
-
-        $("#btnAgregarDireccion").html('Actualizar Dirección');
+        $("#ObjetivoId").val(tds[14].innerHTML).change();
     };
 
-    //function LimpiarDireccion() {
-    //    $("#cboTipo_direccion").val('1').change() $("#cboPais").val('0').change() $('#cboProvincias').empty().append('<option value="-1">Elija una provincia</option>').val('-1').change();
-    //    $('#cboMunicipio').empty().append('<option value="-1">Elija un municipio</option>').val('-1').change();
-    //    $("#sector").val('');
-    //    $("#linea1").val('');
-    //    $("#linea2").val('');
-    //    $("#referencia").val('');
-    //    $("#secuencia").val('');
-    //};
+    function LimpiarDireccion() {
+        $("#P1").val('');
+        $("#P2").val('');
+        $("#P3").val('');
+        $("#P4").val('');
+        $("#P5").val('');
+        $("#P6").val('');
+        $("#P7").val('');
+        $("#P8").val('');
+        $("#P9").val('');
+        $("#P10").val('');
+        $("#P111").val('');
+        $("#P112").val('');
+        $("#P12").val('');
+        $("#ObjetivoId").val('');
+    };
 
+    $("body").on("click", "#btnAgregarDireccion", function (e) {
+        e.preventDefault(); e.stopPropagation(); e.stopImmediatePropagation();
+
+        $("#grvDirecciones TBODY tr").each(function (i) {
+            var row = $(this).find('td');
+
+            if (row[14].innerHTML == $("#ObjetivoId").val()) {
+                row[0].innerHTML = $("#P1").val();
+                row[1].innerHTML = $("#P2").val();
+                row[2].innerHTML = $("#P3").val();
+                row[3].innerHTML = $("#P4").val();
+                row[4].innerHTML = $("#P5").val();
+                row[5].innerHTML = $("#P6").val();
+                row[6].innerHTML = $("#P7").val();
+                row[7].innerHTML = $("#P8").val();
+                row[8].innerHTML = $("#P9").val();
+                row[9].innerHTML = $("#P10").val();
+                row[10].innerHTML = $("#P111").val();
+                row[11].innerHTML = $("#P112").val();
+                row[12].innerHTML = $("#P12").val();
+                row[13].innerHTML = 2;
+            }
+        });
+        LimpiarDireccion();
+    });
 
 </script>
