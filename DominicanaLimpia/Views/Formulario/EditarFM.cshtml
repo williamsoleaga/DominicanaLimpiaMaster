@@ -3,6 +3,13 @@
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+    DominicanalimpiaEntities2 db = new DominicanalimpiaEntities2();
+
+    var Objetivo1 = db.Objetivo1.Where(x => x.FormularioId == Model.FormularioId).ToList();
+
+    var keloke = 1;
+
 }
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
@@ -45,6 +52,66 @@
             @Html.EditorFor(model => model.Estatus, new { htmlAttributes = new { @class = "hidden" } })
             @Html.EditorFor(model => model.FormularioId, new { htmlAttributes = new { @class = "hidden" } })
             <br /><br />
+
+
+
+
+            <div class="box-body">
+                <table id="grvDirecciones" name="Direcciones" class="table table-bordered table-striped table-condensed" style="width:100%; height:100%">
+                    <thead>
+                        <tr style="background-color: #f59034; color:#fff">
+
+                            <th data-override="P1" class="text-center">P1</th>
+                            <th data-override="P2" class="text-center">P2</th>
+                            <th data-override="P3" class="text-center">P3</th>
+                            <th data-override="P4" class="text-center">P4</th>
+                            <th data-override="P5" class="text-center">P5</th>
+                            <th data-override="P6" class="text-center">P6</th>
+                            <th data-override="P7" class="text-center">P7</th>
+                            <th data-override="P8" class="text-center">P8</th>
+                            <th data-override="P9" class="text-center">P9</th>
+                            <th data-override="P10" class="text-center">P10</th>
+                            <th data-override="P11" class="text-center">P11</th>
+                            <th data-override="P11" class="text-center">P12</th>
+
+                            <th data-override="estatus" class="hidden">Estatus</th>
+                            <th style="width: 5px;"></th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Objetivo1)
+                        {
+                        <tr>
+
+                            <td>@item.p1</td>
+                            <td>@item.p2</td>
+                            <td>@item.p3</td>
+                            <td>@item.p4</td>
+                            <td>@item.p5</td>
+                            <td>@item.p6</td>
+                            <td>@item.p7</td>
+                            <td>@item.p8</td>
+                            <td>@item.p9</td>
+                            <td>@item.p10</td>
+                            <td>@item.p11</td>
+                            <td>@item.p12</td>
+                            <td class="hidden">1</td>
+                            <td>
+                                <center><button type="button" class="btn btn-default btn-xs" data-original-title="Editar" data-toggle="tooltip" data-widget="edit" onclick="EditarDireccion(this);"><i class='fa fa-pencil'></i></button></center>
+                            </td>
+                            @*<td>
+            <center><button type="button" class="btn btn-default btn-xs" data-original-title="Eliminar" data-toggle="tooltip" data-widget="remove" onclick="RemoverLinea(this);"><i class='fa fa-times'></i></button></center>
+        </td>*@
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+
+
+
 
 
             <h3><strong>Objetivo 2</strong></h3>
