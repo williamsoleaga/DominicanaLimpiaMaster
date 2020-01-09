@@ -1,7 +1,8 @@
 ﻿@model DominicanaLimpia.ModelViews.FormularioModelView
 
 @{
-     int cobjetivo1 = 1;
+    int cobjetivo1 = 1;
+    int cobjetivopart2 = 1;
     int contador = 1;
     DominicanalimpiaEntities2 db = new DominicanalimpiaEntities2();
 }
@@ -14,12 +15,12 @@
         <thead>
             <tr>
                 @{
-                    DateTime dateOnlyString =  Convert.ToDateTime(ViewBag.FechaDesde);
+                    DateTime dateOnlyString = Convert.ToDateTime(ViewBag.FechaDesde);
                     var fecha1 = dateOnlyString.Date.ToShortDateString();
 
-                    DateTime dateOnlyString1 =  Convert.ToDateTime(ViewBag.FechaHasta);
+                    DateTime dateOnlyString1 = Convert.ToDateTime(ViewBag.FechaHasta);
                     var fecha2 = dateOnlyString1.Date.ToShortDateString();
-                 }
+                }
                 <th><h5> <strong>Desde:</strong>@fecha1</h5></th>
                 <th><h5><strong>Hasta:</strong> @fecha2 </h5></th>
             </tr>
@@ -52,7 +53,12 @@
         }
 
     </div>
+    if (cobjetivo1 == 6)
+    {
+        break;
+    }
     cobjetivo1 = cobjetivo1 + 1;
+
 }
 <br />
 
@@ -80,61 +86,94 @@
             <th>
                 P6
             </th>
-            <th>
-                P7
-            </th>
-            <th>
-                P8
-            </th>
-            <th>
-                P9
-            </th>
-            <th>
-                P10
-            </th>
-            <th>
-                P11
-            </th>
-            <th>
-                P11.1
-            </th>
-            <th>
-                P11.2
-            </th>
-
-            <th>
-                P12
-            </th>
         </tr>
     </thead>
 
     <tbody>
         @foreach (var item in Model.objetivo1)
         {
+            <tr>
+                <td>
+
+                    @db.Escuelas.Where(x => x.EscuelaId == item.EscuelaId).FirstOrDefault().Descripcion
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.p1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.p2)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.p3)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.p4)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.p5)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.p6)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<br />
+
+
+@foreach (var item in Model.Preguntas)
+{
+    <div class="form-group">
+        @if (cobjetivo1 <= 12)
+        {
+            if (cobjetivo1 >= 7)
+            {
+                <div class="block" style="display: inline-block">
+                    <strong> @cobjetivo1 - @item.Descripcion</strong>
+                </div>
+            }
+        }
+    </div>
+    cobjetivo1 = cobjetivo1 + 1;
+}
+<br /><br /><br />
+
+<table class="table table-hover" id="BasicExample">
+    <thead class="blue lighten-4">
         <tr>
-            <td>
+            
+            <th>
+                    P7
+                </th>
+                <th>
+                    P8
+                </th>
+                <th>
+                    P9
+                </th>
+                <th>
+                    P10
+                </th>
+                <th>
+                    P11.1
+                </th>
+                <th>
+                    P11.2
+                </th>
 
-                @db.Escuelas.Where(x => x.EscuelaId == item.EscuelaId).FirstOrDefault().Descripcion
+                <th>
+                    P12
+                </th>
+        </tr>
+    </thead>
 
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.p1)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.p2)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.p3)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.p4)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.p5)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.p6)
-            </td>
+    <tbody>
+        @foreach (var item in Model.objetivo1)
+        {
+          
+        <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.p7)
             </td>
@@ -148,9 +187,6 @@
                 @Html.DisplayFor(modelItem => item.p10)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.p11)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.P111)
             </td>
             <td>
@@ -159,13 +195,16 @@
             <td>
                 @Html.DisplayFor(modelItem => item.p12)
             </td>
-
         </tr>
+  
         }
     </tbody>
 </table>
-
 <br />
+
+
+
+
 <br />
 <br />
 <br />
