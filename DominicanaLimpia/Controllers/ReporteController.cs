@@ -77,12 +77,12 @@ namespace DominicanaLimpia.Controllers
 
                 for (int i = 0; i < ProvinciasSum.Length; i++)
                 {
-                    ProvinciasSum[i] = (int)requests.Where(x => x.MunicipioId == i).Sum(z => z.p2);
+                    ProvinciasSum[i] = ProvinciasSum[i] + (int)requests.Where(x => x.MunicipioId == i).Sum(z => z.p2);
                     ProvinciasSum[i] = ProvinciasSum[i] + (int)requests.Where(x => x.MunicipioId == i).Sum(z => z.p3);
                     ProvinciasSum[i] = ProvinciasSum[i] + (int)requests.Where(x => x.MunicipioId == i).Sum(z => z.p4);
                     ProvinciasSum[i] = ProvinciasSum[i] + (int)requests.Where(x => x.MunicipioId == i).Sum(z => z.p5);
                     ProvinciasSum[i] = ProvinciasSum[i] + (int)requests.Where(x => x.MunicipioId == i).Sum(z => z.p6);
-                    ProvinciasSum[i] =  Convert.ToInt32( ProvinciasSum[i] + ((int)requests.Where(x => x.MunicipioId == i).Sum(z => z.p7))*3.3);
+                    ProvinciasSum[i] =  Convert.ToInt32( ProvinciasSum[i] + ((int)requests.Where(x => x.MunicipioId == i).Sum(z => z.p7) * 3.3));
                   //  ProvinciasSum[i] =  (int)(ProvinciasSum[i] * 3.3);
                     
                     ProvinciasSum[i] = ProvinciasSum[i] + (int)requests.Where(x => x.MunicipioId == i).Sum(z => z.p8);
@@ -107,7 +107,7 @@ namespace DominicanaLimpia.Controllers
             {
                 for (int i = 0; i < ProvinciasSum.Length; i++)
                 {
-                    ProvinciasSum[i] = (int)requests.Where(x => x.MunicipioId == i).Sum(z => z.p8);
+                    ProvinciasSum[i] = (int)requests.Where(x => x.MunicipioId == i).Sum(z => z.p7);
                 }
             }
 
@@ -218,7 +218,7 @@ namespace DominicanaLimpia.Controllers
             {
                 for (int i = 0; i < ProvinciasSum.Length; i++)
                 {
-                    ProvinciasSum[i] = (int)requests.Where(x => x.MunicipioId == i).Sum(z => z.p10);
+                    ProvinciasSum[i] = (int)requests.Where(x => x.MunicipioId == i).Sum(z => z.p8);
                 }
             }
 
@@ -234,7 +234,7 @@ namespace DominicanaLimpia.Controllers
             {
                 for (int i = 0; i < ProvinciasSum.Length; i++)
                 {
-                    ProvinciasSum[i] = (int)requests.Where(x => x.MunicipioId == i).Sum(z => z.p12);
+                    ProvinciasSum[i] = (int)requests.Where(x => x.MunicipioId == i).Sum(z => z.p10);
                 }
             }
 
@@ -259,7 +259,7 @@ namespace DominicanaLimpia.Controllers
             {
                 for (int i = 0; i < ProvinciasSum.Length; i++)
                 {
-                    ProvinciasSum[i] = (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P14);
+                    ProvinciasSum[i] = (int)requests.Where(x => x.MunicipioId == i).Sum(z => z.p12);
                 }
             }
 
@@ -267,7 +267,7 @@ namespace DominicanaLimpia.Controllers
             {
                 for (int i = 0; i < ProvinciasSum.Length; i++)
                 {
-                    ProvinciasSum[i] = (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P17);
+                    ProvinciasSum[i] = (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P14);
                 }
             }
 
@@ -276,7 +276,7 @@ namespace DominicanaLimpia.Controllers
             {
                 for (int i = 0; i < ProvinciasSum.Length; i++)
                 {
-                    ProvinciasSum[i] = (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P20);
+                    ProvinciasSum[i] = (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P18);
                 }
             }
 
@@ -284,7 +284,7 @@ namespace DominicanaLimpia.Controllers
             {
                 for (int i = 0; i < ProvinciasSum.Length; i++)
                 {
-                    ProvinciasSum[i] = (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P19);
+                    ProvinciasSum[i] = (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P17);
                 }
             }
 
@@ -301,7 +301,7 @@ namespace DominicanaLimpia.Controllers
             {
                 for (int i = 0; i < ProvinciasSum.Length; i++)
                 {
-                    ProvinciasSum[i] = (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P22);
+                    ProvinciasSum[i] = (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P20);
                 }
             }
 
@@ -309,7 +309,7 @@ namespace DominicanaLimpia.Controllers
             {
                 for (int i = 0; i < ProvinciasSum.Length; i++)
                 {
-                    ProvinciasSum[i] = (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P24);
+                    ProvinciasSum[i] = (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P22);
                 }
             }
 
@@ -317,7 +317,7 @@ namespace DominicanaLimpia.Controllers
             {
                 for (int i = 0; i < ProvinciasSum.Length; i++)
                 {
-                    ProvinciasSum[i] = (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P25);
+                    ProvinciasSum[i] = (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P23);
                 }
             }
 
@@ -325,7 +325,7 @@ namespace DominicanaLimpia.Controllers
             {
                 for (int i = 0; i < ProvinciasSum.Length; i++)
                 {
-                    ProvinciasSum[i] = (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P26);
+                    ProvinciasSum[i] = (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P24);
                 }
             }
 
@@ -334,7 +334,7 @@ namespace DominicanaLimpia.Controllers
             {
                 for (int i = 0; i < ProvinciasSum.Length; i++)
                 {
-                    ProvinciasSum[i] = (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P23);
+                    ProvinciasSum[i] = (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P21);
                 }
             }
 
@@ -342,7 +342,7 @@ namespace DominicanaLimpia.Controllers
             {
                 for (int i = 0; i < ProvinciasSum.Length; i++)
                 {
-                    ProvinciasSum[i] = (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P27);
+                    ProvinciasSum[i] = (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P25);
                 }
             }
 
@@ -350,7 +350,7 @@ namespace DominicanaLimpia.Controllers
             {
                 for (int i = 0; i < ProvinciasSum.Length; i++)
                 {
-                    ProvinciasSum[i] = (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P28);
+                    ProvinciasSum[i] = (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P26);
                 }
             }
 
@@ -359,7 +359,7 @@ namespace DominicanaLimpia.Controllers
             {
                 for (int i = 0; i < ProvinciasSum.Length; i++)
                 {
-                    ProvinciasSum[i] = (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P30);
+                    ProvinciasSum[i] = (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P28);
                 }
             }
 
@@ -368,7 +368,7 @@ namespace DominicanaLimpia.Controllers
             {
                 for (int i = 0; i < ProvinciasSum.Length; i++)
                 {
-                    ProvinciasSum[i] = (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P29);
+                    ProvinciasSum[i] = (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P27);
                 }
             }
 
@@ -377,7 +377,7 @@ namespace DominicanaLimpia.Controllers
             {
                 for (int i = 0; i < ProvinciasSum.Length; i++)
                 {
-                    ProvinciasSum[i] = (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P31);
+                    ProvinciasSum[i] = (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P29);
                 }
             }
 
