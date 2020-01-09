@@ -57,67 +57,74 @@
                         {
                             if (Contador < 12)
                             {
-                                <div class="form-group">
-                                    <div class="block" style="display: inline-block">
-                                        <strong> @enumeracion - @item.Descripcion</strong>
+                        <div class="form-group">
+                            <div class="block" style="display: inline-block">
+                                <strong> @enumeracion - @item.Descripcion</strong>
 
 
-                                        @if (enumeracion == 1)
-                                        {
-                                            <input class="Text-@enumeracion" type="number" min="0" name="Valores[]" id="Valores[]" disabled value="1" />
-                                        }
-                                        else
-                                        {
+                                @if (enumeracion == 1)
+                                {
+                                    <input class="Text-@enumeracion" type="number" min="0" name="Valores[]" id="Valores[]" disabled value="1" />
+                                }
+                                else
+                                {
 
-                                            if (enumeracion == 11)
-                                            {
-                                      <input class="Text-@enumeracion" type="number" min="0" name="Valores[]" id="Valores[]" value="0" hidden/>
-                                            }
-                                            else
-                                            {
-                                            <input class="Text-@enumeracion" type="number" min="0" name="Valores[]" id="Valores[]" />
-                                            }
-                                        }
-
-                                        @if (enumeracion == 7)
-                                        {
-                                            <br />
-                                            <label>Familia/Detalles</label>
-                                            <textarea type="text" name="TextoPendiente[]" autocomplete="off" class="form-control" id="TextoPendiente[]">
-                                         </textarea>
-                                        }
-
-                                        @if (enumeracion == 11)
-
-                                        {
-                                            <br />
-                                            <table class="table">
-                                                <thead>
-                                                    <tr>
-                                                        <input type="checkbox" id="cbox1" value="first_checkbox"> Neumáticos(unidad)
-                                                        <input type="number" min="0" value="0" class="p111" /> &ensp;
-                                                        <br />
-                                                        <input type="checkbox" id="cbox1" value="first_checkbox"> Plásticos (libras)
-                                                        <input type="number" min="0"  value="0" class="p112" /> &ensp;
-                                                    </tr>
-                                                </thead>
-                                            </table>
-                                        }
-
-
-                                    </div>
-                                    @if (enumeracion == 1)
+                                    if (enumeracion == 11)
                                     {
-                                        <div class="block" style="display: inline-block">
-                                            <br />
-                                             @Html.DropDownList("EscuelaGrid", (IEnumerable<SelectListItem>)ViewBag.EscuelaGrid, null, new { @class = "js-example-placeholder-single js-states form-control" })
-                                            <br />
-                                        </div>
+                                        <input class="Text-@enumeracion" type="number" min="0" name="Valores[]" id="Valores[]" value="0" hidden />
                                     }
-                                    <hr>
+                                    else
+                                    {
+                                        <input class="Text-@enumeracion" type="number" min="0" name="Valores[]" id="Valores[]" />
+                                    }
+                                }
+
+                                @if (enumeracion == 7)
+                                {
+                                    <br />
+                                    <label>Familia/Detalles</label>
+                                    <textarea type="text" name="TextoPendiente[]" autocomplete="off" class="form-control" id="TextoPendiente[]">
+                                         </textarea>
+                                }
+
+                                @if (enumeracion == 11)
+
+                                {
+                                    <br />
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <input type="checkbox" id="cbox1" value="first_checkbox"> Neumáticos(unidad)
+                                                <input type="number" min="0" value="0" class="p111" /> &ensp;
+                                                <br />
+                                                <input type="checkbox" id="cbox1" value="first_checkbox"> Plásticos (libras)
+                                                <input type="number" min="0" value="0" class="p112" /> &ensp;
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                }
 
 
+                            </div>
+                            @if (enumeracion == 1)
+                            {
+                                <div class="block" style="display: inline-block">
+                                    <br />
+                                    @Html.DropDownList("EscuelaGrid", (IEnumerable<SelectListItem>)ViewBag.EscuelaGrid, null, new { @class = "js-example-placeholder-single js-states form-control" })
+                                    <br />
                                 </div>
+                            }
+
+                            @if (enumeracion == 6)
+                            {
+                                <hr class="line" style="height:3px;background-color:purple"></hr>
+                                <br />
+                            }
+
+                            <hr>
+
+
+                        </div>
                                 if (Contador == 11)
                                 {
                                     Contador = 0;
@@ -151,7 +158,7 @@
                                             <th data-override="id_correos_notificaciones">P4</th>
                                             <th data-override="id_correos_notificaciones">P5</th>
                                             <th data-override="id_correos_notificaciones">P6</th>
-                                            <th data-override="id_correos_notificaciones">P7</th>
+                                            <th data-override="id_correos_notificaciones" hidden>P7</th>
                                             <th data-override="id_correos_notificaciones" hidden>Pregunta 4</th>
                                             <th data-override="id_correos_notificaciones" hidden>Pregunta 4</th>
                                             <th data-override="id_correos_notificaciones" hidden>Pregunta 4</th>
@@ -442,7 +449,7 @@
         cell = $(row.insertCell(-1));
 
 
-        cell.html(P7);
+        cell.html(P7).addClass("hidden");
         cell = $(row.insertCell(-1));
 
         cell.html(P8).addClass("hidden");
