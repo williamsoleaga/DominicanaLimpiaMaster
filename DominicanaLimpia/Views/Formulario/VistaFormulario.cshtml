@@ -122,19 +122,18 @@
 </table>
 <br />
 
+@{cobjetivo1 = 1; }
 
 @foreach (var item in Model.Preguntas)
 {
     <div class="form-group">
-        @if (cobjetivo1 <= 12)
-        {
-            if (cobjetivo1 >= 7)
+       
+            @if (cobjetivo1 >= 7 && cobjetivo1 <= 12)
             {
                 <div class="block" style="display: inline-block">
                     <strong> @cobjetivo1 - @item.Descripcion</strong>
                 </div>
             }
-        }
     </div>
     cobjetivo1 = cobjetivo1 + 1;
 }
