@@ -482,6 +482,11 @@ namespace DominicanaLimpia.Controllers
             var responsable = db.Usuarios.Where(x => x.UsuarioId == responsable1.ResponsableId).FirstOrDefault();
             Session["NombreResponsableReporte"] = responsable.Nombre_Completo;
 
+            int idprovincia = (int)Fmv.formularioM[0].ProvinciaId;
+            Session["NombreProvincia"] = db.Municipios.Where(x => x.MunicipioId == idprovincia).Select(x => x.Provincia_Nombre).FirstOrDefault();
+
+
+
             return new ViewAsPdf("VistaFormulario", Fmv);
 
            
