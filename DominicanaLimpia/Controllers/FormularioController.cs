@@ -203,7 +203,12 @@ namespace DominicanaLimpia.Controllers
                 nuevoform.P13 = formulario.Valores[12];
                 nuevoform.P14 = formulario.Valores[13];
                 nuevoform.P15 = formulario.Valores[14];
+                if(formulario.Pregunta16 == 2)
+                {
+                    formulario.Pregunta16 = 0;
+                }
                 nuevoform.P16 = formulario.Pregunta16;
+
                 nuevoform.P17 = formulario.Valores[15];
                 nuevoform.P18 = formulario.Valores[16];
                 nuevoform.P19 = formulario.Valores[17];
