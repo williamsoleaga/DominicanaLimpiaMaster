@@ -170,9 +170,8 @@ namespace DominicanaLimpia.Controllers
             //metas de comercios
             if (TipoReporte == 8)
             {
-                for (int i = 0; i < ProvinciasSum.Length; i++)
+                for (int i = 1; i < ProvinciasSum.Length; i++)
                 {
-                    
                     //ProvinciasSum[i] = ProvinciasSum[i] + (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P14);
                     ProvinciasSum[i] = (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P16);
                 }
