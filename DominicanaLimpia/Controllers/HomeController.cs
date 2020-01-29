@@ -32,9 +32,21 @@ namespace DominicanaLimpia.Controllers
         }
 
 
-        
+        public ActionResult ReportePorActividad()
+        {
+            ViewBag.TipoReporte = new SelectList(LlenarReporteFormularioActividad(), "Indice", "Value");
+            return View("~/Views/Reportes/ReportePorActividad.cshtml");
+        }
 
-        public List<Combo> LlenarReporteFormulario()
+        public List<Combo> LlenarReporteFormularioActividad()
+        {
+            List<Combo> Combo = new List<Combo>();
+            Combo.Add(new Combo { Indice = 1, Value = "1- Reporte por actividad" });
+            return Combo;
+        }
+
+
+            public List<Combo> LlenarReporteFormulario()
         {
             List<Combo> Combo = new List<Combo>();
 

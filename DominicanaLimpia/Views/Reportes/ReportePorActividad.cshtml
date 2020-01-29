@@ -1,0 +1,78 @@
+﻿
+@{
+    ViewBag.Title = "Reporte Por Actividad";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+@{
+    ViewBag.Title = "Reportes por actividad";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css" />
+<script src="~/Content/Datepicket.js"></script>
+
+<br />
+<br />
+<div class="col-md-14 mb-4">
+    <div class="card">
+        <div class="card-body">
+            <br /><br />
+                  <h4>Reportes por actividad</h4>
+            <hr />
+
+            <div class="well">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th><strong>Tipo de reporte:</strong>  @Html.DropDownList("TipoReporteId", (IEnumerable<SelectListItem>)ViewBag.TipoReporte, null, new { @class = "form-control" })   </th>
+                            <th> <strong>Desde:</strong> <input type="text" class="form-control" name="DesdeFecha" id="DesdeFechaR"></th>
+                            <th> <strong>Hasta:</strong> <input type="text" class="form-control" name="HastaFecha" id="HastaFechaR"></th>
+                            <th><button type="button" class="btn btn-success" onclick="Imprimir()">Descargar</button></th>
+
+                        </tr>
+
+                    </thead>
+                </table>
+            </div>
+            <br /><br />
+
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+        $("#DesdeFechaR").datepicker({
+        autoclose: true,
+        todayHighlight: true,
+        format: 'dd/mm/yyyy'
+    }).datepicker('update', new Date());
+
+    $("#HastaFechaR").datepicker({
+        autoclose: true,
+        todayHighlight: true,
+        format: 'dd/mm/yyyy'
+
+
+    }).datepicker('update', new Date());
+
+
+        function Imprimir() {
+
+        var TipoR = $('#TipoReporteId :selected').val();
+        var desde = $("#DesdeFechaR").val();
+        var hasta = $("#HastaFechaR").val();
+        var _url = '@Url.Action("ImprimirReporteActividad", "Reporte")';
+
+       window.location = '/Reporte/ImprimirReporteActividad?TipoReporte=' + TipoR + "&Desdef="+ desde+ "&Hastaf="+ hasta; 
+
+    }
+
+
+</script>
+

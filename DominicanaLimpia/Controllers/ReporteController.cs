@@ -1746,6 +1746,230 @@ namespace DominicanaLimpia.Controllers
 
 
 
-       
+
+
+
+        public ActionResult ImprimirReporteActividad(int TipoReporte, string Desdef, string Hastaf)
+        {
+
+
+            var splitDesde = Desdef.Split('/');
+            var splitHasta = Hastaf.Split('/');
+
+            DateTime Desde = Convert.ToDateTime(splitDesde[1] + "/" + splitDesde[0] + "/" + splitDesde[2]);
+            DateTime Hasta = Convert.ToDateTime(splitHasta[1] + "/" + splitHasta[0] + "/" + splitHasta[2]);
+
+
+
+
+
+            int[] ProvinciasSum = new int[23];
+
+            int[] ProvinciaOrdenadas = new int[22] { 1, 11, 19,20,2,12,13,14,3,21,15,16,4,5,6,22,17,7,18,10,8,9};
+            string[] LetraReporte = new string[22] { "E", "F", "G", "H", "I", "J", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "W", "x","y", "z" };
+
+            string NombreReprte = "";
+            var requests = db.Objetivo1.Where(x => x.Desde >= Desde && x.Desde <= Hasta).ToList();
+
+
+            var excelFile = Server.MapPath("~/Pantillas/MATRIZ GENERAL POR PREGUNTA.xlsx");
+            Microsoft.Office.Interop.Excel.Application excelApp = new Microsoft.Office.Interop.Excel.Application();
+            Microsoft.Office.Interop.Excel.Workbook xlWorkbook = excelApp.Workbooks.Add(excelFile);
+            Microsoft.Office.Interop.Excel.Worksheet Hoja = null;
+
+
+            if (TipoReporte == 1)
+            {
+                NombreReprte = "MATRIZ GENERAL POR PREGUNTA";
+                Hoja = (Microsoft.Office.Interop.Excel.Worksheet)xlWorkbook.Sheets["MATRIZ x Territori-pregunta "];
+                var FormularioM = db.FormularioM.Where(x => x.Desde >= Desde && x.Desde <= Hasta).ToList();
+
+
+                //Primera parte de las preguntas hasta las 12
+                for (int w = 1; w < 14; w++)
+                {
+                    for (int i = 1; i < 23; i++)
+                    {
+                        if (w <= 13)
+                        {
+                            int resultadopregunta = 0;
+
+                            switch (w)
+                            {
+
+                                case 1:
+                                     resultadopregunta = (int)requests.Where(x => x.MunicipioId == ProvinciaOrdenadas[i - 1]).Sum(z => z.p1);
+                                    Hoja.Range[LetraReporte[i - 1] + "8"].Value2 = resultadopregunta;
+                                    continue;
+                                case 2:
+                                    resultadopregunta = (int)requests.Where(x => x.MunicipioId == ProvinciaOrdenadas[i - 1]).Sum(z => z.p2);
+                                    Hoja.Range[LetraReporte[i - 1] + "9"].Value2 = resultadopregunta;
+                                    continue;
+
+                                case 3:
+                                    resultadopregunta = (int)requests.Where(x => x.MunicipioId == ProvinciaOrdenadas[i - 1]).Sum(z => z.p3);
+                                    Hoja.Range[LetraReporte[i - 1] + "10"].Value2 = resultadopregunta;
+                                    continue;
+                                case 4:
+                                    resultadopregunta = (int)requests.Where(x => x.MunicipioId == ProvinciaOrdenadas[i - 1]).Sum(z => z.p4);
+                                    Hoja.Range[LetraReporte[i - 1] + "12"].Value2 = resultadopregunta;
+                                    continue;
+                                case 5:
+                                    resultadopregunta = (int)requests.Where(x => x.MunicipioId == ProvinciaOrdenadas[i - 1]).Sum(z => z.p5);
+                                    Hoja.Range[LetraReporte[i - 1] + "13"].Value2 = resultadopregunta;
+                                    continue;
+                                case 6:
+                                    resultadopregunta = (int)requests.Where(x => x.MunicipioId == ProvinciaOrdenadas[i - 1]).Sum(z => z.p6);
+                                    Hoja.Range[LetraReporte[i - 1] + "14"].Value2 = resultadopregunta;
+                                    continue;
+                                case 7:
+                                    resultadopregunta = (int)requests.Where(x => x.MunicipioId == ProvinciaOrdenadas[i - 1]).Sum(z => z.p7);
+                                    Hoja.Range[LetraReporte[i - 1] + "17"].Value2 = resultadopregunta;
+                                    continue;
+                                case 8:
+                                    resultadopregunta = (int)requests.Where(x => x.MunicipioId == ProvinciaOrdenadas[i - 1]).Sum(z => z.p8);
+                                    Hoja.Range[LetraReporte[i - 1] + "19"].Value2 = resultadopregunta;
+                                    continue;
+                                case 9:
+                                    resultadopregunta = (int)requests.Where(x => x.MunicipioId == ProvinciaOrdenadas[i - 1]).Sum(z => z.p9);
+                                    Hoja.Range[LetraReporte[i - 1] + "20"].Value2 = resultadopregunta;
+                                    continue;
+                                case 10:
+                                    resultadopregunta = (int)requests.Where(x => x.MunicipioId == ProvinciaOrdenadas[i - 1]).Sum(z => z.p10);
+                                    Hoja.Range[LetraReporte[i - 1] + "22"].Value2 = resultadopregunta;
+                                    continue;
+                                case 11:
+                                    resultadopregunta = (int)requests.Where(x => x.MunicipioId == ProvinciaOrdenadas[i - 1]).Sum(z => z.P111);
+                                    Hoja.Range[LetraReporte[i - 1] + "23"].Value2 = resultadopregunta;
+                                    continue;
+                                case 12:
+                                    resultadopregunta = (int)requests.Where(x => x.MunicipioId == ProvinciaOrdenadas[i - 1]).Sum(z => z.P112);
+                                    Hoja.Range[LetraReporte[i - 1] + "24"].Value2 = resultadopregunta;
+                                    continue;
+                                case 13:
+                                    resultadopregunta = (int)requests.Where(x => x.MunicipioId == ProvinciaOrdenadas[i - 1]).Sum(z => z.p12);
+                                    Hoja.Range[LetraReporte[i - 1] + "25"].Value2 = resultadopregunta;
+                                    continue;
+                            }
+                            
+                        }
+                    }
+                }
+
+
+                //Segunda  parte de las preguntas hasta las 32
+                for (int w = 13; w < 33; w++)
+                {
+                    for (int i = 1; i < 23; i++)
+                    {
+                            int resultadopregunta = 0;
+
+                            switch (w)
+                            {
+
+                                case 13:
+                                    resultadopregunta = (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P13);
+                                     Hoja.Range[LetraReporte[i - 1] + "26"].Value2 = resultadopregunta;
+                                    continue;
+                            case 14:
+                                resultadopregunta = (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P14);
+                                Hoja.Range[LetraReporte[i - 1] + "27"].Value2 = resultadopregunta;
+                                continue;
+                            case 15:
+                                resultadopregunta = (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P15);
+                                Hoja.Range[LetraReporte[i - 1] + "28"].Value2 = resultadopregunta;
+                                continue;
+                            case 16:
+                                resultadopregunta = (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P16);
+                                Hoja.Range[LetraReporte[i - 1] + "30"].Value2 = resultadopregunta;
+                                continue;
+                            case 17:
+                                resultadopregunta = (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P17);
+                                Hoja.Range[LetraReporte[i - 1] + "31"].Value2 = resultadopregunta;
+                                continue;
+                            case 18:
+                                resultadopregunta = (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P18);
+                                Hoja.Range[LetraReporte[i - 1] + "33"].Value2 = resultadopregunta;
+                                continue;
+                            case 19:
+                                resultadopregunta = (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P19);
+                                Hoja.Range[LetraReporte[i - 1] + "34"].Value2 = resultadopregunta;
+                                continue;
+                            case 20:
+                                resultadopregunta = (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P20);
+                                Hoja.Range[LetraReporte[i - 1] + "35"].Value2 = resultadopregunta;
+                                continue;
+                            case 21:
+                                resultadopregunta = (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P21);
+                                Hoja.Range[LetraReporte[i - 1] + "36"].Value2 = resultadopregunta;
+                                continue;
+                            case 22:
+                                resultadopregunta = (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P22);
+                                Hoja.Range[LetraReporte[i - 1] + "37"].Value2 = resultadopregunta;
+                                continue;
+                            case 23:
+                                resultadopregunta = (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P23);
+                                Hoja.Range[LetraReporte[i - 1] + "38"].Value2 = resultadopregunta;
+                                continue;
+                            case 24:
+                                resultadopregunta = (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P24);
+                                Hoja.Range[LetraReporte[i - 1] + "40"].Value2 = resultadopregunta;
+                                continue;
+                            case 25:
+                                resultadopregunta = (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P25);
+                                Hoja.Range[LetraReporte[i - 1] + "41"].Value2 = resultadopregunta;
+                                continue;
+                            case 26:
+                                resultadopregunta = (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P26);
+                                Hoja.Range[LetraReporte[i - 1] + "42"].Value2 = resultadopregunta;
+                                continue;
+                            case 27:
+                                resultadopregunta = (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P27);
+                                Hoja.Range[LetraReporte[i - 1] + "44"].Value2 = resultadopregunta;
+                                continue;
+                            case 28:
+                                resultadopregunta = (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P28);
+                                Hoja.Range[LetraReporte[i - 1] + "45"].Value2 = resultadopregunta;
+                                continue;
+                            case 29:
+                                resultadopregunta = (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P29);
+                                Hoja.Range[LetraReporte[i - 1] + "46"].Value2 = resultadopregunta;
+                                continue;
+                            case 30:
+                                resultadopregunta = (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P30);
+                                Hoja.Range[LetraReporte[i - 1] + "48"].Value2 = resultadopregunta;
+                                continue;
+                            case 31:
+                                resultadopregunta = (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P31);
+                                Hoja.Range[LetraReporte[i - 1] + "49"].Value2 = resultadopregunta;
+                                continue;
+                            case 32:
+                                resultadopregunta = (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P32);
+                                Hoja.Range[LetraReporte[i - 1] + "50"].Value2 = resultadopregunta;
+                                continue;
+                        }
+                        
+                    }
+                }
+
+
+            }
+
+            var nuevoguid = System.Guid.NewGuid();
+            var rutaarchivo = NombreReprte + nuevoguid + ".xlsx";
+            var excelFileSave = Server.MapPath("~/Pantillas/Repositorio");
+            var tempFile = System.IO.Path.Combine(excelFileSave, rutaarchivo);
+            xlWorkbook.SaveAs(tempFile);
+            xlWorkbook.Close(true);
+            excelApp.Quit();
+            System.Runtime.InteropServices.Marshal.FinalReleaseComObject(xlWorkbook);
+            System.Runtime.InteropServices.Marshal.FinalReleaseComObject(excelApp);
+
+            var destinationPath = Path.Combine(Server.MapPath("~/Pantillas/Repositorio"), rutaarchivo);
+            return File(destinationPath, "application/vnd.ms-excel", rutaarchivo);
+
+        }
+
+
     }
 }

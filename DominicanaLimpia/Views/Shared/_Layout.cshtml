@@ -186,6 +186,14 @@
                     </a>
                 }
 
+                 
+                @if (Session["RodId"].ToString() == "1" || Session["RodId"].ToString() == "5")
+                {
+                <a href="#" class="list-group-item list-group-item-action waves-effect" onclick="location.href='@Url.Action("ReportePorActividad", "Home")'">
+                    <i class="fas fa-paste mr-3"></i>Reportes por actividad
+                </a>
+                }
+
 
                 @if (Session["RodId"].ToString() == "2")
                 {
