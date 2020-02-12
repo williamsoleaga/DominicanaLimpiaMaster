@@ -39,13 +39,16 @@ namespace DominicanaLimpia.Controllers
         {
 
 
-            var splitDesde = Desdef.Split('/');
-            var splitHasta = Hastaf.Split('/');
+            // var splitDesde = Desdef.Split('/');
+            //var splitHasta = Hastaf.Split('/');
 
-            DateTime Desde = Convert.ToDateTime(splitDesde[1] + "/" + splitDesde[0] + "/" + splitDesde[2]);
-            DateTime Hasta = Convert.ToDateTime(splitHasta[1] + "/" + splitHasta[0] + "/" + splitHasta[2]);
+            //DateTime Desde = Convert.ToDateTime(splitDesde[1] + "/" + splitDesde[0] + "/" + splitDesde[2]);
+            // DateTime Hasta = Convert.ToDateTime(splitHasta[1] + "/" + splitHasta[0] + "/" + splitHasta[2]);
 
-          int[] ProvinciasSum = new int[23];
+            DateTime Desde = Convert.ToDateTime(Desdef);
+            DateTime Hasta = Convert.ToDateTime(Hastaf);
+
+            int[] ProvinciasSum = new int[23];
 
             //Consulta General
             var requests = db.Objetivo1.Where(x => x.Desde >= Desde && x.Desde <= Hasta).ToList();
@@ -528,13 +531,16 @@ namespace DominicanaLimpia.Controllers
         {
 
 
-            var splitDesde = Desdef.Split('/');
-            var splitHasta = Hastaf.Split('/');
-
-            DateTime Desde = Convert.ToDateTime(splitDesde[1] + "/" + splitDesde[0] + "/" + splitDesde[2]);
-            DateTime Hasta = Convert.ToDateTime(splitHasta[1] + "/" + splitHasta[0] + "/" + splitHasta[2]);
 
 
+            // var splitDesde = Desdef.Split('/');
+            // var splitHasta = Hastaf.Split('/');
+
+            //DateTime Desde = Convert.ToDateTime(splitDesde[1] + "/" + splitDesde[0] + "/" + splitDesde[2]);
+            //DateTime Hasta = Convert.ToDateTime(splitHasta[1] + "/" + splitHasta[0] + "/" + splitHasta[2]);
+
+            DateTime Desde = Convert.ToDateTime(Desdef);
+            DateTime Hasta = Convert.ToDateTime(Hastaf);
 
 
 
@@ -1747,19 +1753,19 @@ namespace DominicanaLimpia.Controllers
 
 
 
-
-
         public ActionResult ImprimirReporteActividad(int TipoReporte, string Desdef, string Hastaf)
         {
 
 
-            var splitDesde = Desdef.Split('/');
-            var splitHasta = Hastaf.Split('/');
+            //var splitDesde = Desdef.Split('/');
+            //var splitHasta = Hastaf.Split('/');
 
-            DateTime Desde = Convert.ToDateTime(splitDesde[1] + "/" + splitDesde[0] + "/" + splitDesde[2]);
-            DateTime Hasta = Convert.ToDateTime(splitHasta[1] + "/" + splitHasta[0] + "/" + splitHasta[2]);
+            //DateTime Desde = Convert.ToDateTime(splitDesde[1] + "/" + splitDesde[0] + "/" + splitDesde[2]);
+            //DateTime Hasta = Convert.ToDateTime(splitHasta[1] + "/" + splitHasta[0] + "/" + splitHasta[2]);
 
 
+            DateTime Desde = Convert.ToDateTime(Desdef);
+            DateTime Hasta = Convert.ToDateTime(Hastaf);
 
 
 

@@ -185,12 +185,14 @@ namespace DominicanaLimpia.Controllers
 
             try
             {
-              
-                var splitDesde = formulario.DesdeFecha.Split('/');
-                var splitHasta = formulario.HastaFecha.Split('/');
 
-                formulario.DesdeFecha = splitDesde[1]+"/"+splitDesde[0] +"/"+splitDesde[2];
-                formulario.HastaFecha = splitHasta[1] + "/" + splitHasta[0] + "/" + splitHasta[2];
+
+                //var testtt = Convert.ToDateTime(formulario.DesdeFecha);
+               // var splitDesde = formulario.DesdeFecha.Split('/');
+               // var splitHasta = formulario.HastaFecha.Split('/');
+
+                formulario.DesdeFecha = Convert.ToDateTime(formulario.DesdeFecha).ToString();
+                formulario.HastaFecha = Convert.ToDateTime(formulario.HastaFecha).ToString();
 
                 FormularioM nuevoform = new FormularioM();
                 nuevoform.Desde = Convert.ToDateTime(String.Format("{0:MM/dd/yyyy}", formulario.DesdeFecha));

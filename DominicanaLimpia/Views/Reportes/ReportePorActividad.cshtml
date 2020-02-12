@@ -6,11 +6,11 @@
 
 
 
-@{
+@*@{
     ViewBag.Title = "Reportes por actividad";
     Layout = "~/Views/Shared/_Layout.cshtml";
 
-}
+}*@
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css" />
 <script src="~/Content/Datepicket.js"></script>
@@ -50,13 +50,13 @@
         $("#DesdeFechaR").datepicker({
         autoclose: true,
         todayHighlight: true,
-        format: 'dd/mm/yyyy'
+           format: 'd M, yyyy'
     }).datepicker('update', new Date());
 
     $("#HastaFechaR").datepicker({
         autoclose: true,
         todayHighlight: true,
-        format: 'dd/mm/yyyy'
+         format: 'd M, yyyy'
 
 
     }).datepicker('update', new Date());
