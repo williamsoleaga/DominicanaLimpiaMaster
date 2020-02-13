@@ -50,11 +50,6 @@ namespace DominicanaLimpia.Controllers
                     if (Session["RodId"].ToString() == "5")
                     {
                         var Munic = usuario.MunicipiosId.Split(',');
-                        // var wepa   = db.Municipios.Where(r => Munic.Contains(r.MunicipioId.ToString())).ToList();
-                        //foreach (var item in wepa)
-                        //{
-                        //    Session["Municipios"] = Session["Municipios"] + " " + item.Provincia_Nombre;
-                        //}
                         var municipiosdes = "";
                         for (int i = 0; i < Munic.Length; i++)
                         {

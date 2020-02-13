@@ -3,6 +3,7 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
     DominicanalimpiaEntities2 db = new DominicanalimpiaEntities2();
+     var municipiosdes = "";
 }
 <br />
 <br />
@@ -26,6 +27,8 @@
                         <th>
                             Nombre completo
                         </th>
+
+                        <th>Municipio</th>
                         <th>
                             Rol
                         </th>
@@ -35,13 +38,37 @@
 
                 <tbody>
                     @foreach (var item in Model)
-            {
+                    {
                 <tr>
                     <td>
                         @Html.DisplayFor(modelItem => item.Usuario)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Nombre_Completo)
+                    </td>
+
+                    <td>
+
+                @{ 
+                    var usuario = db.Usuarios.Where(x => x.UsuarioId == item.UsuarioId).ToList().FirstOrDefault();
+                    municipiosdes = "";
+
+                    if (usuario.RolId == 2)
+                    {
+                        var Munic = usuario.MunicipiosId.Split(',');
+                       
+                        for (int i = 0; i < Munic.Length; i++)
+                        {
+                            int idpro = Convert.ToInt32(Munic[i]);
+                            if (idpro != 0)
+                            {
+                                municipiosdes = municipiosdes + db.Municipios.Where(x => x.MunicipioId == idpro).Select(x => x.Provincia_Nombre).FirstOrDefault() + "*";
+                            }
+                        }
+                    }
+                }
+                        @municipiosdes
+
                     </td>
                     <td>
                         @{

@@ -25,9 +25,15 @@
                             <th><strong>Tipo de reporte:</strong>  @Html.DropDownList("TipoReporteId", (IEnumerable<SelectListItem>)ViewBag.TipoReporte, null, new { @class = "form-control" })   </th>
                             <th> <strong>Desde:</strong> <input type="text" class="form-control" name="DesdeFecha" id="DesdeFechaR"></th>
                             <th> <strong>Hasta:</strong> <input type="text" class="form-control" name="HastaFecha" id="HastaFechaR"></th>
+
+
+
+                            <th><strong>Mostrar todos</strong> <input class="form-control" type="checkbox" value="" id="defaultCheck1"></th>
+
+
                             <th><button type="button" class="btn btn-success" onclick="Aparece()">Buscar</button></th>
-                         
-</tr>
+
+                        </tr>
 
                     </thead>
                 </table>
