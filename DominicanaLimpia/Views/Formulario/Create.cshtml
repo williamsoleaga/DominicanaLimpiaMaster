@@ -146,7 +146,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="box-body">
+                            <div class="box-body" style=" background:repeat scroll 0 0;border: 3px solid #666;    margin: 5px;    padding: 5px;    position: relative;    width: 1231px;    height: 243px;    overflow: auto;">
                                 <table id="grvBeneficiarios" name="Beneficiarios" class="table table-bordered table-striped table-condensed" style="width:106%; height:100%">
                                     <thead>
                                         <tr style="background-color: #f59034; color:#fff">
@@ -214,12 +214,19 @@
                             Contador = Contador + 1;
 
                         }
+
+                        <div class="form-group">
+                            <strong>Comentario</strong>
+                            <textarea class="form-control" name="Comentario" id="Comentario" rows="7"></textarea>
+                        </div>
+
+
                     </section>
 
                     <h3>Objetivo 3</h3>
                     <section>
                         @{
-        enumeracion = enumeracion + 1;
+                            enumeracion = enumeracion + 1;
                         }
 
                         @foreach (var item in Model.Preguntas)
@@ -232,36 +239,36 @@
                                 {
 
 
-                        <div class="form-group">
-                        <div class="block">
-                        <strong>  @enumeracion - @item.Descripcion</strong>
-                           <br />
-                            @Html.DropDownList("Pregunta16", (IEnumerable<SelectListItem>)ViewBag.Pregunta16, null, new { @class = "js-example-placeholder-single js-states form-control" })
-                        <hr>
-                        </div>
-                        </div>
+                                    <div class="form-group">
+                                        <div class="block">
+                                            <strong>  @enumeracion - @item.Descripcion</strong>
+                                            <br />
+                                            @Html.DropDownList("Pregunta16", (IEnumerable<SelectListItem>)ViewBag.Pregunta16, null, new { @class = "js-example-placeholder-single js-states form-control" })
+                                            <hr>
+                                        </div>
+                                    </div>
                                 }
                                 else
                                 {
 
-                    <div class="form-group">
-                        <div class="block">
-                            <strong>  @enumeracion - @item.Descripcion</strong>
-                            <input type="number" min="0" name="Valores[]" id="Valores[]" />
+                                    <div class="form-group">
+                                        <div class="block">
+                                            <strong>  @enumeracion - @item.Descripcion</strong>
+                                            <input type="number" min="0" name="Valores[]" id="Valores[]" />
 
 
-                            @if (enumeracion == 18 || enumeracion == 19 || enumeracion == 20 )
-                            {
-                        <br />
-                        <label for="validationDefault01">Dirección/Descripción</label>
-                        <textarea type="text" name="Descripcion[]" autocomplete="off" class="form-control" id="Descripcion[]">
+                                            @if (enumeracion == 18 || enumeracion == 19 || enumeracion == 20)
+                                            {
+                                                <br />
+                                                <label for="validationDefault01">Dirección/Descripción</label>
+                                                <textarea type="text" name="Descripcion[]" autocomplete="off" class="form-control" id="Descripcion[]">
                                         </textarea>
-}
+                                            }
 
 
-                            <hr>
-                        </div>
-                    </div>
+                                            <hr>
+                                        </div>
+                                    </div>
                                 }
 
                                 if (Contador == 25)
@@ -274,6 +281,13 @@
                             }
                             Contador = Contador + 1;
                         }
+
+                        <div class="form-group">
+                            <strong>Comentario</strong>
+                            <textarea class="form-control" name="Comentario" id="Comentario" rows="7"></textarea>
+                        </div>
+
+
                     </section>
                     <h3>Objetivo 4</h3>
                     <section>
@@ -305,6 +319,12 @@
                             }
                             Contador = Contador + 1;
                         }
+
+                        <div class="form-group">
+                            <strong>Comentario</strong>
+                            <textarea class="form-control" name="Comentario" id="Comentario" rows="7"></textarea>
+                        </div>
+
                     </section>
                 </div>
                 @*<div class="file-loading">
@@ -314,7 +334,7 @@
 
 
                 <div class="form-group">
-                    <strong>Comentario</strong>
+                    <strong>Comentario general del formulario</strong>
                     <textarea class="form-control" name="Comentario" id="Comentario" rows="7"></textarea>
                 </div>
             </div>
@@ -352,50 +372,51 @@
             EscuelaText = $('#EscuelaGrid :selected').text(), idescuela = $('#EscuelaGrid :selected').val();
 
         if (P1 == "") {
-            alertify.warning('El numero de  escuelas es necesario! Pregunta 1 ');
+            alertify.error('El numero de  escuelas es necesario! Pregunta 1 ');
             return;
         }
 
         if (P2 == "") {
-            alertify.warning('El numero de Pregunta 2  es necesario! ');
+            alertify.error('El numero de Pregunta 2  es necesario! ');
             return;
         }
         if (P3 == "") {
-            alertify.warning('El numero de Pregunta 3  es necesario! ');
+            alertify.error('El numero de Pregunta 3  es necesario! ');
             return;
         }
         if (P4 == "") {
-            alertify.warning('El numero de Pregunta 4  es necesario! ');
+            alertify.error('El numero de Pregunta 4  es necesario! ');
             return;
         }
         if (P5 == "") {
-            alertify.warning('El numero de Pregunta 5  es necesario! ');
+            alertify.error('El numero de Pregunta 5  es necesario! ');
             return;
         }
         if (P6 == "") {
-            alertify.warning('El numero de Pregunta 6  es necesario! ');
+            alertify.error('El numero de Pregunta 6  es necesario! ');
             return;
         }
         if (P7 == "") {
-            alertify.warning('El numero de Pregunta 7  es necesario! ');
+            alertify.error('El numero de Pregunta 7  es necesario! ');
             return;
         }
         if (P8 == "") {
-            alertify.warning('El numero de Pregunta 8  es necesario! ');
+            alertify.error('El numero de Pregunta 8  es necesario! ');
             return;
         }
         if (P9 == "") {
-            alertify.warning('El numero de Pregunta 9 es necesario! ');
+            alertify.error('El numero de Pregunta 9 es necesario! ');
             return;
         }
 
         if (P10 == "") {
-            alertify.warning('El numero de Pregunta 10  es necesario! ');
+            alertify.error('El numero de Pregunta 10  es necesario! ');
             return;
         }
         //if (P11 == "") {
         //    alertify.warning('El numero de Pregunta 11  es necesario! ');
         //    return;
+       // alertify.error
         //}
 
         P11 = 0;
@@ -410,7 +431,7 @@
 
 
         if (P12 == "") {
-            alertify.warning('El numero de Pregunta 12  es necesario!');
+            alertify.error('El numero de Pregunta 12  es necesario!');
             return;
         }
 
