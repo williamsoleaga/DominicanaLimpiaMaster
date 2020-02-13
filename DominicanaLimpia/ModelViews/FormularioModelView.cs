@@ -21,5 +21,12 @@ namespace DominicanaLimpia.ModelViews
 
         public string[] Comentarios { get; set; }
         public int Pregunta16 { get; set; }
+
+        public string Comentarioobj1 { get; set; }
+        public string Comentarioobj2 { get; set; }
+        public string Comentarioobj3 { get; set; }
+        public string Comentarioobj4 { get; set; }
+
+
     }
 }

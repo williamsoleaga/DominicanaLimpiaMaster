@@ -15,14 +15,20 @@ namespace DominicanaLimpia
 using System;
     using System.Collections.Generic;
     
-public partial class Preguntas
+public partial class ComentarioObjetivo
 {
 
-    public int PreguntaId { get; set; }
+    public int ComentarioId { get; set; }
 
-    public string Descripcion { get; set; }
+    public int FormularioId { get; set; }
 
-    public string Estatus { get; set; }
+    public string Comentarioobj1 { get; set; }
+
+    public string Comentarioobj2 { get; set; }
+
+    public string Comentarioobj3 { get; set; }
+
+    public string Comentarioobj4 { get; set; }
 
 }
 

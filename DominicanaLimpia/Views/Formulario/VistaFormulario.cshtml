@@ -214,48 +214,74 @@
 
         @if (contador >= 13)
         {
-            <div class="block" style="display: inline-block">
+        <div class="block" style="display: inline-block">
 
-                @if (contador == 13)
-                {
-                    <h3><strong>Objetivo 2</strong></h3>
-                    <br /><hr />
-                }
-                @if (contador == 16)
-                {
-                    <h3><strong>Objetivo 3</strong></h3>
-                    <br /><hr />
-                }
-                @if (contador == 27)
-                {
-                    <h3><strong>Objetivo 4</strong></h3>
-                    <br /><hr />
-                }
+            @if (contador == 13)
+            {
+                <h3><strong>Objetivo 2</strong></h3>
+                <br /><hr />
+            }
+            @if (contador == 16)
+            {
+                <h3><strong>Objetivo 3</strong></h3>
+                <br /><hr />
+            }
+            @if (contador == 27)
+            {
+                <h3><strong>Objetivo 4</strong></h3>
+                <br /><hr />
+            }
 
-                <strong> @contador - @item.Descripcion</strong>
-                <p>
-                    <input value="@Model.Valores[contador]" />
-                </p>
+            <strong> @contador - @item.Descripcion</strong>
+            <p>
+                <input value="@Model.Valores[contador]" />
+            </p>
 
-                @if (contador == 18 || contador == 19 || contador == 20 || contador == 27 || contador == 28 || contador == 29
-                    || contador == 30 || contador == 31 || contador == 32)
-                {
-                    <br />
-                    <label for="validationDefault01">Dirección/Descripción</label>
-                    <textarea type="text" autocomplete="off" class="form-control">
+            @if (contador == 18 || contador == 19 || contador == 20 || contador == 27 || contador == 28 || contador == 29
+                || contador == 30 || contador == 31 || contador == 32)
+            {
+                <br />
+                <label for="validationDefault01">Dirección/Descripción</label>
+                <textarea type="text" autocomplete="off" class="form-control">
                @Model.Comentarios[contador]
                 </textarea>
-                }
+            }
+
+            @if (contador == 15)
+            {
+                <div class="form-group">
+                    <strong>Comentario Objetivo 2</strong>
+                    <textarea class="form-control" rows="7"> @Model.Comentarioobj2</textarea>
+                </div>
+            }
 
 
-            </div>
+            @if (contador == 26)
+            {
+                <div class="form-group">
+                    <strong>Comentario Objetivo  3</strong>
+                    <textarea class="form-control" rows="7"> @Model.Comentarioobj3</textarea>
+                </div>
+            }
+
+
+            @if (contador == 32)
+            {
+                <div class="form-group">
+                    <strong>Comentario Objetivo  4</strong>
+                    <textarea class="form-control" rows="7"> @Model.Comentarioobj4</textarea>
+                </div>
+            }
+
+
+        </div>
         }
 
     </div>
     contador = contador + 1;
 }
-
+<br /><br /><br />
 <div class="form-group">
-    <strong>Comentario</strong>
+    <strong>Comentario General</strong>
     <textarea class="form-control" rows="7"> @Model.formularioM[0].Comentario.Trim().ToString()</textarea>
 </div>

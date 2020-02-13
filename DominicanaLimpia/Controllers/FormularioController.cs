@@ -267,8 +267,6 @@ namespace DominicanaLimpia.Controllers
                         db.SaveChanges();
                     }
 
-                   
-
                     //Agregamos los comentarios de las preguntas
                     DescripcionP descripciones = new DescripcionP();
                     descripciones.UsuarioId = Convert.ToInt16(Session["UsuarioId"].ToString());
@@ -285,7 +283,17 @@ namespace DominicanaLimpia.Controllers
                     db.DescripcionP.Add(descripciones);
                     db.SaveChanges();
 
-                    error = false;
+                ComentarioObjetivo Co = new ComentarioObjetivo();
+                Co.FormularioId = numeroformulario.FormularioId;
+                Co.Comentarioobj1 = formulario.Comentarioobj1;
+                Co.Comentarioobj2 = formulario.Comentarioobj2;
+                Co.Comentarioobj3 = formulario.Comentarioobj3;
+                Co.Comentarioobj4 = formulario.Comentarioobj4;
+                db.ComentarioObjetivos.Add(Co);
+                db.SaveChanges();
+
+
+                 error = false;
                
             }
             catch (Exception ex)
@@ -436,6 +444,9 @@ namespace DominicanaLimpia.Controllers
         {
 
             FormularioModelView Fmv = new FormularioModelView();
+
+            var ComenatiosOb = db.ComentarioObjetivos.Where(x => x.FormularioId == id).FirstOrDefault();
+
             Fmv.Preguntas = db.Preguntas.ToList();
             Fmv.objetivo1 = db.Objetivo1.Where(x => x.FormularioId == id).ToList();
             Fmv.formularioM = db.FormularioM.Where(x => x.FormularioId == id).ToList();
@@ -493,6 +504,20 @@ namespace DominicanaLimpia.Controllers
             Session["NombreProvincia"] = db.Municipios.Where(x => x.MunicipioId == idprovincia).Select(x => x.Provincia_Nombre).FirstOrDefault();
 
 
+            if(ComenatiosOb!= null)
+            {
+                Fmv.Comentarioobj1 = ComenatiosOb.Comentarioobj1;
+                Fmv.Comentarioobj2 = ComenatiosOb.Comentarioobj2;
+                Fmv.Comentarioobj3 = ComenatiosOb.Comentarioobj3;
+                Fmv.Comentarioobj4 = ComenatiosOb.Comentarioobj4;
+            }
+            else
+            {
+                Fmv.Comentarioobj1 = "";
+                Fmv.Comentarioobj2 = "";
+                Fmv.Comentarioobj3 = "";
+                Fmv.Comentarioobj4 = "";
+            }
 
             return new ViewAsPdf("VistaFormulario", Fmv);
 

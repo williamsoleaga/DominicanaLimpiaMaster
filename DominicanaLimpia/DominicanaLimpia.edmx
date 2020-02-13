@@ -5,6 +5,17 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="DominicanalimpiaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ComentarioObjetivo">
+          <Key>
+            <PropertyRef Name="ComentarioId" />
+          </Key>
+          <Property Name="ComentarioId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FormularioId" Type="int" Nullable="false" />
+          <Property Name="Comentarioobj1" Type="varchar(max)" />
+          <Property Name="Comentarioobj2" Type="varchar(max)" />
+          <Property Name="Comentarioobj3" Type="varchar(max)" />
+          <Property Name="Comentarioobj4" Type="varchar(max)" />
+        </EntityType>
         <EntityType Name="DescripcionP">
           <Key>
             <PropertyRef Name="DescripcionId" />
@@ -149,6 +160,7 @@ warning 6002: The table/view 'DominicanaLimpia.dbo.Roles' does not have a primar
           <Property Name="ResponsableId" Type="int" />
         </EntityType>
         <EntityContainer Name="DominicanalimpiaModelStoreContainer">
+          <EntitySet Name="ComentarioObjetivo" EntityType="Self.ComentarioObjetivo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DescripcionP" EntityType="Self.DescripcionP" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Formulario" EntityType="Self.Formulario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FormularioM" EntityType="Self.FormularioM" Schema="dbo" store:Type="Tables" />
@@ -243,6 +255,7 @@ warning 6002: The table/view 'DominicanaLimpia.dbo.Roles' does not have a primar
           <EntitySet Name="FormularioM" EntityType="DominicanalimpiaModel.FormularioM" />
           <EntitySet Name="Objetivo1" EntityType="DominicanalimpiaModel.Objetivo1" />
           <EntitySet Name="DescripcionP" EntityType="DominicanalimpiaModel.DescripcionP" />
+          <EntitySet Name="ComentarioObjetivo" EntityType="DominicanalimpiaModel.ComentarioObjetivo" />
         </EntityContainer>
         <EntityType Name="Escuelas">
           <Key>
@@ -327,6 +340,17 @@ warning 6002: The table/view 'DominicanaLimpia.dbo.Roles' does not have a primar
           <Property Name="Dp30" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Dp31" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Dp32" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ComentarioObjetivo">
+          <Key>
+            <PropertyRef Name="ComentarioId" />
+          </Key>
+          <Property Name="ComentarioId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FormularioId" Type="Int32" Nullable="false" />
+          <Property Name="Comentarioobj1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Comentarioobj2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Comentarioobj3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Comentarioobj4" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -477,6 +501,18 @@ warning 6002: The table/view 'DominicanaLimpia.dbo.Roles' does not have a primar
                 <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
                 <ScalarProperty Name="FormularioId" ColumnName="FormularioId" />
                 <ScalarProperty Name="DescripcionId" ColumnName="DescripcionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ComentarioObjetivo">
+            <EntityTypeMapping TypeName="DominicanalimpiaModel.ComentarioObjetivo">
+              <MappingFragment StoreEntitySet="ComentarioObjetivo">
+                <ScalarProperty Name="Comentarioobj4" ColumnName="Comentarioobj4" />
+                <ScalarProperty Name="Comentarioobj3" ColumnName="Comentarioobj3" />
+                <ScalarProperty Name="Comentarioobj2" ColumnName="Comentarioobj2" />
+                <ScalarProperty Name="Comentarioobj1" ColumnName="Comentarioobj1" />
+                <ScalarProperty Name="FormularioId" ColumnName="FormularioId" />
+                <ScalarProperty Name="ComentarioId" ColumnName="ComentarioId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

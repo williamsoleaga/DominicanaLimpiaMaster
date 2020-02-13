@@ -217,7 +217,7 @@
 
                         <div class="form-group">
                             <strong>Comentario</strong>
-                            <textarea class="form-control" name="Comentario" id="Comentario" rows="7"></textarea>
+                            <textarea class="form-control" name="Comentarioobj2" id="Comentarioobj2" rows="7"></textarea>
                         </div>
 
 
@@ -284,7 +284,7 @@
 
                         <div class="form-group">
                             <strong>Comentario</strong>
-                            <textarea class="form-control" name="Comentario" id="Comentario" rows="7"></textarea>
+                            <textarea class="form-control" name="Comentarioobj3" id="Comentarioobj3" rows="7"></textarea>
                         </div>
 
 
@@ -322,7 +322,7 @@
 
                         <div class="form-group">
                             <strong>Comentario</strong>
-                            <textarea class="form-control" name="Comentario" id="Comentario" rows="7"></textarea>
+                            <textarea class="form-control" name="Comentarioobj4" id="Comentarioobj4" rows="7"></textarea>
                         </div>
 
                     </section>
@@ -579,6 +579,11 @@
                 }).get();
                 entidad.Valores = Valores;
 
+
+                //entidad.Comentarioobj1 = $("#Comentarioobj1").val();
+                //entidad.Comentarioobj2 = $("#Comentarioobj2").val();
+                //entidad.Comentarioobj3 = $("#Comentarioobj3").val();
+                //entidad.Comentarioobj4 = $("#Comentarioobj4").val();
 
                 $("textarea[name='Descripcion[]']").map(function () {
                     Descripcion.push($(this).val());

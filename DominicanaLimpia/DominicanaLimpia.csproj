@@ -173,6 +173,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="ComentarioObjetivo.cs">
+      <DependentUpon>Dominicanalimpia.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\FormularioController.cs" />
     <Compile Include="Controllers\FormularioMController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
