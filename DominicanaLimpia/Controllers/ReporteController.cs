@@ -35,15 +35,9 @@ namespace DominicanaLimpia.Controllers
 
         }
 
-        public JsonResult BuscarReporte(int TipoReporte, string Desdef, string Hastaf)
+        public JsonResult BuscarReporte(int TipoReporte, string Desdef, string Hastaf , bool VerTodos = false)
         {
 
-
-            // var splitDesde = Desdef.Split('/');
-            //var splitHasta = Hastaf.Split('/');
-
-            //DateTime Desde = Convert.ToDateTime(splitDesde[1] + "/" + splitDesde[0] + "/" + splitDesde[2]);
-            // DateTime Hasta = Convert.ToDateTime(splitHasta[1] + "/" + splitHasta[0] + "/" + splitHasta[2]);
 
             DateTime Desde = Convert.ToDateTime(Desdef);
             DateTime Hasta = Convert.ToDateTime(Hastaf);
@@ -55,28 +49,30 @@ namespace DominicanaLimpia.Controllers
             //formularioM para que sea generico en todos 
             var FormularioM = db.FormularioM.Where(x => x.Desde >= Desde && x.Desde <= Hasta).ToList();
 
-            if (Session["RodId"].ToString() == "2" || Session["RodId"].ToString() == "5")
-            {
-                var munn = Session["MunicipiosAsignados"].ToString().Split(',');
-                string responsables = "";
-                for (int i = 0; i < munn.Length; i++)
-                {
-                    if(munn[i] != "0") 
-                    {
-                        responsables = responsables + "," + munn[i];
-                    }
-                }
-                FormularioM = FormularioM.Where(r => responsables.Contains(r.ProvinciaId.ToString())).ToList();
-                requests = requests.Where(r => responsables.Contains(r.MunicipioId.ToString())).ToList();
-            }
 
+            //para los roles id 5
+            if (VerTodos == false)
+            {
+                if (Session["RodId"].ToString() == "2" || Session["RodId"].ToString() == "5")
+                {
+                    var munn = Session["MunicipiosAsignados"].ToString().Split(',');
+                    string responsables = "";
+                    for (int i = 0; i < munn.Length; i++)
+                    {
+                        if (munn[i] != "0")
+                        {
+                            responsables = responsables + "," + munn[i];
+                        }
+                    }
+                    FormularioM = FormularioM.Where(r => responsables.Contains(r.ProvinciaId.ToString())).ToList();
+                    requests = requests.Where(r => responsables.Contains(r.MunicipioId.ToString())).ToList();
+                }
+            }
 
 
             if (TipoReporte == 1)
             {
 
-                //requests = requests.GroupBy(i => i.MunicipioId).Select(group => group.First()).ToList();
-                //FormularioM = FormularioM.GroupBy(i => i.ProvinciaId).Select(group => group.First()).ToList();
 
                 for (int i = 0; i < ProvinciasSum.Length; i++)
                 {

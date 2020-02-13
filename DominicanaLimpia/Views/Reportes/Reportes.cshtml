@@ -26,15 +26,11 @@
                             <th> <strong>Desde:</strong> <input type="text" class="form-control" name="DesdeFecha" id="DesdeFechaR"></th>
                             <th> <strong>Hasta:</strong> <input type="text" class="form-control" name="HastaFecha" id="HastaFechaR"></th>
 
-
-
-                            <th><strong>Mostrar todos</strong> <input class="form-control" type="checkbox" value="" id="defaultCheck1"></th>
-
-
+                            @if (Session["RodId"].ToString() == "5") { 
+                                <th><strong>Mostrar todos</strong> <input class="form-control" type="checkbox" value="" id="defaultCheck1"></th>
+                            }
                             <th><button type="button" class="btn btn-success" onclick="Aparece()">Buscar</button></th>
-
                         </tr>
-
                     </thead>
                 </table>
             </div>
@@ -81,18 +77,25 @@
         var TipoR = $('#TipoReporteId :selected').val();
         var desde = $("#DesdeFechaR").val();
         var hasta = $("#HastaFechaR").val();
+        var vertodos = false;
+
+        var checkBox = document.getElementById("defaultCheck1");
+
+            if (checkBox.checked == true){
+                vertodos = true;
+            } else {
+                vertodos = false;
+        }
+
         var _url = '@Url.Action("BuscarReporte", "Reporte")';
 
             $.ajax({
                     type: 'POST',
                     url: _url,
-                    data: JSON.stringify({ TipoReporte: TipoR , Desdef: desde, Hastaf : hasta }),
+                data: JSON.stringify({ TipoReporte: TipoR, Desdef: desde, Hastaf: hasta, VerTodos: vertodos}),
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     success: function (data) {
-
-
-
 
                        
 $.ajax({
