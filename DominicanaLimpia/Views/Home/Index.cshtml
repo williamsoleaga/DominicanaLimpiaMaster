@@ -1,5 +1,32 @@
 ﻿@{
-//ViewBag.Title = "Home Page";
+    //ViewBag.Title = "Home Page";
+
+    var TotalEscuela = 0;
+    var TotalEscuelaP = "";
+    int TotalResultadoGeneral = 0;
+    var TotalResultadoGeneralP = "";
+    int Resultadopuntoslimpios = 0;
+    var ResultadopuntoslimpiosP = "";
+    int ResultadopuntoslimpiosEscuela = 0;
+    var ResultadopuntoslimpiosEscuelaP = "";
+
+    if (Session["RodId"].ToString() == "5" || Session["RodId"].ToString() == "1" || Session["RodId"].ToString() == "4")
+    {
+
+        TotalEscuela = Convert.ToInt32(Session["SumaEscuelas"].ToString());
+        TotalEscuelaP = "p" + TotalEscuela;
+
+         TotalResultadoGeneral = Convert.ToInt32(Session["ResultadoGeneral"].ToString());
+         TotalResultadoGeneralP = "p" + TotalResultadoGeneral;
+
+         Resultadopuntoslimpios = Convert.ToInt32(Session["Resultadopuntoslimpios"].ToString());
+         ResultadopuntoslimpiosP = "p" + Resultadopuntoslimpios;
+
+         ResultadopuntoslimpiosEscuela = Convert.ToInt32(Session["Resultadopuntoslimpios"].ToString());
+         ResultadopuntoslimpiosEscuelaP = "p" + ResultadopuntoslimpiosEscuela;
+    }
+
+
 }
     <link href="~/Content/Circulos/css/circle.css" rel="stylesheet" />
     <link href="~/Content/Circulos/css/styles.CSS" rel="stylesheet" />
@@ -40,11 +67,15 @@
                 <!--Card content-->
                 <div class="card-body">
 
+
+
+                    @if (Session["RodId"].ToString() == "5" || Session["RodId"].ToString() == "1" || Session["RodId"].ToString() == "4")
+                    {
                     <div class="row" style="margin-right: -3297px;">
                         <div class="col-xs-9 col-sm-3">
                             <div class="inner-content text-center">
-                                <div class="c100 p60 center big">
-                                    <span>60%</span>
+                                <div class="c100 @TotalResultadoGeneralP center big">
+                                    <span>@TotalResultadoGeneral %</span>
                                     <div class="slice"><div class="bar"></div><div class="fill"></div></div>
                                 </div>
                                 <p><strong>Poblacion general</strong></p>
@@ -54,19 +85,18 @@
                     <div class="row">
                         <div class="col-sm-6 col-md-4">
                             <div class="inner-content text-center">
-                                <div class="c100 p50 big center green" style="background-color: #cccccc!important;">
-                                    <span>50%</span>
+                                <div class="c100 @TotalEscuelaP  center green" style="background-color: #cccccc!important;">
+                                    <span>@TotalEscuela %</span>
                                     <div class="slice"><div class="bar"></div><div class="fill"></div></div>
                                 </div>
                                 <p><strong>Escuelas</strong></p>
                             </div>
                         </div><!-- /.col -->
-
                         <div class="col-sm-12 col-md-4">
                             <div class="inner-content text-center">
 
-                                <div class="c100 p25 big center yellow">
-                                    <span>25%</span>
+                                <div class="c100 @ResultadopuntoslimpiosEscuelaP  center purple style="background-color: #cccccc!important;">
+                                    <span>@ResultadopuntoslimpiosEscuela %</span>
                                     <div class="slice"><div class="bar"></div><div class="fill"></div></div>
                                 </div>
 
@@ -74,12 +104,11 @@
 
                             </div>
                         </div><!-- /.col -->
-
                         <div class="col-sm-6 col-md-4">
                             <div class="inner-content text-center">
 
-                                <div class="c100 p75 big center orange" style="background-color: #cccccc!important;">
-                                    <span>75%</span>
+                                <div class="c100 @ResultadopuntoslimpiosP  center orange" style="background-color: #cccccc!important;">
+                                    <span>@Resultadopuntoslimpios %</span>
                                     <div class="slice"><div class="bar"></div><div class="fill"></div></div>
                                 </div>
 
@@ -88,14 +117,12 @@
                             </div>
                         </div><!-- /.col -->
                     </div>
-
-
-
-
+                    }
+                    else
+                    {
                     @*esta es la imagen que muestra normalmente*@
-                    @*<img src="@Session["Keloke"].ToString()" width="102%" height="100%" />*@
-               
-                
+                    <img src="@Session["Keloke"].ToString()" width="102%" height="100%" />
+                    }
                 </div>
             </div>
             <!--/.Card-->

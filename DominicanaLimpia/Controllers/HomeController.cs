@@ -11,8 +11,125 @@ namespace DominicanaLimpia.Controllers
     [SessionExpire]
     public class HomeController : Controller
     {
+
+
+        private DominicanalimpiaEntities2 db = new DominicanalimpiaEntities2();
+
+
         public ActionResult Index()
         {
+
+            if (Session["RodId"].ToString() == "5" || Session["RodId"].ToString() == "1" || Session["RodId"].ToString() == "4")
+            {
+                var Desde = Convert.ToDateTime("30 Jun, 2019");
+                var Hasta = DateTime.Now.Date;
+                int[] ProvinciasSum = new int[23];
+
+
+                var requests = db.Objetivo1.Where(x => x.Desde >= Desde && x.Desde <= Hasta).ToList();
+                var FormularioM = db.FormularioM.Where(x => x.Desde >= Desde && x.Desde <= Hasta).ToList();
+
+
+                //METAS DE ESCUELAS
+                requests = requests.GroupBy(i => i.EscuelaId).Select(group => group.First()).ToList();
+                for (int i = 0; i < ProvinciasSum.Length; i++)
+                {
+                    ProvinciasSum[i] = (int)requests.Where(x => x.MunicipioId == i).Sum(z => z.p1);
+                }
+
+                decimal sumatoriatotalcuadro = 0;
+                for (int i = 0; i < ProvinciasSum.Length; i++)
+                {
+                    sumatoriatotalcuadro = sumatoriatotalcuadro + ProvinciasSum[i];
+                }
+
+                var kelokeEscuela = Convert.ToDouble(String.Format("{0:0.00}", sumatoriatotalcuadro / 200));
+                kelokeEscuela = kelokeEscuela * 100;
+                Session["SumaEscuelas"] = kelokeEscuela;
+
+
+                //FormularioGeneral
+                ProvinciasSum = new int[23];
+                for (int i = 0; i < ProvinciasSum.Length; i++)
+                {
+                    ProvinciasSum[i] = ProvinciasSum[i] + (int)requests.Where(x => x.MunicipioId == i).Sum(z => z.p2);
+                    ProvinciasSum[i] = ProvinciasSum[i] + (int)requests.Where(x => x.MunicipioId == i).Sum(z => z.p3);
+                    ProvinciasSum[i] = ProvinciasSum[i] + (int)requests.Where(x => x.MunicipioId == i).Sum(z => z.p4);
+                    ProvinciasSum[i] = ProvinciasSum[i] + (int)requests.Where(x => x.MunicipioId == i).Sum(z => z.p5);
+                    ProvinciasSum[i] = ProvinciasSum[i] + (int)requests.Where(x => x.MunicipioId == i).Sum(z => z.p6);
+                    ProvinciasSum[i] = Convert.ToInt32(ProvinciasSum[i] + ((int)requests.Where(x => x.MunicipioId == i).Sum(z => z.p7) * 3.3));
+                    //  ProvinciasSum[i] =  (int)(ProvinciasSum[i] * 3.3);
+
+                    ProvinciasSum[i] = ProvinciasSum[i] + (int)requests.Where(x => x.MunicipioId == i).Sum(z => z.p8);
+                    ProvinciasSum[i] = ProvinciasSum[i] + (int)requests.Where(x => x.MunicipioId == i).Sum(z => z.p9);
+                    ProvinciasSum[i] = ProvinciasSum[i] + (int)requests.Where(x => x.MunicipioId == i).Sum(z => z.p10);
+                    ProvinciasSum[i] = ProvinciasSum[i] + (int)requests.Where(x => x.MunicipioId == i).Sum(z => z.p12);
+
+                    //con el maestro de formulario ahora
+                    ProvinciasSum[i] = ProvinciasSum[i] + (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P18);
+                    // ProvinciasSum[i] = ProvinciasSum[i] + (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P19);
+                    ProvinciasSum[i] = ProvinciasSum[i] + (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P22);
+                    ProvinciasSum[i] = ProvinciasSum[i] + (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P23);
+                    ProvinciasSum[i] = ProvinciasSum[i] + (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P29);
+                    ProvinciasSum[i] = ProvinciasSum[i] + (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P32);
+
+                }
+
+
+                sumatoriatotalcuadro = 0;
+                for (int i = 0; i < ProvinciasSum.Length; i++)
+                {
+                    sumatoriatotalcuadro = sumatoriatotalcuadro + ProvinciasSum[i];
+                }
+                var ResultadoGeneral = Convert.ToDouble(String.Format("{0:0.00}", sumatoriatotalcuadro / 160680));
+                ResultadoGeneral = ResultadoGeneral * 100;
+                Session["ResultadoGeneral"] = ResultadoGeneral;
+
+
+                //Puntos limpios
+                ProvinciasSum = new int[23];
+                for (int i = 0; i < ProvinciasSum.Length; i++)
+                {
+                    ProvinciasSum[i] = (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P13);
+                }
+
+                sumatoriatotalcuadro = 0;
+                for (int i = 0; i < ProvinciasSum.Length; i++)
+                {
+                    sumatoriatotalcuadro = sumatoriatotalcuadro + ProvinciasSum[i];
+                }
+
+                var Resultadopuntoslimpios = Convert.ToDouble(String.Format("{0:0.00}", sumatoriatotalcuadro / 600));
+                Resultadopuntoslimpios = Resultadopuntoslimpios * 100;
+                Session["Resultadopuntoslimpios"] = Resultadopuntoslimpios;
+
+
+                //poblacion estudiantil
+
+
+                ProvinciasSum = new int[23];
+                for (int i = 0; i < ProvinciasSum.Length; i++)
+                {
+                    ProvinciasSum[i] = (int)requests.Where(x => x.MunicipioId == i).Sum(z => z.p2);
+                    ProvinciasSum[i] = ProvinciasSum[i] + (int)requests.Where(x => x.MunicipioId == i).Sum(z => z.p3);
+                    ProvinciasSum[i] = ProvinciasSum[i] + (int)requests.Where(x => x.MunicipioId == i).Sum(z => z.p4);
+                    ProvinciasSum[i] = ProvinciasSum[i] + (int)requests.Where(x => x.MunicipioId == i).Sum(z => z.p5);
+                    ProvinciasSum[i] = ProvinciasSum[i] + (int)requests.Where(x => x.MunicipioId == i).Sum(z => z.p6);
+                }
+
+                sumatoriatotalcuadro = 0;
+                for (int i = 0; i < ProvinciasSum.Length; i++)
+                {
+                    sumatoriatotalcuadro = sumatoriatotalcuadro + ProvinciasSum[i];
+                }
+
+                var ResultadosPEstudiantil = Convert.ToDouble(String.Format("{0:0.00}", sumatoriatotalcuadro / 92896));
+                ResultadosPEstudiantil = ResultadosPEstudiantil * 100;
+                Session["Resultadopuntoslimpios"] = ResultadosPEstudiantil;
+            }
+
+
+
             return View();
         }
 
