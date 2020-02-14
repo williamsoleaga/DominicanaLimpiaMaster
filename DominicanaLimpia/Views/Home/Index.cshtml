@@ -1,6 +1,10 @@
 ﻿@{
 //ViewBag.Title = "Home Page";
 }
+    <link href="~/Content/Circulos/css/circle.css" rel="stylesheet" />
+    <link href="~/Content/Circulos/css/styles.CSS" rel="stylesheet" />
+
+
 
 <div class="container-fluid mt-5">
     <!-- Heading -->
@@ -23,19 +27,76 @@
     </div>
     <!-- Heading -->
     <!--Grid row-->
+
+
     <div class="row wow fadeIn">
         <!--Grid column-->
 
         <div class="col-md-9 mb-4">
             <!--Card-->
-            <div class="card">
+            <div class="card" style="    width: 1178px;">
                 <!-- Card header -->
                 <div class="card-header">Estadisticas</div>
                 <!--Card content-->
                 <div class="card-body">
-                    @*<canvas id="doughnutChart"></canvas>*@
-                    @*<img src=@ViewBag.Path width="102%" height="100%" />*@
-                    <img src="@Session["Keloke"].ToString()" width="102%" height="100%" />
+
+                    <div class="row">
+                        <div class="col-xs-9 col-sm-3">
+                            <div class="inner-content text-center">
+                                <div class="c100 p60 center big">
+                                    <span>60%</span>
+                                    <div class="slice"><div class="bar"></div><div class="fill"></div></div>
+                                </div>
+
+                                <p><em>default</em></p>
+                            </div>
+                        </div><!-- /.col -->
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 col-md-4">
+                            <div class="inner-content text-center">
+                                <div class="c100 p50 big center green" style="background-color: #cccccc!important;">
+                                    <span>50%</span>
+                                    <div class="slice"><div class="bar"></div><div class="fill"></div></div>
+                                </div>
+                                <p>.big.green</p>
+                            </div>
+                        </div><!-- /.col -->
+
+                        <div class="col-sm-12 col-md-4">
+                            <div class="inner-content text-center">
+
+                                <div class="c100 p25 big center yellow">
+                                    <span>25%</span>
+                                    <div class="slice"><div class="bar"></div><div class="fill"></div></div>
+                                </div>
+
+                                <p>.big</p>
+
+                            </div>
+                        </div><!-- /.col -->
+
+                        <div class="col-sm-6 col-md-4">
+                            <div class="inner-content text-center">
+
+                                <div class="c100 p75 big center orange" style="background-color: #cccccc!important;">
+                                    <span>75%</span>
+                                    <div class="slice"><div class="bar"></div><div class="fill"></div></div>
+                                </div>
+
+                                <p>.big.orange</p>
+
+                            </div>
+                        </div><!-- /.col -->
+                    </div>
+
+
+
+
+                    @*esta es la imagen que muestra normalmente*@
+                    @*<img src="@Session["Keloke"].ToString()" width="102%" height="100%" />*@
+               
+                
                 </div>
             </div>
             <!--/.Card-->
