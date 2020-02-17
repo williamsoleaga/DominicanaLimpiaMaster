@@ -44,6 +44,9 @@ namespace DominicanaLimpia.Controllers
 
             int[] ProvinciasSum = new int[23];
 
+            
+
+            var requeststest = (List<Objetivo1>)null;
             //Consulta General
             var requests = db.Objetivo1.Where(x => x.Desde >= Desde && x.Desde <= Hasta).ToList();
             //formularioM para que sea generico en todos 
@@ -56,16 +59,23 @@ namespace DominicanaLimpia.Controllers
                 if (Session["RodId"].ToString() == "2" || Session["RodId"].ToString() == "5")
                 {
                     var munn = Session["MunicipiosAsignados"].ToString().Split(',');
-                    string responsables = "";
+
+
+                    int[] marks = new int[10];
+
+
+                   // string responsables = "";
                     for (int i = 0; i < munn.Length; i++)
                     {
                         if (munn[i] != "0")
                         {
-                            responsables = responsables + "," + munn[i];
+                            marks[i] =  Convert.ToInt32(munn[i]);
+                            //responsables = responsables + "," + munn[i];
                         }
                     }
-                    FormularioM = FormularioM.Where(r => responsables.Contains(r.ProvinciaId.ToString())).ToList();
-                    requests = requests.Where(r => responsables.Contains(r.MunicipioId.ToString())).ToList();
+                   
+                    FormularioM = FormularioM.Where(r => marks.ToList().Contains( Convert.ToInt32(r.ProvinciaId))).ToList();
+                    requests = requests.Where(r => marks.ToList().Contains( Convert.ToInt32(r.MunicipioId))).ToList();
                 }
             }
 
@@ -122,11 +132,11 @@ namespace DominicanaLimpia.Controllers
             //METAS DE ESCUELAS
             if (TipoReporte == 4)
             {
-                requests = requests.GroupBy(i => i.EscuelaId).Select(group => group.First()).ToList();
+                requeststest = requeststest.GroupBy(i => i.EscuelaId).Select(group => group.First()).ToList();
 
                 for (int i = 0; i < ProvinciasSum.Length; i++)
                 {
-                    ProvinciasSum[i] = (int)requests.Where(x => x.MunicipioId == i).Sum(z => z.p1);
+                    ProvinciasSum[i] = (int)requeststest.Where(x => x.MunicipioId == i).Sum(z => z.p1);
                 }
             }
 

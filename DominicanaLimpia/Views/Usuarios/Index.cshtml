@@ -28,7 +28,7 @@
                             Nombre completo
                         </th>
 
-                        <th>Municipio</th>
+                        <th>Territorio</th>
                         <th>
                             Rol
                         </th>
@@ -62,7 +62,7 @@
                             int idpro = Convert.ToInt32(Munic[i]);
                             if (idpro != 0)
                             {
-                                municipiosdes = municipiosdes + db.Municipios.Where(x => x.MunicipioId == idpro).Select(x => x.Provincia_Nombre).FirstOrDefault() + "*";
+                                municipiosdes = municipiosdes + db.Municipios.Where(x => x.MunicipioId == idpro).Select(x => x.Provincia_Nombre).FirstOrDefault() + "";
                             }
                         }
                     }

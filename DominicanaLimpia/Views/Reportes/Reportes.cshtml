@@ -94,8 +94,9 @@
                 data: JSON.stringify({ TipoReporte: TipoR, Desdef: desde, Hastaf: hasta, VerTodos: vertodos}),
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
-                    success: function (data) {
-
+                success: function (data) {
+                    alert(data);
+                     
                        
 $.ajax({
     type: "GET",
@@ -132,9 +133,7 @@ $.ajax({
 
                                 datasets: [{
                                     label: '# Cantidad',
-                                    data: [data[1], data[2], data[3], data[4], data[5], data[6], data[7], data[8], data[9], data[10],
-                                    data[11], data[12], data[13], data[14],
-                                    data[15], data[16], data[17], data[18], data[19], data[20], data[21], data[22]],
+ data: [data[1], data[2], data[3], data[4], data[5], data[6], data[7], data[8], data[9], data[10], data[11], data[12], data[13], data[14], data[15], data[16], data[17], data[18], data[19], data[20], data[21], data[22]],
                                     backgroundColor: [
                                         'rgba(255, 99, 132, 0.2)',
                                         'rgba(54, 162, 235, 0.2)',

@@ -48,7 +48,7 @@ namespace DominicanaLimpia.Controllers
 
             ViewBag.Accounts = new SelectList(db.Roles, "RolId", "Nombre_Rol");
             ViewBag.Municipios = new SelectList(db.Municipios, "MunicipioId", "Provincia_Nombre");
-            ViewBag.Responsables = new SelectList(db.Usuarios.Where(x =>x.RolId == 5), "UsuarioId", "Nombre_Completo");
+            ViewBag.Responsables = new SelectList(db.Usuarios.Where(x =>x.RolId == 5 && x.Estatus == "A"), "UsuarioId", "Nombre_Completo");
 
             return View();
         }
@@ -142,7 +142,7 @@ namespace DominicanaLimpia.Controllers
 
             if (usuarios.RolId == 2)
             {
-                ViewBag.Responsables = new SelectList(db.Usuarios.Where(x=>x.RolId == 5).ToList(), "UsuarioId", "Nombre_Completo", usuarios.ResponsableId);
+                ViewBag.Responsables = new SelectList(db.Usuarios.Where(x=>x.RolId == 5 && x.Estatus == "A").ToList(), "UsuarioId", "Nombre_Completo", usuarios.ResponsableId);
             }
 
             ViewBag.Accounts = new SelectList(db.Roles, "RolId", "Nombre_Rol",usuarios.RolId);
