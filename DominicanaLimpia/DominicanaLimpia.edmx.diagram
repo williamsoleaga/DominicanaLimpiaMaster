@@ -14,7 +14,7 @@
         <EntityTypeShape EntityType="DominicanalimpiaModel.FormularioM" Width="1.5" PointX="7.75" PointY="0.75" />
         <EntityTypeShape EntityType="DominicanalimpiaModel.Objetivo1" Width="1.5" PointX="0.75" PointY="7.75" />
         <EntityTypeShape EntityType="DominicanalimpiaModel.DescripcionP" Width="1.5" PointX="7.375" PointY="8.75" />
-        <EntityTypeShape EntityType="DominicanalimpiaModel.ComentarioObjetivo" Width="1.5" PointX="10.75" PointY="1.875" />
+        <EntityTypeShape EntityType="DominicanalimpiaModel.ComentarioObjetivo" Width="1.5" PointX="3.375" PointY="9.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

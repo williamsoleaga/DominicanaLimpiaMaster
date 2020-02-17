@@ -22,8 +22,10 @@
          Resultadopuntoslimpios = Convert.ToInt32(Session["Resultadopuntoslimpios"].ToString());
          ResultadopuntoslimpiosP = "p" + Resultadopuntoslimpios;
 
-         ResultadopuntoslimpiosEscuela = Convert.ToInt32(Session["Resultadopuntoslimpios"].ToString());
+         ResultadopuntoslimpiosEscuela = Convert.ToInt32(Session["ResultadosPEstudiantil"].ToString());
          ResultadopuntoslimpiosEscuelaP = "p" + ResultadopuntoslimpiosEscuela;
+
+
     }
 
 
@@ -63,7 +65,7 @@
             <!--Card-->
             <div class="card" style="    width: 1178px;">
                 <!-- Card header -->
-                <div class="card-header">Estadisticas</div>
+                <div class="card-header">Estadisticas del  1 Jul 2019  al  @DateTime.Now.Date.Day @DateTime.Now.ToString("MMM") @DateTime.Now.Year</div>
                 <!--Card content-->
                 <div class="card-body">
 
@@ -78,7 +80,7 @@
                                     <span>@TotalResultadoGeneral %</span>
                                     <div class="slice"><div class="bar"></div><div class="fill"></div></div>
                                 </div>
-                                <p><strong>Poblacion general</strong></p>
+                                <p><strong>Población general</strong></p>
                             </div>
                         </div><!-- /.col -->
                     </div>
@@ -100,7 +102,7 @@
                                     <div class="slice"><div class="bar"></div><div class="fill"></div></div>
                                 </div>
 
-                                <p><strong>Poblacion estudiantil</strong></p>
+                                <p><strong>Población estudiantil</strong></p>
 
                             </div>
                         </div><!-- /.col -->

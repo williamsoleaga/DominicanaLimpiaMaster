@@ -21,33 +21,17 @@ namespace DominicanaLimpia.Controllers
 
             if (Session["RodId"].ToString() == "5" || Session["RodId"].ToString() == "1" || Session["RodId"].ToString() == "4")
             {
-                var Desde = Convert.ToDateTime("30 Jun, 2019");
+                var Desde = Convert.ToDateTime("07/01/2019");
                 var Hasta = DateTime.Now.Date;
                 int[] ProvinciasSum = new int[23];
-
+                decimal sumatoriatotalcuadro = 0;
 
                 var requests = db.Objetivo1.Where(x => x.Desde >= Desde && x.Desde <= Hasta).ToList();
                 var FormularioM = db.FormularioM.Where(x => x.Desde >= Desde && x.Desde <= Hasta).ToList();
 
 
-                //METAS DE ESCUELAS
-                requests = requests.GroupBy(i => i.EscuelaId).Select(group => group.First()).ToList();
-                for (int i = 0; i < ProvinciasSum.Length; i++)
-                {
-                    ProvinciasSum[i] = (int)requests.Where(x => x.MunicipioId == i).Sum(z => z.p1);
-                }
 
-                decimal sumatoriatotalcuadro = 0;
-                for (int i = 0; i < ProvinciasSum.Length; i++)
-                {
-                    sumatoriatotalcuadro = sumatoriatotalcuadro + ProvinciasSum[i];
-                }
-
-                var kelokeEscuela = Convert.ToDouble(String.Format("{0:0.00}", sumatoriatotalcuadro / 200));
-                kelokeEscuela = kelokeEscuela * 100;
-                Session["SumaEscuelas"] = kelokeEscuela;
-
-
+                #region
                 //FormularioGeneral
                 ProvinciasSum = new int[23];
                 for (int i = 0; i < ProvinciasSum.Length; i++)
@@ -85,9 +69,38 @@ namespace DominicanaLimpia.Controllers
                 ResultadoGeneral = ResultadoGeneral * 100;
                 Session["ResultadoGeneral"] = ResultadoGeneral;
 
+                #endregion
+
+
+
+                #region
+
+                //METAS DE ESCUELAS
+                ProvinciasSum = new int[23];
+               var requestsEscuela = requests.GroupBy(i => i.EscuelaId).Select(group => group.First()).ToList();
+                for (int i = 0; i < ProvinciasSum.Length; i++)
+                {
+                    ProvinciasSum[i] = (int)requestsEscuela.Where(x => x.MunicipioId == i).Sum(z => z.p1);
+                }
+
+                sumatoriatotalcuadro = 0;
+                for (int i = 0; i < ProvinciasSum.Length; i++)
+                {
+                    sumatoriatotalcuadro = sumatoriatotalcuadro + ProvinciasSum[i];
+                }
+
+                var kelokeEscuela = Convert.ToDouble(String.Format("{0:0.00}", sumatoriatotalcuadro / 200));
+                kelokeEscuela = kelokeEscuela * 100;
+                Session["SumaEscuelas"] = kelokeEscuela;
+
+                #endregion
+
+
+                #region
 
                 //Puntos limpios
                 ProvinciasSum = new int[23];
+
                 for (int i = 0; i < ProvinciasSum.Length; i++)
                 {
                     ProvinciasSum[i] = (int)FormularioM.Where(x => x.ProvinciaId == i).Sum(z => z.P13);
@@ -99,13 +112,13 @@ namespace DominicanaLimpia.Controllers
                     sumatoriatotalcuadro = sumatoriatotalcuadro + ProvinciasSum[i];
                 }
 
-                var Resultadopuntoslimpios = Convert.ToDouble(String.Format("{0:0.00}", sumatoriatotalcuadro / 600));
+                var Resultadopuntoslimpios = Convert.ToDouble(String.Format("{0:0.00}", sumatoriatotalcuadro / 849));
                 Resultadopuntoslimpios = Resultadopuntoslimpios * 100;
                 Session["Resultadopuntoslimpios"] = Resultadopuntoslimpios;
+                #endregion
 
 
                 //poblacion estudiantil
-
 
                 ProvinciasSum = new int[23];
                 for (int i = 0; i < ProvinciasSum.Length; i++)
@@ -125,7 +138,7 @@ namespace DominicanaLimpia.Controllers
 
                 var ResultadosPEstudiantil = Convert.ToDouble(String.Format("{0:0.00}", sumatoriatotalcuadro / 92896));
                 ResultadosPEstudiantil = ResultadosPEstudiantil * 100;
-                Session["Resultadopuntoslimpios"] = ResultadosPEstudiantil;
+                Session["ResultadosPEstudiantil"] = ResultadosPEstudiantil;
             }
 
 
