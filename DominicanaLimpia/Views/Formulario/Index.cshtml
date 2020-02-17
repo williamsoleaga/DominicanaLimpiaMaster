@@ -69,24 +69,17 @@
                                 dateOnlyString1 = dateOnlyString1.Replace("12:00:00 AM", "");
 
                             }
-                           @dateOnlyString
+                          @item.Desde.Value.Day  @item.Desde.Value.ToString("MMM") @item.Desde.Value.Year
                         </td>
                         <td>
-                            @dateOnlyString1
+                            @item.Hasta.Value.Day  @item.Hasta.Value.ToString("MMM") @item.Hasta.Value.Year
                         </td>
                         <td>
 
 
                             <button type="button" class="btn btn-primary btn-sm" title="Descargar" onclick="AbrirReporte(@item.FormularioId)" @*onclick="location.href='@Url.Action("VerFormulario", "Formulario", new { @id = item.FormularioId})'"*@><i class="far fa-eye"></i></button>
 
-                            @if (Session["RodId"].ToString() == "5")
-                            {
 
-                                if (item.Estatus.Trim() == "I")
-                                {
-                                    <button type="button" title="Aprobar" class="btn btn-success btn-sm" onclick="location.href='@Url.Action("ValidarFormulario", "Formulario", new { id = item.FormularioId })'"><i class="fas fa-edit"></i></button>
-                                }
-                            }
 
                             @if (item.Estatus.Trim() == "I")
                             {
@@ -95,11 +88,20 @@
                                 {
                                     <button type="button" class="btn btn-green btn-sm" title="Editar" onclick="location.href='@Url.Action("EditarFormularioM", "Formulario", new { id = item.FormularioId })'"><i class="far fa-edit"></i></button>
                                     <button type="button" class="btn btn-red btn-sm" title="Eliminar" onclick="location.href='@Url.Action("DeleteConfirmed", "Formulario", new { id = item.FormularioId })'"><i class="far fa-trash-alt"></i></button>
-                               }
-                           }
+                                }
+                            }
+
+                            @if (Session["RodId"].ToString() == "5")
+                            {
+
+                                if (item.Estatus.Trim() == "I")
+                                {
+                                    <button type="button" title="Aprobar" class="btn btn-orange btn-sm" onclick="location.href='@Url.Action("ValidarFormulario", "Formulario", new { id = item.FormularioId })'"><i class="fas fa-edit"></i></button>
+                                }
+                            }
 
 
-                            </td>
+                        </td>
                     </tr>
 }
                 </tbody>

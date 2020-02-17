@@ -21,8 +21,8 @@
                     DateTime dateOnlyString1 = Convert.ToDateTime(ViewBag.FechaHasta);
                     var fecha2 = dateOnlyString1.Date.ToShortDateString();
                 }
-                <th><h5> <strong>Desde:</strong>@fecha1</h5></th>
-                <th><h5><strong>Hasta:</strong> @fecha2 </h5></th>
+                <th><h5> <strong>Desde:</strong>   @dateOnlyString.Day  @dateOnlyString.ToString("MMM") @dateOnlyString.Year</h5></th>
+                <th><h5><strong>Hasta:</strong>  @dateOnlyString1.Day  @dateOnlyString1.ToString("MMM") @dateOnlyString1.Year </h5></th>
             </tr>
             <br />
             <tr>

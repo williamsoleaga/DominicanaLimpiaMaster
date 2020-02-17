@@ -44,9 +44,6 @@ namespace DominicanaLimpia.Controllers
 
             int[] ProvinciasSum = new int[23];
 
-            
-
-            var requeststest = (List<Objetivo1>)null;
             //Consulta General
             var requests = db.Objetivo1.Where(x => x.Desde >= Desde && x.Desde <= Hasta).ToList();
             //formularioM para que sea generico en todos 
@@ -132,11 +129,11 @@ namespace DominicanaLimpia.Controllers
             //METAS DE ESCUELAS
             if (TipoReporte == 4)
             {
-                requeststest = requeststest.GroupBy(i => i.EscuelaId).Select(group => group.First()).ToList();
+                requests = requests.GroupBy(i => i.EscuelaId).Select(group => group.First()).ToList();
 
                 for (int i = 0; i < ProvinciasSum.Length; i++)
                 {
-                    ProvinciasSum[i] = (int)requeststest.Where(x => x.MunicipioId == i).Sum(z => z.p1);
+                    ProvinciasSum[i] = (int)requests.Where(x => x.MunicipioId == i).Sum(z => z.p1);
                 }
             }
 

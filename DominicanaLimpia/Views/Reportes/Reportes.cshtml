@@ -95,7 +95,6 @@
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                 success: function (data) {
-                    alert(data);
                      
                        
 $.ajax({
@@ -104,8 +103,6 @@ $.ajax({
     contentType: "application/json; charset=utf-8",
     dataType: "json",
     success: function (total) {
-     
-
 
                        document.getElementById("chartContainer").innerHTML = '&nbsp;';
                        document.getElementById("chartContainer").innerHTML = ' <button type="button" onclick="Imprimir()" class="btn btn-warning">Imprimir</button><p>Total Unificado : '+total+'</p><canvas id="myChart"></canvas>';
