@@ -19,6 +19,8 @@ namespace DominicanaLimpia.ModelViews
         public List<Objetivo1> objetivo1 { get; set; }
         public List<FormularioM> formularioM { get; set; }
 
+        public List<ComentarioObjetivo> comentariosObjetivoslista { get; set; }
+
         public string[] Comentarios { get; set; }
         public int Pregunta16 { get; set; }
 

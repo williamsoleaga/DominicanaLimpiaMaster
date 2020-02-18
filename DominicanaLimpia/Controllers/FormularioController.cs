@@ -406,6 +406,8 @@ namespace DominicanaLimpia.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             FormularioM formularioM = db.FormularioM.Find(id);
+            //formularioM.comentariosObjetivoslista = db.ComentarioObjetivos.Where(x => x.FormularioId == id).ToList();
+
             if (formularioM == null)
             {
                 return HttpNotFound();
@@ -421,8 +423,13 @@ namespace DominicanaLimpia.Controllers
 
             if (ModelState.IsValid)
             {
+
+                ComentarioObjetivo cobjetivo = new ComentarioObjetivo();
+
                 db.Entry(formularioM).State = EntityState.Modified;
                 db.SaveChanges();
+
+
                 return RedirectToAction("Index");
             }
             return RedirectToAction("Index");

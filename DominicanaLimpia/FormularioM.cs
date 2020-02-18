@@ -11,12 +11,12 @@
 
 namespace DominicanaLimpia
 {
-
-using System;
+    using DominicanaLimpia.ModelViews;
+    using System;
     using System.Collections.Generic;
     
-public partial class FormularioM
-{
+public partial class FormularioM : FormularioModelView
+    {
 
     public int FormularioId { get; set; }
 

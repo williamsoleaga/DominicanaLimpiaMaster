@@ -57,74 +57,74 @@
                         {
                             if (Contador < 12)
                             {
-                        <div class="form-group">
-                            <div class="block" style="display: inline-block">
-                                <strong> @enumeracion - @item.Descripcion</strong>
+                                <div class="form-group">
+                                    <div class="block" style="display: inline-block">
+                                        <strong> @enumeracion - @item.Descripcion</strong>
 
 
-                                @if (enumeracion == 1)
-                                {
-                                    <input class="Text-@enumeracion" type="number" min="0" name="Valores[]" id="Valores[]" disabled value="1" />
-                                }
-                                else
-                                {
+                                        @if (enumeracion == 1)
+                                        {
+                                            <input class="Text-@enumeracion" type="number" min="0" name="Valores[]" id="Valores[]" disabled value="1" />
+                                        }
+                                        else
+                                        {
 
-                                    if (enumeracion == 11)
-                                    {
-                                        <input class="Text-@enumeracion" type="number" min="0" name="Valores[]" id="Valores[]" value="0" hidden />
-                                    }
-                                    else
-                                    {
-                                        <input class="Text-@enumeracion" type="number" min="0" name="Valores[]" id="Valores[]" />
-                                    }
-                                }
+                                            if (enumeracion == 11)
+                                            {
+                                                <input class="Text-@enumeracion" type="number" min="0" name="Valores[]" id="Valores[]" value="0" hidden />
+                                            }
+                                            else
+                                            {
+                                                <input class="Text-@enumeracion" type="number" min="0" name="Valores[]" id="Valores[]" />
+                                            }
+                                        }
 
-                                @if (enumeracion == 7)
-                                {
-                                    <br />
-                                    <label>Familia/Detalles</label>
-                                    <textarea type="text" name="TextoPendiente[]" autocomplete="off" class="form-control" id="TextoPendiente[]">
+                                        @if (enumeracion == 7)
+                                        {
+                                            <br />
+                                            <label>Familia/Detalles</label>
+                                            <textarea type="text" name="TextoPendiente[]" autocomplete="off" class="form-control" id="TextoPendiente[]">
                                          </textarea>
-                                }
+                                        }
 
-                                @if (enumeracion == 11)
+                                        @if (enumeracion == 11)
 
-                                {
-                                    <br />
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <input type="checkbox" id="cbox1" value="first_checkbox"> Neumáticos(unidad)
-                                                <input type="number" min="0" value="0" class="p111" /> &ensp;
-                                                <br />
-                                                <input type="checkbox" id="cbox1" value="first_checkbox"> Plásticos (libras)
-                                                <input type="number" min="0" value="0" class="p112" /> &ensp;
-                                            </tr>
-                                        </thead>
-                                    </table>
-                                }
+                                        {
+                                            <br />
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <input type="checkbox" id="cbox1" value="first_checkbox"> Neumáticos(unidad)
+                                                        <input type="number" min="0" value="0" class="p111" /> &ensp;
+                                                        <br />
+                                                        <input type="checkbox" id="cbox1" value="first_checkbox"> Plásticos (libras)
+                                                        <input type="number" min="0" value="0" class="p112" /> &ensp;
+                                                    </tr>
+                                                </thead>
+                                            </table>
+                                        }
 
 
-                            </div>
-                            @if (enumeracion == 1)
-                            {
-                                <div class="block" style="display: inline-block">
-                                    <br />
-                                    @Html.DropDownList("EscuelaGrid", (IEnumerable<SelectListItem>)ViewBag.EscuelaGrid, null, new { @class = "js-example-placeholder-single js-states form-control" })
-                                    <br />
+                                    </div>
+                                    @if (enumeracion == 1)
+                                    {
+                                        <div class="block" style="display: inline-block">
+                                            <br />
+                                            @Html.DropDownList("EscuelaGrid", (IEnumerable<SelectListItem>)ViewBag.EscuelaGrid, null, new { @class = "js-example-placeholder-single js-states form-control" })
+                                            <br />
+                                        </div>
+                                    }
+
+                                    @if (enumeracion == 6)
+                                    {
+                                        <hr class="line" style="height:3px;background-color:purple"></hr>
+                                        <br />
+                                    }
+
+                                    <hr>
+
+
                                 </div>
-                            }
-
-                            @if (enumeracion == 6)
-                            {
-                                <hr class="line" style="height:3px;background-color:purple"></hr>
-                                <br />
-                            }
-
-                            <hr>
-
-
-                        </div>
                                 if (Contador == 11)
                                 {
                                     Contador = 0;
@@ -138,7 +138,6 @@
                         }
 
                         @*Aqui va la tabla de las escuelas y contenido*@
-
                         <div class="row">
                             <div class="col-md-6" style="margin-left: 79%;">
                                 <br />
@@ -173,6 +172,13 @@
                                 </table>
                             </div>
                         </div>
+
+
+                        <div class="form-group">
+                            <strong>Comentario</strong>
+                            <textarea class="form-control" name="Comentarioobj1" id="Comentarioobj1" rows="7"></textarea>
+                        </div>
+
 
 
 

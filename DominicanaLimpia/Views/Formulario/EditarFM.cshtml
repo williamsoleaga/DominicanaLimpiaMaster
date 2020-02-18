@@ -3,13 +3,23 @@
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
-
     DominicanalimpiaEntities2 db = new DominicanalimpiaEntities2();
-
     var Objetivo1 = db.Objetivo1.Where(x => x.FormularioId == Model.FormularioId).ToList();
+    var ComentariosObjetivos = db.ComentarioObjetivos.Where(x => x.FormularioId == Model.FormularioId).FirstOrDefault();
 
-    var keloke = 1;
+    var c1 = "";
+    var c2 = "";
+    var c3 = "";
+    var c4 = "";
 
+
+    if(ComentariosObjetivos != null)
+    {
+          c1 = ComentariosObjetivos.Comentarioobj1.ToString();
+          c2 = ComentariosObjetivos.Comentarioobj2.ToString();
+          c3 = ComentariosObjetivos.Comentarioobj3.ToString();
+          c4 = ComentariosObjetivos.Comentarioobj4.ToString();
+    }
 }
 
 
@@ -210,35 +220,40 @@
                         <tbody>
                             @foreach (var item in Objetivo1)
                             {
-                            <tr>
-                                <td>
-                                    @{ 
-                                        var Escuela = db.Escuelas.Where(x => x.EscuelaId == item.EscuelaId).FirstOrDefault();
-                                    }
-                                    @Escuela.Descripcion
-                                </td>
-                                <td>@item.p1</td>
-                                <td>@item.p2</td>
-                                <td>@item.p3</td>
-                                <td>@item.p4</td>
-                                <td>@item.p5</td>
-                                <td>@item.p6</td>
-                                <td>@item.p7</td>
-                                <td>@item.p8</td>
-                                <td>@item.p9</td>
-                                <td>@item.p10</td>
-                                <td>@item.P111</td>
-                                <td>@item.P112</td>
-                                <td>@item.p12</td>
-                                <td class="hidden">1</td>
-                                <td class="hidden">@item.ObjetivoId</td>
-                                <td>
-                                    <center><button type="button" class="btn btn-default btn-xs" data-original-title="Editar" data-toggle="tooltip" data-widget="edit" onclick="EditarDireccion(this);"><i class='far fa-edit'></i></button></center>
-                                </td>
-                            </tr>
-                            }
+                                <tr>
+                                    <td>
+                                        @{
+                                            var Escuela = db.Escuelas.Where(x => x.EscuelaId == item.EscuelaId).FirstOrDefault();
+                                        }
+                                        @Escuela.Descripcion
+                                    </td>
+                                    <td>@item.p1</td>
+                                    <td>@item.p2</td>
+                                    <td>@item.p3</td>
+                                    <td>@item.p4</td>
+                                    <td>@item.p5</td>
+                                    <td>@item.p6</td>
+                                    <td>@item.p7</td>
+                                    <td>@item.p8</td>
+                                    <td>@item.p9</td>
+                                    <td>@item.p10</td>
+                                    <td>@item.P111</td>
+                                    <td>@item.P112</td>
+                                    <td>@item.p12</td>
+                                    <td class="hidden">1</td>
+                                    <td class="hidden">@item.ObjetivoId</td>
+                                    <td>
+                                        <center><button type="button" class="btn btn-default btn-xs" data-original-title="Editar" data-toggle="tooltip" data-widget="edit" onclick="EditarDireccion(this);"><i class='far fa-edit'></i></button></center>
+                                    </td>
+                                </tr>
+                                            }
                         </tbody>
                     </table>
+                </div>
+                <br />
+                <div class="form-group">
+                    <strong>Comentario</strong>
+                    <textarea class="form-control" name="Comentarioobj1" id="Comentarioobj1"  rows="7">@c1</textarea>
                 </div>
 
                 <h3><strong>Objetivo 2</strong></h3>
@@ -272,6 +287,14 @@
                         @Html.EditorFor(model => model.P15, new { htmlAttributes = new { @class = "Text-1" } })
                     </div>
                 </div>
+
+
+                <div class="form-group">
+                    <strong>Comentario</strong>
+                    <textarea class="form-control" name="Comentarioobj1" id="Comentarioobj1" rows="7"> @c2 </textarea>
+                </div>
+
+
                 <br />
 
                 <h3><strong>Objetivo 3</strong></h3>
@@ -384,6 +407,13 @@
 
                 <br />
 
+                <div class="form-group">
+                    <strong>Comentario</strong>
+                    <textarea class="form-control" name="Comentarioobj1" id="Comentarioobj1" rows="7">@c3</textarea>
+                </div>
+
+                <br />
+
                 <h3><strong>Objetivo 4</strong></h3>
                 <br /><hr />
 
@@ -446,12 +476,17 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Comentario, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.Comentario, new { htmlAttributes = new { @class = "form-control" } })
-                    </div>
-
+                    <strong>Comentario</strong>
+                    <textarea class="form-control" name="Comentarioobj1" id="Comentarioobj1" rows="7">@c4</textarea>
                 </div>
+
+                @*<div class="form-group">
+            @Html.LabelFor(model => model.Comentario, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Comentario, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+
+        </div>*@
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
                         <input type="submit" value="Guardar" class="btn btn-default" />
