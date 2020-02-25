@@ -15,10 +15,10 @@
 
     if(ComentariosObjetivos != null)
     {
-          c1 = ComentariosObjetivos.Comentarioobj1.ToString();
-          c2 = ComentariosObjetivos.Comentarioobj2.ToString();
-          c3 = ComentariosObjetivos.Comentarioobj3.ToString();
-          c4 = ComentariosObjetivos.Comentarioobj4.ToString();
+          c1 =  (ComentariosObjetivos.Comentarioobj1 ==null)? "" : ComentariosObjetivos.Comentarioobj1.ToString();
+          c2 = (ComentariosObjetivos.Comentarioobj2 ==null)? "" : ComentariosObjetivos.Comentarioobj2.ToString();
+          c3 = (ComentariosObjetivos.Comentarioobj3 ==null)? "" : ComentariosObjetivos.Comentarioobj3.ToString();
+          c4 = (ComentariosObjetivos.Comentarioobj4 ==null)? "" : ComentariosObjetivos.Comentarioobj4.ToString();
     }
 }
 
