@@ -15,10 +15,10 @@
 
     if(ComentariosObjetivos != null)
     {
-          c1 =  (ComentariosObjetivos.Comentarioobj1 ==null)? "" : ComentariosObjetivos.Comentarioobj1.ToString();
-          c2 = (ComentariosObjetivos.Comentarioobj2 ==null)? "" : ComentariosObjetivos.Comentarioobj2.ToString();
-          c3 = (ComentariosObjetivos.Comentarioobj3 ==null)? "" : ComentariosObjetivos.Comentarioobj3.ToString();
-          c4 = (ComentariosObjetivos.Comentarioobj4 ==null)? "" : ComentariosObjetivos.Comentarioobj4.ToString();
+        c1 =  (ComentariosObjetivos.Comentarioobj1 ==null)? "" : ComentariosObjetivos.Comentarioobj1.ToString();
+        c2 = (ComentariosObjetivos.Comentarioobj2 ==null)? "" : ComentariosObjetivos.Comentarioobj2.ToString();
+        c3 = (ComentariosObjetivos.Comentarioobj3 ==null)? "" : ComentariosObjetivos.Comentarioobj3.ToString();
+        c4 = (ComentariosObjetivos.Comentarioobj4 ==null)? "" : ComentariosObjetivos.Comentarioobj4.ToString();
     }
 }
 
@@ -31,9 +31,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css" />
 
-@using (Html.BeginForm("EditarFormularioM", "Formulario", FormMethod.Post))
+@*@using (Html.BeginForm("EditarFormularioM", "Formulario",FormMethod.Post , new { @id = "EditarForm" } ))
 {
-    @Html.AntiForgeryToken()
+    @Html.AntiForgeryToken()*@
+
+
+<form id="EnviarEditar">
 
     <div class="form-horizontal">
         <br /> <br />
@@ -51,11 +54,11 @@
                                 <th> <strong>Hasta:</strong>    @Html.EditorFor(model => model.Hasta, new { htmlAttributes = new { @class = "form-control", @id = "Hasta", @value = Model.Hasta } }) </th>
                             </tr>
                             @*@if (Convert.ToInt16(Session["RodId"]) == 2)
-                    {
-                        <tr>
-                            <th> <h3> <strong>Responsable de territorio:</strong>  </h3> <h4> @Session["NombreResponsable"].ToString() </h4></th>
-                        </tr>
-                    }*@
+                                {
+                                    <tr>
+                                        <th> <h3> <strong>Responsable de territorio:</strong>  </h3> <h4> @Session["NombreResponsable"].ToString() </h4></th>
+                                    </tr>
+                                }*@
                         </thead>
                     </table>
                 </div>
@@ -213,7 +216,7 @@
                                 <th data-override="P11" class="text-center">P11.2</th>
                                 <th data-override="P11" class="text-center">P12</th>
                                 <th data-override="estatus" class="hidden">Estatus</th>
-                                <th data-override="estatus" class="hidden">Secuencia</th>
+                                <th data-override="ObjetivoId" class="hidden">ObjetivoId</th>
                                 <th style="width: 5px;"></th>
                             </tr>
                         </thead>
@@ -246,14 +249,14 @@
                                         <center><button type="button" class="btn btn-default btn-xs" data-original-title="Editar" data-toggle="tooltip" data-widget="edit" onclick="EditarDireccion(this);"><i class='far fa-edit'></i></button></center>
                                     </td>
                                 </tr>
-                                            }
+                            }
                         </tbody>
                     </table>
                 </div>
                 <br />
                 <div class="form-group">
                     <strong>Comentario</strong>
-                    <textarea class="form-control" name="Comentarioobj1" id="Comentarioobj1"  rows="7">@c1</textarea>
+                    <textarea class="form-control" name="Comentarioobj1" id="Comentarioobj1" rows="7">@c1</textarea>
                 </div>
 
                 <h3><strong>Objetivo 2</strong></h3>
@@ -481,23 +484,37 @@
                 </div>
 
                 @*<div class="form-group">
-            @Html.LabelFor(model => model.Comentario, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Comentario, new { htmlAttributes = new { @class = "form-control" } })
-            </div>
+                        @Html.LabelFor(model => model.Comentario, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Comentario, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
 
-        </div>*@
+                    </div>*@
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Guardar" class="btn btn-default" />
+                        <input onclick="EnviarEdicion()" value="Guardar" class="btn btn-default" />
                     </div>
                 </div>
             </div>
         </div>
     </div>
-}
+    @*}*@
+</form>
 
 <script type="text/javascript">
+
+
+       $.fn.serializeObject = function () {
+        var o = {};
+        this.find("[name]").each(function () {
+            o[this.name] = this.value;
+        });
+        return o;
+       };
+
+
+
+
     $("#Desde").datepicker();
     $("#Hasta").datepicker();
 
@@ -565,5 +582,69 @@
             LimpiarDireccion();
         }
     });
+
+
+
+
+     function EnviarEdicion() {
+
+         
+
+            var ObjetivoLista = new Array();
+
+                if ($("#grvDirecciones")[0].rows.length > 1) {
+                    $("#grvDirecciones TBODY TR").each(function () {
+                        var row = $(this);
+                        var Contat = {};
+                        //Contat.IdEscuela = row.find("TD").eq(0).html();
+                        Contat.escuelanombre = row.find("TD").eq(0).html();
+                        Contat.P1 = row.find("TD").eq(1).html();
+                        Contat.P2 = row.find("TD").eq(2).html();
+                        Contat.P3 = row.find("TD").eq(3).html();
+                        Contat.P4 = row.find("TD").eq(4).html();
+                        Contat.P5 = row.find("TD").eq(5).html();
+                        Contat.P6 = row.find("TD").eq(6).html();
+                        Contat.P7 = row.find("TD").eq(7).html();
+                        Contat.P8 = row.find("TD").eq(8).html();
+                        Contat.P9 = row.find("TD").eq(9).html();
+                        Contat.P10 = row.find("TD").eq(10).html();
+                        Contat.P11 = row.find("TD").eq(11).html();
+                        Contat.P111  =row.find("TD").eq(11).html();
+                        Contat.P112 = row.find("TD").eq(12).html();
+
+                        Contat.P12 = row.find("TD").eq(13).html();
+                        Contat.ObjetivoId = row.find("TD").eq(15).html();
+
+                        ObjetivoLista.push(Contat);
+                    });
+         };
+
+         var entidad = $("#EnviarEditar").serializeObject();
+         entidad.ObjetivoLista = ObjetivoLista;
+
+                var _url = '@Url.Action("EditarFormularioMJson", "Formulario")';
+                $.ajax({
+                    type: 'POST',
+                    url: _url,
+                    data: JSON.stringify({ entidad: entidad }),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        
+                        if (data.error == false) {
+                            window.location.href = '/Formulario/Index/';
+                        } else {
+                            alertify.warning('Error al insertar los valores, contacte a su corrdinador ! ');
+                            return;
+                        }
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        alertify.warning('Error al solicitar la peticion de guardado! ');
+                    }
+                });
+        }
+
+
+
 
 </script>

@@ -26,6 +26,8 @@ namespace DominicanaLimpia.Models
 
         public int P12 { get; set; }
 
+        public int ObjetivoId { get; set; }
+
 
     }
 }

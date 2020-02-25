@@ -416,7 +416,54 @@ namespace DominicanaLimpia.Controllers
         }
 
 
-        [HttpPost]
+
+        public JsonResult EditarFormularioMJson(FormularioM entidad)
+        {
+
+            var error = false;
+            try
+            {
+
+                ComentarioObjetivo cobjetivo = new ComentarioObjetivo();
+                db.Entry(entidad).State = EntityState.Modified;
+                db.SaveChanges();
+
+                foreach (var item in entidad.ObjetivoLista)
+                {
+                    Objetivo1 obj = db.Objetivo1.Find(item.ObjetivoId);
+
+                    obj.p1 = item.P1;
+                    obj.p2 = item.P2;
+                    obj.p3 = item.P3;
+                    obj.p4 = item.P4;
+                    obj.p5 = item.P5;
+                    obj.p6 = item.P6;
+                    obj.p7 = item.P7;
+                    obj.p8 = item.P8;
+                    obj.p9 = item.P9;
+                    obj.p10 = item.P10;
+                    obj.p11 = item.P11;
+                    obj.p12 = item.P12;
+                    obj.P111 = item.P111;
+                    obj.P112 = item.P112;
+
+                    db.Entry(obj).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
+
+            }
+            catch (Exception ex) {
+
+                error = true;
+                return Json(new { error });
+            }
+
+            return Json(new { error });
+
+        }
+
+
+       [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult EditarFormularioM(FormularioM formularioM)
         {
