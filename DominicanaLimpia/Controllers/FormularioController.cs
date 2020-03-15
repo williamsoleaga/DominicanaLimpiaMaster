@@ -259,8 +259,8 @@ namespace DominicanaLimpia.Controllers
 
 
                     Objetivos.MunicipioId = formulario.ProvinciaId;
-                    Objetivos.Desde = Convert.ToDateTime(formulario.DesdeFecha);
-                    Objetivos.Hasta = Convert.ToDateTime(formulario.HastaFecha);
+                    Objetivos.Desde = Convert.ToDateTime(nuevoform.Desde);
+                    Objetivos.Hasta = Convert.ToDateTime(nuevoform.Hasta);
 
 
                     db.Objetivo1.Add(Objetivos);
